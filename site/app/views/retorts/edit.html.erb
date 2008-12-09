@@ -1,0 +1,12 @@
+<h1>Editing retort</h1>
+
+<% form_for(@retort) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @retort %> |
+<%= link_to 'Back', retorts_path %>

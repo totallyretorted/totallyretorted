@@ -1,10 +1,8 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 class AttributionTest < Test::Unit::TestCase
-  fixtures :attributions
-
   # Replace this with your real tests.
-  def test_truth
+  test "the truth" do
     assert true
   end
 end
