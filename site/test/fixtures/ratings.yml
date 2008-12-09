@@ -1,9 +1,21 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  positive: 
-  negative: 
+  positive: 10
+  negative: 5
 
 two:
-  positive: 
-  negative: 
+  positive: 1000
+  negative: 2000
+  
+three:
+  positive: 30
+  negative: 50
+  
+four:
+  positive: 6392
+  negative: 2823
+  
+ five:
+  positive: 3022
+  negative: 3282

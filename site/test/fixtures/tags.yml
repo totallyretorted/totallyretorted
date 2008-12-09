@@ -1,7 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  value: MyString
+  value: South_Park
 
 two:
-  value: MyString
+  value: Chef
+
+three:
+  value: Kenny
