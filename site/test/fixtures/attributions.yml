@@ -1,5 +1,17 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 one:
   id: 1
+  who: "Eric Cartman"
+  where: "South Park"
 two:
   id: 2
+  who: "Stan Marsh"
+  where: "South Park"
+three:
+  id: 3
+  who: "Kyle Broflovski"
+  where: "South Park"
+four:
+  id: 4
+  who: "Chef"
+  where:"South Park"

@@ -1,9 +1,9 @@
 class CreateRetorts < ActiveRecord::Migration
   def self.up
     create_table :retorts do |t|
-      t.text :content
-      
+      t.text :content      
       t.timestamps
+      t.references :attribution
     end
   end
 

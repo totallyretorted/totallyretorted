@@ -1,7 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  content: MyText
+  content: "Too bad drinking Scotch isn't a paying job or Kenny's dad would be a millionaire!"
 
 two:
-  content: MyText
+  content: "Oh my God, they killed Kenny!"
+ 
+three:
+  content: "I've learned something today. You see, the basis of all reasoning is the mind's awareness of itself. What we think, the external objects we perceive, are all like actors that come on and off stage. But our consciousness, the stage itself, is always present to us."
+  
+four:
+  content: "Lick my chocolate salty balls"

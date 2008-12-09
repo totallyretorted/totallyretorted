@@ -3,8 +3,10 @@ class CreateRatings < ActiveRecord::Migration
     create_table :ratings do |t|
       t.integer :positive
       t.integer :negative
-
-      t.timestamps
+      t.timestamps      
+    end
+    change_table :retorts do |t|
+      t.references :rating
     end
   end
 
