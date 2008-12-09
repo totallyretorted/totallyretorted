@@ -7,10 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class TRRating;
+@class TRAttribution;
 
 @interface TRRetort : NSObject {
 	NSString *content;
+	TRAttribution *attribution;
+	TRRating *rating;
+	NSMutableArray *tags;
+	
 }
 @property (nonatomic, retain) NSString *content;
+@property (nonatomic, retain) TRAttribution *attribution;
+@property (nonatomic, retain) TRRating *rating;
+@property (nonatomic, retain) NSMutableArray *tags;
 @end

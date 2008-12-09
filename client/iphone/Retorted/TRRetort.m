@@ -7,10 +7,13 @@
 //
 
 #import "TRRetort.h"
-
+#import "TRAttribution.h"
+#import "TRRating.h"
+#import "TRTag.h"
 
 @implementation TRRetort
 @synthesize content;
+@synthesize attribution, tags, rating;
 
 -(id)init {
 	if (![super init])
@@ -21,6 +24,9 @@
 
 - (void)dealloc {
 	[content release];
+	[attribution release];
+	[tags release];
+	[rating release];
 	[super dealloc];
 }
 
