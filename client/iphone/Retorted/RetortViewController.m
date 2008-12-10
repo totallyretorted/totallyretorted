@@ -1,16 +1,16 @@
 //
-//  FirstViewController.m
+//  RetortViewController.m
 //  Retorted
 //
-//  Created by B.J. Ray on 12/2/08.
-//  Copyright Forward Echo, LLC 2008. All rights reserved.
+//  Created by B.J. Ray on 12/9/08.
+//  Copyright 2008 Forward Echo, LLC. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "RetortViewController.h"
+#import "TRRetort.h"
 
-
-@implementation FirstViewController
-
+@implementation RetortViewController
+@synthesize retort, retortTitle;
 
 /*
 // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
@@ -28,12 +28,12 @@
 }
 */
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-    [super viewDidLoad];
+	retortText.text = retortTitle;
+    //[super viewDidLoad];
 }
-*/
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -49,7 +49,10 @@
 
 
 - (void)dealloc {
+	[retort release];
+	[retortTitle release];
     [super dealloc];
 }
+
 
 @end
