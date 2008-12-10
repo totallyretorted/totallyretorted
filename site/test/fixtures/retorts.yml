@@ -1,13 +1,10 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  content: "Too bad drinking Scotch isn't a paying job or Kenny's dad would be a millionaire!"
-
+  content:Too bad drinking Scotch isn't a paying job or Kenny's dad would be a millionaire!
 two:
-  content: "Oh my God, they killed Kenny!"
- 
+  content:Oh my God, they killed Kenny!
 three:
-  content: "I've learned something today. You see, the basis of all reasoning is the mind's awareness of itself. What we think, the external objects we perceive, are all like actors that come on and off stage. But our consciousness, the stage itself, is always present to us."
-  
+  content:I've learned something today. You see, the basis of all reasoning is the mind's awareness of itself. What we think, the external objects we perceive, are all like actors that come on and off stage. But our consciousness, the stage itself, is always present to us.  
 four:
-  content: "Lick my chocolate salty balls"
+  content:Lick my chocolate salty balls

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AttributionTest < Test::Unit::TestCase
+class AttributionTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true

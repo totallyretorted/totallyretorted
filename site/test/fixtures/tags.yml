@@ -1,10 +1,8 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  value: South_Park
-
+  value:South_Park
 two:
-  value: Chef
-
+  value:Chef
 three:
-  value: Kenny
+  value:Kenny

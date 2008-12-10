@@ -1,16 +1,4 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 one:
-  who: "Eric Cartman"
-  where: "South Park"
-  
-two:
-  who: "Stan Marsh"
-  where: "South Park"
-  
-three:
-  who: "Kyle Broflovski"
-  where: "South Park"
-  
-four:
-  who: "Chef"
-  where:"South Park"
+  who:Eric Cartman
+  where:South Park
