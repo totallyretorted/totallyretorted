@@ -6,7 +6,8 @@ class RetortsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @retorts }
+      format.xml { render :xml => Retort.to_full_xml(@retort)}
+      #format.iphone # renders index.iphone.erb
     end
   end
 
@@ -17,7 +18,11 @@ class RetortsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @retort }
+#      format.xml  { render :xml => @retort.to_xml({:include => [ :tags, :attribution, :rating ]}) }
+#      format.xml  { render :xml => @retort.to_xml {:include => [ :tags, :attribution, :rating ] } }
+      #format.xml { render :xml => @retort.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
+      format.xml { render :xml => Retort.to_full_xml(@retort)}
+      #format.iphone # renders index.iphone.erb
     end
   end
 
@@ -28,7 +33,8 @@ class RetortsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @retort }
+      format.xml { render :xml => Retort.to_full_xml(@retort)}
+      #format.iphone # renders index.iphone.erb
     end
   end
 
@@ -41,15 +47,20 @@ class RetortsController < ApplicationController
   # POST /retorts.xml
   def create
     @retort = Retort.new(params[:retort])
+    params[:tags][:value].split.each do |t|
+      @retort.tags << Tag.new(:value => t) unless Tag.find_by_value(t)
+    end
 
     respond_to do |format|
       if @retort.save
         flash[:notice] = 'Retort was successfully created.'
         format.html { redirect_to(@retort) }
-        format.xml  { render :xml => @retort, :status => :created, :location => @retort }
+        format.xml  { render :xml => Retort.to_full_xml(@retort, :status => :created, :location => @retort) }
+        #format.iphone # renders index.iphone.erb
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @retort.errors, :status => :unprocessable_entity }
+        #format.iphone # renders index.iphone.erb
       end
     end
   end
@@ -64,9 +75,11 @@ class RetortsController < ApplicationController
         flash[:notice] = 'Retort was successfully updated.'
         format.html { redirect_to(@retort) }
         format.xml  { head :ok }
+        #format.iphone # renders index.iphone.erb
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @retort.errors, :status => :unprocessable_entity }
+        #format.iphone # renders index.iphone.erb
       end
     end
   end
@@ -80,6 +93,7 @@ class RetortsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(retorts_url) }
       format.xml  { head :ok }
+      #format.iphone # renders index.iphone.erb
     end
   end
 end
