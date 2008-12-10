@@ -42,6 +42,11 @@
 					@"Lick my chocolate salty balls",
 					@"I can see Russia from my house!",
 					nil];
+	
+	[tagCloud loadHTMLString:@"<html><body style=\"background-color: #000; color: #fff\"><h1>Shant is my hero!</h1><p>Call him at 832.878.5685</p></body></html>" baseURL:nil];
+	
+	
+	
 	//[super viewDidLoad];
 }
 

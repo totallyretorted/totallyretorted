@@ -25,6 +25,9 @@
 		DB1126C00EEF28B600137EBC /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB1126BF0EEF28B600137EBC /* HomeView.xib */; };
 		DB1126C20EEF28C400137EBC /* TagListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB1126C10EEF28C400137EBC /* TagListView.xib */; };
 		DB1126C40EEF28E900137EBC /* RetortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB1126C30EEF28E900137EBC /* RetortView.xib */; };
+		DB1128680EEF618700137EBC /* TRTagCloudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1128670EEF618700137EBC /* TRTagCloudHelper.m */; };
+		DB1128860EEF73FA00137EBC /* ql.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1128840EEF73FA00137EBC /* ql.png */; };
+		DB1128870EEF73FA00137EBC /* qr.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1128850EEF73FA00137EBC /* qr.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +62,10 @@
 		DB1126BF0EEF28B600137EBC /* HomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
 		DB1126C10EEF28C400137EBC /* TagListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagListView.xib; sourceTree = "<group>"; };
 		DB1126C30EEF28E900137EBC /* RetortView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RetortView.xib; sourceTree = "<group>"; };
+		DB1128660EEF618700137EBC /* TRTagCloudHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTagCloudHelper.h; sourceTree = "<group>"; };
+		DB1128670EEF618700137EBC /* TRTagCloudHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagCloudHelper.m; sourceTree = "<group>"; };
+		DB1128840EEF73FA00137EBC /* ql.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ql.png; sourceTree = "<group>"; };
+		DB1128850EEF73FA00137EBC /* qr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +117,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DB1128830EEF73F200137EBC /* Images */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				DB1126BF0EEF28B600137EBC /* HomeView.xib */,
@@ -136,6 +144,8 @@
 				DB1126590EEF047300137EBC /* FEUrlHelper.m */,
 				DB1126680EEF04ED00137EBC /* TRRetortXMLParser.h */,
 				DB1126690EEF04ED00137EBC /* TRRetortXMLParser.m */,
+				DB1128660EEF618700137EBC /* TRTagCloudHelper.h */,
+				DB1128670EEF618700137EBC /* TRTagCloudHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -175,6 +185,15 @@
 				1D3623250D0F684500981E51 /* RetortedAppDelegate.m */,
 			);
 			name = "Application Support";
+			sourceTree = "<group>";
+		};
+		DB1128830EEF73F200137EBC /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				DB1128840EEF73FA00137EBC /* ql.png */,
+				DB1128850EEF73FA00137EBC /* qr.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +242,8 @@
 				DB1126C00EEF28B600137EBC /* HomeView.xib in Resources */,
 				DB1126C20EEF28C400137EBC /* TagListView.xib in Resources */,
 				DB1126C40EEF28E900137EBC /* RetortView.xib in Resources */,
+				DB1128860EEF73FA00137EBC /* ql.png in Resources */,
+				DB1128870EEF73FA00137EBC /* qr.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +265,7 @@
 				DB11266A0EEF04ED00137EBC /* TRRetortXMLParser.m in Sources */,
 				DB1126BB0EEF27B600137EBC /* RetortViewController.m in Sources */,
 				DB1126BE0EEF27D200137EBC /* TagListViewController.m in Sources */,
+				DB1128680EEF618700137EBC /* TRTagCloudHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

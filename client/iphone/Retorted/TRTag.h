@@ -11,6 +11,8 @@
 
 @interface TRTag : NSObject {
 	NSString *value;
+	NSInteger votes;			//used for tagCould...
+	NSInteger tagCloudValue;	//used for tagCloud...
 }
 
 @property (nonatomic, retain) NSString *value;
