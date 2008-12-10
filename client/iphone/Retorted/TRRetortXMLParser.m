@@ -10,6 +10,12 @@
 
 
 @implementation TRRetortXMLParser
+@synthesize currentProperty;
+@synthesize currentRating, currentRetort, currentTag, currentAttribution;
+@synthesize retorts;
+@synthesize canAppend;
+
+
 - (id)init {
 	if (![super init]) {
 		return nil;
@@ -45,6 +51,8 @@
 // Optional:  Use this if there is any preprocessing necessary that isn't handled in the init: method.
 - (void)parserDidStartDocument:(NSXMLParser *)parser {
 	NSLog(@"RetortXMLParser: started parsing document");
+	self.currentProperty = [[NSMutableString alloc] init];
+	
 }
 
 
@@ -74,6 +82,12 @@
 #pragma mark -
 #pragma mark Cleanup
 - (void) dealloc {
+	self.currentTag = nil;
+	self.currentRetort = nil;
+	self.currentRating = nil;
+	self.currentAttribution = nil;
+	self.retorts = nil;
+	
 	[super dealloc];
 }
 

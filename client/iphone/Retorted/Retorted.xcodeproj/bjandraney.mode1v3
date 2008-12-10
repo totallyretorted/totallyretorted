@@ -231,8 +231,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -269,6 +267,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
+								<string>DB1126360EEEECEA00137EBC</string>
 								<string>DB1126350EEEECB900137EBC</string>
 								<string>DB1126320EEEEC8700137EBC</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
@@ -278,8 +277,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>22</integer>
-									<integer>18</integer>
+									<integer>16</integer>
+									<integer>12</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -303,7 +302,7 @@
 							<real>208</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>330 258 1046 620 0 0 1440 878 </string>
+						<string>339 258 1046 620 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -314,12 +313,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>RetortViewController.h</string>
+								<string>TRRetortXMLParser.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -327,22 +328,18 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>RetortViewController.h</string>
+										<string>TRRetortXMLParser.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DB1129340EEF82DA00137EBC</string>
+										<string>DB1129880EEF88CF00137EBC</string>
 										<key>history</key>
 										<array>
-											<string>DB1126CC0EEF2A5E00137EBC</string>
 											<string>DB1126CE0EEF2A5E00137EBC</string>
 											<string>DB1126CF0EEF2A5E00137EBC</string>
 											<string>DB1126D00EEF2A5E00137EBC</string>
 											<string>DB1126D10EEF2A5E00137EBC</string>
-											<string>DB1126D20EEF2A5E00137EBC</string>
-											<string>DB1126D30EEF2A5E00137EBC</string>
 											<string>DB1126D40EEF2A5E00137EBC</string>
-											<string>DB1126DA0EEF2A5E00137EBC</string>
 											<string>DB1127700EEF358800137EBC</string>
 											<string>DB1127720EEF358800137EBC</string>
 											<string>DB1127730EEF358800137EBC</string>
@@ -354,8 +351,12 @@
 											<string>DB1128920EEF7C0000137EBC</string>
 											<string>DB1128930EEF7C0000137EBC</string>
 											<string>DB1129070EEF7EB200137EBC</string>
-											<string>DB1129240EEF818C00137EBC</string>
-											<string>DB1129250EEF818C00137EBC</string>
+											<string>DB1129550EEF857B00137EBC</string>
+											<string>DB1129560EEF857B00137EBC</string>
+											<string>DB1129750EEF88CF00137EBC</string>
+											<string>DB1129760EEF88CF00137EBC</string>
+											<string>DB1129770EEF88CF00137EBC</string>
+											<string>DB1129780EEF88CF00137EBC</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -539,6 +540,23 @@
 											<string>DB1129260EEF818C00137EBC</string>
 											<string>DB1129270EEF818C00137EBC</string>
 											<string>DB1129280EEF818C00137EBC</string>
+											<string>DB1129570EEF857B00137EBC</string>
+											<string>DB1129580EEF857B00137EBC</string>
+											<string>DB1129790EEF88CF00137EBC</string>
+											<string>DB11297A0EEF88CF00137EBC</string>
+											<string>DB11297B0EEF88CF00137EBC</string>
+											<string>DB11297C0EEF88CF00137EBC</string>
+											<string>DB11297D0EEF88CF00137EBC</string>
+											<string>DB11297E0EEF88CF00137EBC</string>
+											<string>DB11297F0EEF88CF00137EBC</string>
+											<string>DB1129800EEF88CF00137EBC</string>
+											<string>DB1129810EEF88CF00137EBC</string>
+											<string>DB1129820EEF88CF00137EBC</string>
+											<string>DB1129830EEF88CF00137EBC</string>
+											<string>DB1129840EEF88CF00137EBC</string>
+											<string>DB1129850EEF88CF00137EBC</string>
+											<string>DB1129860EEF88CF00137EBC</string>
+											<string>DB1129870EEF88CF00137EBC</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -552,7 +570,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {816, 574}}</string>
 								<key>RubberWindowFrame</key>
-								<string>330 258 1046 620 0 0 1440 878 </string>
+								<string>339 258 1046 620 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -572,7 +590,7 @@
 								<key>Frame</key>
 								<string>{{0, 579}, {816, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>330 258 1046 620 0 0 1440 878 </string>
+								<string>339 258 1046 620 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -740,7 +758,7 @@
 		<string>/Users/bjandraney/Projects/retorted/trunk/client/iphone/Retorted/Retorted.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>330 258 1046 620 0 0 1440 878 </string>
+	<string>339 258 1046 620 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
