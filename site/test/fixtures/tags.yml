@@ -1,10 +1,18 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
+  id:1
+  created_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>    
   value:"South_Park"
-
 two:
-  value:"Chef"
-
+    id:1
+    created_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+    updated_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>    
+    value:"Chef"
 three:
-  value:"Kenny"
+    id:1
+    created_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+    updated_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>    
+    value:"Kenny"
+    
