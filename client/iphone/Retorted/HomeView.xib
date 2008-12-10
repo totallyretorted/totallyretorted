@@ -49,8 +49,8 @@
 					</object>
 					<object class="IBUIWebView" id="712757759">
 						<reference key="NSNextResponder" ref="5425450"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 230}, {326, 137}}</string>
+						<int key="NSvFlags">271</int>
+						<string key="NSFrame">{{0, 232}, {320, 135}}</string>
 						<reference key="NSSuperview" ref="5425450"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -179,7 +179,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>HomeViewController</string>
 					<string>UIResponder</string>
-					<string>{{390, 376}, {320, 480}}</string>
+					<string>{{21, 376}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{0, 576}, {320, 247}}</string>

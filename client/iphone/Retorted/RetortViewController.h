@@ -11,9 +11,15 @@
 
 @interface RetortViewController : UIViewController {
 	IBOutlet UITextView *retortText;
+	IBOutlet UIWebView *tagCloud;
+	IBOutlet UISegmentedControl *ratingVote;
+	
 	TRRetort *retort;
 	NSString *retortTitle;		//Temp holder until we get REST up and running.
+	
 }
+
+- (IBAction)ratingChanged:(id)sender;
 
 @property (nonatomic, retain) TRRetort *retort;
 @property (nonatomic, retain) NSString *retortTitle;

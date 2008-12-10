@@ -12,6 +12,18 @@
 @implementation RetortViewController
 @synthesize retort, retortTitle;
 
+
+- (IBAction)ratingChanged:(id)sender {
+	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+	NSInteger segment = segmentedControl.selectedSegmentIndex;
+	
+	if (segment == 0) {
+		NSLog(@"Your vote is Awesome!");
+	} else {
+		NSLog(@"Your vote is Sucks!");
+	}
+}
+
 /*
 // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -33,6 +45,10 @@
 - (void)viewDidLoad {
 	retortText.text = retortTitle;
     //[super viewDidLoad];
+	
+	self.title = @"Retort";
+	[tagCloud loadHTMLString:@"<html><body style=\"background-color: #000; color: #fff\"><h1>Shant is my hero!</h1><p>Call him at 832.878.5685</p></body></html>" baseURL:nil];
+	
 }
 
 
