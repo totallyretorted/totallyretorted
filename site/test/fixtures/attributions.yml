@@ -1,10 +1,12 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 one:
-  id:1
-  who:'Eric Cartman'
-  where:'South Park'
-  what:''
-  when:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  how:''
-  created_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  id: 1
+  who: Eric Cartman
+  where: South Park
+  what: <%= nil %>
+  when: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  how: <%= nil %>
+  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  
+  

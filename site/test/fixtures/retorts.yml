@@ -5,13 +5,13 @@ one:
   content: Too bad drinking Scotch isn't a paying job or Kenny's dad would be a millionaire!
   created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
   updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  attribution_id: <%= nil %>
-  rating_id: <%= nil %>
+  attribution_id: 1
+  rating_id: 1
 
-four:
-  id: 4
+two:
+  id: 2
   content: Lick my chocolate salty balls
   created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
   updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  attribution_id: ''
-  rating_id: ''
+  attribution_id: 1
+  rating_id: 1
