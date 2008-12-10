@@ -16,4 +16,7 @@
 }
 
 @property (nonatomic, retain) NSString *value;
+@property NSInteger votes;
+@property NSInteger tagCloudValue;
+
 @end

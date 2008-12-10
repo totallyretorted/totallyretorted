@@ -11,6 +11,9 @@
 
 @implementation TRTag
 @synthesize value;
+@synthesize votes;
+@synthesize tagCloudValue;
+
 
 - (id) init {
 	if (![super init])
