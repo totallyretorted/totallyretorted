@@ -12,14 +12,16 @@ class Retort < ActiveRecord::Base
 #    end
 #  end
 
-  def self.to_full_xml(r, options = {})
-    options[:include] = [:tags]
-    options[:except] = [:retort_id, :tag_id, :created_at, :updated_at]
-    r.to_xml(options)
-  end
-  
-  def self.to_xml(r, options = {})
-    options[:except] = [:retort_id, :tag_id, :created_at, :updated_at]
-    r.to_xml(options)
-  end
+#  def self.to_full_xml(r, options = {})
+#   # if r[:tags] 
+#    #  options[:include] = [:tags]
+#    #end
+#    options[:except] = [:retort_id, :tag_id, :created_at, :updated_at]
+#    r.to_xml(options)
+#  end
+#  
+#  def self.to_xml(r, options = {})
+#    options[:except] = [:retort_id, :tag_id, :created_at, :updated_at]
+#    r.to_xml(options)
+#  end
 end
