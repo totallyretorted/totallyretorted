@@ -38,8 +38,9 @@
     //[super viewDidLoad];
 	
 	self.title = @"Retort";
-	[tagCloud loadHTMLString:@"<html><body style=\"background-color: #000; color: #fff\"><h1>Shant is my hero!</h1><p>Call him at 832.878.5685</p></body></html>" baseURL:nil];
-	
+	//[[self.view subviews] count]
+	//tagCloud.backgroundColor = [UIColor blackColor];
+	[tagCloud loadHTMLString:@"<html><body style=\"background-color: #000; color: #fff\"><h1><a href=\"tag:shant\">Shant</a> is my hero!</h1><p>Call him at 832.878.5685</p></body></html>" baseURL:nil];
 }
 
 
@@ -61,6 +62,13 @@
     [super dealloc];
 }
 
+#pragma mark -
+#pragma mark WebView Delegate methods
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+	NSURL *url = [request URL];
+	NSLog(@"Absolute URL: %@", [url absoluteString]);
+	return NO;
+}
 
 #pragma mark -
 - (IBAction)ratingChanged:(id)sender {
@@ -74,6 +82,7 @@
 	}
 }
 
+/*
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	if ([touches count] == 2) {
 		NSArray *twoTouches = [touches allObjects];
@@ -99,11 +108,16 @@
 			//shrink
 			NSLog(@"shrink tag cloud");
 		}
+	} else {
+		UITouch *singleTouch = [[touches allObjects] objectAtIndex:0];
+		CGPoint point = [singleTouch locationInView:self.view];
+		NSLog(@"x=%f, d=%f", point.x, point.y);
 	}
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	initialDistance = 0;
 }
+*/
 
 @end

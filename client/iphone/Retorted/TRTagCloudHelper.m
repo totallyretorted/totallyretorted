@@ -28,9 +28,49 @@ const NSInteger quantas = 5;
 }
 
 - (NSString *)tagCloud {
-	NSString *html = nil;
+	NSMutableString *html = nil;
+	int fontSize = 100;
 	
+	for (TRTag *aTag in tags) {
+		//NSLog(@"element: %@", element);
+		//font-size percentage 200% to 50%
+		switch (aTag.tagCloudValue) {
+			case 0:
+				fontSize = 50;
+				break;
+			case 1: 
+				fontSize = 75;
+				break;
+			case 2:
+				fontSize = 100;
+				break;
+			case 3:
+				fontSize = 125;
+				break;
+			case 4:
+				fontSize = 150;
+			default:
+				break;
+		}
+		
+		//tag:id, font-size (weight), tag.value, 
+		[html appendFormat:@"<a href=\"tag:%d\" style=\"font-size: %d\%\">%@</a><&nbsp;&nbsp;&nbsp;", 
+		 aTag.primaryKey, 
+		 fontSize, 
+		 aTag.value];
+		
+	}
+	
+	//TODO: memory leak?
 	return html;
+}
+
+- (NSString *)htmlTagCloudWrapper:(NSString *)content {
+	NSString *header = @"<html><body><div>";
+	NSString *footer = @"</div></body></html>";
+	
+	
+	return [NSString stringWithFormat:@"%@%@%@", header, content, footer];
 }
 
 - (void)dealloc {
