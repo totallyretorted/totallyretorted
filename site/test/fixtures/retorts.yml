@@ -1,33 +1,17 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+# Read about fixtures at http://ar.rubyon.org/classes/Fixtures.html
 
 one:
-  id:1
-  content:Too bad drinking Scotch isn't a paying job or Kenny's dad would be a millionaire!
-  created_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  attribution_id:
-  rating_id:
+  id: 1
+  content: Too bad drinking Scotch isn't a paying job or Kenny's dad would be a millionaire!
+  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  attribution_id: <%= nil %>
+  rating_id: <%= nil %>
 
-two:
-  id:2
-  content:Oh my God, they killed Kenny!
-  created_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  attribution_id:
-  rating_id:
-
-three:
-  id:3
-  content:I've learned something today. You see, the basis of all reasoning is the mind's awareness of itself. What we think, the external objects we perceive, are all like actors that come on and off stage. But our consciousness, the stage itself, is always present to us.  
-  created_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  attribution_id:
-  rating_id:
-  
 four:
-  id:4
-  content:Lick my chocolate salty balls
-  created_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at:<%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  attribution_id:
-  rating_id:
+  id: 4
+  content: Lick my chocolate salty balls
+  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  attribution_id: ''
+  rating_id: ''

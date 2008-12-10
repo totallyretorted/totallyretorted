@@ -24,4 +24,9 @@ class Retort < ActiveRecord::Base
 #    options[:except] = [:retort_id, :tag_id, :created_at, :updated_at]
 #    r.to_xml(options)
 #  end
+
+  def to_xml(options ={}, &block)
+    xml = Builder::XmlMarkup.new
+    xml.retort(:id => self.id)
+  end
 end
