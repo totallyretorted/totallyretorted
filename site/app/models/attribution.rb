@@ -6,6 +6,7 @@ class Attribution < ActiveRecord::Base
     
     xml.attribution(:id=>self.id){
       xml.who(self.who)
+      xml.what(self.what)
       xml.when(self.when)
       xml.where(self.where)
       xml.how(self.how)
