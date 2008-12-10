@@ -8,21 +8,12 @@
 
 #import "RetortViewController.h"
 #import "TRRetort.h"
+#import "CGPointUtils.h"		//calculates distance between points for pinches
 
 @implementation RetortViewController
 @synthesize retort, retortTitle;
+@synthesize initialDistance;
 
-
-- (IBAction)ratingChanged:(id)sender {
-	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-	NSInteger segment = segmentedControl.selectedSegmentIndex;
-	
-	if (segment == 0) {
-		NSLog(@"Your vote is Awesome!");
-	} else {
-		NSLog(@"Your vote is Sucks!");
-	}
-}
 
 /*
 // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
@@ -70,5 +61,49 @@
     [super dealloc];
 }
 
+
+#pragma mark -
+- (IBAction)ratingChanged:(id)sender {
+	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
+	NSInteger segment = segmentedControl.selectedSegmentIndex;
+	
+	if (segment == 0) {
+		NSLog(@"Your vote is Awesome!");
+	} else {
+		NSLog(@"Your vote is Sucks!");
+	}
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	if ([touches count] == 2) {
+		NSArray *twoTouches = [touches allObjects];
+		UITouch *firstTouch = [twoTouches objectAtIndex:0];
+		UITouch *secondTouch = [twoTouches objectAtIndex:1];
+		initialDistance = distanceBetweenPoints([firstTouch locationInView:self.view], [secondTouch locationInView:self.view]);
+	}
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	if ([touches count] == 2) {
+		NSArray *twoTouches = [touches allObjects];
+		UITouch *firstTouch = [twoTouches objectAtIndex:0];
+		UITouch *secondTouch = [twoTouches objectAtIndex:1];
+		CGFloat currentDistance = distanceBetweenPoints([firstTouch locationInView:self.view], [secondTouch locationInView:self.view]);
+		
+		if (initialDistance == 0) {
+			initialDistance = currentDistance;
+		} else if (currentDistance - initialDistance > kMinimumPinchDelta) {
+			//grow
+			NSLog(@"grow tag cloud");
+		} else if (initialDistance - currentDistance > kMinimumPinchDelta) {
+			//shrink
+			NSLog(@"shrink tag cloud");
+		}
+	}
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	initialDistance = 0;
+}
 
 @end

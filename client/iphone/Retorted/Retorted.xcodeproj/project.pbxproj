@@ -28,6 +28,7 @@
 		DB1128680EEF618700137EBC /* TRTagCloudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1128670EEF618700137EBC /* TRTagCloudHelper.m */; };
 		DB1128860EEF73FA00137EBC /* ql.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1128840EEF73FA00137EBC /* ql.png */; };
 		DB1128870EEF73FA00137EBC /* qr.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1128850EEF73FA00137EBC /* qr.png */; };
+		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,8 @@
 		DB1128670EEF618700137EBC /* TRTagCloudHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagCloudHelper.m; sourceTree = "<group>"; };
 		DB1128840EEF73FA00137EBC /* ql.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ql.png; sourceTree = "<group>"; };
 		DB1128850EEF73FA00137EBC /* qr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr.png; sourceTree = "<group>"; };
+		DB6849C70EF0257B0094CC24 /* CGPointUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointUtils.c; sourceTree = "<group>"; };
+		DB6849C80EF0257B0094CC24 /* CGPointUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointUtils.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 		DB1126320EEEEC8700137EBC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DB6849C70EF0257B0094CC24 /* CGPointUtils.c */,
+				DB6849C80EF0257B0094CC24 /* CGPointUtils.h */,
 				DB1126580EEF047300137EBC /* FEUrlHelper.h */,
 				DB1126590EEF047300137EBC /* FEUrlHelper.m */,
 				DB1126680EEF04ED00137EBC /* TRRetortXMLParser.h */,
@@ -266,6 +271,7 @@
 				DB1126BB0EEF27B600137EBC /* RetortViewController.m in Sources */,
 				DB1126BE0EEF27D200137EBC /* TagListViewController.m in Sources */,
 				DB1128680EEF618700137EBC /* TRTagCloudHelper.m in Sources */,
+				DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

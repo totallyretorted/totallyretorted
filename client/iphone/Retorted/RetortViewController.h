@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class TRRetort;
+
+#define kMinimumPinchDelta 100		//defines the minimum distance that constitues a pinch
 
 @interface RetortViewController : UIViewController {
 	IBOutlet UITextView *retortText;
@@ -17,10 +20,12 @@
 	TRRetort *retort;
 	NSString *retortTitle;		//Temp holder until we get REST up and running.
 	
+	CGFloat initialDistance;	//used for pinch gesture.
 }
 
 - (IBAction)ratingChanged:(id)sender;
 
 @property (nonatomic, retain) TRRetort *retort;
 @property (nonatomic, retain) NSString *retortTitle;
+@property CGFloat initialDistance;
 @end

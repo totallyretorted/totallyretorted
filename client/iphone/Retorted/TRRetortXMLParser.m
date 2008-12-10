@@ -62,6 +62,17 @@
 	
 	//an example of getting an element's attribute:
 	//[self.currentRetort setObject:[attributeDict valueForKey:@"id"] forKey:@"id"];
+	
+	// Primary objects...
+	if ([elementName isEqualToString:@"retort"]) {
+		// 1. create Retort Dictionary object and add it as active
+		// 2. NSString *idAtt = [attributeDict valueForKey:@"id"];
+		self.currentRetort = [[NSMutableDictionary alloc] init];
+		[self.currentProperty release];
+		return;
+	}
+	
+	
 }
 
 // Called when the parser encounters the closing tag of an element.  For Example: </myTag>
