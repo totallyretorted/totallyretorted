@@ -26,10 +26,13 @@ class Retort < ActiveRecord::Base
 #  end
 
   def to_xml(options ={}, &block)
-    xml = Builder::XmlMarkup.new
+    xml=options[:builder] || Builder::XmlMarkup.new
+        
     xml.retort(:id=>self.id, :created_at => self.created_at, :updated_at => self.updated_at){
       xml.content(self.content)
-
+      xml.attributions{
+        self.attribution.to_xml(:builder => xml) unless attribution.nil?
+        }
       }  
   end
 end
