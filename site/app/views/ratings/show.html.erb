@@ -1,0 +1,13 @@
+<p>
+  <b>Positive:</b>
+  <%=h @rating.positive %>
+</p>
+
+<p>
+  <b>Negative:</b>
+  <%=h @rating.negative %>
+</p>
+
+
+<%= link_to 'Edit', edit_rating_path(@rating) %> |
+<%= link_to 'Back', ratings_path %>

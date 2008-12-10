@@ -4,6 +4,14 @@
   <%= f.error_messages %>
 
   <p>
+    <%= f.label :content %><br />
+    <%= f.text_field :content %>
+  </p>
+  <p>
+  	<%= f.label :tags %><br />
+	<%= text_field :retort, :tags.value %>
+  </p>
+  <p>
     <%= f.submit "Create" %>
   </p>
 <% end %>

@@ -1,0 +1,28 @@
+<h1>Listing attributions</h1>
+
+<table>
+  <tr>
+    <th>Who</th>
+    <th>Where</th>
+    <th>How</th>
+    <th>Why</th>
+    <th>When</th>
+  </tr>
+
+<% for attribution in @attributions %>
+  <tr>
+    <td><%=h attribution.who %></td>
+    <td><%=h attribution.where %></td>
+    <td><%=h attribution.how %></td>
+    <td><%=h attribution.why %></td>
+    <td><%=h attribution.when %></td>
+    <td><%= link_to 'Show', attribution %></td>
+    <td><%= link_to 'Edit', edit_attribution_path(attribution) %></td>
+    <td><%= link_to 'Destroy', attribution, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New attribution', new_attribution_path %>
