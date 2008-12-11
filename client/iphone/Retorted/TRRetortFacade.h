@@ -8,10 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const TRRetortDataFinishedLoadingNotification;
+
 
 @interface TRRetortFacade : NSObject {
-
+	NSMutableArray *retorts;
 }
 
+@property (nonatomic, retain) NSMutableArray *retorts;
 - (void)loadRetorts;
 @end

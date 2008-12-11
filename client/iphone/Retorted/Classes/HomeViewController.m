@@ -46,16 +46,16 @@
 	
 	[tagCloud loadHTMLString:@"<html><body style=\"background-color: #000; color: #fff\"><h1>Shant is my hero!</h1><p>Call him at 832.878.5685</p></body></html>" baseURL:nil];
 	
-	/*
+	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	
 	[nc addObserver:self 
 		   selector:@selector(handleDataLoad:) 
-			   name:TRScreen0RetortObjectsSetupCompleteNotification
+			   name:TRRetortDataFinishedLoadingNotification
 			 object:nil];
 	
 	NSLog(@"Controller: Registered with notification center");
-	*/
+	
 	//[super viewDidLoad];
 }
 
@@ -74,6 +74,8 @@
 
 
 - (void)dealloc {
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc removeObserver:self];
 	[retorts release];
     [super dealloc];
 }

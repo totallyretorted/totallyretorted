@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString * const DWDataFinishedLoadingNotification;
-extern NSString * const DWDataFailedLoadingNotification;
+extern NSString * const FEDataFinishedLoadingNotification;
+extern NSString * const FEDataFailedLoadingNotification;
 
 @interface FEUrlHelper : NSObject {
 	NSMutableData *xmlData;

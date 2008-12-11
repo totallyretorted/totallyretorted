@@ -8,6 +8,12 @@
 
 #import "TRRetortXMLParser.h"
 #import "TRRetort.h"
+#import "Constants.h"
+
+// Message listed to by TRReportFacade
+// Message sent to NC by TRRetortXMLParser
+NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataFinishedLoading"; //Listened by RetortFacade
+
 
 @implementation TRRetortXMLParser
 @synthesize currentProperty;
@@ -25,6 +31,7 @@
 }
 
 #pragma mark Public Method
+
 - (void)parseRetortXML:(NSData *)xmlData parseError:(NSError **)error {
 	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
 	[parser setDelegate:self];
@@ -142,6 +149,15 @@
 //Optional - use this if there is any clean up or call back (i.e. if we use notifications)
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
 	NSLog(@"RetortXMLParser: parserDidEndDocument");
+	
+	
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	NSLog(@"RetortXMLParser: Sending finished notification");
+	NSLog(@"RetortXMLParser: total retort objects: %d", self.retorts.count);
+	[nc postNotificationName:TRXMLRetortDataFinishedLoadingNotification object:self];
+	
+	 NSLog(@"RetortXMLParser: callback after xml parse complete notification");
+	 
 }
 
 #pragma mark -

@@ -68,10 +68,12 @@ Issue: NSURLRequest will not handle XML, so we will need to use NSXMLParser.
 }
 	
 - (void)connection: (NSURLConnection *)connection didFailWithError: (NSError *)error {
+
 	NSLog(@"URLHelper: Error encountered: Failed loading");
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	NSLog(@"URLHelper: Sending failure notification");
 	[nc postNotificationName:FEDataFailedLoadingNotification object:self];
+
 }
 
 - (NSString *)description {

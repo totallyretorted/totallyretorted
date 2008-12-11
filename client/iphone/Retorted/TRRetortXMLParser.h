@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+extern NSString * const TRXMLRetortDataFinishedLoadingNotification;
 
 @interface TRRetortXMLParser : NSObject {
 	NSMutableString *currentProperty;

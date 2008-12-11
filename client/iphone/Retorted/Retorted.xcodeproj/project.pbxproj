@@ -21,7 +21,6 @@
 		DB1126470EEEEDC900137EBC /* TRRating.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126460EEEEDC900137EBC /* TRRating.m */; };
 		DB11264A0EEEEDD500137EBC /* TRTag.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126490EEEEDD500137EBC /* TRTag.m */; };
 		DB11265A0EEF047300137EBC /* FEUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126590EEF047300137EBC /* FEUrlHelper.m */; };
-		DB11266A0EEF04ED00137EBC /* TRRetortXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126690EEF04ED00137EBC /* TRRetortXMLParser.m */; };
 		DB1126BB0EEF27B600137EBC /* RetortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126BA0EEF27B600137EBC /* RetortViewController.m */; };
 		DB1126C00EEF28B600137EBC /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB1126BF0EEF28B600137EBC /* HomeView.xib */; };
 		DB1126C40EEF28E900137EBC /* RetortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB1126C30EEF28E900137EBC /* RetortView.xib */; };
@@ -29,6 +28,7 @@
 		DB1128860EEF73FA00137EBC /* ql.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1128840EEF73FA00137EBC /* ql.png */; };
 		DB1128870EEF73FA00137EBC /* qr.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1128850EEF73FA00137EBC /* qr.png */; };
 		DB1FD1650EF1950F0000E78E /* TRRetortFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */; };
+		DB1FD30C0EF1D39F0000E78E /* TRRetortXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */; };
 		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
 		DB82EB940EF0963D007C507A /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB82EB930EF0963D007C507A /* FavoritesViewController.m */; };
 		DB82EB9A0EF096DB007C507A /* FavoritesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB82EB990EF096DB007C507A /* FavoritesView.xib */; };
@@ -66,8 +66,6 @@
 		DB1126490EEEEDD500137EBC /* TRTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTag.m; sourceTree = "<group>"; };
 		DB1126580EEF047300137EBC /* FEUrlHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEUrlHelper.h; sourceTree = "<group>"; };
 		DB1126590EEF047300137EBC /* FEUrlHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEUrlHelper.m; sourceTree = "<group>"; };
-		DB1126680EEF04ED00137EBC /* TRRetortXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetortXMLParser.h; sourceTree = "<group>"; };
-		DB1126690EEF04ED00137EBC /* TRRetortXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortXMLParser.m; sourceTree = "<group>"; };
 		DB1126B90EEF27B600137EBC /* RetortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetortViewController.h; sourceTree = "<group>"; };
 		DB1126BA0EEF27B600137EBC /* RetortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetortViewController.m; sourceTree = "<group>"; };
 		DB1126BF0EEF28B600137EBC /* HomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
@@ -76,9 +74,10 @@
 		DB1128670EEF618700137EBC /* TRTagCloudHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagCloudHelper.m; sourceTree = "<group>"; };
 		DB1128840EEF73FA00137EBC /* ql.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ql.png; sourceTree = "<group>"; };
 		DB1128850EEF73FA00137EBC /* qr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr.png; sourceTree = "<group>"; };
-		DB1FD1620EF192CA0000E78E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		DB1FD1630EF1950F0000E78E /* TRRetortFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetortFacade.h; sourceTree = "<group>"; };
 		DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortFacade.m; sourceTree = "<group>"; };
+		DB1FD30A0EF1D39F0000E78E /* TRRetortXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetortXMLParser.h; sourceTree = "<group>"; };
+		DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortXMLParser.m; sourceTree = "<group>"; };
 		DB6849C70EF0257B0094CC24 /* CGPointUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointUtils.c; sourceTree = "<group>"; };
 		DB6849C80EF0257B0094CC24 /* CGPointUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointUtils.h; sourceTree = "<group>"; };
 		DB82EB920EF0963D007C507A /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
@@ -169,12 +168,12 @@
 				DB6849C80EF0257B0094CC24 /* CGPointUtils.h */,
 				DB1126580EEF047300137EBC /* FEUrlHelper.h */,
 				DB1126590EEF047300137EBC /* FEUrlHelper.m */,
-				DB1126680EEF04ED00137EBC /* TRRetortXMLParser.h */,
-				DB1126690EEF04ED00137EBC /* TRRetortXMLParser.m */,
 				DB1128660EEF618700137EBC /* TRTagCloudHelper.h */,
 				DB1128670EEF618700137EBC /* TRTagCloudHelper.m */,
 				DB0030BA0EF0A44F00404183 /* TRTagSorter.h */,
 				DB0030BB0EF0A44F00404183 /* TRTagSorter.m */,
+				DB1FD30A0EF1D39F0000E78E /* TRRetortXMLParser.h */,
+				DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */,
 				DB1FD1630EF1950F0000E78E /* TRRetortFacade.h */,
 				DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */,
 			);
@@ -214,7 +213,6 @@
 			children = (
 				1D3623240D0F684500981E51 /* RetortedAppDelegate.h */,
 				1D3623250D0F684500981E51 /* RetortedAppDelegate.m */,
-				DB1FD1620EF192CA0000E78E /* Constants.h */,
 			);
 			name = "Application Support";
 			sourceTree = "<group>";
@@ -304,7 +302,6 @@
 				DB1126470EEEEDC900137EBC /* TRRating.m in Sources */,
 				DB11264A0EEEEDD500137EBC /* TRTag.m in Sources */,
 				DB11265A0EEF047300137EBC /* FEUrlHelper.m in Sources */,
-				DB11266A0EEF04ED00137EBC /* TRRetortXMLParser.m in Sources */,
 				DB1126BB0EEF27B600137EBC /* RetortViewController.m in Sources */,
 				DB1128680EEF618700137EBC /* TRTagCloudHelper.m in Sources */,
 				DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */,
@@ -312,6 +309,7 @@
 				DB0030B00EF09E9100404183 /* SortMethods.m in Sources */,
 				DB0030BC0EF0A44F00404183 /* TRTagSorter.m in Sources */,
 				DB1FD1650EF1950F0000E78E /* TRRetortFacade.m in Sources */,
+				DB1FD30C0EF1D39F0000E78E /* TRRetortXMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
