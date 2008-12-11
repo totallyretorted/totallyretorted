@@ -3,10 +3,7 @@ class Tag < ActiveRecord::Base
   
   def to_xml(options ={}, &block)
     xml=options[:builder] || Builder::XmlMarkup.new
-    
-    xml.tag(:id=>self.id){
-      xml.value(self.value)
-      }  
+    xml.tag(self.value,:id=>self.id)
   end  
   
 end
