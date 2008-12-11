@@ -32,7 +32,9 @@ class Retort < ActiveRecord::Base
       
     xml.retort(:id => self.id){
       xml.content(self.content)
-      self.attribution.to_xml(:builder => xml) unless attribution.nil?
+      if self.attribution
+        self.attribution.to_xml(:builder => xml)
+      end
       self.rating.to_xml(:builder => xml) unless rating.nil?
       if tags && tags.count > 0 
         xml.tags{
