@@ -6,12 +6,13 @@
 //  Copyright 2008 __MyCompanyName__. All rights reserved.
 //
 
-//These are general methods and do not belong to a class.
+//These are general methods and are not part of a class.
 
-#import "TRTag.h"
+#import "SortMethods.h"
 
-NSInteger tagVoteSort(id tagLeft, id tagRight, void *ignore) {
-	//
+
+
+NSInteger tagVoteSortAsc(id tagLeft, id tagRight, void *ignore) {
 	
 	int vl = [tagLeft votes];
     int vr = [tagRight votes];
@@ -26,8 +27,24 @@ NSInteger tagVoteSort(id tagLeft, id tagRight, void *ignore) {
 	return result;
 }
 
-
 NSInteger tagVoteSortDesc(id tagLeft, id tagRight, void* ignore)
 {
-	return -tagVoteSort(tagLeft, tagRight, ignore);
+	return -tagVoteSortAsc(tagLeft, tagRight, ignore);
+}
+
+
+
+NSInteger tagAlphaSortAsc(id tagLeft, id tagRight, void *reverse) {	
+	NSComparisonResult result;
+	NSString* tl = [tagLeft value];
+	NSString* tr = [tagRight value];
+	result = [tl localizedCaseInsensitiveCompare:tr];
+	
+	return result;
+}
+
+
+NSInteger tagAlphaSortDesc(id tagLeft, id tagRight, void* ignore)
+{
+	return -tagAlphaSortAsc(tagLeft, tagRight, ignore);
 }
