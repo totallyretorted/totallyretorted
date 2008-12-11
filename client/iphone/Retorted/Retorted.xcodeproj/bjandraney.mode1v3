@@ -330,7 +330,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DB0031980EF0D04B00404183</string>
+										<string>DB1FD0F00EF16FEC0000E78E</string>
 										<key>history</key>
 										<array>
 											<string>DB1126CE0EEF2A5E00137EBC</string>
@@ -360,7 +360,7 @@
 											<string>DB0031170EF0D04B00404183</string>
 											<string>DB0031180EF0D04B00404183</string>
 											<string>DB0031190EF0D04B00404183</string>
-											<string>DB00311A0EF0D04B00404183</string>
+											<string>DB0031980EF0D04B00404183</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -388,131 +388,10 @@
 											<string>DB684A080EF02F9B0094CC24</string>
 											<string>DB82EBCF0EF09BA1007C507A</string>
 											<string>DB82EBD00EF09BA1007C507A</string>
-											<string>DB00311B0EF0D04B00404183</string>
-											<string>DB00311C0EF0D04B00404183</string>
-											<string>DB00311D0EF0D04B00404183</string>
-											<string>DB00311E0EF0D04B00404183</string>
 											<string>DB00311F0EF0D04B00404183</string>
 											<string>DB0031200EF0D04B00404183</string>
-											<string>DB0031210EF0D04B00404183</string>
-											<string>DB0031220EF0D04B00404183</string>
-											<string>DB0031230EF0D04B00404183</string>
-											<string>DB0031240EF0D04B00404183</string>
-											<string>DB0031250EF0D04B00404183</string>
-											<string>DB0031260EF0D04B00404183</string>
-											<string>DB0031270EF0D04B00404183</string>
-											<string>DB0031280EF0D04B00404183</string>
-											<string>DB0031290EF0D04B00404183</string>
-											<string>DB00312A0EF0D04B00404183</string>
-											<string>DB00312B0EF0D04B00404183</string>
-											<string>DB00312C0EF0D04B00404183</string>
-											<string>DB00312D0EF0D04B00404183</string>
-											<string>DB00312E0EF0D04B00404183</string>
-											<string>DB00312F0EF0D04B00404183</string>
-											<string>DB0031300EF0D04B00404183</string>
-											<string>DB0031310EF0D04B00404183</string>
-											<string>DB0031320EF0D04B00404183</string>
-											<string>DB0031330EF0D04B00404183</string>
-											<string>DB0031340EF0D04B00404183</string>
-											<string>DB0031350EF0D04B00404183</string>
-											<string>DB0031360EF0D04B00404183</string>
-											<string>DB0031370EF0D04B00404183</string>
-											<string>DB0031380EF0D04B00404183</string>
-											<string>DB0031390EF0D04B00404183</string>
-											<string>DB00313A0EF0D04B00404183</string>
-											<string>DB00313B0EF0D04B00404183</string>
-											<string>DB00313C0EF0D04B00404183</string>
-											<string>DB00313D0EF0D04B00404183</string>
-											<string>DB00313E0EF0D04B00404183</string>
-											<string>DB00313F0EF0D04B00404183</string>
-											<string>DB0031400EF0D04B00404183</string>
-											<string>DB0031410EF0D04B00404183</string>
 											<string>DB0031420EF0D04B00404183</string>
-											<string>DB0031430EF0D04B00404183</string>
-											<string>DB0031440EF0D04B00404183</string>
-											<string>DB0031450EF0D04B00404183</string>
 											<string>DB0031460EF0D04B00404183</string>
-											<string>DB0031470EF0D04B00404183</string>
-											<string>DB0031480EF0D04B00404183</string>
-											<string>DB0031490EF0D04B00404183</string>
-											<string>DB00314A0EF0D04B00404183</string>
-											<string>DB00314B0EF0D04B00404183</string>
-											<string>DB00314C0EF0D04B00404183</string>
-											<string>DB00314D0EF0D04B00404183</string>
-											<string>DB00314E0EF0D04B00404183</string>
-											<string>DB00314F0EF0D04B00404183</string>
-											<string>DB0031500EF0D04B00404183</string>
-											<string>DB0031510EF0D04B00404183</string>
-											<string>DB0031520EF0D04B00404183</string>
-											<string>DB0031530EF0D04B00404183</string>
-											<string>DB0031540EF0D04B00404183</string>
-											<string>DB0031550EF0D04B00404183</string>
-											<string>DB0031560EF0D04B00404183</string>
-											<string>DB0031570EF0D04B00404183</string>
-											<string>DB0031580EF0D04B00404183</string>
-											<string>DB0031590EF0D04B00404183</string>
-											<string>DB00315A0EF0D04B00404183</string>
-											<string>DB00315B0EF0D04B00404183</string>
-											<string>DB00315C0EF0D04B00404183</string>
-											<string>DB00315D0EF0D04B00404183</string>
-											<string>DB00315E0EF0D04B00404183</string>
-											<string>DB00315F0EF0D04B00404183</string>
-											<string>DB0031600EF0D04B00404183</string>
-											<string>DB0031610EF0D04B00404183</string>
-											<string>DB0031620EF0D04B00404183</string>
-											<string>DB0031630EF0D04B00404183</string>
-											<string>DB0031640EF0D04B00404183</string>
-											<string>DB0031650EF0D04B00404183</string>
-											<string>DB0031660EF0D04B00404183</string>
-											<string>DB0031670EF0D04B00404183</string>
-											<string>DB0031680EF0D04B00404183</string>
-											<string>DB0031690EF0D04B00404183</string>
-											<string>DB00316A0EF0D04B00404183</string>
-											<string>DB00316B0EF0D04B00404183</string>
-											<string>DB00316C0EF0D04B00404183</string>
-											<string>DB00316D0EF0D04B00404183</string>
-											<string>DB00316E0EF0D04B00404183</string>
-											<string>DB00316F0EF0D04B00404183</string>
-											<string>DB0031700EF0D04B00404183</string>
-											<string>DB0031710EF0D04B00404183</string>
-											<string>DB0031720EF0D04B00404183</string>
-											<string>DB0031730EF0D04B00404183</string>
-											<string>DB0031740EF0D04B00404183</string>
-											<string>DB0031750EF0D04B00404183</string>
-											<string>DB0031760EF0D04B00404183</string>
-											<string>DB0031770EF0D04B00404183</string>
-											<string>DB0031780EF0D04B00404183</string>
-											<string>DB0031790EF0D04B00404183</string>
-											<string>DB00317A0EF0D04B00404183</string>
-											<string>DB00317B0EF0D04B00404183</string>
-											<string>DB00317C0EF0D04B00404183</string>
-											<string>DB00317D0EF0D04B00404183</string>
-											<string>DB00317E0EF0D04B00404183</string>
-											<string>DB00317F0EF0D04B00404183</string>
-											<string>DB0031800EF0D04B00404183</string>
-											<string>DB0031810EF0D04B00404183</string>
-											<string>DB0031820EF0D04B00404183</string>
-											<string>DB0031830EF0D04B00404183</string>
-											<string>DB0031840EF0D04B00404183</string>
-											<string>DB0031850EF0D04B00404183</string>
-											<string>DB0031860EF0D04B00404183</string>
-											<string>DB0031870EF0D04B00404183</string>
-											<string>DB0031880EF0D04B00404183</string>
-											<string>DB0031890EF0D04B00404183</string>
-											<string>DB00318A0EF0D04B00404183</string>
-											<string>DB00318B0EF0D04B00404183</string>
-											<string>DB00318C0EF0D04B00404183</string>
-											<string>DB00318D0EF0D04B00404183</string>
-											<string>DB00318E0EF0D04B00404183</string>
-											<string>DB00318F0EF0D04B00404183</string>
-											<string>DB0031900EF0D04B00404183</string>
-											<string>DB0031910EF0D04B00404183</string>
-											<string>DB0031920EF0D04B00404183</string>
-											<string>DB0031930EF0D04B00404183</string>
-											<string>DB0031940EF0D04B00404183</string>
-											<string>DB0031950EF0D04B00404183</string>
-											<string>DB0031960EF0D04B00404183</string>
-											<string>DB0031970EF0D04B00404183</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -570,9 +449,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>DB00309F0EF09C2600404183</string>
+				<string>DB1FD0F10EF16FEC0000E78E</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>DB0030A00EF09C2600404183</string>
+				<string>DB1FD0F20EF16FEC0000E78E</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -706,9 +585,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>DB7C3DE80EE638C600F86C5D</string>
 		<string>/Users/bjandraney/Projects/retorted/trunk/client/iphone/Retorted/Retorted.xcodeproj</string>
 	</array>
 	<key>WindowString</key>

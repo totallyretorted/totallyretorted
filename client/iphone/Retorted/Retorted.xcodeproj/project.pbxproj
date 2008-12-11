@@ -28,6 +28,7 @@
 		DB1128680EEF618700137EBC /* TRTagCloudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1128670EEF618700137EBC /* TRTagCloudHelper.m */; };
 		DB1128860EEF73FA00137EBC /* ql.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1128840EEF73FA00137EBC /* ql.png */; };
 		DB1128870EEF73FA00137EBC /* qr.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1128850EEF73FA00137EBC /* qr.png */; };
+		DB1FD1650EF1950F0000E78E /* TRRetortFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */; };
 		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
 		DB82EB940EF0963D007C507A /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB82EB930EF0963D007C507A /* FavoritesViewController.m */; };
 		DB82EB9A0EF096DB007C507A /* FavoritesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB82EB990EF096DB007C507A /* FavoritesView.xib */; };
@@ -75,6 +76,9 @@
 		DB1128670EEF618700137EBC /* TRTagCloudHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagCloudHelper.m; sourceTree = "<group>"; };
 		DB1128840EEF73FA00137EBC /* ql.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ql.png; sourceTree = "<group>"; };
 		DB1128850EEF73FA00137EBC /* qr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qr.png; sourceTree = "<group>"; };
+		DB1FD1620EF192CA0000E78E /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		DB1FD1630EF1950F0000E78E /* TRRetortFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetortFacade.h; sourceTree = "<group>"; };
+		DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortFacade.m; sourceTree = "<group>"; };
 		DB6849C70EF0257B0094CC24 /* CGPointUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointUtils.c; sourceTree = "<group>"; };
 		DB6849C80EF0257B0094CC24 /* CGPointUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointUtils.h; sourceTree = "<group>"; };
 		DB82EB920EF0963D007C507A /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 				DB1128670EEF618700137EBC /* TRTagCloudHelper.m */,
 				DB0030BA0EF0A44F00404183 /* TRTagSorter.h */,
 				DB0030BB0EF0A44F00404183 /* TRTagSorter.m */,
+				DB1FD1630EF1950F0000E78E /* TRRetortFacade.h */,
+				DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -208,6 +214,7 @@
 			children = (
 				1D3623240D0F684500981E51 /* RetortedAppDelegate.h */,
 				1D3623250D0F684500981E51 /* RetortedAppDelegate.m */,
+				DB1FD1620EF192CA0000E78E /* Constants.h */,
 			);
 			name = "Application Support";
 			sourceTree = "<group>";
@@ -304,6 +311,7 @@
 				DB82EB940EF0963D007C507A /* FavoritesViewController.m in Sources */,
 				DB0030B00EF09E9100404183 /* SortMethods.m in Sources */,
 				DB0030BC0EF0A44F00404183 /* TRTagSorter.m in Sources */,
+				DB1FD1650EF1950F0000E78E /* TRRetortFacade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

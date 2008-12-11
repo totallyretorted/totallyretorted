@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "RetortViewController.h"
+#import "TRRetortFacade.h"
 
 // Model class inclusion
 #import "TRRetort.h"
@@ -45,8 +46,16 @@
 	
 	[tagCloud loadHTMLString:@"<html><body style=\"background-color: #000; color: #fff\"><h1>Shant is my hero!</h1><p>Call him at 832.878.5685</p></body></html>" baseURL:nil];
 	
+	/*
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	
+	[nc addObserver:self 
+		   selector:@selector(handleDataLoad:) 
+			   name:TRScreen0RetortObjectsSetupCompleteNotification
+			 object:nil];
 	
+	NSLog(@"Controller: Registered with notification center");
+	*/
 	//[super viewDidLoad];
 }
 
@@ -67,6 +76,17 @@
 - (void)dealloc {
 	[retorts release];
     [super dealloc];
+}
+
+#pragma mark -
+#pragma mark Custom Methods
+- (void)loadURL {
+	NSLog(@"HomeViewController: Create instance of DWLeadFacade");
+	TRRetortFacade *facade = [[TRRetortFacade alloc] init];
+	
+	[facade loadRetorts];
+	[facade release];
+	
 }
 
 #pragma mark -

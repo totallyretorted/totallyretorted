@@ -7,12 +7,12 @@
 //
 
 #import "TRRetortXMLParser.h"
-
+#import "TRRetort.h"
 
 @implementation TRRetortXMLParser
 @synthesize currentProperty;
 @synthesize currentRating, currentRetort, currentTag, currentAttribution;
-@synthesize retorts;
+@synthesize retorts, tags;
 @synthesize canAppend;
 
 
@@ -60,14 +60,26 @@
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
 	NSLog(@"RetortXMLParser: didStartElement: %@", elementName);
 	
-	//an example of getting an element's attribute:
-	//[self.currentRetort setObject:[attributeDict valueForKey:@"id"] forKey:@"id"];
-	
+	canAppend = YES;
+	self.currentProperty = [[NSMutableString alloc] init];
+		
 	// Primary objects...
 	if ([elementName isEqualToString:@"retort"]) {
 		// 1. create Retort Dictionary object and add it as active
 		// 2. NSString *idAtt = [attributeDict valueForKey:@"id"];
 		self.currentRetort = [[NSMutableDictionary alloc] init];
+		[self.currentRetort setObject:[attributeDict valueForKey:@"id"] forKey:@"id"];
+		[self.currentProperty release];
+		return;
+	}
+	
+	
+	if ([elementName isEqualToString:@"tag"]) {
+		// 1. create Retort Dictionary object and add it as active
+		// 2. NSString *idAtt = [attributeDict valueForKey:@"id"];
+		self.currentTag = [[NSMutableDictionary alloc] init];
+		[self.currentTag setObject:[attributeDict valueForKey:@"id"] forKey:@"id"];
+		[self.currentTag setObject:[attributeDict valueForKey:@"weight"] forKey:@"votes"];
 		[self.currentProperty release];
 		return;
 	}
@@ -78,11 +90,53 @@
 // Called when the parser encounters the closing tag of an element.  For Example: </myTag>
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
 	NSLog(@"RetortXMLParser: didEndElement: %@", elementName);
+	
+	canAppend = NO;
+	
+	//primary objects...
+	if ([elementName isEqualToString:@"retort"]) {
+		
+		TRRetort *retort = [[TRRetort alloc] initWithDictionary:currentRetort];
+		[self.retorts addObject:retort];
+		NSLog(@"RetortXMLParser: adding %@ to retorts array: ", [retort description]);
+		
+		[retort release];
+		[self.currentRetort release];
+		return;
+	}
+	
+	if ([elementName isEqualToString:@"content"]) {
+		[self.currentRetort setObject:self.currentProperty forKey:@"content"];
+		[self.currentProperty release];
+		return;
+	}
+	
+	
+	if ([elementName isEqualToString:@"tag"]) {
+		[self.currentTag setObject:self.currentProperty forKey:@"value"];
+		[self.tags addObject:self.currentTag];
+		NSLog(@"RetortXMLParser: adding tag to currentRetort");
+		[self.currentTag release];
+		[self.currentProperty release];
+		return;
+	}
+	
+	if ([elementName isEqualToString:@"tags"]) {
+		[self.currentRetort setObject:self.tags forKey:@"tags"];
+		[self.tags release];
+		return;
+	}
+
+	NSLog(@"RetortXMLParser: Unknown element: %@.", elementName);
 }
 
 // Called as periodically as the parser gets the data between a given tag.  This may be called more than once for a given element, so append the data!
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
 	NSLog(@"RetortXMLParser: foundCharacters: %@", string);
+	
+	if (canAppend) {
+		[self.currentProperty appendString:string];
+	}
 }
 
 //Optional - use this if there is any clean up or call back (i.e. if we use notifications)

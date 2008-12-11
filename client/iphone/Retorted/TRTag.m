@@ -37,6 +37,21 @@
 	return self;
 }
 
+- (id)initWithDictionary:(NSDictionary *)aDictionary {
+	if (![super init])
+		return nil;
+	
+	self.primaryKey = (NSInteger)[aDictionary objectForKey:@"id"];
+	self.value = [aDictionary objectForKey:@"value"];
+	self.votes = (NSInteger)[aDictionary objectForKey:@"votes"];
+	self.tagCloudValue = 0;
+	
+	return self;
+}
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"%@", self.value];
+}
  
 - (void)dealloc {
 	[super dealloc];

@@ -17,6 +17,7 @@
 	NSMutableDictionary *currentAttribution;
 	
 	NSMutableArray *retorts;
+	NSMutableArray *tags;
 	
 	BOOL canAppend;
 }
@@ -32,6 +33,7 @@
 @property (nonatomic, retain) NSMutableDictionary *currentTag;
 @property (nonatomic, retain) NSMutableDictionary *currentRating;
 @property (nonatomic, retain) NSMutableDictionary *currentAttribution;
+@property (nonatomic, retain) NSMutableArray *tags;
 
 @property (nonatomic, readwrite) BOOL canAppend;
 @end

@@ -15,11 +15,16 @@
 	TRAttribution *attribution;
 	TRRating *rating;
 	NSMutableArray *tags;
+	NSInteger primaryId;
 	
 }
+
+-(id)initWithDictionary:(NSDictionary *)aDictionary;
+
 @property (nonatomic, retain) NSString *content;
 @property (nonatomic, retain) TRAttribution *attribution;
 @property (nonatomic, retain) TRRating *rating;
 @property (nonatomic, retain) NSMutableArray *tags;
+@property NSInteger primaryId;
 
 @end
