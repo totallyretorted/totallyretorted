@@ -16,7 +16,7 @@
 	NSInteger primaryKey;
 }
 
-- (id) initWithId:(NSInteger)aPrimaryKey Value:(NSString *) aValue;
+- (id)initWithId:(NSInteger)aPrimaryKey Value:(NSString *)aValue;
 - (id)initWithId:(NSInteger)aPrimaryKey Value:(NSString *)aValue Votes:(NSInteger)voteCount TagCloudValue:(NSInteger)cloudValue;
 
 @property (nonatomic, retain) NSString *value;

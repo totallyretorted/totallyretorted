@@ -21,4 +21,5 @@
 @property (nonatomic, retain) TRAttribution *attribution;
 @property (nonatomic, retain) TRRating *rating;
 @property (nonatomic, retain) NSMutableArray *tags;
+
 @end

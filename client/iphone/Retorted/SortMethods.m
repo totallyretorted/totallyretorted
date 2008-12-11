@@ -9,7 +9,7 @@
 //These are general methods and are not part of a class.
 
 #import "SortMethods.h"
-
+#import "TRTag.h"
 
 
 NSInteger tagVoteSortAsc(id tagLeft, id tagRight, void *ignore) {
