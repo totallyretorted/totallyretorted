@@ -1,5 +1,5 @@
 # TODO: uncomment this once the libxml thing is done...
-#require 'xml'
+require 'hpricot'
 
 class Retort < ActiveRecord::Base
   belongs_to :attribution
@@ -46,6 +46,8 @@ class Retort < ActiveRecord::Base
   end
   
   def self.from_xml(xml)
+# libxml
+#
 #    xml = File.read('timeline.xml')
 #    puts Benchmark.measure {
 #      parser, parser.string = XML::Parser.new, xml
@@ -63,15 +65,53 @@ class Retort < ActiveRecord::Base
 #      # pp statuses
 #    }
 
-    parser, parser.string = XML::Parser.new, xml
-    doc, retorts = parser.parse, []
-    doc.find('//retort').each do |r|
-      h = {:retort => {}}
-      %w[id].each do |a|
-        h[:retort][a.intern] = s.find(a).first.content
+#    parser, parser.string = XML::Parser.new, xml
+#    doc, retorts = parser.parse, []
+#    doc.find('//retort').each do |r|
+#      h = {:retort => {}}
+#      %w[id].each do |a|
+#        h[:retort][a.intern] = s.find(a).first.content
+#      end
+#      retorts << h
+#    end
+#    retorts
+    
+# hpricot
+#  
+#    doc, posts = Hpricot::XML(xml), []
+#    (doc/:post).each do |p|
+#      posts << p.attributes
+#    end
+
+    doc = Hpricot::XML(xml)
+    r = Retort.new
+    (doc/:retort).each do |r_tag|
+      r.id = r_tag.attributes["id"]
+      r.content = (r_tag/:content).inner_html
+      (r_tag/:attribution).each do |attr_tag|
+        a = Attribution.new
+        a.id = attr_tag.attributes["id"]
+        %w(who what where how when).each do |w|
+          a.send("#{w}=", (attr_tag/w).inner_html)
+        end
+        r.attribution = a
       end
-      retorts << h
-    end
-    retorts
+      #(r_tag/:rating).each do |rtg_tag|
+      #  rtg = Rating.new
+      #  rtg = rtg_tag.attributes["id"]
+        
+      #  # should delete ?
+      #  #rtg.positive = Integer((rtg_tag/:positive).inner_html)
+      #  #rtg.negative = Integer((rtg_tag/:negative).inner_html)
+      #  r.rating = rtg
+      #end
+      (r_tag/:tags/:tag).each do |t_tag|
+        t = Tag.new
+        t.id = t_tag.attributes["id"]
+        t.value = t_tag.inner_html
+        r.tags << t
+      end
+    end  
+    r
   end
 end

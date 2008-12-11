@@ -89,14 +89,11 @@ class RetortTest < ActiveSupport::TestCase
       end
     end
     
-    #puts Retort.from_xml(xml)
     r = Retort.from_xml(xml)
-    puts r
     assert r.id == 123
     assert r.content == "Screw you guys I'm going home"
-    assert r.tags.count == 2
+    assert r.tags.size == 2
     assert r.tags[0].value == "south_park"
     assert r.attribution.who == "Cartman"
-    assert r.rating.positive == 1    
   end
 end
