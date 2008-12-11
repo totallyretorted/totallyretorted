@@ -1,5 +1,3 @@
-require 'hpricot'
-
 class Retort < ActiveRecord::Base
   belongs_to :attribution
   has_and_belongs_to_many :tags

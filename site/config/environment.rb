@@ -74,4 +74,7 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 end
 
-require 'lib/unmarshal.rb'
+#require 'lib/unmarshal.rb'
+require 'rubygems'
+gem 'hpricot', '>= 0.6'
+require 'hpricot'
