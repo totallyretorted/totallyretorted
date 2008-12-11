@@ -4,7 +4,9 @@ class RetortsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:retorts)
+    retorts = assigns(:retorts)
+    assert_not_nil retorts
+    assert_equal 6, retorts.size
   end
 
   test "should get new" do
@@ -41,5 +43,15 @@ class RetortsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to retorts_path
+  end
+  
+  test "should return a subset of retorts" do
+    #fixtures :all
+    
+    get :screenzero
+    assert_response :success
+    retorts = assigns(:retorts)
+    assert_not_nil retorts
+    assert_equal 5, retorts.size
   end
 end

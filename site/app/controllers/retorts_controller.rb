@@ -14,6 +14,15 @@ class RetortsController < ApplicationController
       #format.iphone # renders index.iphone.erb
     end
   end
+  
+  def screenzero
+    @retorts = Retort.find(:all, :limit => 5)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml { render :xml => @retorts.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
+    end
+  end
 
   # GET /retorts/1
   # GET /retorts/1.xml
@@ -52,8 +61,10 @@ class RetortsController < ApplicationController
   # POST /retorts.xml
   def create
     @retort = Retort.new(params[:retort])
-    params[:tags][:value].split.each do |t|
-      @retort.tags << Tag.new(:value => t) unless Tag.find_by_value(t)
+    unless params[:tags].nil? 
+      params[:tags][:value].split.each do |t|
+        @retort.tags << Tag.new(:value => t) unless Tag.find_by_value(t)
+      end
     end
 
     respond_to do |format|

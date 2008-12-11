@@ -1,0 +1,20 @@
+<h1>ScreenZero retorts</h1>
+
+<table>
+  <tr>
+    <th>Content</th>
+  </tr>
+
+<% for retort in @retorts %>
+  <tr>
+    <td><%=h retort.content %></td>
+    <td><%= link_to 'Show', retort %></td>
+    <td><%= link_to 'Edit', edit_retort_path(retort) %></td>
+    <td><%= link_to 'Destroy', retort, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New retort', new_retort_path %>

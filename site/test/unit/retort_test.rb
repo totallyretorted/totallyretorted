@@ -20,7 +20,7 @@ class RetortTest < ActiveSupport::TestCase
     assert ctrl.rating.positive == 1
   end
   
-  test "xml" do    
+  test "to_xml" do    
     r = Retort.new
     r.id = 123
     r.content = "Foo"
@@ -34,7 +34,7 @@ class RetortTest < ActiveSupport::TestCase
     assert "<retort id=\"123\"><content>Foo</content></retort>" == r.to_xml, r.to_xml
   end
   
-  test "deep xml" do
+  test "to_xml (deep)" do
     r = Retort.new(:content => "Screw you guys I'm going home")
     r.id = 123
     t = Tag.new(:value => "south_park")
@@ -68,5 +68,35 @@ class RetortTest < ActiveSupport::TestCase
       end
     end
     assert xml == r.to_xml, "Expected '#{xml}', found '#{r.to_xml}'"
+  end
+  
+  test "from_xml" do
+    xml = Builder::XmlMarkup.new
+    xml.retort(:id => 123) do
+      xml.content("Screw you guys I'm going home")
+      xml.tags do
+        xml.tag("south_park", :id => 99, :weight =>100)
+        xml.tag("cartman", :id => 100, :weight=>200)
+      end
+      xml.attribution(:id => 42) do
+        xml.who("Cartman")
+        xml.where("South Park")
+      end
+      xml.rating(:id => 88) do
+        xml.positive(1)
+        xml.negative(0)
+        xml.rating(1)
+      end
+    end
+    
+    #puts Retort.from_xml(xml)
+    r = Retort.from_xml(xml)
+    puts r
+    assert r.id == 123
+    assert r.content == "Screw you guys I'm going home"
+    assert r.tags.count == 2
+    assert r.tags[0].value == "south_park"
+    assert r.attribution.who == "Cartman"
+    assert r.rating.positive == 1    
   end
 end

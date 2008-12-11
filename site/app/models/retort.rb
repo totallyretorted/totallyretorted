@@ -1,3 +1,5 @@
+require 'xml'
+
 class Retort < ActiveRecord::Base
   has_one :attribution
   has_and_belongs_to_many :tags
@@ -40,5 +42,35 @@ class Retort < ActiveRecord::Base
         }
       end  
     }
+  end
+  
+  def self.from_xml(xml)
+#    xml = File.read('timeline.xml')
+#    puts Benchmark.measure {
+#      parser, parser.string = XML::Parser.new, xml
+#      doc, statuses = parser.parse, []
+#      doc.find('//statuses/status').each do |s|
+#        h = {:user => {}}
+#        %w[created_at id text source truncated in_reply_to_status_id in_reply_to_user_id favorited].each do |a|
+#          h[a.intern] = s.find(a).first.content
+#        end
+#        %w[id name screen_name location description profile_image_url url protected followers_count].each do |a|
+#          h[:user][a.intern] = s.find('user').first.find(a).first.content
+#        end
+#        statuses << h
+#      end
+#      # pp statuses
+#    }
+
+    parser, parser.string = XML::Parser.new, xml
+    doc, retorts = parser.parse, []
+    doc.find('//retort').each do |r|
+      h = {:retort => {}}
+      %w[id].each do |a|
+        h[:retort][a.intern] = s.find(a).first.content
+      end
+      retorts << h
+    end
+    retorts
   end
 end

@@ -33,4 +33,11 @@ five:
   negative: 3282
   created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
   updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+
+six:
+  id: 6
+  positive: 66
+  negative: 0
+  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
   

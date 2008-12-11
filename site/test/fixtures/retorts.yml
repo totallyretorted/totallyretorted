@@ -13,5 +13,37 @@ two:
   content: Lick my chocolate salty balls
   created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
   updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  attribution_id: 2
+  rating_id: 2
+
+three:
+  id: 3
+  content: Respect My Authority!
+  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
   attribution_id: 1
-  rating_id: 1
+  rating_id: 3
+
+four:
+  id: 4
+  content: I have sex and I kill people!
+  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  attribution_id: 1
+  rating_id: 4
+
+five:
+  id: 5
+  content: Hippies.They're everywhere. They wanna save the earth, but all they do is smoke pot and smell bad.
+  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  attribution_id: 1
+  rating_id: 5
+
+six:
+  id: 6
+  content: It's an Afghanistan goat, so it can't stay here, or else it'll choke on the sweet air of freedom.
+  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
+  attribution_id: 1
+  rating_id: 6
