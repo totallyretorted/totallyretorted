@@ -8,6 +8,7 @@
 
 #import "TRTagCloudHelper.h"
 #import "TRTag.h"
+#import "SortMethods.h"
 
 const NSInteger quantas = 5;
 
@@ -23,9 +24,13 @@ const NSInteger quantas = 5;
 	return self;
 }
 
-- (void)levelCloud {
-	
+
+//takes a Tag Array as input and calculates the tagCloud value and returns an ordered array based on the preferred sort order
+- (NSArray* ) levelCloud:(NSArray*) src param2:(NSInteger) seq
+{
+	return [[NSArray alloc]init];
 }
+
 
 - (NSString *)tagCloud {
 	NSMutableString *html = nil;
