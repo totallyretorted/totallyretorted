@@ -12,10 +12,11 @@
 
 #define kMinimumPinchDelta 100		//defines the minimum distance that constitues a pinch
 
-@interface RetortViewController : UIViewController <UIWebViewDelegate> {
+@interface RetortViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate> {
 	IBOutlet UITextView *retortText;
 	IBOutlet UIWebView *tagCloud;
 	IBOutlet UISegmentedControl *ratingVote;
+	UIBarButtonItem *retortActionButton;
 	
 	TRRetort *retort;
 	NSString *retortTitle;		//Temp holder until we get REST up and running.
@@ -24,7 +25,9 @@
 }
 
 - (IBAction)ratingChanged:(id)sender;
+- (IBAction)retortActionClick;
 
+@property (nonatomic, retain) UIBarButtonItem *retortActionButton;
 @property (nonatomic, retain) TRRetort *retort;
 @property (nonatomic, retain) NSString *retortTitle;
 @property CGFloat initialDistance;

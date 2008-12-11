@@ -231,6 +231,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -268,7 +270,6 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>DB1126350EEEECB900137EBC</string>
-								<string>DB1126330EEEEC9100137EBC</string>
 								<string>DB1126320EEEEC8700137EBC</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>DB1128830EEF73F200137EBC</string>
@@ -277,8 +278,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>26</integer>
-									<integer>18</integer>
+									<integer>29</integer>
+									<integer>20</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -302,7 +303,7 @@
 							<real>208</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>268 113 1121 765 0 0 1440 878 </string>
+						<string>57 113 1121 765 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -313,14 +314,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TRTagCloudHelper.m</string>
+								<string>RetortViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,11 +327,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>TRTagCloudHelper.m</string>
+										<string>RetortViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DBDC5DF30EF07FD60055CD29</string>
+										<string>DBDC5EEF0EF0929C0055CD29</string>
 										<key>history</key>
 										<array>
 											<string>DB1126CE0EEF2A5E00137EBC</string>
@@ -352,13 +351,13 @@
 											<string>DB6849F80EF02F9B0094CC24</string>
 											<string>DB6849F90EF02F9B0094CC24</string>
 											<string>DB6849FA0EF02F9B0094CC24</string>
-											<string>DBDC5DB10EF06ACD0055CD29</string>
-											<string>DBDC5DCD0EF07C5A0055CD29</string>
 											<string>DBDC5DCF0EF07C5A0055CD29</string>
 											<string>DBDC5DEA0EF07FC50055CD29</string>
 											<string>DBDC5DEB0EF07FC50055CD29</string>
 											<string>DBDC5DEC0EF07FC50055CD29</string>
-											<string>DBDC5DED0EF07FC50055CD29</string>
+											<string>DBDC5E150EF089030055CD29</string>
+											<string>DBDC5EBF0EF08EAB0055CD29</string>
+											<string>DBDC5EC00EF08EAB0055CD29</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -416,6 +415,28 @@
 											<string>DBDC5DEF0EF07FC50055CD29</string>
 											<string>DBDC5DF00EF07FC50055CD29</string>
 											<string>DBDC5DF10EF07FC50055CD29</string>
+											<string>DBDC5E180EF089030055CD29</string>
+											<string>DBDC5E190EF089030055CD29</string>
+											<string>DBDC5E1A0EF089030055CD29</string>
+											<string>DBDC5E1B0EF089030055CD29</string>
+											<string>DBDC5E1C0EF089030055CD29</string>
+											<string>DBDC5E1D0EF089030055CD29</string>
+											<string>DBDC5E1E0EF089030055CD29</string>
+											<string>DBDC5E1F0EF089030055CD29</string>
+											<string>DBDC5E200EF089030055CD29</string>
+											<string>DBDC5E210EF089030055CD29</string>
+											<string>DBDC5E220EF089030055CD29</string>
+											<string>DBDC5E230EF089030055CD29</string>
+											<string>DBDC5E240EF089030055CD29</string>
+											<string>DBDC5E250EF089030055CD29</string>
+											<string>DBDC5E2A0EF0893C0055CD29</string>
+											<string>DBDC5E300EF0899B0055CD29</string>
+											<string>DBDC5EB20EF08DF70055CD29</string>
+											<string>DBDC5EB30EF08DF70055CD29</string>
+											<string>DBDC5EB40EF08DF70055CD29</string>
+											<string>DBDC5EBB0EF08E690055CD29</string>
+											<string>DBDC5EC10EF08EAB0055CD29</string>
+											<string>DBDC5EC20EF08EAB0055CD29</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -429,7 +450,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {891, 719}}</string>
 								<key>RubberWindowFrame</key>
-								<string>268 113 1121 765 0 0 1440 878 </string>
+								<string>57 113 1121 765 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -449,7 +470,7 @@
 								<key>Frame</key>
 								<string>{{0, 724}, {891, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>268 113 1121 765 0 0 1440 878 </string>
+								<string>57 113 1121 765 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -617,7 +638,7 @@
 		<string>/Users/bjandraney/Projects/retorted/trunk/client/iphone/Retorted/Retorted.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>268 113 1121 765 0 0 1440 878 </string>
+	<string>57 113 1121 765 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -633,14 +654,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TRTagCloudHelper.m</string>
+								<string>RetortViewController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -657,6 +676,8 @@
 							<string>162pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

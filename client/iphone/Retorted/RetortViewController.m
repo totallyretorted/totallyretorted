@@ -13,6 +13,7 @@
 @implementation RetortViewController
 @synthesize retort, retortTitle;
 @synthesize initialDistance;
+@synthesize retortActionButton;
 
 
 /*
@@ -25,11 +26,17 @@
 }
 */
 
-/*
+
 // Implement loadView to create a view hierarchy programmatically.
 - (void)loadView {
+	[super loadView];
+	
+	self.retortActionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction 
+																			target:self 
+																			action:@selector(retortActionClick)];
+	
 }
-*/
+
 
 
 // Implement viewDidLoad to do additional setup after loading the view.
@@ -41,6 +48,9 @@
 	//[[self.view subviews] count]
 	//tagCloud.backgroundColor = [UIColor blackColor];
 	[tagCloud loadHTMLString:@"<html><body style=\"background-color: #000; color: #fff\"><h1><a href=\"tag:shant\">Shant</a> is my hero!</h1><p>Call him at 832.878.5685</p></body></html>" baseURL:nil];
+
+	self.navigationItem.rightBarButtonItem = self.retortActionButton;
+	
 }
 
 
@@ -70,7 +80,26 @@
 	return NO;
 }
 
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	// the user clicked one of the OK/Cancel buttons
+	
+	if (buttonIndex == 0)
+	{
+		NSLog(@"favorites");
+	}
+	else if (buttonIndex == 1)
+	{
+		NSLog(@"facebook");
+	} else  {
+		NSLog(@"cancel");
+	}
+}
+
+
 #pragma mark -
+#pragma mark User Action methods
 - (IBAction)ratingChanged:(id)sender {
 	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
 	NSInteger segment = segmentedControl.selectedSegmentIndex;
@@ -80,6 +109,20 @@
 	} else {
 		NSLog(@"Your vote is Sucks!");
 	}
+}
+
+- (IBAction)retortActionClick {
+	// open a dialog with two custom buttons
+	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+															 delegate:self 
+													cancelButtonTitle:@"Cancel" 
+											   destructiveButtonTitle:nil
+													otherButtonTitles:@"Add to Favorites", @"Add To Facebook Wall", nil];
+	
+	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
+	//actionSheet.destructiveButtonIndex = 1;	// make the second button red (destructive)
+	[actionSheet showInView:self.view];
+	[actionSheet release];
 }
 
 /*
