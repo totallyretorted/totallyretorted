@@ -1,5 +1,5 @@
 class Attribution < ActiveRecord::Base
-  belongs_to :retort
+  has_many :retorts
   
   def to_xml(options ={}, &block)
     xml = options[:builder] || Builder::XmlMarkup.new

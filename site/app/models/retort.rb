@@ -1,9 +1,9 @@
 require 'xml'
 
 class Retort < ActiveRecord::Base
-  has_one :attribution
+  belongs_to :attribution
   has_and_belongs_to_many :tags
-  has_one :rating
+  belongs_to :rating
   
 #  def to_xml(options = {})
 #    options[:indent] ||= 2

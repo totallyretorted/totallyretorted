@@ -1,5 +1,5 @@
 class Rating < ActiveRecord::Base
-  belongs_to :retort
+  has_one :retort
   
   def rating
      positive / (positive+negative)
