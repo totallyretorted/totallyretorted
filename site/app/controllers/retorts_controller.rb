@@ -8,8 +8,8 @@ class RetortsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml { render :xml => @retorts.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
-      #format.xml { render :xml => @retorts.to_xml }
+      #format.xml { render :xml => @retorts.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
+      format.xml { render :xml => @retorts }
       #format.xml { render :xml => Retort.to_full_xml(@retorts)}
       #format.iphone # renders index.iphone.erb
     end
@@ -20,7 +20,8 @@ class RetortsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml { render :xml => @retorts.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
+#      format.xml { render :xml => @retorts.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
+      format.xml { render :xml => @retorts.to_xml }
     end
   end
 
@@ -33,7 +34,8 @@ class RetortsController < ApplicationController
       format.html # show.html.erb
 #      format.xml  { render :xml => @retort.to_xml({:include => [ :tags, :attribution, :rating ]}) }
 #      format.xml  { render :xml => @retort.to_xml {:include => [ :tags, :attribution, :rating ] } }
-      format.xml { render :xml => @retort.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
+#      format.xml { render :xml => @retort.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
+      format.xml { render :xml => @retorts.to_xml }
       #format.xml { render :xml => Retort.to_full_xml(@retort)}
       #format.iphone # renders index.iphone.erb
     end
@@ -46,7 +48,8 @@ class RetortsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml { render :xml => @retort.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
+#      format.xml { render :xml => @retort.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
+      format.xml { render :xml => @retorts.to_xml }
       #format.xml { render :xml => Retort.to_full_xml(@retort)}
       #format.iphone # renders index.iphone.erb
     end

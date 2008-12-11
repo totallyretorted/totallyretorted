@@ -30,13 +30,13 @@ class Retort < ActiveRecord::Base
   def to_xml(options ={}, &block)
     xml=options[:builder] || Builder::XmlMarkup.new
       
-      xml.retort(:id => self.id){
+    xml.retort(:id => self.id){
       xml.content(self.content)
       self.attribution.to_xml(:builder => xml) unless attribution.nil?
       self.rating.to_xml(:builder => xml) unless rating.nil?
-      if tags && tags.count>0 
+      if tags && tags.count > 0 
         xml.tags{
-          tags.each{|tag| 
+          tags.each{ |tag| 
             tag.to_xml(:builder=>xml)
           }
         }
