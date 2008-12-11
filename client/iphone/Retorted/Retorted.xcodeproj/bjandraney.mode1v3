@@ -278,8 +278,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>29</integer>
-									<integer>20</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -303,7 +301,7 @@
 							<real>208</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>57 113 1121 765 0 0 1440 878 </string>
+						<string>506 113 1121 765 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -331,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DBDC5EEF0EF0929C0055CD29</string>
+										<string>DB82EB7E0EF093D2007C507A</string>
 										<key>history</key>
 										<array>
 											<string>DB1126CE0EEF2A5E00137EBC</string>
@@ -357,7 +355,7 @@
 											<string>DBDC5DEC0EF07FC50055CD29</string>
 											<string>DBDC5E150EF089030055CD29</string>
 											<string>DBDC5EBF0EF08EAB0055CD29</string>
-											<string>DBDC5EC00EF08EAB0055CD29</string>
+											<string>DBDC5EF00EF0938F0055CD29</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -385,58 +383,6 @@
 											<string>DB1128970EEF7C0000137EBC</string>
 											<string>DB684A070EF02F9B0094CC24</string>
 											<string>DB684A080EF02F9B0094CC24</string>
-											<string>DBDC5D590EF064FD0055CD29</string>
-											<string>DBDC5D5A0EF064FD0055CD29</string>
-											<string>DBDC5D5B0EF064FD0055CD29</string>
-											<string>DBDC5D5C0EF064FD0055CD29</string>
-											<string>DBDC5D660EF065B70055CD29</string>
-											<string>DBDC5DB20EF06ACD0055CD29</string>
-											<string>DBDC5DD20EF07C5A0055CD29</string>
-											<string>DBDC5DD30EF07C5A0055CD29</string>
-											<string>DBDC5DD40EF07C5A0055CD29</string>
-											<string>DBDC5DD50EF07C5A0055CD29</string>
-											<string>DBDC5DD60EF07C5A0055CD29</string>
-											<string>DBDC5DD70EF07C5A0055CD29</string>
-											<string>DBDC5DD80EF07C5A0055CD29</string>
-											<string>DBDC5DD90EF07C5A0055CD29</string>
-											<string>DBDC5DDA0EF07C5A0055CD29</string>
-											<string>DBDC5DDB0EF07C5A0055CD29</string>
-											<string>DBDC5DDC0EF07C5A0055CD29</string>
-											<string>DBDC5DDD0EF07C5A0055CD29</string>
-											<string>DBDC5DDE0EF07C5A0055CD29</string>
-											<string>DBDC5DDF0EF07C5A0055CD29</string>
-											<string>DBDC5DE00EF07C5A0055CD29</string>
-											<string>DBDC5DE10EF07C5A0055CD29</string>
-											<string>DBDC5DE20EF07C5A0055CD29</string>
-											<string>DBDC5DE30EF07C5A0055CD29</string>
-											<string>DBDC5DE40EF07C5A0055CD29</string>
-											<string>DBDC5DE50EF07C5A0055CD29</string>
-											<string>DBDC5DEE0EF07FC50055CD29</string>
-											<string>DBDC5DEF0EF07FC50055CD29</string>
-											<string>DBDC5DF00EF07FC50055CD29</string>
-											<string>DBDC5DF10EF07FC50055CD29</string>
-											<string>DBDC5E180EF089030055CD29</string>
-											<string>DBDC5E190EF089030055CD29</string>
-											<string>DBDC5E1A0EF089030055CD29</string>
-											<string>DBDC5E1B0EF089030055CD29</string>
-											<string>DBDC5E1C0EF089030055CD29</string>
-											<string>DBDC5E1D0EF089030055CD29</string>
-											<string>DBDC5E1E0EF089030055CD29</string>
-											<string>DBDC5E1F0EF089030055CD29</string>
-											<string>DBDC5E200EF089030055CD29</string>
-											<string>DBDC5E210EF089030055CD29</string>
-											<string>DBDC5E220EF089030055CD29</string>
-											<string>DBDC5E230EF089030055CD29</string>
-											<string>DBDC5E240EF089030055CD29</string>
-											<string>DBDC5E250EF089030055CD29</string>
-											<string>DBDC5E2A0EF0893C0055CD29</string>
-											<string>DBDC5E300EF0899B0055CD29</string>
-											<string>DBDC5EB20EF08DF70055CD29</string>
-											<string>DBDC5EB30EF08DF70055CD29</string>
-											<string>DBDC5EB40EF08DF70055CD29</string>
-											<string>DBDC5EBB0EF08E690055CD29</string>
-											<string>DBDC5EC10EF08EAB0055CD29</string>
-											<string>DBDC5EC20EF08EAB0055CD29</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -450,7 +396,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {891, 719}}</string>
 								<key>RubberWindowFrame</key>
-								<string>57 113 1121 765 0 0 1440 878 </string>
+								<string>506 113 1121 765 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -470,7 +416,7 @@
 								<key>Frame</key>
 								<string>{{0, 724}, {891, 0}}</string>
 								<key>RubberWindowFrame</key>
-								<string>57 113 1121 765 0 0 1440 878 </string>
+								<string>506 113 1121 765 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -494,9 +440,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>DBDC5D250EF033230055CD29</string>
+				<string>DB82EB7F0EF093D2007C507A</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>DBDC5D260EF033230055CD29</string>
+				<string>DB82EB800EF093D2007C507A</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -630,15 +576,11 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>DBDC5D3A0EF033BE0055CD29</string>
-		<string>DBDC5D300EF033230055CD29</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>DB7C3DE80EE638C600F86C5D</string>
 		<string>/Users/bjandraney/Projects/retorted/trunk/client/iphone/Retorted/Retorted.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>57 113 1121 765 0 0 1440 878 </string>
+	<string>506 113 1121 765 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -837,13 +779,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>DBDC5D280EF033230055CD29</string>
+				<string>DB82EB810EF093D2007C507A</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>DBDC5D290EF033230055CD29</string>
-				<string>DBDC5D2A0EF033230055CD29</string>
-				<string>DBDC5D2B0EF033230055CD29</string>
-				<string>DBDC5D2C0EF033230055CD29</string>
-				<string>DBDC5D2D0EF033230055CD29</string>
+				<string>DB82EB820EF093D2007C507A</string>
+				<string>DB82EB830EF093D2007C507A</string>
+				<string>DB82EB840EF093D2007C507A</string>
+				<string>DB82EB850EF093D2007C507A</string>
+				<string>DB82EB860EF093D2007C507A</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>

@@ -1,15 +1,15 @@
 //
-//  TagListViewController.m
+//  FavoritesViewController.m
 //  Retorted
 //
-//  Created by B.J. Ray on 12/9/08.
+//  Created by B.J. Ray on 12/10/08.
 //  Copyright 2008 Forward Echo, LLC. All rights reserved.
 //
 
-#import "TagListViewController.h"
+#import "FavoritesViewController.h"
 
 
-@implementation TagListViewController
+@implementation FavoritesViewController
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -23,8 +23,8 @@
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-    self.title = @"Tags";
-	//[super viewDidLoad];
+    //[super viewDidLoad];
+	self.title = @"Favorites";
 }
 
 
