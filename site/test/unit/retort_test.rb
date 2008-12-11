@@ -54,8 +54,8 @@ class RetortTest < ActiveSupport::TestCase
     xml.retort(:id => 123) do
       xml.content("Screw you guys I'm going home")
       xml.tags do
-        xml.tag("south_park", :id => 99)
-        xml.tag("cartman", :id => 100)
+        xml.tag("south_park", :id => 99, :weight =>100)
+        xml.tag("cartman", :id => 100, :weight=>200)
       end
       xml.attribution(:id => 42) do
         xml.who("Cartman")
@@ -64,8 +64,9 @@ class RetortTest < ActiveSupport::TestCase
       xml.rating(:id => 88) do
         xml.positive(1)
         xml.negative(0)
+        xml.rating(1)
       end
     end
-    assert xml.to_string == r.to_xml, "Expected '#{xml.to_string}', found '#{r.to_xml}'"
+    assert xml == r.to_xml, "Expected '#{xml}', found '#{r.to_xml}'"
   end
 end
