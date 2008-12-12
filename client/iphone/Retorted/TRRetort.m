@@ -27,7 +27,8 @@
 	if (![super init])
 		return nil;
 	
-	NSLog(@"TRRetort: initWithDictionary");
+	self.tags = [[NSMutableArray alloc] init];
+	
 	self.primaryId = [aDictionary valueForKey:@"id"];
 	self.content = [aDictionary valueForKey:@"content"];
 	
@@ -39,6 +40,7 @@
 		[aTag release];
 	}
 
+	NSLog(@"TRRetort: initWithDictionary - %@", content);
 	return self;
 }
 

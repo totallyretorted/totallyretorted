@@ -16,16 +16,16 @@
 @synthesize primaryKey;
 
 - (id) init {
-	return [self initWithId:-1 Value:@"" Votes:0 TagCloudValue:0];
+	return [self initWithId:[NSNumber numberWithInt: -1] Value:@"" Votes:0 TagCloudValue:0];
 }
 
-- (id) initWithId:(NSInteger)aPrimaryKey Value:(NSString *) aValue {
+- (id) initWithId:(NSNumber *)aPrimaryKey Value:(NSString *) aValue {
 	
 	return [self initWithId:primaryKey Value:aValue Votes:0 TagCloudValue:0];
 }
 
 //Designated initializer
-- (id)initWithId:(NSInteger)aPrimaryKey Value:(NSString *)aValue Votes:(NSInteger)voteCount TagCloudValue:(NSInteger)cloudValue {
+- (id)initWithId:(NSNumber *)aPrimaryKey Value:(NSString *)aValue Votes:(NSInteger)voteCount TagCloudValue:(NSInteger)cloudValue {
 	if (![super init])
 		return nil;
 	
@@ -40,12 +40,18 @@
 - (id)initWithDictionary:(NSDictionary *)aDictionary {
 	if (![super init])
 		return nil;
+	//NSString *str = [aDictionary objectForKey:@"id"];
 	
-	self.primaryKey = (NSInteger)[aDictionary objectForKey:@"id"];
+	
+	self.primaryKey = [aDictionary objectForKey:@"id"];
 	self.value = [aDictionary objectForKey:@"value"];
-	self.votes = (NSInteger)[aDictionary objectForKey:@"votes"];
+	NSNumber *weight = [aDictionary objectForKey:@"votes"];
+	
+	self.votes = [weight integerValue];
+	//self.votes = [(NSNumber)[aDictionary objectForKey:@"votes"] integerValue];
 	self.tagCloudValue = 0;
 	
+	NSLog(@"TRTag: Init tag: %@", self.value);
 	return self;
 }
 

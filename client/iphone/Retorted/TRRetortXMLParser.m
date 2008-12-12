@@ -28,7 +28,7 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 	}
 	
 	self.retorts = [[NSMutableArray alloc] init];
-	self.tags = [[NSMutableArray alloc] init];
+	
 	
 	return self;
 }
@@ -77,10 +77,14 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 	if ([elementName isEqualToString:@"retort"]) {
 		// 1. create Retort Dictionary object and add it as active
 		// 2. NSString *idAtt = [attributeDict valueForKey:@"id"];
+		self.tags = [[NSMutableArray alloc] init];
+		
 		self.currentRetort = [[NSMutableDictionary alloc] init];
 
 		[self.currentRetort setObject:[attributeDict valueForKey:@"id"] forKey:@"id"];
 		[self.currentProperty release];
+		
+		
 		return;
 	}
 	
@@ -90,7 +94,7 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 		// 2. NSString *idAtt = [attributeDict valueForKey:@"id"];
 		self.currentTag = [[NSMutableDictionary alloc] init];
 		[self.currentTag setObject:[attributeDict valueForKey:@"id"] forKey:@"id"];
-		[self.currentTag setObject:[attributeDict valueForKey:@"weight"] forKey:@"votes"];
+		[self.currentTag setObject:[attributeDict valueForKey:@"weight"] forKey:@"weight"];
 		[self.currentProperty release];
 		return;
 	}
@@ -118,7 +122,6 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 	
 	if ([elementName isEqualToString:@"content"]) {
 		[self.currentRetort setObject:self.currentProperty forKey:@"content"];
-		[self.currentProperty release];
 		return;
 	}
 	
@@ -128,7 +131,6 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 		[self.tags addObject:self.currentTag];
 		NSLog(@"RetortXMLParser: adding tag to currentRetort");
 		[self.currentTag release];
-		[self.currentProperty release];
 		return;
 	}
 	

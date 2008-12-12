@@ -13,7 +13,6 @@
 
 
 NSInteger tagVoteSortAsc(id tagLeft, id tagRight, void *ignore) {
-	
 	int vl = [tagLeft votes];
     int vr = [tagRight votes];
     NSComparisonResult result;

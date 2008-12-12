@@ -96,9 +96,7 @@
 					</object>
 					<reference ref="169036512"/>
 					<object class="IBUINavigationController" id="316614064">
-						<string key="IBUITitle">Favorites</string>
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="698198430">
-							<string key="IBUITitle">Favorites</string>
 							<int key="IBUISystemItemIdentifier">1</int>
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>

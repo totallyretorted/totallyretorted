@@ -35,11 +35,13 @@ const NSInteger quantas = 5;
 - (NSString *)tagCloud {
 	NSMutableString *html = nil;
 	int fontSize = 100;
+
 	
 	for (TRTag *aTag in tags) {
+		
 		//NSLog(@"element: %@", element);
 		//font-size percentage 200% to 50%
-		switch (aTag.tagCloudValue) {
+		switch ([aTag.tagCloudValue intValue]) {
 			case 0:
 				fontSize = 50;
 				break;

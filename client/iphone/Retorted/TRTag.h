@@ -13,14 +13,14 @@
 	NSString *value;
 	NSInteger votes;			//used for tagCould...
 	NSInteger tagCloudValue;	//used for tagCloud...
-	NSInteger primaryKey;
+	NSNumber *primaryKey;
 }
 
-- (id)initWithId:(NSInteger)aPrimaryKey Value:(NSString *)aValue;
-- (id)initWithId:(NSInteger)aPrimaryKey Value:(NSString *)aValue Votes:(NSInteger)voteCount TagCloudValue:(NSInteger)cloudValue;
+- (id)initWithId:(NSNumber *)aPrimaryKey Value:(NSString *)aValue;
+- (id)initWithId:(NSNumber *)aPrimaryKey Value:(NSString *)aValue Votes:(NSInteger)voteCount TagCloudValue:(NSInteger)cloudValue;
 
 @property (nonatomic, retain) NSString *value;
 @property NSInteger votes;
 @property NSInteger tagCloudValue;
-@property NSInteger primaryKey;
+@property (nonatomic, retain) NSNumber *primaryKey;
 @end
