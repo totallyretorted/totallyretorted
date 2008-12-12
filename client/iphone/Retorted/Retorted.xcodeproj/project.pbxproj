@@ -19,6 +19,8 @@
 		45B947670EF18C0E004C00EE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 45B947660EF18C0E004C00EE /* Icon.png */; };
 		DB0030B00EF09E9100404183 /* SortMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0030AF0EF09E9100404183 /* SortMethods.m */; };
 		DB0030BC0EF0A44F00404183 /* TRTagSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0030BB0EF0A44F00404183 /* TRTagSorter.m */; };
+		DB08FFA00EF2D7DE000FB1AB /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB08FF9F0EF2D7DE000FB1AB /* TagViewController.m */; };
+		DB08FFA50EF2D898000FB1AB /* TagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB08FFA40EF2D898000FB1AB /* TagView.xib */; };
 		DB11263B0EEEED5600137EBC /* TRAttribution.m in Sources */ = {isa = PBXBuildFile; fileRef = DB11263A0EEEED5600137EBC /* TRAttribution.m */; };
 		DB11263E0EEEED7300137EBC /* TRRetort.m in Sources */ = {isa = PBXBuildFile; fileRef = DB11263D0EEEED7300137EBC /* TRRetort.m */; };
 		DB1126470EEEEDC900137EBC /* TRRating.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126460EEEEDC900137EBC /* TRRating.m */; };
@@ -61,6 +63,9 @@
 		DB0030AF0EF09E9100404183 /* SortMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortMethods.m; sourceTree = "<group>"; };
 		DB0030BA0EF0A44F00404183 /* TRTagSorter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTagSorter.h; sourceTree = "<group>"; };
 		DB0030BB0EF0A44F00404183 /* TRTagSorter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagSorter.m; sourceTree = "<group>"; };
+		DB08FF9E0EF2D7DE000FB1AB /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
+		DB08FF9F0EF2D7DE000FB1AB /* TagViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewController.m; sourceTree = "<group>"; };
+		DB08FFA40EF2D898000FB1AB /* TagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagView.xib; sourceTree = "<group>"; };
 		DB1126390EEEED5600137EBC /* TRAttribution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAttribution.h; sourceTree = "<group>"; };
 		DB11263A0EEEED5600137EBC /* TRAttribution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAttribution.m; sourceTree = "<group>"; };
 		DB11263C0EEEED7300137EBC /* TRRetort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetort.h; sourceTree = "<group>"; };
@@ -149,6 +154,7 @@
 				DB1126BF0EEF28B600137EBC /* HomeView.xib */,
 				DB1126C30EEF28E900137EBC /* RetortView.xib */,
 				DB82EB990EF096DB007C507A /* FavoritesView.xib */,
+				DB08FFA40EF2D898000FB1AB /* TagView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -208,6 +214,8 @@
 				DB1126BA0EEF27B600137EBC /* RetortViewController.m */,
 				DB82EB920EF0963D007C507A /* FavoritesViewController.h */,
 				DB82EB930EF0963D007C507A /* FavoritesViewController.m */,
+				DB08FF9E0EF2D7DE000FB1AB /* TagViewController.h */,
+				DB08FF9F0EF2D7DE000FB1AB /* TagViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -292,6 +300,7 @@
 				45B947670EF18C0E004C00EE /* Icon.png in Resources */,
 				45812E760EF1C0B500FC2D21 /* tab-tag.png in Resources */,
 				45812E910EF1D81400FC2D21 /* Default.png in Resources */,
+				DB08FFA50EF2D898000FB1AB /* TagView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +327,7 @@
 				DB0030BC0EF0A44F00404183 /* TRTagSorter.m in Sources */,
 				DB1FD1650EF1950F0000E78E /* TRRetortFacade.m in Sources */,
 				DB1FD30C0EF1D39F0000E78E /* TRRetortXMLParser.m in Sources */,
+				DB08FFA00EF2D7DE000FB1AB /* TagViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,8 +13,14 @@ extern NSString * const TRRetortDataFinishedLoadingNotification;
 
 @interface TRRetortFacade : NSObject {
 	NSMutableArray *retorts;
+	BOOL loadSuccessful;
 }
 
 @property (nonatomic, retain) NSMutableArray *retorts;
+@property BOOL loadSuccessful;
+
 - (void)loadRetorts;
+- (void)handleDataLoadFailure: (NSNotification *)note;
+- (void)handleRetortXMLLoad: (NSNotification *)note;
+- (void)handleRetortObjectsLoad: (NSNotification *)note;
 @end

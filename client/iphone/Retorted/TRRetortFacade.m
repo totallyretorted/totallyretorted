@@ -14,12 +14,14 @@
 NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishedLoading";
 
 @implementation TRRetortFacade
-@synthesize retorts;
+@synthesize retorts, loadSuccessful;
 
 - (id)init {
 	if (![super init]) {
 		return nil;
 	}
+	
+	self.loadSuccessful = NO;
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	
@@ -27,6 +29,11 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	[nc addObserver:self 
 		   selector:@selector(handleRetortXMLLoad:) 
 			   name:FEDataFinishedLoadingNotification 
+			 object:nil];
+	
+	[nc addObserver:self 
+		   selector:@selector(handleDataLoadFailure:) 
+			   name:FEDataFailedLoadingNotification 
 			 object:nil];
 	
 	//Listen for notification from TRRetortXMLParser --> When is the XML read to consume?
@@ -95,6 +102,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	//get the salesLead objects that the lead helper gathered...
 	self.retorts = xmlParser.retorts;
 	NSLog(@"TRRetortFacade: Received retort objects.");
+	self.loadSuccessful = YES;
 	
 	//post a notification to be picked up by the Controller...
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -103,6 +111,16 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	NSLog(@"TRRetortFacade: Sending finished notification for Retort object creation");
 	[xmlParser release];
 	 
+}
+
+- (void)handleDataLoadFailure: (NSNotification *)note {
+	self.loadSuccessful = NO;
+	
+	//post a notification to be picked up by the Controller...
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	
+	[nc postNotificationName:TRRetortDataFinishedLoadingNotification object:self];
+	NSLog(@"TRRetortFacade: FAILED data call - Sending finished notification for Retort object creation");
 }
 
 - (void)dealloc {
