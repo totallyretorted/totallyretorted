@@ -27,6 +27,8 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 		return nil;
 	}
 	
+	self.retorts = [[NSMutableArray alloc] init];
+	
 	return self;
 }
 
@@ -75,6 +77,7 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 		// 1. create Retort Dictionary object and add it as active
 		// 2. NSString *idAtt = [attributeDict valueForKey:@"id"];
 		self.currentRetort = [[NSMutableDictionary alloc] init];
+
 		[self.currentRetort setObject:[attributeDict valueForKey:@"id"] forKey:@"id"];
 		[self.currentProperty release];
 		return;

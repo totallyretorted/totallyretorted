@@ -36,7 +36,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 			   name:TRXMLRetortDataFinishedLoadingNotification 
 			 object:nil];
 	
-	NSLog(@"TRRetortFacade: Registered with notification center for: DWDataFinishedLoadingNotification & DWLeadXMLParseCompleteNotification");
+	NSLog(@"TRRetortFacade: Registered with notification center for: FEDataFinishedLoadingNotification & TRXMLRetortDataFinishedLoadingNotification");
 	
 	
 	return self;

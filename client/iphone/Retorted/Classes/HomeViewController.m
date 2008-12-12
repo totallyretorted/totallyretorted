@@ -15,7 +15,7 @@
 
 
 @implementation HomeViewController
-@synthesize retorts;
+@synthesize retorts, facade;
 
 /*
 // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
@@ -53,8 +53,10 @@
 		   selector:@selector(handleDataLoad:) 
 			   name:TRRetortDataFinishedLoadingNotification
 			 object:nil];
-	
 	NSLog(@"Controller: Registered with notification center");
+	[self loadURL];
+	
+	
 	
 	//[super viewDidLoad];
 }
@@ -83,12 +85,16 @@
 #pragma mark -
 #pragma mark Custom Methods
 - (void)loadURL {
-	NSLog(@"HomeViewController: Create instance of DWLeadFacade");
-	TRRetortFacade *facade = [[TRRetortFacade alloc] init];
+	NSLog(@"HomeViewController: Create instance of TRRetortFacade");
+	self.facade = [[TRRetortFacade alloc] init];
 	
-	[facade loadRetorts];
-	[facade release];
+	[self.facade loadRetorts];
+	//[facade release];
 	
+}
+
+- (void)handleDataLoad:(NSNotification *)note {
+	NSLog(@"HomeViewController: handleDataLoad received.");
 }
 
 #pragma mark -

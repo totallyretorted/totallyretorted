@@ -15,7 +15,7 @@
 	TRAttribution *attribution;
 	TRRating *rating;
 	NSMutableArray *tags;
-	NSInteger primaryId;
+	NSNumber *primaryId;
 	
 }
 
@@ -25,6 +25,6 @@
 @property (nonatomic, retain) TRAttribution *attribution;
 @property (nonatomic, retain) TRRating *rating;
 @property (nonatomic, retain) NSMutableArray *tags;
-@property NSInteger primaryId;
+@property (nonatomic, retain) NSNumber *primaryId;
 
 @end

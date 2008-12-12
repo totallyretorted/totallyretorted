@@ -28,6 +28,7 @@
 	[when release];
 	[where release];
 	[how release];
+	[retortId release];
 	
 	[super dealloc];
 }

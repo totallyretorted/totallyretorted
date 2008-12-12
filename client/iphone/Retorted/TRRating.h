@@ -10,11 +10,11 @@
 
 
 @interface TRRating : NSObject {
-	NSInteger positive;
-	NSInteger negative;
+	NSNumber *positive;
+	NSNumber *negative;
 }
 
-@property NSInteger positive;
-@property NSInteger negative;
+@property (nonatomic, retain) NSNumber *positive;
+@property (nonatomic, retain) NSNumber *negative;
 
 @end

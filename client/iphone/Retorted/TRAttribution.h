@@ -15,7 +15,7 @@
 	NSString *when;
 	NSString *where;
 	NSString *how;
-	NSInteger retortId;
+	NSNumber *retortId;
 }
 
 @property(nonatomic, retain) NSString *who;
@@ -23,6 +23,6 @@
 @property(nonatomic, retain) NSString *when;
 @property(nonatomic, retain) NSString *where;
 @property(nonatomic, retain) NSString *how;
-@property NSInteger retortId;
+@property(nonatomic, retain) NSNumber *retortId;
 
 @end

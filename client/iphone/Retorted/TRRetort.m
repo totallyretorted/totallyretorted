@@ -28,8 +28,7 @@
 		return nil;
 	
 	NSLog(@"TRRetort: initWithDictionary");
-	
-	self.primaryId = (NSInteger)[aDictionary valueForKey:@"id"];
+	self.primaryId = [aDictionary valueForKey:@"id"];
 	self.content = [aDictionary valueForKey:@"content"];
 	
 	//handle tags...
@@ -44,7 +43,7 @@
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"Retort Id: %d has %d tags", self.primaryId, [self.tags count]];
+	return [NSString stringWithFormat:@"Retort Id: %@ has %d tags", self.primaryId, [self.tags count]];
 }
 
 - (void)dealloc {
@@ -52,6 +51,8 @@
 	[attribution release];
 	[tags release];
 	[rating release];
+	[primaryId release];
+	
 	[super dealloc];
 }
 
