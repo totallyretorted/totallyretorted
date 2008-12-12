@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class RetortTest < ActiveSupport::TestCase
+  test "screenzero retorts" do
+    retorts = Retort.screenzero_retorts
+    assert_equal 5, retorts.size
+  end
+  
   test "check data" do
     r = Retort.find_by_content("Respect My Authority!")
     assert_equal 3, r.id

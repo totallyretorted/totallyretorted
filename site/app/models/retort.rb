@@ -2,6 +2,10 @@ class Retort < ActiveRecord::Base
   belongs_to :attribution
   has_and_belongs_to_many :tags
   belongs_to :rating
+  
+  def self.screenzero_retorts
+    Retort.find(:all, :limit => 5)
+  end
 
   def to_xml(options ={}, &block)
     xml = options[:builder] || Builder::XmlMarkup.new

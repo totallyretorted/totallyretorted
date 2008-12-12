@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @retorts = Retort.find(:all, :limit => 5)
+    @retorts = Retort.screenzero_retorts
 
     respond_to do |format|
       format.html # index.html.erb
