@@ -11,7 +11,7 @@ class Rating < ActiveRecord::Base
     xml.rating(){
       xml.positive(self.positive)
       xml.negative(self.negative)
-      xml.rating(self.rating)
+      xml.rank(self.rating)
     }  
   end  
   
