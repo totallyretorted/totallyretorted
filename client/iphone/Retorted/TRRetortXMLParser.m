@@ -28,6 +28,7 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 	}
 	
 	self.retorts = [[NSMutableArray alloc] init];
+	self.tags = [[NSMutableArray alloc] init];
 	
 	return self;
 }
@@ -171,6 +172,8 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 	self.currentRating = nil;
 	self.currentAttribution = nil;
 	self.retorts = nil;
+	self.tags = nil;
+	self.currentProperty = nil;
 	
 	[super dealloc];
 }
