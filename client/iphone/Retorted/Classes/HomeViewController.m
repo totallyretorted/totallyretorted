@@ -16,6 +16,7 @@
 
 @implementation HomeViewController
 @synthesize retorts, facade;
+@synthesize retortsView;
 
 /*
 // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
@@ -37,13 +38,14 @@
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
     self.title = @"Home";
+	/*
 	self.retorts = [[NSMutableArray alloc] initWithObjects:@"Too bad drinking Scotch isn't a paying job or Kenny's dad would be a millionaire!",
 					@"Oh my God, they killed Kenny!",
 					@"I've learned something today. You see, the basis of all reasoning is the mind's awareness of itself. What we think, the external objects we perceive, are all like actors that come on and off stage. But our consciousness, the stage itself, is always present to us.",
 					@"Lick my chocolate salty balls",
 					@"I can see Russia from my house!",
 					nil];
-	
+	*/
 	[tagCloud loadHTMLString:@"<html><body style=\"background-color: #000; color: #fff\"><h1>Shant is my hero!</h1><p>Call him at 832.878.5685</p></body></html>" baseURL:nil];
 	
 	
@@ -95,6 +97,14 @@
 
 - (void)handleDataLoad:(NSNotification *)note {
 	NSLog(@"HomeViewController: handleDataLoad received.");
+	TRRetortFacade *aFacade = [note object];
+	
+	self.retorts = aFacade.retorts;
+	
+	
+	NSLog(@"received retorts");
+	[self.retortsView reloadData];
+	
 }
 
 #pragma mark -
@@ -119,8 +129,9 @@
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     }
     // Configure the cell
-	
-	cell.text = [retorts objectAtIndex:indexPath.row];
+	NSLog(@"indexPath.row: %d", indexPath.row);
+	TRRetort *aRetort = [retorts objectAtIndex:indexPath.row];
+	cell.text = aRetort.content;
     return cell;
 }
 

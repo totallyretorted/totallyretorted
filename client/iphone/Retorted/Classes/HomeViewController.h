@@ -17,7 +17,8 @@
 }
 
 - (void)loadURL;
-- (void)handleDataLoad;
+- (void)handleDataLoad:(NSNotification *)note;
 @property (nonatomic, retain) TRRetortFacade *facade;
 @property (nonatomic, retain) NSMutableArray *retorts;
+@property (nonatomic, retain) UITableView *retortsView;
 @end

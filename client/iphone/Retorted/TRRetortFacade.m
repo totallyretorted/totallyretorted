@@ -93,7 +93,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	TRRetortXMLParser *xmlParser  = [note object];
 	
 	//get the salesLead objects that the lead helper gathered...
-	//self.retorts = xmlParser.retorts;
+	self.retorts = xmlParser.retorts;
 	NSLog(@"TRRetortFacade: Received retort objects.");
 	
 	//post a notification to be picked up by the Controller...
