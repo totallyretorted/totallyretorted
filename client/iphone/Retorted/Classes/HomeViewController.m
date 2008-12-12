@@ -130,7 +130,7 @@
     }
     // Configure the cell
 	NSLog(@"indexPath.row: %d", indexPath.row);
-	TRRetort *aRetort = [retorts objectAtIndex:indexPath.row];
+	TRRetort *aRetort = [self.retorts objectAtIndex:indexPath.row];
 	cell.text = aRetort.content;
     return cell;
 }
@@ -143,7 +143,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	RetortViewController *retortVC = [[RetortViewController alloc] initWithNibName:@"RetortView" bundle:nil];
-	retortVC.retortTitle = [retorts objectAtIndex:indexPath.row];
+	retortVC.retortTitle = @"Retorts";
+	retortVC.retort = [self.retorts objectAtIndex:indexPath.row];
 	
 	[self.navigationController pushViewController:retortVC animated:YES];
 	[retortVC release];

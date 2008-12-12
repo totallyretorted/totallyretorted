@@ -41,7 +41,7 @@
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-	retortText.text = retortTitle;
+	retortText.text = self.retort.content;
     //[super viewDidLoad];
 	
 	self.title = @"Retort";
