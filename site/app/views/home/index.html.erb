@@ -1,0 +1,21 @@
+<h1>Retorted!</h1>
+
+<% for retort in @retorts %>
+	<div class="retort" id="<%= retort %>">
+		<div class="content">
+			<%= retort.content %>
+		</div>
+		<div class="metadata">
+			<span class="rating">positive: <%= retort.rating.positive %>&nbsp;&nbsp;negative: <%= retort.rating.negative%></span>
+			<% if retort.attribution %>
+			<span class="attribution">
+				<% %w(who what when where how).each do |w| %>
+				<% if retort.attribution.send(w) %>
+					<%= w %>: <%= retort.attribution.send(w) %>
+				<% end %>
+				<% end %>
+			</span>
+			<% end %>
+		</div>
+	</div>
+<% end %>
