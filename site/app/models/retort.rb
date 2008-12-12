@@ -4,7 +4,7 @@ class Retort < ActiveRecord::Base
   belongs_to :rating
 
   def to_xml(options ={}, &block)
-    xml=options[:builder] || Builder::XmlMarkup.new
+    xml = options[:builder] || Builder::XmlMarkup.new
       
     xml.retort(:id => self.id){
       xml.content(self.content)

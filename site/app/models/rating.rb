@@ -2,7 +2,7 @@ class Rating < ActiveRecord::Base
   has_one :retort
   
   def rating
-     positive / (positive+negative)
+     (positive.to_f / (positive.to_f + negative.to_f))
   end
   
   def to_xml(options ={}, &block)

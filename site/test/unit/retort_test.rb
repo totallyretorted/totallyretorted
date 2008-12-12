@@ -1,7 +1,19 @@
 require 'test_helper'
 
 class RetortTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
+  test "check data" do
+    r = Retort.find_by_content("Respect My Authority!")
+    assert_equal 3, r.id
+    assert_equal 2, r.tags.count
+    assert_equal "south_park", r.tags[0].value
+    assert_equal "cartman", r.tags[1].value
+    assert_equal 30, r.rating.positive
+    assert_equal 50, r.rating.negative
+    assert_equal 0.375, r.rating.rating
+    assert_equal "Eric Cartman", r.attribution.who
+    assert_equal "South Park", r.attribution.where
+  end
+  
   test "deep save" do
     r = Retort.new
     r.content = "Screw you guys I'm going home"
@@ -13,11 +25,11 @@ class RetortTest < ActiveSupport::TestCase
     
     ctrl = Retort.find_by_content("Screw you guys I'm going home")
     assert ctrl
-    assert ctrl.tags.count == 2
+    assert_equal 2, ctrl.tags.count
     assert ctrl.attribution
-    assert ctrl.attribution.who == "Cartman"
+    assert_equal "Cartman", ctrl.attribution.who
     assert ctrl.rating
-    assert ctrl.rating.positive == 1
+    assert_equal 1, ctrl.rating.positive
   end
   
   test "to_xml" do    
@@ -31,7 +43,7 @@ class RetortTest < ActiveSupport::TestCase
     
     r.to_xml
     
-    assert "<retort id=\"123\"><content>Foo</content></retort>" == r.to_xml, r.to_xml
+    assert_equal "<retort id=\"123\"><content>Foo</content></retort>", r.to_xml
   end
   
   test "to_xml (deep)" do
@@ -67,7 +79,7 @@ class RetortTest < ActiveSupport::TestCase
         xml.rating(1)
       end
     end
-    assert xml == r.to_xml, "Expected '#{xml}', found '#{r.to_xml}'"
+    assert_equal xml, r.to_xml
   end
   
   test "from_xml" do
@@ -90,10 +102,10 @@ class RetortTest < ActiveSupport::TestCase
     end
     
     r = Retort.from_xml(xml)
-    assert r.id == 123
-    assert r.content == "Screw you guys I'm going home"
-    assert r.tags.size == 2
-    assert r.tags[0].value == "south_park"
-    assert r.attribution.who == "Cartman"
+    assert_equal 123, r.id
+    assert_equal "Screw you guys I'm going home", r.content
+    assert_equal 2, r.tags.size
+    assert_equal "south_park", r.tags[0].value
+    assert_equal "Cartman", r.attribution.who
   end
 end
