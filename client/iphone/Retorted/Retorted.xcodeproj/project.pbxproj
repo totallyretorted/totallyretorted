@@ -14,6 +14,9 @@
 		28216C970DB411BC00E5133A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* HomeViewController.m */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
 		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
+		45812E760EF1C0B500FC2D21 /* tab-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 45812E750EF1C0B500FC2D21 /* tab-tag.png */; };
+		45812E910EF1D81400FC2D21 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 45812E900EF1D81400FC2D21 /* Default.png */; };
+		45B947670EF18C0E004C00EE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 45B947660EF18C0E004C00EE /* Icon.png */; };
 		DB0030B00EF09E9100404183 /* SortMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0030AF0EF09E9100404183 /* SortMethods.m */; };
 		DB0030BC0EF0A44F00404183 /* TRTagSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0030BB0EF0A44F00404183 /* TRTagSorter.m */; };
 		DB11263B0EEEED5600137EBC /* TRAttribution.m in Sources */ = {isa = PBXBuildFile; fileRef = DB11263A0EEEED5600137EBC /* TRAttribution.m */; };
@@ -32,7 +35,6 @@
 		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
 		DB82EB940EF0963D007C507A /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB82EB930EF0963D007C507A /* FavoritesViewController.m */; };
 		DB82EB9A0EF096DB007C507A /* FavoritesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB82EB990EF096DB007C507A /* FavoritesView.xib */; };
-		DBDC5EDE0EF090A40055CD29 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EDD0EF090A40055CD29 /* Default.png */; };
 		DBDC5EE30EF091740055CD29 /* tab-favs.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE20EF091740055CD29 /* tab-favs.png */; };
 		DBDC5EE50EF0917C0055CD29 /* tab-five.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE40EF0917C0055CD29 /* tab-five.png */; };
 		DBDC5EE70EF091890055CD29 /* tab-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE60EF091890055CD29 /* tab-settings.png */; };
@@ -51,6 +53,9 @@
 		28A0AB4B0D9B1048005BE974 /* Retorted_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Retorted_Prefix.pch; sourceTree = "<group>"; };
 		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		45812E750EF1C0B500FC2D21 /* tab-tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-tag.png"; sourceTree = "<group>"; };
+		45812E900EF1D81400FC2D21 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		45B947660EF18C0E004C00EE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB0030AE0EF09E9100404183 /* SortMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortMethods.h; sourceTree = "<group>"; };
 		DB0030AF0EF09E9100404183 /* SortMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortMethods.m; sourceTree = "<group>"; };
@@ -83,7 +88,6 @@
 		DB82EB920EF0963D007C507A /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		DB82EB930EF0963D007C507A /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		DB82EB990EF096DB007C507A /* FavoritesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesView.xib; sourceTree = "<group>"; };
-		DBDC5EDD0EF090A40055CD29 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		DBDC5EE20EF091740055CD29 /* tab-favs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-favs.png"; sourceTree = "<group>"; };
 		DBDC5EE40EF0917C0055CD29 /* tab-five.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-five.png"; sourceTree = "<group>"; };
 		DBDC5EE60EF091890055CD29 /* tab-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-settings.png"; sourceTree = "<group>"; };
@@ -220,11 +224,13 @@
 		DB1128830EEF73F200137EBC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				45812E900EF1D81400FC2D21 /* Default.png */,
+				45812E750EF1C0B500FC2D21 /* tab-tag.png */,
+				45B947660EF18C0E004C00EE /* Icon.png */,
 				DBDC5EE90EF091B80055CD29 /* NavBarLogo.png */,
 				DBDC5EE60EF091890055CD29 /* tab-settings.png */,
 				DBDC5EE20EF091740055CD29 /* tab-favs.png */,
 				DBDC5EE40EF0917C0055CD29 /* tab-five.png */,
-				DBDC5EDD0EF090A40055CD29 /* Default.png */,
 				DB1128840EEF73FA00137EBC /* ql.png */,
 				DB1128850EEF73FA00137EBC /* qr.png */,
 			);
@@ -278,12 +284,14 @@
 				DB1126C40EEF28E900137EBC /* RetortView.xib in Resources */,
 				DB1128860EEF73FA00137EBC /* ql.png in Resources */,
 				DB1128870EEF73FA00137EBC /* qr.png in Resources */,
-				DBDC5EDE0EF090A40055CD29 /* Default.png in Resources */,
 				DBDC5EE30EF091740055CD29 /* tab-favs.png in Resources */,
 				DBDC5EE50EF0917C0055CD29 /* tab-five.png in Resources */,
 				DBDC5EE70EF091890055CD29 /* tab-settings.png in Resources */,
 				DBDC5EEA0EF091B80055CD29 /* NavBarLogo.png in Resources */,
 				DB82EB9A0EF096DB007C507A /* FavoritesView.xib in Resources */,
+				45B947670EF18C0E004C00EE /* Icon.png in Resources */,
+				45812E760EF1C0B500FC2D21 /* tab-tag.png in Resources */,
+				45812E910EF1D81400FC2D21 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
