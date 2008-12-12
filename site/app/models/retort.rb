@@ -4,7 +4,18 @@ class Retort < ActiveRecord::Base
   belongs_to :rating
   
   def self.screenzero_retorts
-    Retort.find(:all, :limit => 5)
+    randomRetorts=[]
+    
+    retorts=Retort.find(:all, :limit =>100)
+
+    5.times{
+      index=rand(retorts.length)
+      randomRetorts<<retorts[index]
+      retorts.slice!(index)
+   }
+    
+    randomRetorts
+    
   end
 
   def to_xml(options ={}, &block)
