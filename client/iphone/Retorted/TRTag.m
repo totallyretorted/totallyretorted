@@ -7,7 +7,7 @@
 //
 
 #import "TRTag.h"
-
+#import "TRRating.h"
 
 @implementation TRTag
 @synthesize value;

@@ -8,7 +8,8 @@
 
 #import "TRRetortXMLParser.h"
 #import "TRRetort.h"
-#import "Constants.h"
+#import "TRRating.h"
+
 
 // Message listed to by TRReportFacade
 // Message sent to NC by TRRetortXMLParser
@@ -83,8 +84,12 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 
 		[self.currentRetort setObject:[attributeDict valueForKey:@"id"] forKey:@"id"];
 		[self.currentProperty release];
-		
-		
+		return;
+	}
+	
+	if ([elementName isEqualToString:@"rating"]) {
+		self.currentRating = [[TRRating alloc] init];
+		[self.currentProperty release];
 		return;
 	}
 	
@@ -125,7 +130,30 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 		return;
 	}
 	
+	// RATINGS
+	if ([elementName isEqualToString:@"positive"]) {
+		self.currentRating.positive = [self.currentProperty intValue];
+		return;
+	}
+	if ([elementName isEqualToString:@"negative"]) {
+		self.currentRating.negative = [self.currentProperty intValue];
+		return;
+	}
+	if ([elementName isEqualToString:@"rank"]) {
+		self.currentRating.rank = [self.currentProperty floatValue];
+		return;
+	}
+	if ([elementName isEqualToString:@"rating"]) {
+		[self.currentRetort setObject:self.currentRating forKey:@"rating"];
+		NSLog(@"RetortXMLParser: Added rating");
+		self.currentRating = nil;
+		return;
+	}
 	
+	
+	
+	
+	// TAGS
 	if ([elementName isEqualToString:@"tag"]) {
 		[self.currentTag setObject:self.currentProperty forKey:@"value"];
 		[self.tags addObject:self.currentTag];

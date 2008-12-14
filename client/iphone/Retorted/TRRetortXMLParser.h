@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TRRating;
 
 extern NSString * const TRXMLRetortDataFinishedLoadingNotification;
+
 
 @interface TRRetortXMLParser : NSObject {
 	NSMutableString *currentProperty;
 	NSMutableDictionary *currentRetort;
 	NSMutableDictionary *currentTag;
-	NSMutableDictionary *currentRating;
+	TRRating *currentRating;
+	//NSMutableDictionary *currentRating;
 	NSMutableDictionary *currentAttribution;
 	
 	NSMutableArray *retorts;
@@ -32,7 +35,8 @@ extern NSString * const TRXMLRetortDataFinishedLoadingNotification;
 
 @property (nonatomic, retain) NSMutableDictionary *currentRetort;
 @property (nonatomic, retain) NSMutableDictionary *currentTag;
-@property (nonatomic, retain) NSMutableDictionary *currentRating;
+//@property (nonatomic, retain) NSMutableDictionary *currentRating;
+@property (nonatomic, retain) TRRating *currentRating;
 @property (nonatomic, retain) NSMutableDictionary *currentAttribution;
 @property (nonatomic, retain) NSMutableArray *tags;
 

@@ -28,7 +28,6 @@
 		return nil;
 	
 	self.tags = [[NSMutableArray alloc] init];
-	
 	self.primaryId = [aDictionary valueForKey:@"id"];
 	self.content = [aDictionary valueForKey:@"content"];
 	
@@ -39,6 +38,9 @@
 		[self.tags addObject:aTag];
 		[aTag release];
 	}
+	
+	//handle rating...
+	self.rating = [aDictionary valueForKey:@"rating"];
 
 	NSLog(@"TRRetort: initWithDictionary - %@", content);
 	return self;

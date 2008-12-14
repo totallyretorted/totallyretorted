@@ -22,6 +22,7 @@
 	return self;
 }
 
+
 - (void)dealloc {
 	[who release];
 	[what release];
