@@ -45,6 +45,8 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	
 	NSLog(@"TRRetortFacade: Registered with notification center for: FEDataFinishedLoadingNotification & TRXMLRetortDataFinishedLoadingNotification");
 	
+	properties = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Properties" ofType:@"plist"]]; 
+	
 	
 	return self;
 }
@@ -54,7 +56,8 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 - (void)loadRetorts {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	//TODO: Add to constants file
-	NSString *retortsURL = @"http://localhost:3000/retorts/screenzero.xml";
+	//NSString *retortsURL = @"http://localhost:3000/retorts/screenzero.xml";
+	NSString* retortsURL = [NSString stringWithFormat:@"%@/retorts/screenzero.xml", [properties valueForKey:@"Retorted.Host"]];
 	
 	// 2: use the URLHelper class to get the data
 	NSLog(@"TRRetortFacade:  Getting data from URL using URLHelper: %@", retortsURL);
@@ -128,7 +131,9 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	[nc removeObserver:self];
 	NSLog(@"TRRetortFacade: Unregistered with notification center.");
 	
-    [super dealloc];
+	[retorts release];
+	
+	[super dealloc];
 }
 
 @end

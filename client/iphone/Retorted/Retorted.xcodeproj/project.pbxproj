@@ -46,6 +46,7 @@
 		DBDC5EE50EF0917C0055CD29 /* tab-five.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE40EF0917C0055CD29 /* tab-five.png */; };
 		DBDC5EE70EF091890055CD29 /* tab-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE60EF091890055CD29 /* tab-settings.png */; };
 		DBDC5EEA0EF091B80055CD29 /* NavBarLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE90EF091B80055CD29 /* NavBarLogo.png */; };
+		DCC9145C0EF2F67E0076F8C9 /* Properties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCC9145B0EF2F67E0076F8C9 /* Properties.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,7 +93,7 @@
 		DB141E260EF3758300868FAB /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		DB141E270EF3758300868FAB /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		DB141E980EF3864900868FAB /* FavoritesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesView.xib; sourceTree = "<group>"; };
-		DB141F520EF4A20A00868FAB /* UnitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = UnitTest.app; path = "build/Debug-iphonesimulator/UnitTest.app"; sourceTree = "<group>"; };
+		DB141F520EF4A20A00868FAB /* UnitTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB141F540EF4A20A00868FAB /* UnitTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTest-Info.plist"; sourceTree = "<group>"; };
 		DB141F5A0EF4A2C900868FAB /* GTMIPhoneUnitTestMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMIPhoneUnitTestMain.m; sourceTree = "<group>"; };
 		DB141F5B0EF4A2C900868FAB /* GTMIPhoneUnitTestDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMIPhoneUnitTestDelegate.m; sourceTree = "<group>"; };
@@ -113,6 +114,7 @@
 		DBDC5EE40EF0917C0055CD29 /* tab-five.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-five.png"; sourceTree = "<group>"; };
 		DBDC5EE60EF091890055CD29 /* tab-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-settings.png"; sourceTree = "<group>"; };
 		DBDC5EE90EF091B80055CD29 /* NavBarLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavBarLogo.png; sourceTree = "<group>"; };
+		DCC9145B0EF2F67E0076F8C9 /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Properties.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DCC9145B0EF2F67E0076F8C9 /* Properties.plist */,
 				DB1128830EEF73F200137EBC /* Images */,
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
@@ -369,6 +372,7 @@
 				45812E760EF1C0B500FC2D21 /* tab-tag.png in Resources */,
 				45812E910EF1D81400FC2D21 /* Default.png in Resources */,
 				DB08FFA50EF2D898000FB1AB /* TagView.xib in Resources */,
+				DCC9145C0EF2F67E0076F8C9 /* Properties.plist in Resources */,
 				DB141E990EF3864900868FAB /* FavoritesView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,7 +399,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/Users/bjandraney/Projects/retorted/trunk/client/iphone/google-toolbox-for-mac-1-5-1/UnitTesting/RuniPhoneUnitTest.sh";
+			shellScript = "\"${SRCROOT}/../google-toolbox-for-mac-1-5-1/UnitTesting/RuniPhoneUnitTest.sh\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
