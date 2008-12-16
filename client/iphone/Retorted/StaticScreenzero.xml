@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<retorts type="array">
+  <retort id="5">
+    <content>Hippies.They're everywhere. They wanna save the earth, but all they do is smoke pot and smell bad.</content>
+    <attribution id="1">
+      <who>Eric Cartman</who>
+      <when>2008-12-12</when>
+      <where>South Park</where>
+    </attribution>
+    <rating>
+      <positive>3022</positive>
+      <negative>3282</negative>
+      <rank>0.479378172588832</rank>
+    </rating>
+    <tags>
+      <tag weight="6" id="1">south_park</tag>
+      <tag weight="5" id="3">cartman</tag>
+    </tags>
+  </retort>
+  <retort id="3">
+    <content>Respect My Authority!</content>
+    <attribution id="1">
+      <who>Eric Cartman</who>
+      <when>2008-12-12</when>
+      <where>South Park</where>
+    </attribution>
+    <rating>
+      <positive>30</positive>
+      <negative>50</negative>
+      <rank>0.375</rank>
+    </rating>
+    <tags>
+      <tag weight="6" id="1">south_park</tag>
+      <tag weight="5" id="3">cartman</tag>
+    </tags>
+  </retort>
+  <retort id="1">
+    <content>Too bad drinking Scotch isn't a paying job or Kenny's dad would be a millionaire!</content>
+    <attribution id="1">
+      <who>Eric Cartman</who>
+      <when>2008-12-12</when>
+      <where>South Park</where>
+    </attribution>
+    <rating>
+      <positive>10</positive>
+      <negative>5</negative>
+      <rank>0.666666666666667</rank>
+    </rating>
+    <tags>
+      <tag weight="6" id="1">south_park</tag>
+      <tag weight="5" id="3">cartman</tag>
+    </tags>
+  </retort>
+  <retort id="2">
+    <content>Lick my chocolate salty balls</content>
+    <attribution id="2">
+      <who>Chef</who>
+      <when>2008-12-12</when>
+      <where>South Park</where>
+    </attribution>
+    <rating>
+      <positive>1000</positive>
+      <negative>2000</negative>
+      <rank>0.333333333333333</rank>
+    </rating>
+    <tags>
+      <tag weight="6" id="1">south_park</tag>
+      <tag weight="1" id="2">chef</tag>
+    </tags>
+  </retort>
+  <retort id="4">
+    <content>I have sex and I kill people!</content>
+    <attribution id="1">
+      <who>Eric Cartman</who>
+      <when>2008-12-12</when>
+      <where>South Park</where>
+    </attribution>
+    <rating>
+      <positive>6392</positive>
+      <negative>2823</negative>
+      <rank>0.693651654910472</rank>
+    </rating>
+    <tags>
+      <tag weight="6" id="1">south_park</tag>
+      <tag weight="5" id="3">cartman</tag>
+    </tags>
+  </retort>
+</retorts>

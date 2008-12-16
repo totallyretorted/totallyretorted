@@ -279,7 +279,7 @@ int const INVALID_PK = 8;
 	NSLog(@"RetortXMLParser: total retort objects: %d", self.retorts.count);
 	[nc postNotificationName:TRXMLRetortDataFinishedLoadingNotification object:self];
 	
-	 NSLog(@"RetortXMLParser: callback after xml parse complete notification");
+	NSLog(@"RetortXMLParser: callback after xml parse complete notification");
 	 
 }
 

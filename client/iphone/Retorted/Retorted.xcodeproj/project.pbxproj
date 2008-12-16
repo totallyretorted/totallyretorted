@@ -47,8 +47,25 @@
 		DBDC5EE50EF0917C0055CD29 /* tab-five.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE40EF0917C0055CD29 /* tab-five.png */; };
 		DBDC5EE70EF091890055CD29 /* tab-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE60EF091890055CD29 /* tab-settings.png */; };
 		DBDC5EEA0EF091B80055CD29 /* NavBarLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE90EF091B80055CD29 /* NavBarLogo.png */; };
+		DC77CA050EF6F9250083F5CA /* TRRetortXMLParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DC77CA040EF6F9250083F5CA /* TRRetortXMLParserTest.m */; };
+		DC77CA6F0EF7206D0083F5CA /* UnitTest Help.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DB141F720EF4A3FF00868FAB /* UnitTest Help.rtf */; };
+		DC77CAEB0EF83D1F0083F5CA /* TRRetort.m in Sources */ = {isa = PBXBuildFile; fileRef = DB11263D0EEEED7300137EBC /* TRRetort.m */; };
+		DC77CAEC0EF83D1F0083F5CA /* TRRating.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126460EEEEDC900137EBC /* TRRating.m */; };
+		DC77CAED0EF83D1F0083F5CA /* TRTag.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126490EEEEDD500137EBC /* TRTag.m */; };
+		DC77CAEE0EF83D1F0083F5CA /* TRRetortXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */; };
+		DC77CB7A0EF851F20083F5CA /* StaticScreenzero.xml in Resources */ = {isa = PBXBuildFile; fileRef = DC77CB790EF851F20083F5CA /* StaticScreenzero.xml */; };
 		DCC9145C0EF2F67E0076F8C9 /* Properties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCC9145B0EF2F67E0076F8C9 /* Properties.plist */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DC77CAB40EF8364B0083F5CA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D6058900D05DD3D006BFB54 /* Retorted */;
+			remoteInfo = Retorted;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -115,6 +132,9 @@
 		DBDC5EE40EF0917C0055CD29 /* tab-five.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-five.png"; sourceTree = "<group>"; };
 		DBDC5EE60EF091890055CD29 /* tab-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-settings.png"; sourceTree = "<group>"; };
 		DBDC5EE90EF091B80055CD29 /* NavBarLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavBarLogo.png; sourceTree = "<group>"; };
+		DC77CA030EF6F9250083F5CA /* TRRetortXMLParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetortXMLParserTest.h; sourceTree = "<group>"; };
+		DC77CA040EF6F9250083F5CA /* TRRetortXMLParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortXMLParserTest.m; sourceTree = "<group>"; };
+		DC77CB790EF851F20083F5CA /* StaticScreenzero.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = StaticScreenzero.xml; sourceTree = "<group>"; };
 		DCC9145B0EF2F67E0076F8C9 /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Properties.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -185,6 +205,7 @@
 				DB141E980EF3864900868FAB /* FavoritesView.xib */,
 				DB1126C30EEF28E900137EBC /* RetortView.xib */,
 				DB08FFA40EF2D898000FB1AB /* TagView.xib */,
+				DC77CB790EF851F20083F5CA /* StaticScreenzero.xml */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -282,6 +303,8 @@
 			children = (
 				DB141F490EF4A1A900868FAB /* GTM */,
 				DB141F720EF4A3FF00868FAB /* UnitTest Help.rtf */,
+				DC77CA030EF6F9250083F5CA /* TRRetortXMLParserTest.h */,
+				DC77CA040EF6F9250083F5CA /* TRRetortXMLParserTest.m */,
 			);
 			name = UnitTests;
 			sourceTree = "<group>";
@@ -331,6 +354,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DC77CAB50EF8364B0083F5CA /* PBXTargetDependency */,
 			);
 			name = UnitTest;
 			productName = UnitTest;
@@ -360,6 +384,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC77CA6F0EF7206D0083F5CA /* UnitTest Help.rtf in Resources */,
 				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
 				DB1126C00EEF28B600137EBC /* HomeView.xib in Resources */,
 				DB1126C40EEF28E900137EBC /* RetortView.xib in Resources */,
@@ -383,6 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB141F730EF4A3FF00868FAB /* UnitTest Help.rtf in Resources */,
+				DC77CB7A0EF851F20083F5CA /* StaticScreenzero.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,14 +460,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC77CAEB0EF83D1F0083F5CA /* TRRetort.m in Sources */,
+				DC77CAEC0EF83D1F0083F5CA /* TRRating.m in Sources */,
+				DC77CAED0EF83D1F0083F5CA /* TRTag.m in Sources */,
+				DC77CAEE0EF83D1F0083F5CA /* TRRetortXMLParser.m in Sources */,
 				DB141F5F0EF4A2C900868FAB /* GTMIPhoneUnitTestMain.m in Sources */,
 				DB141F600EF4A2C900868FAB /* GTMIPhoneUnitTestDelegate.m in Sources */,
 				DB141F610EF4A2C900868FAB /* GTMSenTestCase.m in Sources */,
+				DC77CA050EF6F9250083F5CA /* TRRetortXMLParserTest.m in Sources */,
 				DB31350A0EF75E0D00DA383B /* FEUrlHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DC77CAB50EF8364B0083F5CA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D6058900D05DD3D006BFB54 /* Retorted */;
+			targetProxy = DC77CAB40EF8364B0083F5CA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -454,6 +493,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Retorted_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
+				MACH_O_TYPE = mh_bundle;
 				PRODUCT_NAME = Retorted;
 			};
 			name = Debug;
@@ -501,6 +541,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -509,6 +550,7 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/UIKit.framework/Headers/UIKit.h";
 				INFOPLIST_FILE = "UnitTest-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACH_O_TYPE = mh_execute;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -518,6 +560,8 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = UnitTest;
 				SDKROOT = iphoneos2.2;
+				STRIP_STYLE = all;
+				TEST_HOST = "";
 			};
 			name = Debug;
 		};
