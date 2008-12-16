@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<retorts type="array">
+  <retort id="999">
+    <content>This is a simple test</content>
+  </retort>
+</retorts>

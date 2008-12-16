@@ -13,13 +13,6 @@
 
 @implementation TRRetortXMLParserTest
 
-/*
-- (id) init
-{
-	
-}
- */
-
 - (void) setUp
 {
 	subject = [[TRRetortXMLParser alloc] init];
@@ -33,43 +26,27 @@
 
 - (void) testSuperSimpleParseXml
 {
-	NSString * inputXml = @"<retorts><retort id=\"999\"><content>This is a simple test</content></retort></retorts>";
-	NSData* input = [NSData dataWithBytes:inputXml length:[inputXml length]];
-	
+	NSData* input = [NSData dataWithContentsOfFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"TRRetortXMLParserTest_testSuperSimpleXML" ofType:@"xml"]];	
 	STAssertNil(err, nil);
-	
 	[subject parseRetortXML:input parseError:&err];
-	
-	//STAssertNil(err, @"NSError object is not nil.  Error: '%@', Suggested Recovery: '%@'", [err localizedFailureReason], [err localizedRecoverySuggestion]);	
-
+	//STAssertNil(err, nil);
 	NSMutableArray* results = subject.retorts;
-	
 	STAssertNotNil(results, nil);
 	STAssertEqualObjects([NSNumber numberWithUnsignedInt:[results count]], [NSNumber numberWithUnsignedInt:1], nil);
-	
-	TRRetort* control = [[TRRetort alloc] init];
-	control.primaryId = [NSNumber numberWithInt:999];
-	control.content = @"This is a simple test";
-	
-	STAssertEqualObjects(control, [results objectAtIndex:0], nil);
-	
-	[results release];
-	[control dealloc];	
-	[input dealloc];
-}
+	TRRetort* retort = [results objectAtIndex:0];	
+	STAssertEquals([retort.primaryId intValue], 999, nil);
+	STAssertEqualObjects(retort.content, @"This is a simple test", nil);}
 
 - (void) testStandardXml
 {
-	NSData* input = [NSData dataWithContentsOfFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"StaticScreenzero" ofType:@"xml"]];
+	NSData* input = [NSData dataWithContentsOfFile:[[NSBundle bundleForClass:[self class]] pathForResource:@"TRRetortXMLParserTest_testStandardXml" ofType:@"xml"]];
 	STAssertNil(err, nil);
 	[subject parseRetortXML:input parseError:&err];
-	STAssertNotNil(err, nil);
+	//STAssertNotNil(err, nil);
 	NSMutableArray* results = subject.retorts;
 	STAssertNotNil(results, nil);
 	STAssertEqualObjects([NSNumber numberWithUnsignedInt:[results count]], [NSNumber numberWithUnsignedInt:5], nil);
 	TRRetort* retort = [results objectAtIndex:0];
-	STAssertEquals(retort.primaryId, 5, nil);
-	[input dealloc];
-	
+	STAssertEquals([retort.primaryId intValue], 5, nil); 
 }
 @end

@@ -16,6 +16,6 @@
 }
 
 - (void) testSuperSimpleParseXml;
-- (void) testStandardXml;
+//- (void) testStandardXml;
 
 @end
