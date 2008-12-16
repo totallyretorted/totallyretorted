@@ -62,7 +62,7 @@ const NSInteger quantas = 5;
 		
 		//tag:id, font-size (weight), tag.value, 
 		[html appendFormat:@"<a href=\"tag:%d\" style=\"font-size: %d\%\">%@</a><&nbsp;&nbsp;&nbsp;", 
-		 aTag.primaryKey, 
+		 aTag.primaryId, 
 		 fontSize, 
 		 aTag.value];
 		

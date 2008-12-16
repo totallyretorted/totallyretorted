@@ -11,16 +11,16 @@
 
 @interface TRTag : NSObject {
 	NSString *value;
-	NSInteger votes;			//used for tagCould...
+	NSInteger weight;			//used for tagCould...
 	NSInteger tagCloudValue;	//used for tagCloud...
-	NSNumber *primaryKey;
+	NSNumber *primaryId;
 }
 
-- (id)initWithId:(NSNumber *)aPrimaryKey Value:(NSString *)aValue;
-- (id)initWithId:(NSNumber *)aPrimaryKey Value:(NSString *)aValue Votes:(NSInteger)voteCount TagCloudValue:(NSInteger)cloudValue;
+- (id)initWithId:(NSNumber *)aPrimaryKey value:(NSString *)aValue;
+- (id)initWithId:(NSNumber *)aPrimaryKey value:(NSString *)aValue weight:(NSInteger)wgt tagCloudValue:(NSInteger)cloudValue;
 
 @property (nonatomic, retain) NSString *value;
-@property NSInteger votes;
+@property NSInteger weight;
 @property NSInteger tagCloudValue;
-@property (nonatomic, retain) NSNumber *primaryKey;
+@property (nonatomic, retain) NSNumber *primaryId;
 @end

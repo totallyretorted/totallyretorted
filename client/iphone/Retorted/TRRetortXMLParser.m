@@ -6,20 +6,24 @@
 //  Copyright 2008 Forward Echo, LLC. All rights reserved.
 //
 
+
 #import "TRRetortXMLParser.h"
 #import "TRRetort.h"
 #import "TRRating.h"
+#import "TRTag.h"
+#import "TRAttribution.h"
+
 
 
 // Message listed to by TRReportFacade
 // Message sent to NC by TRRetortXMLParser
 NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataFinishedLoading"; //Listened by RetortFacade
-
+int const INVALID_PK = 8;
 
 @implementation TRRetortXMLParser
-@synthesize currentProperty;
+@synthesize currentTextNode;
 @synthesize currentRating, currentRetort, currentTag, currentAttribution;
-@synthesize retorts, tags;
+@synthesize retorts;//, tags;
 @synthesize canAppend;
 
 
@@ -62,49 +66,89 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 // Optional:  Use this if there is any preprocessing necessary that isn't handled in the init: method.
 - (void)parserDidStartDocument:(NSXMLParser *)parser {
 	NSLog(@"RetortXMLParser: started parsing document");
-	self.currentProperty = [[NSMutableString alloc] init];
+	//self.currentTextNode = [[NSMutableString alloc] init];
 	
 }
 
-
+#pragma mark -
+#pragma mark Start Element parsing
 // Called when the parser encounters a new element.  For Example: <myTag>
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
 	NSLog(@"RetortXMLParser: didStartElement: %@", elementName);
 	
 	canAppend = YES;
-	self.currentProperty = [[NSMutableString alloc] init];
+	if (self.currentTextNode != nil)		//maybe we just send it the message nil?
+	{
+		[self.currentTextNode release];
+	}
+	self.currentTextNode = [[NSMutableString alloc] init];
+	
+	if ([elementName isEqualToString:@"retorts"]) 
+	{
+		//create an array for retorts to be put into
+		self.retorts = [[NSMutableArray alloc] init];
+		return;
+	}
 		
 	// Primary objects...
 	if ([elementName isEqualToString:@"retort"]) {
-		// 1. create Retort Dictionary object and add it as active
-		// 2. NSString *idAtt = [attributeDict valueForKey:@"id"];
-		self.tags = [[NSMutableArray alloc] init];
+		//create new retort and set it's id attribute
+		self.currentRetort = [[TRRetort alloc] init];
 		
-		self.currentRetort = [[NSMutableDictionary alloc] init];
-
-		[self.currentRetort setObject:[attributeDict valueForKey:@"id"] forKey:@"id"];
-		[self.currentProperty release];
+		NSNumber *pid = [attributeDict valueForKey:@"id"];
+		if (pid != nil)
+			self.currentRetort.primaryId = pid;
+		else 
+			self.currentRetort.primaryId = [NSNumber numberWithInt: INVALID_PK];
+		
+		return;
+		
+	}
+	
+	if ([elementName isEqualToString:@"tags"]) 
+	{
+		//create a tags array and associate it with the current retort
+		NSMutableArray* ts = [[NSMutableArray alloc] init];
+		self.currentRetort.tags = ts;
+		
+		[ts release];
 		return;
 	}
+	
+	if ([elementName isEqualToString:@"tag"]) {
+		//create new tag object and add to currentRetort tag collection
+		self.currentTag = [[TRTag alloc] init];
+		
+		NSString *weight = [attributeDict valueForKey:@"weight"];
+		NSNumber *pid = [attributeDict valueForKey:@"id"];
+		
+		if (weight != nil) 
+			self.currentTag.weight = [weight intValue];
+
+		if (pid != nil)
+			self.currentTag.primaryId = pid;
+		else
+			self.currentTag.primaryId = [NSNumber numberWithInt: INVALID_PK];
+		
+		return;
+	}
+	
 	
 	if ([elementName isEqualToString:@"rating"]) {
 		self.currentRating = [[TRRating alloc] init];
-		[self.currentProperty release];
 		return;
 	}
 	
-	
-	if ([elementName isEqualToString:@"tag"]) {
-		// 1. create Retort Dictionary object and add it as active
-		// 2. NSString *idAtt = [attributeDict valueForKey:@"id"];
-		self.currentTag = [[NSMutableDictionary alloc] init];
-		[self.currentTag setObject:[attributeDict valueForKey:@"id"] forKey:@"id"];
-		[self.currentTag setObject:[attributeDict valueForKey:@"weight"] forKey:@"weight"];
-		[self.currentProperty release];
+
+	if ([elementName isEqualToString:@"attribution"]) 
+	{
+		//create an attribution and add it to the current retort
+		self.currentAttribution = [[TRAttribution alloc] init];
 		return;
 	}
 	
-	
+	//TODO: rating and subtags. rating has a child element with same name. that should be corrected.
+	NSLog(@"RetortXMLParser: Unknown element: %@.", elementName);
 }
 
 // Called when the parser encounters the closing tag of an element.  For Example: </myTag>
@@ -114,59 +158,104 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 	canAppend = NO;
 	
 	//primary objects...
-	if ([elementName isEqualToString:@"retort"]) {
-		
-		TRRetort *retort = [[TRRetort alloc] initWithDictionary:currentRetort];
-		[self.retorts addObject:retort];
-		NSLog(@"RetortXMLParser: adding %@ to retorts array: ", [retort description]);
-		
-		[retort release];
-		[self.currentRetort release];
+	
+	if ([elementName isEqualToString:@"retorts"]) 
+	{
+		return;
+	}
+	//===================
+	// RETORT node...
+	//===================
+	if ([elementName isEqualToString:@"retort"]) 
+	{
+		NSLog(@"RetortXMLParser: adding %@ to retorts array: ", [self.currentRetort description]);
+		[self.retorts addObject:self.currentRetort];
+		self.currentRetort = nil; //same as release - should remain retained by retorts array.
 		return;
 	}
 	
 	if ([elementName isEqualToString:@"content"]) {
-		[self.currentRetort setObject:self.currentProperty forKey:@"content"];
+		self.currentRetort.content = self.currentTextNode;
 		return;
 	}
 	
-	// RATINGS
+	//===================
+	// RATINGS node...
+	//===================
 	if ([elementName isEqualToString:@"positive"]) {
-		self.currentRating.positive = [self.currentProperty intValue];
+		self.currentRating.positive = [self.currentTextNode intValue];
 		return;
 	}
 	if ([elementName isEqualToString:@"negative"]) {
-		self.currentRating.negative = [self.currentProperty intValue];
+		self.currentRating.negative = [self.currentTextNode intValue];
 		return;
 	}
 	if ([elementName isEqualToString:@"rank"]) {
-		self.currentRating.rank = [self.currentProperty floatValue];
+		self.currentRating.rank = [self.currentTextNode floatValue];
 		return;
 	}
 	if ([elementName isEqualToString:@"rating"]) {
-		[self.currentRetort setObject:self.currentRating forKey:@"rating"];
+		self.currentRetort.rating = self.currentRating;
+		self.currentRating = nil; //same as release - should be retained by currentRetort.
 		NSLog(@"RetortXMLParser: Added rating");
-		self.currentRating = nil;
 		return;
 	}
 	
 	
 	
-	
-	// TAGS
+	//===================
+	// TAGS node...
+	//===================
 	if ([elementName isEqualToString:@"tag"]) {
-		[self.currentTag setObject:self.currentProperty forKey:@"value"];
-		[self.tags addObject:self.currentTag];
+		self.currentTag.value = self.currentTextNode;
+		[self.currentRetort.tags addObject:self.currentTag];
+		
 		NSLog(@"RetortXMLParser: adding tag to currentRetort");
-		[self.currentTag release];
+		self.currentTag = nil; //same as release - should be retained by currentRetort tag array.
 		return;
 	}
 	
 	if ([elementName isEqualToString:@"tags"]) {
-		[self.currentRetort setObject:self.tags forKey:@"tags"];
-		[self.tags release];
+		//array - already held by currentRetort object...
 		return;
 	}
+	
+	//======================
+	// ATTRIBUTIONS node...
+	//======================
+	if ([elementName isEqualToString:@"who"]) 
+	{
+		self.currentRetort.attribution.who = self.currentTextNode;
+		return;
+	}
+	if ([elementName isEqualToString:@"what"]) 
+	{
+		self.currentRetort.attribution.what = self.currentTextNode;
+		return;
+	}
+	if ([elementName isEqualToString:@"when"]) 
+	{
+		self.currentRetort.attribution.when = self.currentTextNode;
+		return;
+	}
+	if ([elementName isEqualToString:@"where"]) 
+	{
+		self.currentRetort.attribution.where = self.currentTextNode;
+		return;
+	}
+	if ([elementName isEqualToString:@"how"]) 
+	{
+		self.currentRetort.attribution.how = self.currentTextNode;
+		return;
+	}
+	if ([elementName isEqualToString:@"attribution"]) 
+	{
+		self.currentRetort.attribution = self.currentAttribution;
+		self.currentAttribution = nil; //same as release - should be retained by currentRetort.
+		NSLog(@"RetortXMLParser: Added attribution");
+		return;
+	}
+	
 
 	NSLog(@"RetortXMLParser: Unknown element: %@.", elementName);
 }
@@ -176,7 +265,7 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 	NSLog(@"RetortXMLParser: foundCharacters: %@", string);
 	
 	if (canAppend) {
-		[self.currentProperty appendString:string];
+		[self.currentTextNode appendString:string];
 	}
 }
 
@@ -202,8 +291,8 @@ NSString * const TRXMLRetortDataFinishedLoadingNotification = @"TRRawRetortDataF
 	self.currentRating = nil;
 	self.currentAttribution = nil;
 	self.retorts = nil;
-	self.tags = nil;
-	self.currentProperty = nil;
+	//self.tags = nil;
+	self.currentTextNode = nil;
 	
 	[super dealloc];
 }
