@@ -21,5 +21,11 @@
 	self.subject = nil;
 }
 
+- (void) testLoadURLFromString
+{
+	[subject loadURLFromString:@"http://localhost:3000/retorts/screenzero.xml"];
+	NSString* results = [NSString initWithData:[subject.xmlData mutableData] encoding:NSUTF8StringEncoding];
+	STAssertEqualObjects([results substringToIndex:10], [@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>" substringToIndex:10], nil);
+}
 
 @end
