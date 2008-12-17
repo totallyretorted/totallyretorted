@@ -8,7 +8,7 @@
 
 #import "TRTagCloudHelper.h"
 #import "TRTag.h"
-#import "SortMethods.h"
+#import "TRTagSorter.h"
 
 const NSInteger quantas = 5;
 
@@ -41,7 +41,7 @@ const NSInteger quantas = 5;
 		
 		//NSLog(@"element: %@", element);
 		//font-size percentage 200% to 50%
-		switch ([aTag.tagCloudValue intValue]) {
+		switch (aTag.tagCloudValue) {
 			case 0:
 				fontSize = 50;
 				break;

@@ -17,7 +17,6 @@
 		45812E760EF1C0B500FC2D21 /* tab-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 45812E750EF1C0B500FC2D21 /* tab-tag.png */; };
 		45812E910EF1D81400FC2D21 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 45812E900EF1D81400FC2D21 /* Default.png */; };
 		45B947670EF18C0E004C00EE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 45B947660EF18C0E004C00EE /* Icon.png */; };
-		DB0030B00EF09E9100404183 /* SortMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0030AF0EF09E9100404183 /* SortMethods.m */; };
 		DB0030BC0EF0A44F00404183 /* TRTagSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0030BB0EF0A44F00404183 /* TRTagSorter.m */; };
 		DB08FFA00EF2D7DE000FB1AB /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB08FF9F0EF2D7DE000FB1AB /* TagViewController.m */; };
 		DB08FFA50EF2D898000FB1AB /* TagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB08FFA40EF2D898000FB1AB /* TagView.xib */; };
@@ -42,6 +41,8 @@
 		DB1FD30C0EF1D39F0000E78E /* TRRetortXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */; };
 		DB59FE760EF8088700E59D12 /* FEUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126590EEF047300137EBC /* FEUrlHelper.m */; };
 		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
+		DB6DCA3F0EF8B0B5008C1C62 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6DCA3E0EF8B0B5008C1C62 /* SettingsView.xib */; };
+		DB6DCA420EF8B0D1008C1C62 /* TRViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6DCA410EF8B0D1008C1C62 /* TRViewHelper.m */; };
 		DB82EB940EF0963D007C507A /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB82EB930EF0963D007C507A /* FavoritesViewController.m */; };
 		DBDC5EE30EF091740055CD29 /* tab-favs.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE20EF091740055CD29 /* tab-favs.png */; };
 		DBDC5EE50EF0917C0055CD29 /* tab-five.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE40EF0917C0055CD29 /* tab-five.png */; };
@@ -85,8 +86,6 @@
 		45812E900EF1D81400FC2D21 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		45B947660EF18C0E004C00EE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB0030AE0EF09E9100404183 /* SortMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortMethods.h; sourceTree = "<group>"; };
-		DB0030AF0EF09E9100404183 /* SortMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortMethods.m; sourceTree = "<group>"; };
 		DB0030BA0EF0A44F00404183 /* TRTagSorter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTagSorter.h; sourceTree = "<group>"; };
 		DB0030BB0EF0A44F00404183 /* TRTagSorter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagSorter.m; sourceTree = "<group>"; };
 		DB08FF9E0EF2D7DE000FB1AB /* TagViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewController.h; sourceTree = "<group>"; };
@@ -128,6 +127,9 @@
 		DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortXMLParser.m; sourceTree = "<group>"; };
 		DB6849C70EF0257B0094CC24 /* CGPointUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointUtils.c; sourceTree = "<group>"; };
 		DB6849C80EF0257B0094CC24 /* CGPointUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointUtils.h; sourceTree = "<group>"; };
+		DB6DCA3E0EF8B0B5008C1C62 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		DB6DCA400EF8B0D1008C1C62 /* TRViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRViewHelper.h; sourceTree = "<group>"; };
+		DB6DCA410EF8B0D1008C1C62 /* TRViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRViewHelper.m; sourceTree = "<group>"; };
 		DB82EB920EF0963D007C507A /* FavoritesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		DB82EB930EF0963D007C507A /* FavoritesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		DBDC5EE20EF091740055CD29 /* tab-favs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-favs.png"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				DB1126BF0EEF28B600137EBC /* HomeView.xib */,
+				DB6DCA3E0EF8B0B5008C1C62 /* SettingsView.xib */,
 				DB141E980EF3864900868FAB /* FavoritesView.xib */,
 				DB1126C30EEF28E900137EBC /* RetortView.xib */,
 				DB08FFA40EF2D898000FB1AB /* TagView.xib */,
@@ -225,8 +228,8 @@
 		DB1126320EEEEC8700137EBC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				DB0030AE0EF09E9100404183 /* SortMethods.h */,
-				DB0030AF0EF09E9100404183 /* SortMethods.m */,
+				DB6DCA400EF8B0D1008C1C62 /* TRViewHelper.h */,
+				DB6DCA410EF8B0D1008C1C62 /* TRViewHelper.m */,
 				DB6849C70EF0257B0094CC24 /* CGPointUtils.c */,
 				DB6849C80EF0257B0094CC24 /* CGPointUtils.h */,
 				DB1126580EEF047300137EBC /* FEUrlHelper.h */,
@@ -404,6 +407,7 @@
 				DB08FFA50EF2D898000FB1AB /* TagView.xib in Resources */,
 				DCC9145C0EF2F67E0076F8C9 /* Properties.plist in Resources */,
 				DB141E990EF3864900868FAB /* FavoritesView.xib in Resources */,
+				DB6DCA3F0EF8B0B5008C1C62 /* SettingsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,12 +456,12 @@
 				DB1128680EEF618700137EBC /* TRTagCloudHelper.m in Sources */,
 				DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */,
 				DB82EB940EF0963D007C507A /* FavoritesViewController.m in Sources */,
-				DB0030B00EF09E9100404183 /* SortMethods.m in Sources */,
 				DB0030BC0EF0A44F00404183 /* TRTagSorter.m in Sources */,
 				DB1FD1650EF1950F0000E78E /* TRRetortFacade.m in Sources */,
 				DB1FD30C0EF1D39F0000E78E /* TRRetortXMLParser.m in Sources */,
 				DB08FFA00EF2D7DE000FB1AB /* TagViewController.m in Sources */,
 				DB141E280EF3758300868FAB /* SettingsViewController.m in Sources */,
+				DB6DCA420EF8B0D1008C1C62 /* TRViewHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

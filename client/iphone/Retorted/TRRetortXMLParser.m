@@ -2,6 +2,8 @@
 //  TRRetortXMLParser.m
 //  Retorted
 //
+//  TO BE REPLACED BY SOMETHING LIKE: http://code.google.com/p/touchcode/wiki/TouchXML
+//
 //  Created by B.J. Ray on 12/9/08.
 //  Copyright 2008 Forward Echo, LLC. All rights reserved.
 //
@@ -225,27 +227,27 @@ int const INVALID_PK = 8;
 	//======================
 	if ([elementName isEqualToString:@"who"]) 
 	{
-		self.currentRetort.attribution.who = self.currentTextNode;
+		self.currentAttribution.who = self.currentTextNode;
 		return;
 	}
 	if ([elementName isEqualToString:@"what"]) 
 	{
-		self.currentRetort.attribution.what = self.currentTextNode;
+		self.currentAttribution.what = self.currentTextNode;
 		return;
 	}
 	if ([elementName isEqualToString:@"when"]) 
 	{
-		self.currentRetort.attribution.when = self.currentTextNode;
+		self.currentAttribution.when = self.currentTextNode;
 		return;
 	}
 	if ([elementName isEqualToString:@"where"]) 
 	{
-		self.currentRetort.attribution.where = self.currentTextNode;
+		self.currentAttribution.where = self.currentTextNode;
 		return;
 	}
 	if ([elementName isEqualToString:@"how"]) 
 	{
-		self.currentRetort.attribution.how = self.currentTextNode;
+		self.currentAttribution.how = self.currentTextNode;
 		return;
 	}
 	if ([elementName isEqualToString:@"attribution"]) 

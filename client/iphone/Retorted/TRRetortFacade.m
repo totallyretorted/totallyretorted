@@ -89,6 +89,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	
 	TRRetortXMLParser *xmlParser = [[TRRetortXMLParser alloc] init];
 	NSLog(@"TRRetortFacade: Calling TRRetortXMLParser to parse XML.");
+	
 	[xmlParser parseRetortXML:aHelper.xmlData parseError:&parseError];
 	
 	//TODO: Do something with parseError

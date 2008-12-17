@@ -46,6 +46,29 @@
 	return self;
 }
 
+- (NSArray *)attributionListAsStringArray {
+	NSMutableArray *array = [[NSMutableArray alloc] init];
+	if ([self.attribution.who length] > 0) {
+		[array addObject:self.attribution.who];
+	}
+	
+	if ([self.attribution.what length] > 0) {
+		[array addObject:self.attribution.what];
+	}
+	if ([self.attribution.when length] > 0) {
+		[array addObject:self.attribution.when];
+	}
+	if ([self.attribution.where length] > 0) {
+		[array addObject:self.attribution.where];
+	}
+	if ([self.attribution.how length] > 0) {
+		[array addObject:self.attribution.how];
+	}
+	
+	[array autorelease];
+	return array;
+}
+
 - (NSString *)description {
 	return [NSString stringWithFormat:@"Retort Id: %@ has %d tags", self.primaryId, [self.tags count]];
 }

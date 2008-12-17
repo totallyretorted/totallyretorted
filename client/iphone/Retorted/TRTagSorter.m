@@ -11,13 +11,13 @@
 
 @implementation TRTagSorter
 
-- (NSInteger)sortViewByVoteAscendingWithLeftTag:(TRTag *)tagLeft rightTag:(TRTag *)tagRight {
-	int vl = [tagLeft votes];
-    int vr = [tagRight votes];
+- (NSInteger)sortViewByWeightAscendingWithLeftTag:(TRTag *)tagLeft rightTag:(TRTag *)tagRight {
+	int wgtLeft = [tagLeft weight];
+    int wgtRight = [tagRight weight];
     NSComparisonResult result;
-	if (vl < vr)
+	if (wgtLeft < wgtRight)
         result = NSOrderedAscending;
-    else if (vl > vr)
+    else if (wgtLeft > wgtRight)
         result = NSOrderedDescending;
     else
         result = NSOrderedSame;
@@ -26,8 +26,8 @@
 	
 }
 
-- (NSInteger)sortViewByVoteDescendingWithLeftTag:(TRTag *)tagLeft rightTag:(TRTag *)tagRight {
-	return (-[self sortViewByVoteAscendingWithLeftTag:tagLeft rightTag:tagRight]);
+- (NSInteger)sortViewByWeightDescendingWithLeftTag:(TRTag *)tagLeft rightTag:(TRTag *)tagRight {
+	return (-[self sortViewByWeightAscendingWithLeftTag:tagLeft rightTag:tagRight]);
 }
 
 - (NSInteger)sortViewByAlphaAscendingWithLeftTag:(TRTag *)tagLeft rightTag:(TRTag *)tagRight {

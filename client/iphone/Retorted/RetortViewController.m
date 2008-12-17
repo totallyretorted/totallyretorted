@@ -6,9 +6,19 @@
 //  Copyright 2008 Forward Echo, LLC. All rights reserved.
 //
 
+#define kStdWidth			204.0		//width for our content within the scroll view
+#define kStdOriginX			10.0		//how far to inset our text within the scroll view
+#define kStdOriginY			0.0			//how far to inset our text within the scroll view
+#define kAttrHeight			14.0		//the height of our attribution labels
+#define kAttrFontSize		12.0
+#define kStdFontSize		17.0		//the font size for our retort content
+#define kAttrSpacing		2.0			//spacing between attribution items
+#define kRetortBottomSpace	6.0
+
 #import "RetortViewController.h"
 #import "TRRetort.h"
 #import "CGPointUtils.h"		//calculates distance between points for pinches
+#import "TRViewHelper.h"		//use to determine size of label
 
 @implementation RetortViewController
 @synthesize retort, retortTitle;
@@ -35,13 +45,63 @@
 																			target:self 
 																			action:@selector(retortActionClick)];
 	
+	//prepare retort content view
+	int nextY = 0;	//holds the current height...
+
+	//calculate size of content...
+	float heightOfContent = [TRViewHelper calculateHeightOfText:self.retort.content 
+													   withFont:[UIFont systemFontOfSize:kStdFontSize] 
+														  width:kStdWidth 
+												  lineBreakMode:UILineBreakModeWordWrap];
+	
+	int rowsOfContent = ceil(heightOfContent / kStdFontSize);
+	nextY = heightOfContent + kRetortBottomSpace;	//sets the next origin y-point at kRetortBottomSpace pixels below the main content (retort).
+	NSLog(@"heightOfContent: %f, rows: %d", heightOfContent, rowsOfContent);
+	
+	//create a new content rect size based on size of retort...
+	CGRect retortContentFrame = CGRectMake(kStdOriginX, kStdOriginY, kStdWidth, heightOfContent);
+	
+	UILabel *retortLabel = [[UILabel alloc] initWithFrame:retortContentFrame];
+	//set up main content...
+	retortLabel.numberOfLines = rowsOfContent;
+	retortLabel.text = self.retort.content;
+	[retortContainer addSubview:retortLabel];
+	[retortLabel release];
+	//Do I need to adjust the size of the retort Rect?
+	
+	//set up attribution objects...
+	CGRect attrFrame;
+	for(NSString *attr in [self.retort attributionListAsStringArray]) {
+		attrFrame = CGRectMake(kStdOriginX, nextY, kStdWidth, kAttrHeight);
+		UILabel *attrLabel = [[UILabel alloc] initWithFrame:attrFrame];
+		
+		
+		attrLabel.text = attr;
+		attrLabel.textAlignment = UITextAlignmentRight;
+		attrLabel.textColor = [UIColor blueColor];
+		attrLabel.font = [UIFont boldSystemFontOfSize:kAttrFontSize];
+		[retortContainer addSubview:attrLabel];	//add as subview to scrollview
+		[attrLabel release];
+		
+		nextY = nextY + kAttrHeight + kAttrSpacing;
+	}
+	
+	NSLog(@"nextY: %d", nextY);
+	//determine overflow size of scroll view...
+	CGSize scrollSize = CGSizeMake(kStdWidth, nextY);
+	
+	//set up scroll view...
+	//[retortContainer setBackgroundColor:[UIColor blackColor]];
+	//retortContainer.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+	[retortContainer setContentSize:scrollSize];
+	
 }
 
 
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-	retortText.text = self.retort.content;
+	//retortText.text = self.retort.content;
     //[super viewDidLoad];
 	
 	self.title = @"Retort";

@@ -13,7 +13,8 @@
 #define kMinimumPinchDelta 100		//defines the minimum distance that constitues a pinch
 
 @interface RetortViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate> {
-	IBOutlet UITextView *retortText;
+	//IBOutlet UITextView *retortText;
+	IBOutlet UIScrollView *retortContainer;
 	IBOutlet UIWebView *tagCloud;
 	IBOutlet UISegmentedControl *ratingVote;
 	UIBarButtonItem *retortActionButton;

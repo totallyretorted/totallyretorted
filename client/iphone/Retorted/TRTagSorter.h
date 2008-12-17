@@ -21,8 +21,8 @@ typedef enum  {
 
 }
 
-- (NSInteger)sortViewByVoteAscendingWithLeftTag:(TRTag *)tagLeft rightTag:(TRTag *)tagRight;
-- (NSInteger)sortViewByVoteDescendingWithLeftTag:(TRTag *)tagLeft rightTag:(TRTag *)tagRight;
+- (NSInteger)sortViewByWeightAscendingWithLeftTag:(TRTag *)tagLeft rightTag:(TRTag *)tagRight;
+- (NSInteger)sortViewByWeightDescendingWithLeftTag:(TRTag *)tagLeft rightTag:(TRTag *)tagRight;
 
 
 - (NSInteger)sortViewByAlphaAscendingWithLeftTag:(TRTag *)tagLeft rightTag:(TRTag *)tagRight;
