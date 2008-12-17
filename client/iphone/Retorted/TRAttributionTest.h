@@ -11,7 +11,9 @@
 
 
 @interface TRAttributionTest : SenTestCase {
-
+@private TRAttribution *subject;
 }
 
+- (void)testAttributionListAsStringArray;
+- (void)testAttributionListAsStringArrayPartial;
 @end

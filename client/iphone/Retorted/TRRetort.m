@@ -47,6 +47,9 @@
 }
 
 - (NSArray *)attributionListAsStringArray {
+	
+	return [self.attribution attributionListAsStringArray];
+	/*
 	NSMutableArray *array = [[NSMutableArray alloc] init];
 	if ([self.attribution.who length] > 0) {
 		[array addObject:self.attribution.who];
@@ -67,6 +70,7 @@
 	
 	[array autorelease];
 	return array;
+	 */
 }
 
 - (NSString *)description {

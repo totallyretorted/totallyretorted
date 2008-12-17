@@ -18,6 +18,8 @@
 	NSNumber *retortId;
 }
 
+- (NSArray *)attributionListAsStringArray;
+
 @property(nonatomic, retain) NSString *who;
 @property(nonatomic, retain) NSString *what;
 @property(nonatomic, retain) NSString *when;
