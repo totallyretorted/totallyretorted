@@ -19,7 +19,6 @@
 	
 }
 
--(id)initWithDictionary:(NSDictionary *)aDictionary;
 - (NSArray *)attributionListAsStringArray;		//convenience method so classes don't have to know about attribution
 
 @property (nonatomic, retain) NSString *content;

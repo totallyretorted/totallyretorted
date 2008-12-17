@@ -231,6 +231,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -268,8 +270,8 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>DB141F440EF4A18D00868FAB</string>
-								<string>DB1126350EEEECB900137EBC</string>
 								<string>DB1126330EEEEC9100137EBC</string>
+								<string>DB1126320EEEEC8700137EBC</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FABC05509CD000000102</string>
@@ -277,13 +279,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>9</integer>
-									<integer>1</integer>
+									<integer>23</integer>
+									<integer>21</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {279, 678}}</string>
+							<string>{{0, 28}, {279, 678}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -313,14 +315,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TRAttributionTest.m</string>
+								<string>TRViewHelper.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,11 +328,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>TRAttributionTest.m</string>
+										<string>TRViewHelper.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>DB8246B70EF99F320036313B</string>
+										<string>DB8246C60EF9A5B90036313B</string>
 										<key>history</key>
 										<array>
 											<string>DB0031080EF0D04B00404183</string>
@@ -353,7 +353,6 @@
 											<string>DB3134B40EF6C06500DA383B</string>
 											<string>DB3134B50EF6C06500DA383B</string>
 											<string>DB3134ED0EF7273600DA383B</string>
-											<string>DB3134F00EF7273600DA383B</string>
 											<string>DB3134F40EF7273600DA383B</string>
 											<string>DB3134F60EF7273600DA383B</string>
 											<string>DB31350D0EF75E2900DA383B</string>
@@ -361,7 +360,6 @@
 											<string>DB3135290EF7610D00DA383B</string>
 											<string>DB6DCA4F0EF8B110008C1C62</string>
 											<string>DB6DCA500EF8B110008C1C62</string>
-											<string>DB6DCA510EF8B110008C1C62</string>
 											<string>DB8245800EF991470036313B</string>
 											<string>DB8245810EF991470036313B</string>
 											<string>DB8245820EF991470036313B</string>
@@ -370,14 +368,17 @@
 											<string>DB8245BB0EF992A30036313B</string>
 											<string>DB82462F0EF999850036313B</string>
 											<string>DB8246300EF999850036313B</string>
-											<string>DB8246320EF999850036313B</string>
-											<string>DB82464D0EF99C830036313B</string>
 											<string>DB82464F0EF99C830036313B</string>
 											<string>DB8246500EF99C830036313B</string>
 											<string>DB8246A50EF99E660036313B</string>
 											<string>DB8246A60EF99E660036313B</string>
 											<string>DB8246A70EF99E660036313B</string>
-											<string>DB8246A80EF99E660036313B</string>
+											<string>DB8246BB0EF9A5B90036313B</string>
+											<string>DB8246BC0EF9A5B90036313B</string>
+											<string>DB8246BD0EF9A5B90036313B</string>
+											<string>DB8246BE0EF9A5B90036313B</string>
+											<string>DB8246BF0EF9A5B90036313B</string>
+											<string>DB8246C00EF9A5B90036313B</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -464,6 +465,11 @@
 											<string>DB8246AB0EF99E660036313B</string>
 											<string>DB8246AC0EF99E660036313B</string>
 											<string>DB8246AD0EF99E660036313B</string>
+											<string>DB8246C10EF9A5B90036313B</string>
+											<string>DB8246C20EF9A5B90036313B</string>
+											<string>DB8246C30EF9A5B90036313B</string>
+											<string>DB8246C40EF9A5B90036313B</string>
+											<string>DB8246C50EF9A5B90036313B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
