@@ -37,24 +37,7 @@
 	return self;
 }
 
-- (id)initWithDictionary:(NSDictionary *)aDictionary {
-	if (![super init])
-		return nil;
-	//NSString *str = [aDictionary objectForKey:@"id"];
-	
-	
-	self.primaryId = [aDictionary objectForKey:@"id"];
-	self.value = [aDictionary objectForKey:@"value"];
-	NSString *wgt = [aDictionary objectForKey:@"weight"];
-	
-	self.weight = [wgt integerValue];
-	//self.votes = [(NSNumber)[aDictionary objectForKey:@"votes"] integerValue];
-	self.tagCloudValue = 0;
-	
-	NSLog(@"TRTag: Init tag: %@", self.value);
-	return self;
-}
-
+*/
 - (NSString *)description {
 	return [NSString stringWithFormat:@"%@", self.value];
 }

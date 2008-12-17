@@ -23,7 +23,7 @@
 	return self;
 }
 
-- (NSArray *)attributionListAsStringArray {s
+- (NSArray *)attributionListAsStringArray {
 	
 	return [self.attribution attributionListAsStringArray];
 }
