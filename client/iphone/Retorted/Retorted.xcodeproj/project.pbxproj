@@ -51,6 +51,7 @@
 		DC2519CA0EF86AAD00B84B66 /* TRRetortXMLParserTest_testStandardXml.xml in Resources */ = {isa = PBXBuildFile; fileRef = DC2519C90EF86AAD00B84B66 /* TRRetortXMLParserTest_testStandardXml.xml */; };
 		DC2519CC0EF86AE700B84B66 /* TRRetortXMLParserTest_testSuperSimpleXML.xml in Resources */ = {isa = PBXBuildFile; fileRef = DC2519CB0EF86AE700B84B66 /* TRRetortXMLParserTest_testSuperSimpleXML.xml */; };
 		DC251A3D0EF9992800B84B66 /* TRAttributionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DC251A3C0EF9992800B84B66 /* TRAttributionTest.m */; };
+		DC251A420EF99DC400B84B66 /* TRRetortTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DC251A410EF99DC400B84B66 /* TRRetortTest.m */; };
 		DC620DB70EF85D260043E7BF /* TRAttribution.m in Sources */ = {isa = PBXBuildFile; fileRef = DB11263A0EEEED5600137EBC /* TRAttribution.m */; };
 		DC77CA050EF6F9250083F5CA /* TRRetortXMLParserTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DC77CA040EF6F9250083F5CA /* TRRetortXMLParserTest.m */; };
 		DC77CA6F0EF7206D0083F5CA /* UnitTest Help.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DB141F720EF4A3FF00868FAB /* UnitTest Help.rtf */; };
@@ -141,6 +142,8 @@
 		DC2519CB0EF86AE700B84B66 /* TRRetortXMLParserTest_testSuperSimpleXML.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TRRetortXMLParserTest_testSuperSimpleXML.xml; sourceTree = "<group>"; };
 		DC251A3B0EF9992800B84B66 /* TRAttributionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAttributionTest.h; sourceTree = "<group>"; };
 		DC251A3C0EF9992800B84B66 /* TRAttributionTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAttributionTest.m; sourceTree = "<group>"; };
+		DC251A400EF99DC400B84B66 /* TRRetortTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetortTest.h; sourceTree = "<group>"; };
+		DC251A410EF99DC400B84B66 /* TRRetortTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortTest.m; sourceTree = "<group>"; };
 		DC77CA030EF6F9250083F5CA /* TRRetortXMLParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetortXMLParserTest.h; sourceTree = "<group>"; };
 		DC77CA040EF6F9250083F5CA /* TRRetortXMLParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortXMLParserTest.m; sourceTree = "<group>"; };
 		DCC9145B0EF2F67E0076F8C9 /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Properties.plist; sourceTree = "<group>"; };
@@ -317,6 +320,8 @@
 				DC2519CB0EF86AE700B84B66 /* TRRetortXMLParserTest_testSuperSimpleXML.xml */,
 				DC251A3B0EF9992800B84B66 /* TRAttributionTest.h */,
 				DC251A3C0EF9992800B84B66 /* TRAttributionTest.m */,
+				DC251A400EF99DC400B84B66 /* TRRetortTest.h */,
+				DC251A410EF99DC400B84B66 /* TRRetortTest.m */,
 			);
 			name = UnitTests;
 			sourceTree = "<group>";
@@ -485,6 +490,7 @@
 				DC77CA050EF6F9250083F5CA /* TRRetortXMLParserTest.m in Sources */,
 				DC620DB70EF85D260043E7BF /* TRAttribution.m in Sources */,
 				DC251A3D0EF9992800B84B66 /* TRAttributionTest.m in Sources */,
+				DC251A420EF99DC400B84B66 /* TRRetortTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

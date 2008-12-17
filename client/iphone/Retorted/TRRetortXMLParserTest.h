@@ -14,8 +14,8 @@
 #import "TRAttribution.h"
 
 @interface TRRetortXMLParserTest : SenTestCase {
-@private TRRetortXMLParser*	subject;
-@private NSError *err;
+TRRetortXMLParser*	subject;
+NSError *err;
 }
 
 - (void) testParseSuperSimpleXml;
