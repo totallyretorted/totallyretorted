@@ -39,6 +39,7 @@
 		DB141F730EF4A3FF00868FAB /* UnitTest Help.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DB141F720EF4A3FF00868FAB /* UnitTest Help.rtf */; };
 		DB1FD1650EF1950F0000E78E /* TRRetortFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */; };
 		DB1FD30C0EF1D39F0000E78E /* TRRetortXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */; };
+		DB4A01540EF9ABFB00DFEE96 /* FEUrlHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB4A01530EF9ABFB00DFEE96 /* FEUrlHelperTest.m */; };
 		DB59FE760EF8088700E59D12 /* FEUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126590EEF047300137EBC /* FEUrlHelper.m */; };
 		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
 		DB6DCA3F0EF8B0B5008C1C62 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6DCA3E0EF8B0B5008C1C62 /* SettingsView.xib */; };
@@ -127,6 +128,8 @@
 		DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortFacade.m; sourceTree = "<group>"; };
 		DB1FD30A0EF1D39F0000E78E /* TRRetortXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetortXMLParser.h; sourceTree = "<group>"; };
 		DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortXMLParser.m; sourceTree = "<group>"; };
+		DB4A01520EF9ABFB00DFEE96 /* FEUrlHelperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEUrlHelperTest.h; sourceTree = "<group>"; };
+		DB4A01530EF9ABFB00DFEE96 /* FEUrlHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEUrlHelperTest.m; sourceTree = "<group>"; };
 		DB6849C70EF0257B0094CC24 /* CGPointUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointUtils.c; sourceTree = "<group>"; };
 		DB6849C80EF0257B0094CC24 /* CGPointUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointUtils.h; sourceTree = "<group>"; };
 		DB6DCA3E0EF8B0B5008C1C62 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
@@ -236,8 +239,8 @@
 			children = (
 				DB6DCA400EF8B0D1008C1C62 /* TRViewHelper.h */,
 				DB6DCA410EF8B0D1008C1C62 /* TRViewHelper.m */,
-				DB6849C70EF0257B0094CC24 /* CGPointUtils.c */,
 				DB6849C80EF0257B0094CC24 /* CGPointUtils.h */,
+				DB6849C70EF0257B0094CC24 /* CGPointUtils.c */,
 				DB1126580EEF047300137EBC /* FEUrlHelper.h */,
 				DB1126590EEF047300137EBC /* FEUrlHelper.m */,
 				DB1128660EEF618700137EBC /* TRTagCloudHelper.h */,
@@ -322,6 +325,8 @@
 				DC251A3C0EF9992800B84B66 /* TRAttributionTest.m */,
 				DC251A400EF99DC400B84B66 /* TRRetortTest.h */,
 				DC251A410EF99DC400B84B66 /* TRRetortTest.m */,
+				DB4A01520EF9ABFB00DFEE96 /* FEUrlHelperTest.h */,
+				DB4A01530EF9ABFB00DFEE96 /* FEUrlHelperTest.m */,
 			);
 			name = UnitTests;
 			sourceTree = "<group>";
@@ -491,6 +496,7 @@
 				DC620DB70EF85D260043E7BF /* TRAttribution.m in Sources */,
 				DC251A3D0EF9992800B84B66 /* TRAttributionTest.m in Sources */,
 				DC251A420EF99DC400B84B66 /* TRRetortTest.m in Sources */,
+				DB4A01540EF9ABFB00DFEE96 /* FEUrlHelperTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
