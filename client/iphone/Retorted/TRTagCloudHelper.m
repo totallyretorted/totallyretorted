@@ -68,7 +68,7 @@ const NSInteger quantas = 5;
 		
 	}
 	
-	//TODO: memory leak?
+	[html autorelease];
 	return html;
 }
 
