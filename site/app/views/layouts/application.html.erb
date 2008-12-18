@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Retorted Totally!</title>
+		<link rel="stylesheet" type="text/css" href="/stylesheets/retorted.css">
+		<%= stylesheet_link_tag 'retorted' %>
+		<%= javascript_include_tag 'curvycorners', 'settings' %>
+	</head>
+	<body>
+		<div id="doc2">
+			<div id="hd">
+				<div class="yui-b">
+					<a href="#">WTF?!</a>
+					<a href="#">Knock yourself a pro slick</a>
+					<a href="#">Visit The Keymaster of Gozer</a>
+				</div>
+			</div>
+			<div id="bd">
+				<%= yield :layout %>
+			</div>
+			<div id="ft">&copy; ThoughtSyndicate LLC. All Rights Reserved.</div>
+		</div>
+	</body>
+</html>
