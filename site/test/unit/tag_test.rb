@@ -1,8 +1,6 @@
 require 'test_helper'
 
-class TagTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  
+class TagTest < ActiveSupport::TestCase  
   test "weight" do
     retorts=[]
     
@@ -50,13 +48,8 @@ class TagTest < ActiveSupport::TestCase
  end
   
   test "tag weight" do
-    #assert_equal 6, Tag.find_by_value("south_park").length
-    #assert_equal 5, Tag.find_by_value("cartman").length
-    #assert_equal 1, Tag.find_by_value("chef").length
-    assert true
-  end
-  
-  test "the truth" do
-    assert true
+    assert_equal Tag.find_by_value("south_park").retorts.length, Tag.find_by_value("south_park").weight
+    assert_equal Tag.find_by_value("cartman").retorts.length, Tag.find_by_value("cartman").weight
+    assert_equal Tag.find_by_value("chef").retorts.length, Tag.find_by_value("chef").weight
   end
 end
