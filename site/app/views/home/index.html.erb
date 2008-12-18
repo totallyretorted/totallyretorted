@@ -1,4 +1,4 @@
-<script type="text/JavaScript">
+<script type="text/javascript">
 	window.onload = function() {
 	  new curvyCorners(settings, "pop").applyCornersToAll();
 	}
@@ -8,19 +8,18 @@
 		<ul>
 		<% if @retorts and @retorts.size > 0 %>	
 		<% for retort in @retorts %>
-			<li><a href="#"><%= retort.content %></a><span class="qr"><img onclick="" src="/images/gt.png"></span></li>
+			<%= render :partial => "li", :locals => { :r => retort }%>
 		<% end %>
 		<% else %>	
-			<li><a href="#">My cousin Belo is a reeetard.</a><span class="qr"><img onclick="" src="/images/gt.png"></span></li>
-			<li><a href="#">Retort 2</a><span class="qr"><img onclick="" src="/images/gt.png"></span></li>
-			<li><a href="#">Retort 3</a><span class="qr"><img onclick="" src="/images/gt.png"></span></li>
-			<li><a href="#">Retort 4</a><span class="qr"><img onclick="" src="/images/gt.png"></span></li>
-			<li><a href="#">Retort 5</a><span class="qr"><img onclick="" src="/images/gt.png"></span></li>
+			<% ["My cousin Belo is a reeetard!", "WTF?", "C'mon now, squeal!  Squeal now!  SQWEEE!!!"].each do |c| %>
+				<%= render :partial => "li", :locals => { :r => Retort.new(:content => c) } %>
+			<% end %>
 		<% end %>
 		</ul>
 	</div>
 </div>
 <div class="yui-g cloud">
-	<a href="#" class="t1">Tag 1</a><a href="#" class="t2">Tag 2</a><a href="#" class="t3">Tag 3</a><a href="#" class="t4">Tag 4</a>
-	<a href="#">Tag</a><a href="#">Tag</a><a href="#">Tag</a><a href="#">Tag</a><a href="#">Tag</a>
+	<% for tag in @tags %>
+		<a href="#" class="<%= "t#{tag.tier}" %>"><%= tag.value %></a>
+	<% end %>
 </div>

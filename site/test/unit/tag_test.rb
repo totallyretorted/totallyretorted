@@ -52,4 +52,10 @@ class TagTest < ActiveSupport::TestCase
     assert_equal Tag.find_by_value("cartman").retorts.length, Tag.find_by_value("cartman").weight
     assert_equal Tag.find_by_value("chef").retorts.length, Tag.find_by_value("chef").weight
   end
+  
+  test "tag tiering" do
+    assert_equal 1, Tag.find_by_value("south_park").tier
+    assert_equal 2, Tag.find_by_value("cartman").tier
+    assert_equal 3, Tag.find_by_value("chef").tier
+  end
 end
