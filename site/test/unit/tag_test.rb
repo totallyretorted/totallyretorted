@@ -4,7 +4,6 @@ class TagTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   
   test "weight" do
-    
     retorts=[]
     
     {1=>"shant", 2=>"alex", 3=>"jay"}.each do |k,v|

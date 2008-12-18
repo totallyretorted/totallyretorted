@@ -3,19 +3,22 @@ class Retort < ActiveRecord::Base
   has_and_belongs_to_many :tags
   belongs_to :rating
   
+  def self.find_highly_regarded
+    Retort.find(:all, :limit => 100)
+  end
+  
   def self.screenzero_retorts
     randomRetorts=[]
     
-    retorts=Retort.find(:all, :limit =>100)
+    retorts = Retort.find_highly_regarded
 
     5.times{
-      index=rand(retorts.length)
-      randomRetorts<<retorts[index]
+      index = rand(retorts.length)
+      randomRetorts << retorts[index]
       retorts.slice!(index)
-   }
+    }
     
     randomRetorts
-    
   end
 
   def to_xml(options ={}, &block)
