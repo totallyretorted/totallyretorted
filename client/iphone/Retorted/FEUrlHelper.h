@@ -15,9 +15,11 @@ extern NSString * const FEDataFailedLoadingNotification;
 	NSMutableData *xmlData;
 }
 - (void) loadURLFromString:(NSString *)sUrl;		//POST with standard HTML content-type
-- (void) loadURLFromString:(NSString *)sUrl			//specify the httpmethod and content-type
+- (void)loadURLFromString:(NSString *)sUrl			//specify the httpmethod and content-type
 		  withContentType:(NSString *)contentType 
-			   HTTPMethod:(NSString *)method;
+			   HTTPMethod:(NSString *)method
+					 body:(NSString *)httpBody;
+
 
 @property(nonatomic, retain) NSMutableData *xmlData;
 @end

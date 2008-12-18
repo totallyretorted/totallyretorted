@@ -70,7 +70,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	
 	
 	FEUrlHelper *aHelper = [[FEUrlHelper alloc] init];
-	[aHelper loadURLFromString:retortsURL withContentType:@"application/xml" HTTPMethod:@"GET"];
+	[aHelper loadURLFromString:retortsURL withContentType:@"application/xml" HTTPMethod:@"GET" body:nil];
 	
 	/* Steps necessary
 	 

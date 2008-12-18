@@ -22,7 +22,7 @@ NSString * const FEDataFailedLoadingNotification = @"DWDataFailedLoading";
 	return self;
 }
 
-- (void)loadURLFromString:(NSString *)sUrl withContentType:(NSString *)contentType HTTPMethod:(NSString *)method {
+- (void)loadURLFromString:(NSString *)sUrl withContentType:(NSString *)contentType HTTPMethod:(NSString *)method body:(NSString *)httpBody {
 	NSLog(@"UrlHelper: loadUrlFromString: called");
 	NSURL *url = [[NSURL alloc] initWithString:sUrl];
 	NSLog(@"UrlHelper: created url...");
@@ -34,6 +34,12 @@ NSString * const FEDataFailedLoadingNotification = @"DWDataFailedLoading";
 	
 	[request setHTTPMethod:method];												//for example, POST or GET
 	[request setValue:contentType forHTTPHeaderField:@"Content-Type"];			//for example: @"application/xml"
+	
+	
+	if ((httpBody != nil) && ([httpBody length] > 0)) {
+		[request setHTTPBody:[httpBody dataUsingEncoding:NSUTF8StringEncoding]];
+	}
+	
 	//[request setHTTPBody:[[self xml] dataUsingEncoding:NSUTF8StringEncoding]];
 	
 	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -50,7 +56,7 @@ Issue: NSURLRequest will not handle XML, so we will need to use NSXMLParser.
  See the SeismicXML example for further details.
 */
 - (void)loadURLFromString: (NSString *) sUrl {
-	[self loadURLFromString:sUrl withContentType:@"text/html" HTTPMethod:@"GET"];
+	[self loadURLFromString:sUrl withContentType:@"text/html" HTTPMethod:@"GET" body:nil];
 }
 
 - (void)connectionDidFinishLoading: (NSURLConnection *)connection {
