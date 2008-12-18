@@ -13,7 +13,7 @@ extern NSString * const TRRetortDataFinishedLoadingNotification;
 
 @interface TRRetortFacade : NSObject {
 	NSMutableArray *retorts;	
-	@private NSDictionary *properties;
+	NSDictionary *properties;
 	BOOL loadSuccessful;
 }
 

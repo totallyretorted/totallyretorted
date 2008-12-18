@@ -13,8 +13,14 @@
 
 NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishedLoading";
 
+@interface TRRetortFacade()
+@property(nonatomic, retain)NSDictionary *properties;
+@end
+
+
 @implementation TRRetortFacade
 @synthesize retorts, loadSuccessful;
+@synthesize properties;
 
 - (id)init {
 	if (![super init]) {

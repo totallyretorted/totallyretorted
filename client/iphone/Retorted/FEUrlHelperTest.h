@@ -12,7 +12,7 @@
 @interface FEUrlHelperTest : NSObject {
 	FEUrlHelper *subject;
 }
-
+- (void) testLoadURLFromString;
 @property (nonatomic, retain) FEUrlHelper *subject;
 
 @end

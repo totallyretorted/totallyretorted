@@ -49,6 +49,8 @@
 		DBDC5EE50EF0917C0055CD29 /* tab-five.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE40EF0917C0055CD29 /* tab-five.png */; };
 		DBDC5EE70EF091890055CD29 /* tab-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE60EF091890055CD29 /* tab-settings.png */; };
 		DBDC5EEA0EF091B80055CD29 /* NavBarLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE90EF091B80055CD29 /* NavBarLogo.png */; };
+		DBDC62040EF9CA4D009B876E /* TRFavoriteFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDC62030EF9CA4D009B876E /* TRFavoriteFacade.m */; };
+		DBDC620A0EF9CBB0009B876E /* TRFavoriteFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = DBDC62030EF9CA4D009B876E /* TRFavoriteFacade.m */; };
 		DC2519CA0EF86AAD00B84B66 /* TRRetortXMLParserTest_testStandardXml.xml in Resources */ = {isa = PBXBuildFile; fileRef = DC2519C90EF86AAD00B84B66 /* TRRetortXMLParserTest_testStandardXml.xml */; };
 		DC2519CC0EF86AE700B84B66 /* TRRetortXMLParserTest_testSuperSimpleXML.xml in Resources */ = {isa = PBXBuildFile; fileRef = DC2519CB0EF86AE700B84B66 /* TRRetortXMLParserTest_testSuperSimpleXML.xml */; };
 		DC251A3D0EF9992800B84B66 /* TRAttributionTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DC251A3C0EF9992800B84B66 /* TRAttributionTest.m */; };
@@ -142,6 +144,8 @@
 		DBDC5EE40EF0917C0055CD29 /* tab-five.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-five.png"; sourceTree = "<group>"; };
 		DBDC5EE60EF091890055CD29 /* tab-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-settings.png"; sourceTree = "<group>"; };
 		DBDC5EE90EF091B80055CD29 /* NavBarLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavBarLogo.png; sourceTree = "<group>"; };
+		DBDC62020EF9CA4D009B876E /* TRFavoriteFacade.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRFavoriteFacade.h; sourceTree = "<group>"; };
+		DBDC62030EF9CA4D009B876E /* TRFavoriteFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRFavoriteFacade.m; sourceTree = "<group>"; };
 		DC2519C90EF86AAD00B84B66 /* TRRetortXMLParserTest_testStandardXml.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TRRetortXMLParserTest_testStandardXml.xml; sourceTree = "<group>"; };
 		DC2519CB0EF86AE700B84B66 /* TRRetortXMLParserTest_testSuperSimpleXML.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TRRetortXMLParserTest_testSuperSimpleXML.xml; sourceTree = "<group>"; };
 		DC251A3B0EF9992800B84B66 /* TRAttributionTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAttributionTest.h; sourceTree = "<group>"; };
@@ -254,6 +258,8 @@
 				DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */,
 				DB1FD1630EF1950F0000E78E /* TRRetortFacade.h */,
 				DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */,
+				DBDC62020EF9CA4D009B876E /* TRFavoriteFacade.h */,
+				DBDC62030EF9CA4D009B876E /* TRFavoriteFacade.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -482,6 +488,7 @@
 				DB08FFA00EF2D7DE000FB1AB /* TagViewController.m in Sources */,
 				DB141E280EF3758300868FAB /* SettingsViewController.m in Sources */,
 				DB6DCA420EF8B0D1008C1C62 /* TRViewHelper.m in Sources */,
+				DBDC620A0EF9CBB0009B876E /* TRFavoriteFacade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +510,7 @@
 				DC251A420EF99DC400B84B66 /* TRRetortTest.m in Sources */,
 				DC251A880EF9AA0900B84B66 /* TRRatingTest.m in Sources */,
 				DB4A01540EF9ABFB00DFEE96 /* FEUrlHelperTest.m in Sources */,
+				DBDC62040EF9CA4D009B876E /* TRFavoriteFacade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
