@@ -46,6 +46,21 @@
 
 
 - (void) testLoadURLFromString
+{
+	NSURL *url = [[NSURL alloc] initWithString:sUrl];	
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+	[request setHTTPMethod:method];
+	[request setValue:contentType forHTTPHeaderField:@"Content-Type"];
+	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+	[connection release];
+	[request release];
+	[url release];
+	
+	
+}
+
+/*
+- (void) testLoadURLFromString
 {	
 	[subject loadURLFromString:@"http://localhost:3000/retorts/screenzero"];	 
 	 //NSString* results = [[NSString alloc] initWithData:[subject.xmlData mutableBytes] encoding:NSUTF8StringEncoding];
@@ -54,12 +69,12 @@
 	 NSString* control_string = @"<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 	 const char* control_string_utf8 = [control_string UTF8String];
 	 NSMutableData* control = [NSMutableData dataWithBytes:control_string_utf8 length:strlen(control_string_utf8)];
-	 STAssertEqualObjects(results, control, nil);
-	 
+	 STAssertEqualObjects(results, control, nil);	 
 	 //NSString* results = [[NSString alloc] initWithData:result_data encoding:NSUnicodeStringEncoding];
 	 //STAssertEqualObjects([results substringToIndex:10], [@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>" substringToIndex:10], nil);
 	
 }
+ */
 
 - (void) completeTestLoadURLFromString: (NSNotification *) note{
 
