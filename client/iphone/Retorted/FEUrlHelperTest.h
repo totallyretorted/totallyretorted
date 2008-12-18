@@ -2,17 +2,18 @@
 //  FEUrlHelperTest.h
 //  Retorted
 //
-//  Created by B.J. Ray on 12/17/08.
+//  Created by Adam Strickland on 12/17/08.
 //  Copyright 2008 Forward Echo, LLC. All rights reserved.
 //
 
 #import "GTMSenTestCase.h"
-@class FEUrlHelper;
+#import "FEUrlHelper.h"
 
-@interface FEUrlHelperTest : NSObject {
-	FEUrlHelper *subject;
+
+@interface FEUrlHelperTest : SenTestCase {
+	FEUrlHelper* subject;
+	NSNotificationCenter *nc;
 }
 - (void) testLoadURLFromString;
-@property (nonatomic, retain) FEUrlHelper *subject;
-
+- (void) completeTestLoadURLFromString:(NSNotification*) note;
 @end
