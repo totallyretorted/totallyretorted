@@ -3,20 +3,33 @@ class Retort < ActiveRecord::Base
   has_and_belongs_to_many :tags
   belongs_to :rating
   
+  def self.quote_borat
+    r = Retort.new
+    r.content = RetortsHelper::quote_borat
+    r
+  end
+  
   def self.find_highly_regarded
     Retort.find(:all, :limit => 100)
   end
   
   def self.screenzero_retorts
     randomRetorts=[]
+    num_retorts = 5
     
     retorts = Retort.find_highly_regarded
+    if retorts.size < num_retorts
+      first_index = retorts.size
+      (first_index..num_retorts).each do |i|
+        retorts << Retort.quote_borat
+      end
+    end
 
-    5.times{
+    num_retorts.times do
       index = rand(retorts.length)
       randomRetorts << retorts[index]
       retorts.slice!(index)
-    }
+    end
     
     randomRetorts
   end
