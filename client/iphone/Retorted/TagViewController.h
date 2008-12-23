@@ -2,15 +2,26 @@
 //  TagViewController.h
 //  Retorted
 //
-//  Created by B.J. Ray on 12/12/08.
-//  Copyright 2008 Forward Echo, LLC. All rights reserved.
+//  Created by a on 12/23/08.
+//  Copyright 2008 Forward Echo LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+@class TRTagFacade;
 
-
-@interface TagViewController : UIViewController <UIWebViewDelegate> {
-	IBOutlet UIWebView *tagCould;
+@interface TagViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+	NSMutableArray *tags;
+	TRTagFacade *tagFacade;
+	IBOutlet UILabel *loadFailurelbl;
+	IBOutlet UITableView *tagsView;
 }
+
+@property (nonatomic, retain) NSMutableArray *tags;
+@property (nonatomic, retain) TRTagFacade *tagFacade;
+@property (nonatomic, retain) UITableView *tagsView;
+@property (nonatomic, retain) UILabel *loadFailurelbl;
+
+-(void) loadURL;
+-(void) handleDataLoad:(NSNotification *)note;
 
 @end
