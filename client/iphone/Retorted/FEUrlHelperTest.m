@@ -47,16 +47,14 @@
 
 - (void) testLoadURLFromString
 {
-	NSURL *url = [[NSURL alloc] initWithString:sUrl];	
+	NSURL *url = [[NSURL alloc] initWithString:@"http://localhost:3000/retorts/screenzero.xml"];	
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-	[request setHTTPMethod:method];
-	[request setValue:contentType forHTTPHeaderField:@"Content-Type"];
+	[request setHTTPMethod:@"GET"];
+	[request setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
 	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	[connection release];
 	[request release];
-	[url release];
-	
-	
+	[url release];	
 }
 
 /*
