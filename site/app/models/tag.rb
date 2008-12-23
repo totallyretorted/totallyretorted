@@ -1,38 +1,11 @@
 class Tag < ActiveRecord::Base
   has_and_belongs_to_many :retorts
-  
-  # def weight
-  #   @count=0
-  #   retorts=Retort.find(:all)
-  #   
-  #   retorts.each do |retort|
-  #     retort.tags.each do |tag|
-  #       if tag.value==self.value
-  #         @count+=1  
-  #         break
-  #       end
-  #     end
-  #   end
-  #   @count
-  # end
+  attr_accessor :cloud_tier
+  alias :tier :cloud_tier
   
   def weight
     self.retorts.size
   end
-  
-  def tier
-    all_tags = Tag.find(:all).sort!{|x,y| y.weight<=>x.weight}
-    (all_tags.index(self))+1
-  end
-  
-  # def tier(set_of_tags=[])
-  #   set_of_tags ||= Tag.find(:all)
-  #   Tag.quantify(self, set_of_tags)
-  # end
-  # 
-  # def self.quantify(tag, set_of_tags)
-  #   set_of_tags.sort!{ |x,y| x.weight <=> y.weight }
-  # end
   
   def to_xml(options ={}, &block)
     xml = options[:builder] || Builder::XmlMarkup.new
@@ -40,6 +13,18 @@ class Tag < ActiveRecord::Base
   end
   
   def self.tagcloud_tags
-    Tag.find(:all)
+    Tag.find(:all, :limit => 50)
+  end
+  
+  def self.create_tagcloud(tag_population=Tag.tagcloud_tags)
+    tags = []
+    tiers = TagsHelper::quantify_tags(tag_population)
+    tiers.each do |tier, tagarray|
+      tagarray.each do |tag|
+        tag.cloud_tier = tier.to_s[5,1].to_i
+        tags << tag
+      end
+    end
+    tags
   end
 end

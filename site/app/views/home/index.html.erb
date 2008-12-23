@@ -19,7 +19,7 @@
 	</div>
 </div>
 <div class="yui-g cloud">
-	<% for tag in @tags %>
-		<a href="#" class="<%= "t#{tag.tier}" %>"><%= tag.value %></a>
+	<% for tag in @tagcloud %>
+		<a href="#" class="<%= "t#{tag.tier}" %>"><%= tag.value.camelize %></a>
 	<% end %>
 </div>

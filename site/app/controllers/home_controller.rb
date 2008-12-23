@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @retorts = Retort.screenzero_retorts
-    @tags = Tag.tagcloud_tags
+    @tagcloud = Tag.create_tagcloud.sort_by{rand}
 
     respond_to do |format|
       format.html # index.html.erb

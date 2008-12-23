@@ -53,9 +53,53 @@ class TagTest < ActiveSupport::TestCase
     assert_equal Tag.find_by_value("chef").retorts.length, Tag.find_by_value("chef").weight
   end
   
-  test "tag tiering" do
-    assert_equal 1, Tag.find_by_value("south_park").tier
-    assert_equal 2, Tag.find_by_value("cartman").tier
-    assert_equal 3, Tag.find_by_value("chef").tier
+  # test "tag tiering" do
+  #    assert_equal 1, Tag.find_by_value("south_park").tier
+  #    assert_equal 2, Tag.find_by_value("cartman").tier
+  #    assert_equal 3, Tag.find_by_value("chef").tier
+  #  end
+  
+  test "advanced tag tiering" do
+    tag_pop = [1, 3, 24, 17, 12, 6, 14]
+    
+    tag_pop.max.times do |i|
+      r = Retort.new(:content => i.to_s)
+      r.save!
+    end
+
+    tags = []
+    tag_pop.each do |i|
+      t = Tag.new(:value => i.to_s)
+      i.times do |j|
+        t.retorts << Retort.find_by_content(j.to_s)
+      end
+      t.save!
+      tags << t
+    end
+    
+    tags.each do |t|
+      assert_equal t.value, t.weight.to_s
+    end
+    
+    tiers = TagsHelper::quantify_tags(tags)
+    assert_equal 0, tiers[:tier_1].size
+    assert_equal 1, tiers[:tier_2].size
+    assert_equal "24", tiers[:tier_2][0].value
+    assert_equal 3, tiers[:tier_3].size
+    assert_equal ["17", "14", "12"], tiers[:tier_3].sort!{|x,y| y.weight<=>x.weight}.collect{|t| t.value}
+    assert_equal 1, tiers[:tier_4].size
+    assert_equal "6", tiers[:tier_4][0].value
+    assert_equal 2, tiers[:tier_5].size
+    assert_equal ["3", "1"], tiers[:tier_5].sort!{|x,y| y.weight<=>x.weight}.collect{|t| t.value}
+    assert_equal 0, tiers[:tier_6].size
+  end
+  
+  test "create tagcloud" do
+    tagcloud = Tag.create_tagcloud
+    assert_not_nil tagcloud
+    spk_hash = {:one => [1], :two => [2], :three => [3, 4]}
+    assert_equal 3, spk_hash.size
+    assert_equal 4, spk_hash.values.flatten!.size
+    assert_equal Tag.tagcloud_tags.size, tagcloud.size
   end
 end
