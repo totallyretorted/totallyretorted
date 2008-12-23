@@ -69,7 +69,7 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 					</object>
-					<object class="NSArray" key="IBUIViewControllers">
+					<object class="NSMutableArray" key="IBUIViewControllers">
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="IBUIViewController" id="484898208">
 							<object class="IBUINavigationItem" key="IBUINavigationItem" id="749381035">
@@ -122,31 +122,6 @@
 						</object>
 						<reference key="IBUIParentViewController" ref="1034742383"/>
 						<string key="IBUINibName">TagView</string>
-					</object>
-					<object class="IBUINavigationController" id="316614064">
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="698198430">
-							<int key="IBUISystemItemIdentifier">1</int>
-						</object>
-						<reference key="IBUIParentViewController" ref="1034742383"/>
-						<object class="IBUINavigationBar" key="IBUINavigationBar" id="1065261530">
-							<nil key="NSNextResponder"/>
-							<int key="NSvFlags">256</int>
-							<string key="NSFrameSize">{320, 44}</string>
-							<bool key="IBUIOpaque">NO</bool>
-							<bool key="IBUIClipsSubviews">YES</bool>
-							<bool key="IBUIMultipleTouchEnabled">YES</bool>
-							<int key="IBUIBarStyle">1</int>
-						</object>
-						<object class="NSMutableArray" key="IBUIViewControllers">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUIViewController" id="220056042">
-								<object class="IBUINavigationItem" key="IBUINavigationItem" id="982718249">
-									<string key="IBUITitle">Item</string>
-								</object>
-								<reference key="IBUIParentViewController" ref="316614064"/>
-								<string key="IBUINibName">FavoritesView</string>
-							</object>
-						</object>
 					</object>
 					<reference ref="232196937"/>
 				</object>
@@ -227,7 +202,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="795333663"/>
 							<reference ref="1032586965"/>
-							<reference ref="316614064"/>
 							<reference ref="169036512"/>
 							<reference ref="232196937"/>
 						</object>
@@ -278,42 +252,6 @@
 						<int key="objectID">128</int>
 						<reference key="object" ref="980457024"/>
 						<reference key="parent" ref="1032586965"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">129</int>
-						<reference key="object" ref="316614064"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="698198430"/>
-							<reference ref="220056042"/>
-							<reference ref="1065261530"/>
-						</object>
-						<reference key="parent" ref="1034742383"/>
-						<string key="objectName">Favorites</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">130</int>
-						<reference key="object" ref="698198430"/>
-						<reference key="parent" ref="316614064"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">131</int>
-						<reference key="object" ref="220056042"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="982718249"/>
-						</object>
-						<reference key="parent" ref="316614064"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">132</int>
-						<reference key="object" ref="982718249"/>
-						<reference key="parent" ref="220056042"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">133</int>
-						<reference key="object" ref="1065261530"/>
-						<reference key="parent" ref="316614064"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">144</int>
@@ -376,7 +314,6 @@
 					<string>106.IBPluginDependency</string>
 					<string>107.IBPluginDependency</string>
 					<string>126.CustomClassName</string>
-					<string>131.CustomClassName</string>
 					<string>144.CustomClassName</string>
 					<string>148.CustomClassName</string>
 					<string>2.IBAttributePlaceholdersKey</string>
@@ -393,7 +330,6 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>HomeViewController</string>
-					<string>FavoritesViewController</string>
 					<string>TagViewController</string>
 					<string>SettingsViewController</string>
 					<object class="NSMutableDictionary">
@@ -437,14 +373,6 @@
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">FavoritesViewController</string>
-					<string key="superclassName">UITableViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">FavoritesViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
 					<string key="className">HomeViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="outlets">
@@ -465,6 +393,13 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/HomeViewController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">GTMSenTestCase.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

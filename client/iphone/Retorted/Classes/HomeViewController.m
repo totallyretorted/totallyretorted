@@ -112,7 +112,7 @@
 	NSLog(@"HomeViewController: handleDataLoad received.");
 	TRRetortFacade *aFacade = [note object];
 	
-	if (aFacade.loadSuccessful) {
+	if ((aFacade.loadSuccessful) && ([aFacade.retorts count] > 0)) {
 		self.tagCloud.hidden = NO;
 		self.retortsView.hidden = NO;
 		self.loadFailureMessage.hidden = YES;
