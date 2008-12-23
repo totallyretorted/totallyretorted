@@ -25,7 +25,7 @@ int const INVALID_PK = 8;
 @implementation TRRetortXMLParser
 @synthesize currentTextNode;
 @synthesize currentRating, currentRetort, currentTag, currentAttribution;
-@synthesize retorts;//, tags;
+@synthesize retorts, tags;
 @synthesize canAppend;
 
 
@@ -111,7 +111,13 @@ int const INVALID_PK = 8;
 	{
 		//create a tags array and associate it with the current retort
 		NSMutableArray* ts = [[NSMutableArray alloc] init];
-		self.currentRetort.tags = ts;
+		
+		if (self.currentRetort != nil) {
+			self.currentRetort.tags = ts;
+		} else {
+			//parsing tags url because there is no retort nodes
+			self.tags = ts;
+		}
 		
 		[ts release];
 		return;
@@ -210,7 +216,13 @@ int const INVALID_PK = 8;
 	//===================
 	if ([elementName isEqualToString:@"tag"]) {
 		self.currentTag.value = self.currentTextNode;
-		[self.currentRetort.tags addObject:self.currentTag];
+		if (self.currentRetort != nil) {
+			[self.currentRetort.tags addObject:self.currentTag];
+		} else {
+			//parsing tags url because there is no retort nodes
+			[self.tags addObject:self.currentTag];
+		}
+		
 		
 		NSLog(@"RetortXMLParser: adding tag to currentRetort");
 		self.currentTag = nil; //same as release - should be retained by currentRetort tag array.
@@ -218,7 +230,7 @@ int const INVALID_PK = 8;
 	}
 	
 	if ([elementName isEqualToString:@"tags"]) {
-		//array - already held by currentRetort object...
+		//array - already held by currentRetort object or tags array...
 		return;
 	}
 	

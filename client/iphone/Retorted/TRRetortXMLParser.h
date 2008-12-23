@@ -24,6 +24,7 @@ extern NSString * const TRXMLRetortDataFinishedLoadingNotification;
 	
 	NSMutableString *currentTextNode;
 	NSMutableArray *retorts;
+	NSMutableArray *tags;		//hold as independent array when only parsing tags, not retorts
 
 	BOOL canAppend;
 	
@@ -40,6 +41,7 @@ extern NSString * const TRXMLRetortDataFinishedLoadingNotification;
 
 @property (nonatomic, retain) NSMutableString *currentTextNode;
 @property (nonatomic, retain) NSMutableArray *retorts;
+@property (nonatomic, retain) NSMutableArray *tags;
 
 //@property (nonatomic, retain) NSMutableDictionary *currentRetort;
 //@property (nonatomic, retain) NSMutableDictionary *currentTag;
