@@ -1,0 +1,7 @@
+<script type="text/javascript">
+	window.onload = function() {
+	  <% for id in ids %>
+		new curvyCorners(settings, "<%= id %>").applyCornersToAll();
+	  <% end %>
+	}
+</script>
