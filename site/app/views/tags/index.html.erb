@@ -1,20 +1,23 @@
-<h1>Listing tags</h1>
-
-<table>
-  <tr>
-    <th>Value</th>
-  </tr>
-
-<% for tag in @tags %>
-  <tr>
-    <td><%=h tag.value %></td>
-    <td><%= link_to 'Show', tag %></td>
-    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-    <td><%= link_to 'Destroy', tag, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New tag', new_tag_path %>
+<%= render :partial => "common/curvy_corners", :locals => { :ids => ["pop"] } %>
+<div class="yui-g">
+	<div class="controls">
+		<div id="create"><%= link_to 'New', new_tag_path %></div>
+		<div id="alphalinks"></div>
+		<div id="search">
+			<input id="search" name="search" type="text" value="">
+			<%= observe_field 'search',  :frequency => 0.5, :update => 'results', :url => { :action=> 'search' }, :with => "'search=' + escape(value)" %>
+			<div id="results" class="results"></div>
+		</div>
+	</div>
+	<div class="pop">
+		<% if @tags and @tags.size > 0 %>
+			<ul>	
+			<% for tag in @tags %>
+				<%= render :partial => "li", :locals => { :t => tag }%>
+			<% end %>
+			</ul>
+		<% else %>
+			<span style="width:100%;text-align:center">No tags defined</span>
+		<% end %>
+	</div>
+</div>

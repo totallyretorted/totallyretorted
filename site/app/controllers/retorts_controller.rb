@@ -29,6 +29,7 @@ class RetortsController < ApplicationController
   # GET /retorts/1.xml
   def show
     @retort = Retort.find(params[:id])
+    @tagcloud = Tag.create_tagcloud(@retort.tags).sort_by{rand}
 
     respond_to do |format|
       format.html # show.html.erb

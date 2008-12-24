@@ -4,6 +4,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Retorted Totally!</title>
 		<%= stylesheet_link_tag 'retorted' %>
+		<%= stylesheet_link_tag 'retorted_dev' %>
+		<%= javascript_include_tag  :defaults %> 
 		<%= javascript_include_tag 'curvycorners', 'settings' %>
 	</head>
 	<body>
@@ -18,7 +20,7 @@
 			<div id="bd">
 				<%= yield :layout %>
 			</div>
-			<div id="ft">&copy; ThoughtSyndicate LLC. All Rights Reserved.</div>
+			<div id="ft">&copy; 2008, Forward Echo LLC. All Rights Reserved.</div>
 		</div>
 	</body>
 </html>

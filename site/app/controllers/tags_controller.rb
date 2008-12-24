@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.xml
   def index
-    @tags = Tag.find(:all)
+    @tags = Tag.find(:all, :order => "value ASC" )
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,7 +17,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @tag }
+      format.xml  { render :xml => @tag.to_xml({:deep => true}) }
     end
   end
 
@@ -82,4 +82,22 @@ class TagsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
+      # 
+      # <!-- <input id="search" name="search" type="text" value="">
+      # <%= observe_field 'search',  :frequency => 0.5, :update => 'target_id', :url => { :controller => 'tags', :action=> 'search' }, :with => "'search=' + escape(value)" %>
+      # <div class="search_results" id="target_id"></div> -->
+  # def search
+  #   if @params['search']
+  #     #@items_pages, @items = paginate :items,:order_by => 'description',:conditions => [ 'LOWER(description) LIKE ?','%' + @params['search'].downcase + '%' ], :per_page => 20
+  #     #@mark_term = @params['search']
+  #     @tags_pages, @tags = paginate :tags, :order_by => 'value ASC', :conditions => ['LOWER(description) LIKE ?', '%'+@params['search'].downcase+'%'], :per_page => 20
+  #     @mark_term = @params['search']
+  #     render_without_layout
+  #   else
+  #     @tags_pages, @tags = paginate :tags, :order_by => 'value ASC', :per_page => 20
+  #     #@items_pages, @items = paginate :items, :order_by => 'description', :per_page => 20
+  #   end
+  # end
 end

@@ -1,8 +1,9 @@
-<p>
-  <b>Content:</b>
-  <%=h @retort.content %>
-</p>
-
-
-<%= link_to 'Edit', edit_retort_path(@retort) %> |
-<%= link_to 'Back', retorts_path %>
+<%= render :partial => "common/curvy_corners", :locals => { :ids => ["pop"] } %>
+<div class="yui-g">
+	<div class="pop"><%= @retort.content %></div>
+</div>
+<div class="yui-g cloud">
+	<% for tag in @tagcloud %>
+		<%= link_to tag.value.camelize, tag, {:class => "t#{tag.tier}"} %>
+	<% end %>
+</div>

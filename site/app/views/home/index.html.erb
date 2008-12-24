@@ -1,14 +1,10 @@
-<script type="text/javascript">
-	window.onload = function() {
-	  new curvyCorners(settings, "pop").applyCornersToAll();
-	}
-</script>
+<%= render :partial => "common/curvy_corners", :locals => { :ids => ["pop"] } %>
 <div class="yui-g">
 	<div class="pop">
 		<ul>
 		<% if @retorts and @retorts.size > 0 %>	
 		<% for retort in @retorts %>
-			<%= render :partial => "li", :locals => { :r => retort }%>
+			<%= render :partial => "retorts/li", :locals => { :r => retort }%>
 		<% end %>
 		<% else %>	
 			<% ["My cousin Belo is a reeetard!", "WTF?", "C'mon now, squeal!  Squeal now!  SQWEEE!!!"].each do |c| %>
@@ -20,6 +16,6 @@
 </div>
 <div class="yui-g cloud">
 	<% for tag in @tagcloud %>
-		<a href="#" class="<%= "t#{tag.tier}" %>"><%= tag.value.camelize %></a>
+		<%= link_to tag.value.camelize, tag, {:class => "t#{tag.tier}"} %>
 	<% end %>
 </div>

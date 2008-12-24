@@ -20,10 +20,25 @@ module ApplicationHelper
       self.mean = mean
       self.variance = (s / n)
       self.sample_variance = (s / (n - 1))
-      self.standard_deviation = Math.sqrt(self.variance)
-      self.sample_standard_deviation = Math.sqrt(self.sample_variance)
+      
+      if (self.variance and self.variance > 0)
+        self.standard_deviation = Math.sqrt(self.variance)
+      else
+        self.standard_deviation = 0.0
+      end
+
+      if (self.sample_variance and self.sample_variance > 0) 
+        self.sample_standard_deviation = Math.sqrt(self.sample_variance) 
+      else
+        self.sample_standard_deviation = 0.0 
+      end
+      
       self.size = n
       self.sample = s
     end
+  end
+  
+  def curvy_corners(divs=[], options={})
+    render :partial => "common/curvy_corners", :locals => {:ids => divs}    
   end
 end

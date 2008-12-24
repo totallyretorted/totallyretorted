@@ -1,8 +1,15 @@
-<p>
-  <b>Value:</b>
-  <%=h @tag.value %>
-</p>
-
-
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+<%= render :partial => "common/curvy_corners", :locals => { :ids => ["pop"] } %>
+<div class="yui-g">
+	<div class="heading"><%= @tag.name %></div>
+	<div class="pop">
+		<% if @tag.retorts and @tag.retorts.size > 0 %>
+			<ul>
+			<% for r in @tag.retorts %>
+				<%= render :partial => "retorts/li", :locals => { :r => r }%>
+			<% end %>
+			</ul>
+		<% else %>
+			<span style="width:100%;text-align:center">No retorts assigned</span>
+		<% end %>
+	</div>
+</div>
