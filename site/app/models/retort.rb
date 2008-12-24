@@ -4,8 +4,21 @@ class Retort < ActiveRecord::Base
   belongs_to :rating
   
   def self.quote_borat
-    r = Retort.new
-    r.content = RetortsHelper::quote_borat
+    # quote = RetortsHelper::quote_borat
+    # r = Retort.find_by_content(quote)
+    # if r
+    #   r
+    # else
+    #   r = Retort.new(:content => quote)
+    #   r.tags << Tag.load("borat")
+    #   r.save
+    #   r
+    # end
+    r = Retort.find_or_create_by_content(:content => RetortsHelper::quote_borat)
+    if r.tags and r.tags.size == 0
+      r.tags << Tag.find_or_create_by_value(:value => "borat")
+    end
+    r.save
     r
   end
   
@@ -14,7 +27,7 @@ class Retort < ActiveRecord::Base
   end
   
   def self.screenzero_retorts
-    randomRetorts=[]
+    randomRetorts = []
     num_retorts = 5
     
     retorts = Retort.find_highly_regarded

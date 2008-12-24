@@ -3,13 +3,26 @@ class Tag < ActiveRecord::Base
   attr_accessor :cloud_tier
   alias :tier :cloud_tier
   
+  def name
+    self.value.camelize
+  end
+  
   def weight
     self.retorts.size
   end
   
   def to_xml(options ={}, &block)
     xml = options[:builder] || Builder::XmlMarkup.new
-    xml.tag(self.value, :id => self.id, :weight => self.weight)
+    xml.tag(:id => self.id, :weight => self.weight){
+      xml.value(self.value)
+      if options[:deep]
+        xml.retorts{
+          self.retorts.each{ |retort| 
+            retort.to_xml(:builder => xml)
+          }
+        }
+      end
+    }
   end
   
   def self.tagcloud_tags
