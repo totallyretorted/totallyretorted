@@ -1,6 +1,21 @@
 require 'test_helper'
 
 class TagTest < ActiveSupport::TestCase  
+  test "xml" do
+    t = Tag.find_or_create_by_value("south_park")
+    t.retorts << Retort.find_or_create_by_content("Fuck you, Cartman")
+    t.save
+    
+    doc = Hpricot::XML(t.to_xml)
+    assert (doc/:tag).size >= 1
+    assert_equal t.id, (doc/:tag)[0].attributes["id"].to_i
+    
+    doc = Hpricot::XML(t.to_xml({:deep => true}))
+    assert (doc/:tag).size >= 1
+    assert_equal t.id, (doc/:tag)[0].attributes["id"].to_i
+    assert_equal 1, doc.search("/tag/retorts/retort/content[text()='Fuck you, Cartman']").size
+  end
+  
   test "weight" do
     retorts=[]
     

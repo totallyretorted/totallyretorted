@@ -51,40 +51,25 @@ class RetortTest < ActiveSupport::TestCase
     assert_equal "<retort id=\"123\"><content>Foo</content></retort>", r.to_xml
   end
   
-  test "to_xml (deep)" do
-    r = Retort.new(:content => "Screw you guys I'm going home")
-    r.id = 123
-    t = Tag.new(:value => "south_park")
-    t.id = 99
-    r.tags << t
-    t = Tag.new(:value => "cartman")
-    t.id = 100
-    r.tags << t
-    a = Attribution.new(:id => 42, :who => "Cartman", :where => "South Park")
-    a.id = 42
-    r.attribution = a
-    rt = Rating.new(:id => 88, :positive => 1, :negative => 0)
-    rt.id = 88
-    r.rating = rt 
+  test "deep xml" do
+    r = Retort.find_or_create_by_content(:content => "Screw you guys I'm going home")
+    r.tags << Tag.find_or_create_by_value(:value => "south_park")
+    r.tags << Tag.find_or_create_by_value(:value => "cartman")
+    r.attribution = Attribution.new(:who => "Cartman", :where => "South Park")
+    r.rating = Rating.new(:positive => 1, :negative => 0)
+    r.save
     
-    xml = Builder::XmlMarkup.new
-    xml.retort(:id => 123) do
-      xml.content("Screw you guys I'm going home")
-      xml.tags do
-        xml.tag("south_park", :id => 99, :weight =>100)
-        xml.tag("cartman", :id => 100, :weight=>200)
-      end
-      xml.attribution(:id => 42) do
-        xml.who("Cartman")
-        xml.where("South Park")
-      end
-      xml.rating(:id => 88) do
-        xml.positive(1)
-        xml.negative(0)
-        xml.rating(1)
-      end
-    end
-    assert_equal xml, r.to_xml
+    doc = Hpricot::XML(r.to_xml)
+    assert_equal "Screw you guys I'm going home", (doc/:retort/:content).inner_html
+    assert_equal "South Park", (doc/:retort/:attribution/:where).inner_html
+    assert_equal "Cartman", (doc/:retort/:attribution/:who).inner_html
+    assert_equal 1, (doc/:retort/:rating/:positive).inner_html.to_i
+    assert_equal 0, (doc/:retort/:rating/:negative).inner_html.to_i
+    assert_equal 0, (doc/:retort/:rating/:rating).inner_html.to_i
+    tags = doc.search("//retort/tags/tag")
+    assert_equal 2, tags.size
+    assert_equal "south_park", (tags[0]/:value).inner_html
+    assert_equal "cartman", (tags[1]/:value).inner_html
   end
   
   test "from_xml" do
