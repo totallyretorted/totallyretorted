@@ -44,6 +44,7 @@
 		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
 		DB6DCA3F0EF8B0B5008C1C62 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6DCA3E0EF8B0B5008C1C62 /* SettingsView.xib */; };
 		DB6DCA420EF8B0D1008C1C62 /* TRViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6DCA410EF8B0D1008C1C62 /* TRViewHelper.m */; };
+		DBC6E4450F0322950041E319 /* TRTagFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA75410F01666A00B1ED9C /* TRTagFacade.m */; };
 		DBDC5EE30EF091740055CD29 /* tab-favs.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE20EF091740055CD29 /* tab-favs.png */; };
 		DBDC5EE50EF0917C0055CD29 /* tab-five.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE40EF0917C0055CD29 /* tab-five.png */; };
 		DBDC5EE70EF091890055CD29 /* tab-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE60EF091890055CD29 /* tab-settings.png */; };
@@ -505,6 +506,7 @@
 				DC251A880EF9AA0900B84B66 /* TRRatingTest.m in Sources */,
 				DC9D942C0EF9C4E100F372F4 /* FEUrlHelperTest.m in Sources */,
 				76EA764F0F01A7D900B1ED9C /* TRTagFacadeTest.m in Sources */,
+				DBC6E4450F0322950041E319 /* TRTagFacade.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

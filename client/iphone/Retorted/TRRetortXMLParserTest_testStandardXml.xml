@@ -13,8 +13,12 @@
       <rank>0.479378172588832</rank>
     </rating>
     <tags>
-      <tag weight="6" id="1">south_park</tag>
-      <tag weight="5" id="3">cartman</tag>
+      <tag weight="6" id="1">
+		<value>south_park</value>
+	  </tag>
+      <tag weight="5" id="3">
+		<value>cartman</value>
+	  </tag>
     </tags>
   </retort>
   <retort id="3">
@@ -30,8 +34,12 @@
       <rank>0.375</rank>
     </rating>
     <tags>
-      <tag weight="6" id="1">south_park</tag>
-      <tag weight="5" id="3">cartman</tag>
+      <tag weight="6" id="1">
+		<value>south_park</value>
+	  </tag>
+      <tag weight="5" id="3">
+		<value>cartman</value>
+	  </tag>
     </tags>
   </retort>
   <retort id="1">
@@ -47,8 +55,12 @@
       <rank>0.666666666666667</rank>
     </rating>
     <tags>
-      <tag weight="6" id="1">south_park</tag>
-      <tag weight="5" id="3">cartman</tag>
+      <tag weight="6" id="1">
+		<value>south_park</value>
+	  </tag>
+      <tag weight="5" id="3">
+		<value>cartman</value>
+	  </tag>
     </tags>
   </retort>
   <retort id="2">
@@ -64,8 +76,12 @@
       <rank>0.333333333333333</rank>
     </rating>
     <tags>
-      <tag weight="6" id="1">south_park</tag>
-      <tag weight="1" id="2">chef</tag>
+      <tag weight="6" id="1">
+		<value>south_park</value>
+	  </tag>
+      <tag weight="1" id="2">
+		<value>chef</value>
+	  </tag>
     </tags>
   </retort>
   <retort id="4">
@@ -81,8 +97,12 @@
       <rank>0.693651654910472</rank>
     </rating>
     <tags>
-      <tag weight="6" id="1">south_park</tag>
-      <tag weight="5" id="3">cartman</tag>
+      <tag weight="6" id="1">
+		<value>south_park</value>
+	  </tag>
+      <tag weight="5" id="3">
+		<value>cartman</value>
+	  </tag>
     </tags>
   </retort>
 </retorts>
