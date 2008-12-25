@@ -44,7 +44,7 @@
 }
 */
 
-
+/*
 - (void) testLoadURLFromString
 {
 	NSURL *url = [[NSURL alloc] initWithString:@"http://localhost:3000/retorts/screenzero.xml"];	
@@ -56,7 +56,8 @@
 	[request release];
 	[url release];	
 }
-
+*/
+ 
 /*
 - (void) testLoadURLFromString
 {	

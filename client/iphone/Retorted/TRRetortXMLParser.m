@@ -215,15 +215,6 @@ int const INVALID_PK = 8;
 	// TAGS node...
 	//===================
 	if ([elementName isEqualToString:@"tag"]) {
-		self.currentTag.value = self.currentTextNode;
-		if (self.currentRetort != nil) {
-			[self.currentRetort.tags addObject:self.currentTag];
-		} else {
-			//parsing tags url because there is no retort nodes
-			[self.tags addObject:self.currentTag];
-		}
-		
-		
 		NSLog(@"RetortXMLParser: adding tag to currentRetort");
 		self.currentTag = nil; //same as release - should be retained by currentRetort tag array.
 		return;
@@ -233,6 +224,19 @@ int const INVALID_PK = 8;
 		//array - already held by currentRetort object or tags array...
 		return;
 	}
+	
+	
+	//12.24.2008: Added to account form change in Tags xml schema.
+	if ([elementName isEqualToString:@"value"]) {
+		self.currentTag.value = self.currentTextNode;
+		if (self.currentRetort != nil) {
+			[self.currentRetort.tags addObject:self.currentTag];
+		} else {
+			//parsing tags url because there is no retort nodes
+			[self.tags addObject:self.currentTag];
+		}
+	}
+	
 	
 	//======================
 	// ATTRIBUTIONS node...
