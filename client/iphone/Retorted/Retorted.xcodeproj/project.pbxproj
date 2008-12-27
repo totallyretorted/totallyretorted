@@ -42,6 +42,8 @@
 		DB1FD30C0EF1D39F0000E78E /* TRRetortXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */; };
 		DB59FE760EF8088700E59D12 /* FEUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126590EEF047300137EBC /* FEUrlHelper.m */; };
 		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
+		DB6D147E0F05E6F400FE89B0 /* TagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC6E44B0F05D7D70041E319 /* TagCellView.m */; };
+		DB6D147F0F05E70300FE89B0 /* TagCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6D14100F05D9F000FE89B0 /* TagCellView.xib */; };
 		DB6DCA3F0EF8B0B5008C1C62 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6DCA3E0EF8B0B5008C1C62 /* SettingsView.xib */; };
 		DB6DCA420EF8B0D1008C1C62 /* TRViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6DCA410EF8B0D1008C1C62 /* TRViewHelper.m */; };
 		DBC6E4450F0322950041E319 /* TRTagFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA75410F01666A00B1ED9C /* TRTagFacade.m */; };
@@ -135,9 +137,12 @@
 		DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortXMLParser.m; sourceTree = "<group>"; };
 		DB6849C70EF0257B0094CC24 /* CGPointUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointUtils.c; sourceTree = "<group>"; };
 		DB6849C80EF0257B0094CC24 /* CGPointUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointUtils.h; sourceTree = "<group>"; };
+		DB6D14100F05D9F000FE89B0 /* TagCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCellView.xib; sourceTree = "<group>"; };
 		DB6DCA3E0EF8B0B5008C1C62 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		DB6DCA400EF8B0D1008C1C62 /* TRViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRViewHelper.h; sourceTree = "<group>"; };
 		DB6DCA410EF8B0D1008C1C62 /* TRViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRViewHelper.m; sourceTree = "<group>"; };
+		DBC6E44A0F05D7D70041E319 /* TagCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCellView.h; sourceTree = "<group>"; };
+		DBC6E44B0F05D7D70041E319 /* TagCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCellView.m; sourceTree = "<group>"; };
 		DBDC5EE20EF091740055CD29 /* tab-favs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-favs.png"; sourceTree = "<group>"; };
 		DBDC5EE40EF0917C0055CD29 /* tab-five.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-five.png"; sourceTree = "<group>"; };
 		DBDC5EE60EF091890055CD29 /* tab-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-settings.png"; sourceTree = "<group>"; };
@@ -224,6 +229,7 @@
 				DB6DCA3E0EF8B0B5008C1C62 /* SettingsView.xib */,
 				DB1126C30EEF28E900137EBC /* RetortView.xib */,
 				DB08FFA40EF2D898000FB1AB /* TagView.xib */,
+				DB6D14100F05D9F000FE89B0 /* TagCellView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -287,6 +293,8 @@
 				DB141E270EF3758300868FAB /* SettingsViewController.m */,
 				76EA75670F0181C000B1ED9C /* TagViewController.h */,
 				76EA75680F0181C000B1ED9C /* TagViewController.m */,
+				DBC6E44A0F05D7D70041E319 /* TagCellView.h */,
+				DBC6E44B0F05D7D70041E319 /* TagCellView.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -430,6 +438,7 @@
 				DB08FFA50EF2D898000FB1AB /* TagView.xib in Resources */,
 				DCC9145C0EF2F67E0076F8C9 /* Properties.plist in Resources */,
 				DB6DCA3F0EF8B0B5008C1C62 /* SettingsView.xib in Resources */,
+				DB6D147F0F05E70300FE89B0 /* TagCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +493,7 @@
 				DB6DCA420EF8B0D1008C1C62 /* TRViewHelper.m in Sources */,
 				76EA75420F01666A00B1ED9C /* TRTagFacade.m in Sources */,
 				76EA75690F0181C000B1ED9C /* TagViewController.m in Sources */,
+				DB6D147E0F05E6F400FE89B0 /* TagCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

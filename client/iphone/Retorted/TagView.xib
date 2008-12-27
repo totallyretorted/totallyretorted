@@ -41,9 +41,9 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{320, 367}</string>
 						<reference key="NSSuperview" ref="1002835363"/>
-						<object class="NSColor" key="IBUIBackgroundColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
+						<object class="NSColor" key="IBUIBackgroundColor" id="349031634">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MCAwIDAAA</bytes>
 						</object>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -65,10 +65,7 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="IBUIText">Label</string>
-						<object class="NSColor" key="IBUITextColor" id="349031634">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MCAwIDAAA</bytes>
-						</object>
+						<reference key="IBUITextColor" ref="349031634"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">1.000000e+01</float>
@@ -193,7 +190,7 @@
 					<string>TagViewController</string>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{116, 342}, {320, 480}}</string>
+					<string>{{381, 271}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{69, 472}, {320, 247}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

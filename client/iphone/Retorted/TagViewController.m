@@ -9,6 +9,7 @@
 #import "TagViewController.h"
 #import "TRTagFacade.h"
 #import "TRTag.h"
+#import "TagCellView.h"		//our custom cell view class
 
 @implementation TagViewController
 @synthesize tags, tagFacade, tagsView, loadFailurelbl;
@@ -26,6 +27,7 @@
 - (void)viewDidLoad {
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+	
 	
 	NSNotificationCenter *nc =[NSNotificationCenter defaultCenter];
 	[nc addObserver:self 
@@ -89,18 +91,40 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"CustomTagCellIdentifier";
+	//static NSString *CellIdentifier = @"Cell";
+
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	TagCellView *cell = (TagCellView *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	//UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	
+	
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+        //cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+		
+		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TagCellView" owner:self options:nil];
+		cell = [nib objectAtIndex:0];		//file's owner is at index 0
+		
     }
-    
+
+	
     // Set up the cell...
     TRTag *aTag = [self.tags objectAtIndex:indexPath.row];
-	cell.text=aTag.value;
+	
+	if (aTag != nil) {
+		if (aTag.value != nil) {
+			cell.tagName.text = aTag.value;
+		}
+		cell.tagCount.text = [NSString stringWithFormat:@"%d", aTag.weight];
+	}
+	
+	//cell.text=aTag.value;
 	
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 65; //kTableCellViewRowHeight;
 }
 
 
@@ -163,6 +187,7 @@
 	if(tagF.loadSucessful && [tagF.tags count]>0)
 	{
 		self.tagsView.hidden=NO;
+		
 		self.loadFailurelbl.hidden=YES;
 		self.tags=tagF.tags;
 		[self.tagsView reloadData];
