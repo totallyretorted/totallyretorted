@@ -1,6 +1,1 @@
-<li>
-	<div class="tag">
-		<span class="tagvalue"><%= t.value %></span>
-		<span calss="tagweight">weight: <%= t.weight %></span>
-	</div>
-</li>
+<li><%= link_to "#{t.value} (#{t.weight})", tag_path(t) %></li>

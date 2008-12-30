@@ -3,7 +3,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :ratings
 
-  map.resources :tags
+  map.resources :tags, :collection => { :search => :get }
+  map.tags_by_alpha 'tags/alpha/:letter', :controller => 'tags', :action => 'alpha'
+  map.tags_by_alpha_formatted 'tags/alpha/:letter.:format', :controller => 'tags', :action => 'alpha'
 
   map.resources :retorts, :collection => { :screenzero => :get }
 

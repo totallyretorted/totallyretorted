@@ -3,6 +3,8 @@ class TagsController < ApplicationController
   # GET /tags.xml
   def index
     @tags = Tag.find(:all, :order => "value ASC" )
+    @alphabar = Tag.find_all_alphas
+    #@tags = Tag.paginate :all, :page => params[:page], :order => "value ASC"
 
     respond_to do |format|
       format.html # index.html.erb
@@ -83,21 +85,25 @@ class TagsController < ApplicationController
     end
   end
   
+  def search
+    unless params[:search].blank?
+      @results = Tag.paginate :page => params[:page], 
+                              :per_page => 10, 
+                              :order => 'value ASC', 
+                              :conditions => Tag.conditions_by_like(params[:search])
+      logger.info @results.size
+    end
+    render :partial => 'search', :layout => false
+  end
   
-      # 
-      # <!-- <input id="search" name="search" type="text" value="">
-      # <%= observe_field 'search',  :frequency => 0.5, :update => 'target_id', :url => { :controller => 'tags', :action=> 'search' }, :with => "'search=' + escape(value)" %>
-      # <div class="search_results" id="target_id"></div> -->
-  # def search
-  #   if @params['search']
-  #     #@items_pages, @items = paginate :items,:order_by => 'description',:conditions => [ 'LOWER(description) LIKE ?','%' + @params['search'].downcase + '%' ], :per_page => 20
-  #     #@mark_term = @params['search']
-  #     @tags_pages, @tags = paginate :tags, :order_by => 'value ASC', :conditions => ['LOWER(description) LIKE ?', '%'+@params['search'].downcase+'%'], :per_page => 20
-  #     @mark_term = @params['search']
-  #     render_without_layout
-  #   else
-  #     @tags_pages, @tags = paginate :tags, :order_by => 'value ASC', :per_page => 20
-  #     #@items_pages, @items = paginate :items, :order_by => 'description', :per_page => 20
-  #   end
-  # end
+  def alpha
+    @letter = params[:letter]
+    @tags = Tag.find_by_alpha(@letter)
+    @alphabar = Tag.find_all_alphas
+    @alphabar.delete(@letter)
+    respond_to do |format|
+      format.html{ render :action => "index" }
+      format.xml { render :xml => @tags }
+    end
+  end
 end

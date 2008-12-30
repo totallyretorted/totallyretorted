@@ -1,23 +1,14 @@
-<%= render :partial => "common/curvy_corners", :locals => { :ids => ["pop"] } %>
 <div class="yui-g">
-	<div class="controls">
-		<div id="create"><%= link_to 'New', new_tag_path %></div>
-		<div id="alphalinks"></div>
-		<div id="search">
-			<input id="search" name="search" type="text" value="">
-			<%= observe_field 'search',  :frequency => 0.5, :update => 'results', :url => { :action=> 'search' }, :with => "'search=' + escape(value)" %>
-			<div id="results" class="results"></div>
-		</div>
-	</div>
-	<div class="pop">
+	<%= render_toolbar %>
+	<% curvy_corners do %>
 		<% if @tags and @tags.size > 0 %>
 			<ul>	
 			<% for tag in @tags %>
-				<%= render :partial => "li", :locals => { :t => tag }%>
+				<%= render :partial => "li", :locals => { :t => tag } %>
 			<% end %>
 			</ul>
 		<% else %>
 			<span style="width:100%;text-align:center">No tags defined</span>
 		<% end %>
-	</div>
+	<% end %>
 </div>

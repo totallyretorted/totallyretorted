@@ -117,4 +117,19 @@ class TagTest < ActiveSupport::TestCase
     assert_equal 4, spk_hash.values.flatten!.size
     assert_equal Tag.tagcloud_tags.size, tagcloud.size
   end
+  
+  test "find by alpha" do
+    assert_equal 2, Tag.find_by_alpha('C').size
+    assert_equal 2, Tag.find_by_alpha('c').size
+    assert_equal 0, Tag.find_by_alpha.size
+    t = Tag.new(:value => 'ALPHA')
+    t.save!
+    assert_equal 1, Tag.find_by_alpha.size
+  end
+    
+  test "find all alphas" do
+    assert_equal ['C', 'S'], Tag.find_all_alphas
+    Tag.new(:value => 'ALPHA').save!
+    assert_equal ['A', 'C', 'S'], Tag.find_all_alphas
+  end
 end

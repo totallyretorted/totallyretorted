@@ -1,6 +1,5 @@
-<%= render :partial => "common/curvy_corners", :locals => { :ids => ["pop"] } %>
 <div class="yui-g">
-	<div class="pop">
+	<% curvy_corners "retorts" %>
 		<ul>
 		<% if @retorts and @retorts.size > 0 %>	
 		<% for retort in @retorts %>
@@ -12,10 +11,6 @@
 			<% end %>
 		<% end %>
 		</ul>
-	</div>
-</div>
-<div class="yui-g cloud">
-	<% for tag in @tagcloud %>
-		<%= link_to tag.value.camelize, tag, {:class => "t#{tag.tier}"} %>
 	<% end %>
 </div>
+<%= render_tagcloud @tagcloud %>

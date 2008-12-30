@@ -1,0 +1,122 @@
+.search_wrapper, .search_wrapper *{
+  margin: 0;
+  padding: 0;
+  font-family: Arial,sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+	position: relative;
+}
+
+.search_wrapper{
+	/*position: absolute;
+	top: 9px;*/
+	top: 0;
+	float: right;
+	width: 141px;
+}
+
+.search_wrapper .search-left{
+	background: transparent url(/images/controls.png) no-repeat scroll left -3624px;
+	height: 24px;
+	left: 0;
+	top: 0;
+	width: 19px;
+	margin: auto;
+	padding: 0;
+	position: absolute;
+}
+
+/*.firefox .search_wrapper input.search_field{*/
+.search_wrapper input.search_field{
+	height: 18px;
+	padding-bottom: 2px;
+	padding-top: 4px;
+}
+
+.search_wrapper input.search_field.show-hint{
+	color:#b0b3b5;
+}
+
+.search_wrapper input.search_field{
+	background: transparent url(/images/controls.png) repeat-x scroll right -3648px;
+	border: medium none;
+	font-size: 13px;
+	left: 19px;
+	line-height: 16px;
+	margin: 0;
+	outline-color: -moz-use-text-color;
+	outline-style: none;
+	outline-width: medium;
+	padding: 2px;
+	position: absolute;
+	right: 20px;
+	text-shadow: 0 1px 1px #323232;
+	top: 0;
+	width: 108px;
+}
+
+.search_wrapper .search-right{
+	background: transparent url(/images/controls.png) no-repeat scroll right -3672px;
+	height: 24px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 10px;
+	margin: auto;
+	padding: 0;
+}
+
+.search_wrapper a.button{
+	background: transparent none repeat scroll 0 0;
+	height: 16px;
+	margin-left: 0;
+	margin-right: 0;
+	min-width: 16px;
+	padding-left: 0;
+	padding-right: 0;
+	position: absolute;
+	right: 3px;
+	top: 5px;
+	width: 16px;
+	text-align: center;
+	-moz-user-select: none;
+	border: medium none;
+	cursor: default;
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	font-size: 13px;
+	color: black;
+	line-height: 18px;
+}
+
+.search_wrapper a.button img.search_clear_button{
+	background: transparent url(/images/controls.png) no-repeat scroll left -5472px;
+	height: 16px;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 16px;
+	border: medium none;
+	margin: auto;
+	padding: 0;
+	text-align: center;
+	cursor: default;
+	text-decoration: none;
+}
+
+#quick_search{
+  z-index:99;
+  float:right;
+  left:150px;
+  width:150px;
+  background-color:white;
+}
+
+#quick_search #close_search{
+  position:relative;
+  float:right;
+  top:-12px;
+  right:4px;
+  z-index:100;
+}

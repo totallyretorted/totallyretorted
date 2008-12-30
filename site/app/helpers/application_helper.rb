@@ -38,7 +38,40 @@ module ApplicationHelper
     end
   end
   
-  def curvy_corners(divs=[], options={})
-    render :partial => "common/curvy_corners", :locals => {:ids => divs}    
+  def curvy_corners(name="element_#{Time.new.object_id}", options={}, &block)
+    block_to_partial('common/curvy_box', options.merge(:name => name), &block) 
   end
+  
+  def alphabet
+    ["#"]+(65..90).collect{ |i| i.chr }
+  end
+  
+  def render_toolbar(&block)
+    #block_to_partial('common/toolbar', {}, &block)
+    render :partial => 'common/toolbar'
+  end
+  
+  def render_tagcloud(tags)
+    #block_to_partial('common/tag_cloud', {:tagcloud => tags}, &block)
+    render :partial => 'common/tag_cloud', :locals => {:tagcloud => tags}
+  end
+  
+  # Only need this helper once, it will provide an interface to convert a block into a partial.
+    # 1. Capture is a Rails helper which will 'capture' the output of a block into a variable
+    # 2. Merge the 'body' variable into our options hash
+    # 3. Render the partial with the given options hash. Just like calling the partial directly.
+  def block_to_partial(partial_name, options = {}, &block)
+    options.merge!(:body => capture(&block))
+    concat(render(:partial => partial_name, :locals => options), block.binding)
+  end
+
+  # Create as many of these as you like, each should call a different partial 
+    # 1. Render 'shared/rounded_box' partial with the given options and block content
+  def rounded_box(title, options = {}, &block)
+    block_to_partial('common/rounded_box', options.merge(:title => title), &block)
+  end
+
+  # def un_rounded_box(title, options = {}, &block)
+  #   block_to_partial('common/un_rounded_box', options.merge(:title => title), &block)
+  # end
 end

@@ -1,0 +1,18 @@
+<div id="search_control" style="" class="search_wrapper">
+	<div class="search-left"></div>
+    <%= text_field_tag :search_phrase, "", :class => "search_field show-hint" %>
+	<%= observe_field :search_phrase, 
+					  :frequency => 0.5, 
+					  :update => 'search_results',
+					  :before => "Element.show('spinner')",
+					  :complete => "Element.hide('spinner');new curvyCorners(settings, 'quick_search').applyCornersToAll();Element.show('quick_search')",
+					  :url => {:action => :search},
+					  :with => "'search='+encodeURIComponent(value)"
+					%>
+    <div class="search-right"></div>
+    <a class="sc-button-view button regular normal search_clear_button hidden" style="display: none;"><%= image_tag "blank.gif", :alt => "", :class => "search_clear_button sprite" %></a>
+	<div id="quick_search" style="display:none" class="pop">
+		<div id="close_search"><%= link_to_function(image_tag("close.png"), "Element.hide('quick_search')")  %></div>
+		<div id="search_results"></div>
+	</div>
+</div>

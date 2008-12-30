@@ -42,4 +42,23 @@ class TagsControllerTest < ActionController::TestCase
 
     assert_redirected_to tags_path
   end
+  
+  test "search" do
+    get :search, :search => 'cartman'
+    assert_response :success
+    results = assigns(:results)
+    assert_not_nil results
+    assert_equal 1, results.size
+    assert_equal 'cartman', results[0].value
+  end
+  
+  test "alpha" do
+    get :alpha, :letter => 's'
+    assert_response :success
+    results = assigns(:tags)
+    assert_not_nil results
+    assert_equal 1, results.size
+    assert_equal 'south_park', results[0].value
+    
+  end
 end

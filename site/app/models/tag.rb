@@ -40,4 +40,17 @@ class Tag < ActiveRecord::Base
     end
     tags
   end
+  
+  def self.find_by_alpha(letter='A')
+    Tag.find(:all, :conditions => ['value LIKE ?', "#{letter}%"], :order => 'value ASC')
+  end
+  
+  def self.find_all_alphas
+    # this should prolly become a raw SQL query, similar to this:
+    #   self.connection.select_values("SELECT DISTINCT SUBSTRING(value, 0, 1) FROM tags")
+    # however, SQLite uses SUBSTR (like Oracle), where MySQL (and others) use SUBSTRING
+    # possibly could inject a substr method into ActiveRecord::ConnectionAdapters::AbstractAdapter and override it in ActiveRecord::ConnectionAdapters::SQLiteAdapter
+    # but for the moment we'll use this, which will kill us with any volume (*gulp*)
+    Tag.find(:all, :order => 'value ASC').collect{ |t| t.value[0..0].upcase }.uniq
+  end
 end
