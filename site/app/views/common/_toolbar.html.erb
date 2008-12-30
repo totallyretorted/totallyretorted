@@ -1,0 +1,23 @@
+<div id="toolbar">
+	<div id="toolbar_main">
+		<div id="controls">
+			<div id="create"><%= link_to 'New', :action => 'new' %></div>
+		</div>
+		<div id="search">
+			<%= render :partial => "common/search_control" %>
+		</div>
+	</div>
+	<div id="toolbar_extras">
+		<% if @alphabar %>
+		<div id="alphabar" class="apple_pagination">
+			<% (["#"]+(65..90).collect{ |i| i.chr }).each do |ltr| %>
+				<% if @alphabar.include?(ltr) %>
+					<%=	link_to ltr, :action => 'alpha', :letter => ltr	%>
+				<% else %>
+					<span class="disabled"><%= ltr %></span>
+				<% end %>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+</div>
