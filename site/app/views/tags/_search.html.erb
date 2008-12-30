@@ -1,0 +1,9 @@
+<ul>
+<% if @results and not @results.empty? %>
+	<% @results.each do |tag| %>
+	<li><%= link_to tag.value, tag_path(tag) %></li>
+	<% end %>
+<% else %>
+	<li>No results returned</li>
+<% end %>	
+</ul>
