@@ -15,5 +15,7 @@
 	NSNotificationCenter *nc;
 }
 - (void) testLoadURLFromString;
-- (void) completeTestLoadURLFromString:(NSNotification*) note;
+//- (void) completeTestLoadURLFromString:(NSNotification*) note;
+- (void) completeLoadURLFromString:(NSNotification*) note;
+
 @end

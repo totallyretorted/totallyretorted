@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TRNotificationInterface.h"
 
 extern NSString * const TRRetortDataFinishedLoadingNotification;
 
 
-@interface TRRetortFacade : NSObject {
+@interface TRRetortFacade : NSObject <TRNotificationInterface> {
 	NSMutableArray *retorts;	
 	NSDictionary *properties;
 	BOOL loadSuccessful;
@@ -23,5 +24,5 @@ extern NSString * const TRRetortDataFinishedLoadingNotification;
 - (void)loadRetorts;
 - (void)handleDataLoadFailure: (NSNotification *)note;
 - (void)handleRetortXMLLoad: (NSNotification *)note;
-- (void)handleRetortObjectsLoad: (NSNotification *)note;
+//- (void)handleRetortObjectsLoad: (NSNotification *)note;
 @end

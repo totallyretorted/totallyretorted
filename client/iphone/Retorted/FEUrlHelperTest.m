@@ -14,6 +14,7 @@
 - (void) setUp
 {
 	subject = [[FEUrlHelper alloc] init];
+	
 	nc = [NSNotificationCenter defaultCenter];
 }
 
@@ -23,17 +24,23 @@
 	[subject release];
 	//[subject release];
 }
-/*
+
 - (void) testLoadURLFromString
 {	
+	NSLog(@"running testLoadURLFromString");
 	[nc addObserver:self 
-		   selector:@selector(completeTestLoadURLFromString:) 
+		   selector:@selector(completeLoadURLFromString:) 
 			   name:FEDataFinishedLoadingNotification 
 			 object:nil];
 	
 	[subject loadURLFromString:@"http://localhost:3000/retorts/screenzero.xml"];
 }
 
+- (void) completeLoadURLFromString:(NSNotification *)note {
+	NSLog(@"running completeLoadURLFromString");
+}
+
+/*
 - (void) completeTestLoadURLFromString: (NSNotification *) note
 {
 	FEUrlHelper* notified_subject  = [note object];
@@ -74,7 +81,12 @@
 	
 }
  */
-
+/*
+- (void)testSSLLoadURLFromString {
+	[subject loadURLFromString:@"https://un-done.dyndns.org"];
+	
+}
+*/
 - (void) completeTestLoadURLFromString: (NSNotification *) note{
 
 }

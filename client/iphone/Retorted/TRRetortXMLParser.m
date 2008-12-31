@@ -55,10 +55,10 @@ int const INVALID_PK = 8;
     
     NSError *parseError = [parser parserError];
     if (parseError && error) {
-        *error = parseError;
+        *error = parseError;	//error is handled by calling class
     }
 	
-	
+	NSLog(@"Parsing Complete!");
     [parser release];
 }
 
@@ -290,7 +290,7 @@ int const INVALID_PK = 8;
 //Optional - use this if there is any clean up or call back (i.e. if we use notifications)
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
 	NSLog(@"RetortXMLParser: parserDidEndDocument");
-	
+	/*
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	NSLog(@"RetortXMLParser: Sending finished notification");
@@ -298,7 +298,7 @@ int const INVALID_PK = 8;
 	[nc postNotificationName:TRXMLRetortDataFinishedLoadingNotification object:self];
 	
 	NSLog(@"RetortXMLParser: callback after xml parse complete notification");
-	 
+	*/ 
 }
 
 #pragma mark -

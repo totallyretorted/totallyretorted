@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TRNotificationInterface.h"
+
 @class TRRetortXMLParser;
 
 extern NSString * const TRTagDataDidFinishedNotification;
 
-@interface TRTagFacade : NSObject {
+@interface TRTagFacade : NSObject <TRNotificationInterface> {
 	NSMutableArray *tags;
 	BOOL loadSucessful;
 	NSDictionary *properties;
@@ -25,7 +27,7 @@ extern NSString * const TRTagDataDidFinishedNotification;
 - (void)loadTags;
 - (void)handleDataLoadFailure: (NSNotification *)note;
 - (void)handleTagXMLLoad: (NSNotification *)note;
-- (void)handleTagObjectsLoad: (NSNotification *)note;
+//- (void)handleTagObjectsLoad: (NSNotification *)note;
 
 
 @end

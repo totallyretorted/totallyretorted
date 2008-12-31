@@ -26,33 +26,18 @@ NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 	}
 	self.loadSucessful=NO;
 	
-	
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc addObserver:self 
-		   selector:@selector(handleDataLoadFailure:) 
-		       name:FEDataFailedLoadingNotification 
-			 object:nil];
-	
-	[nc addObserver:self 
-		   selector:@selector(handleTagXMLLoad:) 
-		       name:FEDataFinishedLoadingNotification 
-			 object:nil];
+	[self addToNotificationWithSelector:@selector(handleDataLoadFailure:) notificationName:FEDataFailedLoadingNotification];
+	[self addToNotificationWithSelector:@selector(handleTagXMLLoad:) notificationName:FEDataFinishedLoadingNotification];
 
-	[nc addObserver:self 
-		   selector:@selector(handleTagObjectsLoad:) 
-		       name:TRXMLRetortDataFinishedLoadingNotification 
-			 object:nil];	
-
-	NSLog(@"TRTagFacade.init -> Initialization and registered to the notification center.");
-	
-	properties=[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Properties" ofType:@"plist"]];
+	NSLog(@"TRTagFacade.init -> Initialization and registered to the notification center.");	
+	self.properties=[NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Properties" ofType:@"plist"]];
 	
 	return self;
 }
 
 - (void)loadTags{
 	
-	NSString *tagUrl = [NSString stringWithFormat:@"%@/tags.xml",[properties valueForKey:@"Retorted.Host"]];
+	NSString *tagUrl = [NSString stringWithFormat:@"%@/tags.xml",[self.properties valueForKey:@"Retorted.Host"]];
 	
 	NSLog(@"TRTagFacade.loadTags -> URL:%@ and performing a GET",tagUrl);
 	
@@ -62,6 +47,23 @@ NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 	
 	[urlHelp release];
 }
+
+- (void)addToNotificationWithSelector:(SEL)selector notificationName:(NSString *)notificationName{
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	
+	[nc addObserver:self 
+		   selector:selector
+			   name:notificationName
+			 object:nil];
+}
+
+- (void)removeFromAllNotifications {
+	//remove self from notification center...
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc removeObserver:self];
+	NSLog(@"TRTagFacade: Unregistered with notification center.");
+}
+
 
 //
 - (void)handleDataLoadFailure: (NSNotification *)note{
@@ -87,8 +89,25 @@ NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 	[self.xmlParser parseRetortXML:helpr.xmlData parseError:&parseError];
 	
 	//TODO:  Handle parseError
+	if (parseError !=nil) { 
+		self.loadSucessful = NO;
+	} else {
+		self.loadSucessful = YES;
+		self.tags = self.xmlParser.tags;
+		NSLog(@"TRTagFacade.handleTagObjectsLoad -> Received %d tags.  Sending TRXMLRetortDataFinishedLoadingNotification notification.", [self.tags count]);
+	}
+	
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc postNotificationName:TRTagDataDidFinishedNotification object:self];
+	
+	[self removeFromAllNotifications];
+	self.xmlParser = nil;
+	
 }
 
+
+//12.31.2008 - Removed by B.J. - not needed as XMLParser is not async - we will handle this in the method that calls the parser
+/*
 - (void)handleTagObjectsLoad: (NSNotification *)note{
 	
 	TRRetortXMLParser *rXMLParsr = [note object];
@@ -102,6 +121,7 @@ NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 	
 	//[rXMLParsr release];
 }
+*/
 
 - (void)dealloc{
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];

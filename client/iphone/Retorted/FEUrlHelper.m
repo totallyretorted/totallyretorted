@@ -12,13 +12,16 @@ NSString * const FEDataFailedLoadingNotification = @"DWDataFailedLoading";
 
 
 @implementation FEUrlHelper
-@synthesize xmlData;
+@synthesize xmlData, errorMsg, errorCode, ignoreBadCertificate;
 
 - (id)init {
 	if (![super init]) {
 		return nil;
 	}
 	self.xmlData = [[NSMutableData alloc]init];
+	self.errorMsg = nil;
+	self.errorCode = 0;
+	self.ignoreBadCertificate = NO;
 	return self;
 }
 
@@ -30,7 +33,11 @@ NSString * const FEDataFailedLoadingNotification = @"DWDataFailedLoading";
 	
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
 	NSLog(@"UrlHelper: created request...");
-	
+	if (self.ignoreBadCertificate) {
+		// Use the private method setAllowsAnyHTTPSCertificate:forHost:
+		// to not validate the HTTPS certificate.
+		[NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[url host]];
+	}
 	
 	[request setHTTPMethod:method];												//for example, POST or GET
 	[request setValue:contentType forHTTPHeaderField:@"Content-Type"];			//for example: @"application/xml"
@@ -75,11 +82,53 @@ Issue: NSURLRequest will not handle XML, so we will need to use NSXMLParser.
 	
 - (void)connection: (NSURLConnection *)connection didFailWithError: (NSError *)error {
 
-	NSLog(@"URLHelper: Error encountered: Failed loading");
+	NSLog(@"URLHelper: Error encountered: Failed loading with code: %d and description: %@", [error code], [error localizedDescription]);
+	self.errorMsg = [error localizedDescription];
+	self.errorCode = [error code];
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	NSLog(@"URLHelper: Sending failure notification");
 	[nc postNotificationName:FEDataFailedLoadingNotification object:self];
 
+}
+
+
+#pragma mark -
+#pragma mark Cassword Challenge  Delegate Methods
+
+
+- (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)aChallenge {
+	//NSString *username = nil;
+	//NSString *password = nil;
+	
+	if ([aChallenge previousFailureCount] != 0)  {
+		
+	} else {
+		
+	}
+	
+	
+	//or to cancel
+
+}
+
+//call to attempt to authenticate
+- (void) handleAuthenticationOKForChallenge: (NSURLAuthenticationChallenge *) aChallenge
+								   withUser: (NSString*) username
+								   password: (NSString*) password {
+	// try to reply to challenge
+	NSURLCredential *credential = [[NSURLCredential alloc]
+								   initWithUser:username
+								   password:password
+								   persistence:NSURLCredentialPersistenceForSession];
+	[[aChallenge sender] useCredential:credential forAuthenticationChallenge:aChallenge];
+	[credential release];
+	NSLog(@"Sending authentication credential");
+}
+
+
+//call to cancel attempt to authenticate
+- (void) handleAuthenticationCancelForChallenge: (NSURLAuthenticationChallenge *) aChallenge {
+	[[aChallenge sender] cancelAuthenticationChallenge: aChallenge];
 }
 
 - (NSString *)description {

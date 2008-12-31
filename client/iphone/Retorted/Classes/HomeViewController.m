@@ -57,14 +57,18 @@
 	myAccel.delegate = self;
 	
 	
-	//go get the necessary data
+	//register with notification center to receive callback
+	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
+	
+	/*
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	
 	[nc addObserver:self 
 		   selector:@selector(handleDataLoad:) 
 			   name:TRRetortDataFinishedLoadingNotification
 			 object:nil];
-	
+	*/
+	//go get the necessary data
 	NSLog(@"Controller: Registered with notification center");
 	[self loadURL];
 	
@@ -127,8 +131,32 @@
 		self.loadFailureMessage.hidden = NO;
 		self.loadFailureMessage.font = [UIFont systemFontOfSize:17.0];
 		self.loadFailureMessage.text = @"Unable to acquire data at this time.  Please shake to try again.";
-		
 	}
+	
+	NSLog(@"self.facade: %@", [self.facade description]);
+	NSLog(@"aFacade: %@", [aFacade description]);
+	//facade is no longer needed...
+	self.facade = nil;
+	
+	
+	//remove self as observer of notifications...
+	[self removeFromAllNotifications];
+}
+
+- (void)addToNotificationWithSelector:(SEL)selector notificationName:(NSString *)notificationName{
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	
+	[nc addObserver:self 
+		   selector:selector
+			   name:notificationName
+			 object:nil];
+}
+
+- (void)removeFromAllNotifications {
+	//remove self from notification center...
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc removeObserver:self];
+	NSLog(@"HomeViewController: Unregistered with notification center.");
 }
 
 

@@ -135,6 +135,7 @@
 		DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortFacade.m; sourceTree = "<group>"; };
 		DB1FD30A0EF1D39F0000E78E /* TRRetortXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetortXMLParser.h; sourceTree = "<group>"; };
 		DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortXMLParser.m; sourceTree = "<group>"; };
+		DB261B1C0F0BDD8C004651BE /* TRNotificationInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNotificationInterface.h; sourceTree = "<group>"; };
 		DB6849C70EF0257B0094CC24 /* CGPointUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointUtils.c; sourceTree = "<group>"; };
 		DB6849C80EF0257B0094CC24 /* CGPointUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointUtils.h; sourceTree = "<group>"; };
 		DB6D14100F05D9F000FE89B0 /* TagCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCellView.xib; sourceTree = "<group>"; };
@@ -195,6 +196,7 @@
 		29B97314FDCFA39411CA2CEA /* Retorted */ = {
 			isa = PBXGroup;
 			children = (
+				DB261B150F0BDB0B004651BE /* Protocols */,
 				DB141F440EF4A18D00868FAB /* UnitTests */,
 				DB1126360EEEECEA00137EBC /* Application Support */,
 				DB1126350EEEECB900137EBC /* View Controllers */,
@@ -358,6 +360,14 @@
 				DB141F5E0EF4A2C900868FAB /* GTMSenTestCase.m */,
 			);
 			name = GTM;
+			sourceTree = "<group>";
+		};
+		DB261B150F0BDB0B004651BE /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DB261B1C0F0BDD8C004651BE /* TRNotificationInterface.h */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

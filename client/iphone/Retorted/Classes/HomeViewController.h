@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRNotificationInterface.h"
+
 @class TRRetortFacade;
 
-@interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAccelerometerDelegate>  {
+@interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAccelerometerDelegate, TRNotificationInterface>  {
 	IBOutlet UITableView *retortsView;
 	IBOutlet UIWebView *tagCloud;
 	IBOutlet UITextView *loadFailureMessage;
@@ -27,6 +29,9 @@
 
 - (void)loadURL;
 - (void)handleDataLoad:(NSNotification *)note;
+//- (void)removeFromAllNotifications;
+//- (void)addToNotificationWithSelector:(SEL)selector notificationName:(NSString *)name;
+
 
 @property (nonatomic, retain) TRRetortFacade *facade;
 @property (nonatomic, retain) NSMutableArray *retorts;
