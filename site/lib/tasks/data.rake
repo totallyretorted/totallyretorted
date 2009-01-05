@@ -33,7 +33,7 @@ namespace :data do
         a = Attribution.new
         a.who = row["who"]
         a.when = row["when"]
-        a.who = row["who"]
+        a.what = row["what"]
         a.where = row["where"]
         a.how = row["how"]
         retort.attribution = a
