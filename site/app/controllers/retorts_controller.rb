@@ -119,4 +119,17 @@ class RetortsController < ApplicationController
       #format.iphone # renders index.iphone.erb
     end
   end
+  
+  
+  def search
+    unless params[:search].blank?
+      @results = Retort.paginate :page => params[:page], 
+                              :per_page => 10, 
+                              :include => [:rating],
+                              :order => 'content ASC', 
+                              :conditions => Retort.conditions_by_like(params[:search])
+      logger.info @results.size
+    end
+    render :partial => 'search', :layout => false
+  end
 end

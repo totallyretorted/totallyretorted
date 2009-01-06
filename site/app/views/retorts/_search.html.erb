@@ -1,0 +1,9 @@
+<ul>
+<% if @results and not @results.empty? %>
+	<% @results.each do |retort| %>
+	<li><%= link_to retort.short_name, retort_path(retort) %></li>
+	<% end %>
+<% else %>
+	<li>No results returned</li>
+<% end %>	
+</ul>

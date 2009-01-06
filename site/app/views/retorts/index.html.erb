@@ -1,12 +1,12 @@
-<%= render :partial => "common/curvy_corners", :locals => { :ids => ["pop"] } %>
 <div class="yui-g">
-	<div class="pop">
+	<%= render_toolbar %>
+	<% curvy_corners do %>
 		<ul>
-		<% if @retorts %>	
+		<% if @retorts %>
 			<% @retorts.each do |retort| %>
 				<%= render :partial => "retorts/li", :locals => { :r => retort }%>
-			<% end %>
+			<% end %>			
 		<% end %>
 		</ul>
-	</div>
+	<% end %>
 </div>

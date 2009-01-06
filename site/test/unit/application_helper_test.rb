@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class TagTest < ActiveSupport::TestCase
-  test "stats" do
+  test "basic stats" do
     population = [1, 3, 24, 17, 12, 6, 14]
     stats = ApplicationHelper::Statistics.new(population)
     assert_equal 7.597, ("%.3f" % stats.stddev).to_f

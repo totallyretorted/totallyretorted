@@ -39,7 +39,9 @@ module ApplicationHelper
   end
   
   def curvy_corners(name="element_#{Time.new.object_id}", options={}, &block)
-    block_to_partial('common/curvy_box', options.merge(:name => name), &block) 
+    options[:style] ||= ""
+    options[:css_class] ||= []
+    block_to_partial('common/curvy_box', options.merge!(:name => name), &block) 
   end
   
   def alphabet
@@ -62,7 +64,6 @@ module ApplicationHelper
     # 3. Render the partial with the given options hash. Just like calling the partial directly.
   def block_to_partial(partial_name, options = {}, &block)
     options.merge!(:body => capture(&block))
-    #concat(render(:partial => partial_name, :locals => options), block.binding)
     concat(render(:partial => partial_name, :locals => options))
   end
 

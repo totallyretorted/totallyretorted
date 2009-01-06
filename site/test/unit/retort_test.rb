@@ -98,4 +98,10 @@ class RetortTest < ActiveSupport::TestCase
     assert_equal "south_park", r.tags[0].value
     assert_equal "Cartman", r.attribution.who
   end
+  
+  test "short name" do
+    assert_equal 'Already Short', Retort.new(:content => 'Already Short').short_name
+    assert_equal 'A Little Too Long...', Retort.new(:content => 'A Little Too Long for this to show up in its entirety.').short_name
+    assert_equal 'A Little Too Long for this ...', Retort.new(:content => 'A Little Too Long for this to show up in its entirety.').short_name(30)
+  end
 end
