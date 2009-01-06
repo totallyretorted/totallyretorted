@@ -11,8 +11,8 @@
 #define kStdOriginY			0.0			//how far to inset our text within the scroll view
 #define kAttrHeight			14.0		//the height of our attribution labels
 #define kAttrFontSize		12.0
-#define kStdFontSize		17.0		//the font size for our retort content
-#define kAttrSpacing		2.0			//spacing between attribution items
+#define kStdFontSize		16.0		//the font size for our retort content
+#define kAttrSpacing		4.0			//spacing between attribution items
 #define kRetortBottomSpace	6.0
 
 #import "RetortViewController.h"
@@ -72,10 +72,18 @@
 	//set up attribution objects...
 	CGRect attrFrame;
 	for(NSString *attr in [self.retort attributionListAsStringArray]) {
-		attrFrame = CGRectMake(kStdOriginX, nextY, kStdWidth, kAttrHeight);
+		//reuse heightOfContent
+		
+		heightOfContent = [TRViewHelper calculateHeightOfText:attr 
+													 withFont:[UIFont systemFontOfSize:kAttrFontSize] 
+														width:kStdWidth 
+												lineBreakMode:UILineBreakModeWordWrap];
+		
+		//attrFrame = CGRectMake(kStdOriginX, nextY, kStdWidth, kAttrHeight);
+		attrFrame = CGRectMake(kStdOriginX, nextY, kStdWidth, heightOfContent);
 		UILabel *attrLabel = [[UILabel alloc] initWithFrame:attrFrame];
 		
-		
+		attrLabel.numberOfLines = ceil(heightOfContent/kAttrFontSize);
 		attrLabel.text = attr;
 		attrLabel.textAlignment = UITextAlignmentRight;
 		attrLabel.textColor = [UIColor blueColor];
@@ -83,7 +91,7 @@
 		[retortContainer addSubview:attrLabel];	//add as subview to scrollview
 		[attrLabel release];
 		
-		nextY = nextY + kAttrHeight + kAttrSpacing;
+		nextY = nextY + heightOfContent + kAttrSpacing;
 	}
 	
 	NSLog(@"nextY: %d", nextY);

@@ -156,7 +156,7 @@ int const INVALID_PK = 8;
 	}
 	
 	//TODO: rating and subtags. rating has a child element with same name. that should be corrected.
-	NSLog(@"RetortXMLParser: Unknown element: %@.", elementName);
+	//NSLog(@"RetortXMLParser: Unknown element: %@.", elementName);
 }
 
 // Called when the parser encounters the closing tag of an element.  For Example: </myTag>
@@ -235,6 +235,7 @@ int const INVALID_PK = 8;
 			//parsing tags url because there is no retort nodes
 			[self.tags addObject:self.currentTag];
 		}
+		return;
 	}
 	
 	
