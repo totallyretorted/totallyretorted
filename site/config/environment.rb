@@ -95,11 +95,6 @@ Rails::Initializer.run do |config|
 end
 
 #require 'lib/unmarshal.rb'
-<<<<<<< .mine
 #require 'rubygems'
 #gem 'hpricot', '>= 0.6'
-#require 'hpricot'=======
-require 'rubygems'
-gem 'hpricot', '>= 0.6'
-require 'hpricot'
->>>>>>> .r163
+#require 'hpricot'
