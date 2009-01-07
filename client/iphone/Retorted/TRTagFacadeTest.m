@@ -19,4 +19,19 @@
 {
 	[subject release];
 }
+
+- (void) testLoadTags
+{
+	
+}
+
+- (void) testHandleDataLoadFailure
+{
+	
+}
+
+- (void) testHandleTagXMLLoad
+{
+	
+}
 @end

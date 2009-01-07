@@ -40,6 +40,11 @@
 		DB141F730EF4A3FF00868FAB /* UnitTest Help.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DB141F720EF4A3FF00868FAB /* UnitTest Help.rtf */; };
 		DB1FD1650EF1950F0000E78E /* TRRetortFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */; };
 		DB1FD30C0EF1D39F0000E78E /* TRRetortXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */; };
+		DB2423240F13D595000BE2F0 /* RedRocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423230F13D595000BE2F0 /* RedRocketViewController.m */; };
+		DB2423260F13D5AC000BE2F0 /* RedRocketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2423250F13D5AC000BE2F0 /* RedRocketView.xib */; };
+		DB2423980F13F2F7000BE2F0 /* TagViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423970F13F2F7000BE2F0 /* TagViewControllerTest.m */; };
+		DB2423D80F1451F6000BE2F0 /* TRTagSliderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423D70F1451F6000BE2F0 /* TRTagSliderHelper.m */; };
+		DB2424230F1463B4000BE2F0 /* TRTagSliderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423D70F1451F6000BE2F0 /* TRTagSliderHelper.m */; };
 		DB59FE760EF8088700E59D12 /* FEUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126590EEF047300137EBC /* FEUrlHelper.m */; };
 		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
 		DB6D147E0F05E6F400FE89B0 /* TagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC6E44B0F05D7D70041E319 /* TagCellView.m */; };
@@ -135,6 +140,13 @@
 		DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortFacade.m; sourceTree = "<group>"; };
 		DB1FD30A0EF1D39F0000E78E /* TRRetortXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetortXMLParser.h; sourceTree = "<group>"; };
 		DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortXMLParser.m; sourceTree = "<group>"; };
+		DB2423220F13D595000BE2F0 /* RedRocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedRocketViewController.h; sourceTree = "<group>"; };
+		DB2423230F13D595000BE2F0 /* RedRocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedRocketViewController.m; sourceTree = "<group>"; };
+		DB2423250F13D5AC000BE2F0 /* RedRocketView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RedRocketView.xib; sourceTree = "<group>"; };
+		DB2423960F13F2F7000BE2F0 /* TagViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewControllerTest.h; sourceTree = "<group>"; };
+		DB2423970F13F2F7000BE2F0 /* TagViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewControllerTest.m; sourceTree = "<group>"; };
+		DB2423D60F1451F6000BE2F0 /* TRTagSliderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTagSliderHelper.h; sourceTree = "<group>"; };
+		DB2423D70F1451F6000BE2F0 /* TRTagSliderHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagSliderHelper.m; sourceTree = "<group>"; };
 		DB261B1C0F0BDD8C004651BE /* TRNotificationInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNotificationInterface.h; sourceTree = "<group>"; };
 		DB6849C70EF0257B0094CC24 /* CGPointUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointUtils.c; sourceTree = "<group>"; };
 		DB6849C80EF0257B0094CC24 /* CGPointUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointUtils.h; sourceTree = "<group>"; };
@@ -232,6 +244,7 @@
 				DB1126C30EEF28E900137EBC /* RetortView.xib */,
 				DB08FFA40EF2D898000FB1AB /* TagView.xib */,
 				DB6D14100F05D9F000FE89B0 /* TagCellView.xib */,
+				DB2423250F13D5AC000BE2F0 /* RedRocketView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -265,6 +278,8 @@
 				DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */,
 				76EA75400F01666A00B1ED9C /* TRTagFacade.h */,
 				76EA75410F01666A00B1ED9C /* TRTagFacade.m */,
+				DB2423D60F1451F6000BE2F0 /* TRTagSliderHelper.h */,
+				DB2423D70F1451F6000BE2F0 /* TRTagSliderHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -297,6 +312,8 @@
 				76EA75680F0181C000B1ED9C /* TagViewController.m */,
 				DBC6E44A0F05D7D70041E319 /* TagCellView.h */,
 				DBC6E44B0F05D7D70041E319 /* TagCellView.m */,
+				DB2423220F13D595000BE2F0 /* RedRocketViewController.h */,
+				DB2423230F13D595000BE2F0 /* RedRocketViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -345,6 +362,8 @@
 				DC9D942B0EF9C4E100F372F4 /* FEUrlHelperTest.m */,
 				76EA764B0F01A68100B1ED9C /* TRTagFacadeTest.h */,
 				76EA764C0F01A68100B1ED9C /* TRTagFacadeTest.m */,
+				DB2423960F13F2F7000BE2F0 /* TagViewControllerTest.h */,
+				DB2423970F13F2F7000BE2F0 /* TagViewControllerTest.m */,
 			);
 			name = UnitTests;
 			sourceTree = "<group>";
@@ -449,6 +468,7 @@
 				DCC9145C0EF2F67E0076F8C9 /* Properties.plist in Resources */,
 				DB6DCA3F0EF8B0B5008C1C62 /* SettingsView.xib in Resources */,
 				DB6D147F0F05E70300FE89B0 /* TagCellView.xib in Resources */,
+				DB2423260F13D5AC000BE2F0 /* RedRocketView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +524,8 @@
 				76EA75420F01666A00B1ED9C /* TRTagFacade.m in Sources */,
 				76EA75690F0181C000B1ED9C /* TagViewController.m in Sources */,
 				DB6D147E0F05E6F400FE89B0 /* TagCellView.m in Sources */,
+				DB2423240F13D595000BE2F0 /* RedRocketViewController.m in Sources */,
+				DB2424230F1463B4000BE2F0 /* TRTagSliderHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +549,8 @@
 				DC9D942C0EF9C4E100F372F4 /* FEUrlHelperTest.m in Sources */,
 				76EA764F0F01A7D900B1ED9C /* TRTagFacadeTest.m in Sources */,
 				DBC6E4450F0322950041E319 /* TRTagFacade.m in Sources */,
+				DB2423980F13F2F7000BE2F0 /* TagViewControllerTest.m in Sources */,
+				DB2423D80F1451F6000BE2F0 /* TRTagSliderHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

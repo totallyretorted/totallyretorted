@@ -17,13 +17,15 @@
 
 #import "RetortViewController.h"
 #import "TRRetort.h"
+#import "TRTag.h"
 #import "CGPointUtils.h"		//calculates distance between points for pinches
 #import "TRViewHelper.h"		//use to determine size of label
+#import "TRTagSliderHelper.h"	//use to create tag slider
 
 @implementation RetortViewController
 @synthesize retort, retortTitle;
 @synthesize initialDistance;
-@synthesize retortActionButton;
+@synthesize retortActionButton, tagSlider;
 
 
 /*
@@ -54,7 +56,8 @@
 														  width:kStdWidth 
 												  lineBreakMode:UILineBreakModeWordWrap];
 	
-	int rowsOfContent = ceil(heightOfContent / kStdFontSize);
+	heightOfContent = heightOfContent+20.0;
+	int rowsOfContent = ceil(heightOfContent / kStdFontSize)+1;
 	nextY = heightOfContent + kRetortBottomSpace;	//sets the next origin y-point at kRetortBottomSpace pixels below the main content (retort).
 	NSLog(@"heightOfContent: %f, rows: %d", heightOfContent, rowsOfContent);
 	
@@ -103,6 +106,8 @@
 	//retortContainer.indicatorStyle = UIScrollViewIndicatorStyleWhite;
 	[retortContainer setContentSize:scrollSize];
 	
+	//build the tag view slider
+	[self buildTagSliderView];
 }
 
 
@@ -113,10 +118,6 @@
     //[super viewDidLoad];
 	
 	self.title = @"Retort";
-	//[[self.view subviews] count]
-	//tagCloud.backgroundColor = [UIColor blackColor];
-	[tagCloud loadHTMLString:@"<html><body style=\"background-color: #000; color: #fff\"><h1><a href=\"tag:shant\">Shant</a> is my hero!</h1><p>Call him at 832.878.5685</p></body></html>" baseURL:nil];
-
 	self.navigationItem.rightBarButtonItem = self.retortActionButton;
 	
 }
@@ -167,6 +168,20 @@
 
 
 #pragma mark -
+#pragma mark Custom Methods
+- (void)buildTagSliderView {
+	NSMutableArray *tags = [[NSMutableArray alloc] init];
+	for (TRTag *tag in self.retort.tags) {
+		[tags addObject:tag.value];
+	}
+	
+	TRTagSliderHelper *slider = [[TRTagSliderHelper alloc] initWithTagArray:tags];
+	//slider.fontColor = [UIColor whiteColor];
+	//slider.backgroundColor = [UIColor blackColor];
+	[tags release];
+	[slider buildTagScroller:self.tagSlider];
+}
+
 #pragma mark User Action methods
 - (IBAction)ratingChanged:(id)sender {
 	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;

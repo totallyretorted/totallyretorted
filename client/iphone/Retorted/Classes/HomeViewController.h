@@ -13,8 +13,8 @@
 
 @interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAccelerometerDelegate, TRNotificationInterface>  {
 	IBOutlet UITableView *retortsView;
-	IBOutlet UIWebView *tagCloud;
 	IBOutlet UITextView *loadFailureMessage;
+	IBOutlet UIScrollView *tagSlider;
 	
 	NSMutableArray *retorts;
 	TRRetortFacade *facade;
@@ -29,6 +29,7 @@
 
 - (void)loadURL;
 - (void)handleDataLoad:(NSNotification *)note;
+- (void)buildTagSliderView;
 //- (void)removeFromAllNotifications;
 //- (void)addToNotificationWithSelector:(SEL)selector notificationName:(NSString *)name;
 
@@ -38,5 +39,6 @@
 
 @property (nonatomic, retain) UITableView *retortsView;
 @property (nonatomic, retain) UITextView *loadFailureMessage;
-@property (nonatomic, retain) UIWebView *tagCloud;
+//@property (nonatomic, retain) UIWebView *tagCloud;
+@property (nonatomic, retain) UIScrollView *tagSlider;
 @end

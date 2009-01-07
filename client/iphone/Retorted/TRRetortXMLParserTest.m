@@ -68,4 +68,9 @@
 	STAssertEquals(tag.weight, 6, nil);
 	STAssertEqualObjects(tag.value, @"south_park", nil);
 }
+
+- (void) testTagOnlyXml
+{
+	
+}
 @end

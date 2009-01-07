@@ -20,5 +20,6 @@ NSError *err;
 
 - (void) testParseSuperSimpleXml;
 - (void) testParseStandardXml;
+- (void) testTagOnlyXml;
 
 @end

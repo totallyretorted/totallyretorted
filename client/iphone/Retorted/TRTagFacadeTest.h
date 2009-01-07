@@ -14,6 +14,10 @@
 	TRTagFacade *subject;
 }
 
+- (void) testLoadTags;
+- (void) testHandleDataLoadFailure;
+- (void) testHandleTagXMLLoad;
+
 
 
 @end

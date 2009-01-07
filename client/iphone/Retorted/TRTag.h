@@ -20,7 +20,8 @@
 - (id)initWithId:(NSNumber *)aPrimaryKey value:(NSString *)aValue weight:(NSInteger)wgt tagCloudValue:(NSInteger)cloudValue;
 
 @property (nonatomic, retain) NSString *value;
+@property (nonatomic, retain) NSNumber *primaryId;
+
 @property NSInteger weight;
 @property NSInteger tagCloudValue;
-@property (nonatomic, retain) NSNumber *primaryId;
 @end

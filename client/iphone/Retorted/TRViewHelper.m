@@ -8,7 +8,6 @@
 
 #import "TRViewHelper.h"
 
-
 @implementation TRViewHelper
 + (float)calculateHeightOfText:(NSString *)text withFont:(UIFont *)aFont width:(float)aWidth lineBreakMode:(UILineBreakMode)lineBreak {
 	[text retain];

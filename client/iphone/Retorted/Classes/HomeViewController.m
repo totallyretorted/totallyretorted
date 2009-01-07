@@ -9,9 +9,11 @@
 #import "HomeViewController.h"
 #import "RetortViewController.h"
 #import "TRRetortFacade.h"
+#import "TRTagSliderHelper.h"
 
 // Model class inclusion
 #import "TRRetort.h"
+#import "TRTag.h"
 
 
 // Constant for maximum acceleration.
@@ -23,7 +25,7 @@
 @implementation HomeViewController
 @synthesize retorts, facade;
 @synthesize retortsView;
-@synthesize loadFailureMessage, tagCloud;
+@synthesize loadFailureMessage, tagSlider;
 
 /*
 // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
@@ -45,11 +47,8 @@
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
     self.title = @"Home";
-	self.tagCloud.hidden = NO;
 	self.retortsView.hidden = NO;
 	self.loadFailureMessage.hidden = YES;
-	
-	[tagCloud loadHTMLString:@"<html><body style=\"background-color: #000; color: #fff\"><h1>Shant is my hero!</h1><p>Call him at 832.878.5685</p></body></html>" baseURL:nil];
 	
 	//set up accelerometer...
 	UIAccelerometer *myAccel = [UIAccelerometer sharedAccelerometer];
@@ -59,20 +58,8 @@
 	
 	//register with notification center to receive callback
 	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
-	
-	/*
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	
-	[nc addObserver:self 
-		   selector:@selector(handleDataLoad:) 
-			   name:TRRetortDataFinishedLoadingNotification
-			 object:nil];
-	*/
-	//go get the necessary data
 	NSLog(@"Controller: Registered with notification center");
 	[self loadURL];
-	
-	
 	
 	//[super viewDidLoad];
 }
@@ -117,16 +104,15 @@
 	TRRetortFacade *aFacade = [note object];
 	
 	if ((aFacade.loadSuccessful) && ([aFacade.retorts count] > 0)) {
-		self.tagCloud.hidden = NO;
 		self.retortsView.hidden = NO;
 		self.loadFailureMessage.hidden = YES;
 		
 		self.retorts = aFacade.retorts;
 		NSLog(@"received retorts");
 		[self.retortsView reloadData];
+		[self buildTagSliderView];
 	} else {
 		NSLog(@"Display connection failure.");
-		self.tagCloud.hidden = YES;
 		self.retortsView.hidden = YES;
 		self.loadFailureMessage.hidden = NO;
 		self.loadFailureMessage.font = [UIFont systemFontOfSize:17.0];
@@ -157,6 +143,27 @@
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
 	NSLog(@"HomeViewController: Unregistered with notification center.");
+}
+
+
+//adds tags to tag slider
+- (void)buildTagSliderView {
+	NSMutableArray *tags = [[NSMutableArray alloc] init];
+	for(TRRetort *aRetort in self.retorts) {
+		for (TRTag *tag in aRetort.tags) {
+			//in the future, consider a way to use localizedCaseInsensitiveCompare
+			if ([tags indexOfObject:tag.value] == NSNotFound) {
+				//found a new Tag!
+				[tags addObject:tag.value];
+			}
+		}
+	}
+	
+	TRTagSliderHelper *slider = [[TRTagSliderHelper alloc] initWithTagArray:tags];
+	slider.fontColor = [UIColor whiteColor];
+	slider.backgroundColor = [UIColor blackColor];
+	[tags release];
+	[slider buildTagScroller:self.tagSlider];
 }
 
 
