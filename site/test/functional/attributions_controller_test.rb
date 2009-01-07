@@ -21,23 +21,23 @@ class AttributionsControllerTest < ActionController::TestCase
   end
 
   test "should show attribution" do
-    get :show, :id => attributions(:one).id
+    get :show, :id => attributions(:cartman).id
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => attributions(:one).id
+    get :edit, :id => attributions(:cartman).id
     assert_response :success
   end
 
   test "should update attribution" do
-    put :update, :id => attributions(:one).id, :attribution => { }
+    put :update, :id => attributions(:cartman).id, :attribution => { }
     assert_redirected_to attribution_path(assigns(:attribution))
   end
 
   test "should destroy attribution" do
     assert_difference('Attribution.count', -1) do
-      delete :destroy, :id => attributions(:one).id
+      delete :destroy, :id => attributions(:cartman).id
     end
 
     assert_redirected_to attributions_path

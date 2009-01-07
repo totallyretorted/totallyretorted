@@ -8,10 +8,9 @@ class RetortTest < ActiveSupport::TestCase
   
   test "check data" do
     r = Retort.find_by_content("Respect My Authority!")
-    assert_equal 3, r.id
+    #assert_equal 3, r.id
     assert_equal 2, r.tags.count
-    assert_equal "south_park", r.tags[0].value
-    assert_equal "cartman", r.tags[1].value
+    assert_equal ["cartman", "south_park"], r.tags.collect{|t| t.value}
     assert_equal 30, r.rating.positive
     assert_equal 50, r.rating.negative
     assert_equal 0.375, r.rating.rating
@@ -68,8 +67,10 @@ class RetortTest < ActiveSupport::TestCase
     assert_equal 0, (doc/:retort/:rating/:rating).inner_html.to_i
     tags = doc.search("//retort/tags/tag")
     assert_equal 2, tags.size
-    assert_equal "south_park", (tags[0]/:value).inner_html
-    assert_equal "cartman", (tags[1]/:value).inner_html
+    #assert_equal "south_park", (tags[0]/:value).inner_html
+    #assert_equal "cartman", (tags[1]/:value).inner_html
+    #assert_equal ["cartman", "south_park"], (tags/:value).inner_html
+    assert_equal ["cartman", "south_park"], tags.search("value").collect{|v| v.inner_html}
   end
   
   test "from_xml" do

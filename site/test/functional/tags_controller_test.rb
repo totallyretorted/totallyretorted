@@ -21,23 +21,23 @@ class TagsControllerTest < ActionController::TestCase
   end
 
   test "should show tag" do
-    get :show, :id => tags(:one).id
+    get :show, :id => tags(:cartman_tag).id
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => tags(:one).id
+    get :edit, :id => tags(:cartman_tag).id
     assert_response :success
   end
 
   test "should update tag" do
-    put :update, :id => tags(:one).id, :tag => { }
+    put :update, :id => tags(:cartman_tag).id, :tag => { }
     assert_redirected_to tag_path(assigns(:tag))
   end
 
   test "should destroy tag" do
     assert_difference('Tag.count', -1) do
-      delete :destroy, :id => tags(:one).id
+      delete :destroy, :id => tags(:cartman_tag).id
     end
 
     assert_redirected_to tags_path

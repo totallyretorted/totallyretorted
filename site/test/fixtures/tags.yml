@@ -1,21 +1,12 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  id: 1
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>    
+south_park_tag:
   value: south_park
   
-two:
-  id: 2
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>    
+chef_tag:
   value: chef
   
-three:
-  id: 3
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>    
+cartman_tag:
   value: cartman
 
   

@@ -1,49 +1,37 @@
 # Read about fixtures at http://ar.rubyon.org/classes/Fixtures.html
 
-one:
-  id: 1
+kennys_dad:
   content: Too bad drinking Scotch isn't a paying job or Kenny's dad would be a millionaire!
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  attribution_id: 1
-  rating_id: 1
+  attribution: cartman
+  rating: pos_neg_sm
+  tags: south_park_tag, cartman_tag
 
-two:
-  id: 2
+choc_salty_balls:
   content: Lick my chocolate salty balls
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  attribution_id: 2
-  rating_id: 2
+  attribution: chef
+  rating: neg_pos_med
+  tags: south_park_tag, chef_tag
 
-three:
-  id: 3
+authoritah:
   content: Respect My Authority!
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  attribution_id: 1
-  rating_id: 3
+  attribution: cartman
+  rating: neg_pos_sm
+  tags: south_park_tag, cartman_tag
 
-four:
-  id: 4
+kill_people:
   content: I have sex and I kill people!
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  attribution_id: 1
-  rating_id: 4
+  attribution: cartman
+  rating: pos_neg_lg
+  tags: south_park_tag, cartman_tag
 
-five:
-  id: 5
+hippies:
   content: Hippies.They're everywhere. They wanna save the earth, but all they do is smoke pot and smell bad.
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  attribution_id: 1
-  rating_id: 5
+  attribution: cartman
+  rating: neg_pos_med
+  tags: south_park_tag, cartman_tag
 
-six:
-  id: 6
+afghan_goat:
   content: It's an Afghanistan goat, so it can't stay here, or else it'll choke on the sweet air of freedom.
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  attribution_id: 1
-  rating_id: 6
+  attribution: cartman
+  rating: pos_only
+  tags: south_park_tag, cartman_tag

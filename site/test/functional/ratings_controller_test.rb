@@ -21,23 +21,23 @@ class RatingsControllerTest < ActionController::TestCase
   end
 
   test "should show rating" do
-    get :show, :id => ratings(:one).id
+    get :show, :id => ratings(:pos_only).id
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => ratings(:one).id
+    get :edit, :id => ratings(:pos_only).id
     assert_response :success
   end
 
   test "should update rating" do
-    put :update, :id => ratings(:one).id, :rating => { }
+    put :update, :id => ratings(:pos_only).id, :rating => { }
     assert_redirected_to rating_path(assigns(:rating))
   end
 
   test "should destroy rating" do
     assert_difference('Rating.count', -1) do
-      delete :destroy, :id => ratings(:one).id
+      delete :destroy, :id => ratings(:pos_only).id
     end
 
     assert_redirected_to ratings_path

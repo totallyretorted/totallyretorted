@@ -185,44 +185,44 @@ describe User do
   # Authentication
   #
 
-  it 'sets remember token' do
-    users(:quentin).remember_me
-    users(:quentin).remember_token.should_not be_nil
-    users(:quentin).remember_token_expires_at.should_not be_nil
-  end
-
-  it 'unsets remember token' do
-    users(:quentin).remember_me
-    users(:quentin).remember_token.should_not be_nil
-    users(:quentin).forget_me
-    users(:quentin).remember_token.should be_nil
-  end
-
-  it 'remembers me for one week' do
-    before = 1.week.from_now.utc
-    users(:quentin).remember_me_for 1.week
-    after = 1.week.from_now.utc
-    users(:quentin).remember_token.should_not be_nil
-    users(:quentin).remember_token_expires_at.should_not be_nil
-    users(:quentin).remember_token_expires_at.between?(before, after).should be_true
-  end
-
-  it 'remembers me until one week' do
-    time = 1.week.from_now.utc
-    users(:quentin).remember_me_until time
-    users(:quentin).remember_token.should_not be_nil
-    users(:quentin).remember_token_expires_at.should_not be_nil
-    users(:quentin).remember_token_expires_at.should == time
-  end
-
-  it 'remembers me default two weeks' do
-    before = 2.weeks.from_now.utc
-    users(:quentin).remember_me
-    after = 2.weeks.from_now.utc
-    users(:quentin).remember_token.should_not be_nil
-    users(:quentin).remember_token_expires_at.should_not be_nil
-    users(:quentin).remember_token_expires_at.between?(before, after).should be_true
-  end
+  # it 'sets remember token' do
+  #   users(:quentin).remember_me
+  #   users(:quentin).remember_token.should_not be_nil
+  #   users(:quentin).remember_token_expires_at.should_not be_nil
+  # end
+  # 
+  # it 'unsets remember token' do
+  #   users(:quentin).remember_me
+  #   users(:quentin).remember_token.should_not be_nil
+  #   users(:quentin).forget_me
+  #   users(:quentin).remember_token.should be_nil
+  # end
+  # 
+  # it 'remembers me for one week' do
+  #   before = 1.week.from_now.utc
+  #   users(:quentin).remember_me_for 1.week
+  #   after = 1.week.from_now.utc
+  #   users(:quentin).remember_token.should_not be_nil
+  #   users(:quentin).remember_token_expires_at.should_not be_nil
+  #   users(:quentin).remember_token_expires_at.between?(before, after).should be_true
+  # end
+  # 
+  # it 'remembers me until one week' do
+  #   time = 1.week.from_now.utc
+  #   users(:quentin).remember_me_until time
+  #   users(:quentin).remember_token.should_not be_nil
+  #   users(:quentin).remember_token_expires_at.should_not be_nil
+  #   users(:quentin).remember_token_expires_at.should == time
+  # end
+  # 
+  # it 'remembers me default two weeks' do
+  #   before = 2.weeks.from_now.utc
+  #   users(:quentin).remember_me
+  #   after = 2.weeks.from_now.utc
+  #   users(:quentin).remember_token.should_not be_nil
+  #   users(:quentin).remember_token_expires_at.should_not be_nil
+  #   users(:quentin).remember_token_expires_at.between?(before, after).should be_true
+  # end
 
 protected
   def create_user(options = {})

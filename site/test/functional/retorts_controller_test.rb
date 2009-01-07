@@ -23,23 +23,23 @@ class RetortsControllerTest < ActionController::TestCase
   end
 
   test "should show retort" do
-    get :show, :id => retorts(:one).id
+    get :show, :id => retorts(:kennys_dad).id
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => retorts(:one).id
+    get :edit, :id => retorts(:kennys_dad).id
     assert_response :success
   end
 
   test "should update retort" do
-    put :update, :id => retorts(:one).id, :retort => { }
+    put :update, :id => retorts(:kennys_dad).id, :retort => { }
     assert_redirected_to retort_path(assigns(:retort))
   end
 
   test "should destroy retort" do
     assert_difference('Retort.count', -1) do
-      delete :destroy, :id => retorts(:one).id
+      delete :destroy, :id => retorts(:kennys_dad).id
     end
 
     assert_redirected_to retorts_path

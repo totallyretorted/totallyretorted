@@ -1,43 +1,25 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-one:
-  id: 1
+pos_neg_sm:
   positive: 10
   negative: 5
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
 
-two:
-  id: 2
+neg_pos_med:
   positive: 1000
   negative: 2000
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
 
-three:
-  id: 3
+neg_pos_sm:
   positive: 30
   negative: 50
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
 
-four:
-  id: 4
+pos_neg_lg:
   positive: 6392
   negative: 2823
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-
-five:
-  id: 5
+  
+neg_pos_med:
   positive: 3022
   negative: 3282
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
 
-six:
-  id: 6
+pos_only:
   positive: 66
   negative: 0
-  created_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
-  updated_at: <%= Time.now.strftime("%Y-%m-%d %H:%M:%S") %>
   
