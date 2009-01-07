@@ -7,20 +7,29 @@ class RetortsController < ApplicationController
     @retorts = Retort.find(:all)
 
     respond_to do |format|
-      format.html # index.html.erb
-      #format.xml { render :xml => @retorts.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
+      format.html
       format.xml { render :xml => @retorts }
-      #format.xml { render :xml => Retort.to_full_xml(@retorts)}
       #format.iphone # renders index.iphone.erb
     end
   end
+  
+  def paginate
+    @retorts = Retort.paginate :page => params[:page]
+    @paginate = true
+    @listing = @retorts
+
+    respond_to do |format|
+      format.html { render :action => 'index'}
+      format.xml { render :xml => @retorts }
+    end
+  end
+    
   
   def screenzero
     @retorts = Retort.screenzero_retorts
 
     respond_to do |format|
-      format.html # index.html.erb
-#      format.xml { render :xml => @retorts.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
+      format.html
       format.xml { render :xml => @retorts.to_xml }
     end
   end
@@ -32,12 +41,8 @@ class RetortsController < ApplicationController
     @tagcloud = Tag.create_tagcloud(@retort.tags).sort_by{rand}
 
     respond_to do |format|
-      format.html # show.html.erb
-#      format.xml  { render :xml => @retort.to_xml({:include => [ :tags, :attribution, :rating ]}) }
-#      format.xml  { render :xml => @retort.to_xml {:include => [ :tags, :attribution, :rating ] } }
-#      format.xml { render :xml => @retort.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
+      format.html
       format.xml { render :xml => @retorts.to_xml }
-      #format.xml { render :xml => Retort.to_full_xml(@retort)}
       #format.iphone # renders index.iphone.erb
     end
   end
@@ -48,11 +53,8 @@ class RetortsController < ApplicationController
     @retort = Retort.new
 
     respond_to do |format|
-      format.html # new.html.erb
-#      format.xml { render :xml => @retort.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
+      format.html
       format.xml { render :xml => @retorts.to_xml }
-      #format.xml { render :xml => Retort.to_full_xml(@retort)}
-      #format.iphone # renders index.iphone.erb
     end
   end
 
@@ -66,8 +68,8 @@ class RetortsController < ApplicationController
   def create
     @retort = Retort.new(params[:retort])
     unless params[:tags].nil? 
-      params[:tags][:value].split.each do |t|
-        @retort.tags << Tag.new(:value => t) unless Tag.find_by_value(t)
+      params[:tags][:value].split(/,\s?/).each do |t|
+        @retort.tags << Tag.find_or_create_by_value(t)
       end
     end
 

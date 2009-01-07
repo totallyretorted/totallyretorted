@@ -9,7 +9,7 @@
 	</div>
 	<div id="toolbar_extras">
 		<% if @alphabar %>
-		<div id="alphabar" class="apple_pagination">
+		<div id="alphabar" class="paging_control apple_pagination">
 			<% (["#"]+(65..90).collect{ |i| i.chr }).each do |ltr| %>
 				<% if @alphabar.include?(ltr) %>
 					<%=	link_to ltr, :action => 'alpha', :letter => ltr	%>
@@ -18,6 +18,9 @@
 				<% end %>
 			<% end %>
 		</div>
+		<% end %>
+		<% if @paginate %>
+		<%= will_paginate @listing, :id => 'pagebar', :class => 'paging_control apple_pagination' %>
 		<% end %>
 	</div>
 </div>

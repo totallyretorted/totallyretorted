@@ -4,8 +4,7 @@ class HomeController < ApplicationController
     @tagcloud = Tag.create_tagcloud.sort_by{rand}
 
     respond_to do |format|
-      format.html # index.html.erb
-      #format.xml { render :xml => @retorts.to_xml }
+      format.html
     end
   end
 end

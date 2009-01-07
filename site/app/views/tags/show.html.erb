@@ -1,7 +1,6 @@
-<%= render :partial => "common/curvy_corners", :locals => { :ids => ["pop"] } %>
 <div class="yui-g">
 	<div class="heading"><%= @tag.name %></div>
-	<div class="pop">
+	<% curvy_corners do%>
 		<% if @tag.retorts and @tag.retorts.size > 0 %>
 			<ul>
 			<% for r in @tag.retorts %>
@@ -11,5 +10,5 @@
 		<% else %>
 			<span style="width:100%;text-align:center">No retorts assigned</span>
 		<% end %>
-	</div>
+	<% end %>
 </div>

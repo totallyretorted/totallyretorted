@@ -1,13 +1,25 @@
 ActionController::Routing::Routes.draw do |map|
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  map.login '/login', :controller => 'sessions', :action => 'new'
+  map.register '/register', :controller => 'users', :action => 'create'
+  map.signup '/signup', :controller => 'users', :action => 'new'
+  map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
+  map.resources :users
+
+  map.resource :session
+
   map.resources :attributions
 
   map.resources :ratings
 
   map.resources :tags, :collection => { :search => :get }
-  map.tags_by_alpha 'tags/alpha/:letter', :controller => 'tags', :action => 'alpha'
-  map.tags_by_alpha_formatted 'tags/alpha/:letter.:format', :controller => 'tags', :action => 'alpha'
+  #map.tags_by_alpha 'tags/alpha/:letter', :controller => 'tags', :action => 'alpha'
+  #map.tags_by_alpha_formatted 'tags/alpha/:letter.:format', :controller => 'tags', :action => 'alpha'
 
-  map.resources :retorts, :collection => { :screenzero => :get }
+  map.resources :retorts, :collection => { :screenzero => :get, :all => :get }
+
+  map.connect ':controller/page/:page', :action => 'paginate'
+  map.connect ':controller/alpha/:letter', :action => 'alpha'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

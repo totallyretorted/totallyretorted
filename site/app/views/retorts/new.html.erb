@@ -1,19 +1,49 @@
-<h1>New retort</h1>
+<div>
+	<% curvy_corners do %>
+		<% form_for(@retort) do |f| %>
+	  		<% if f.error_messages -%>
+				<div class="errors"><%= f.error_messages %></div>
+			<% end -%>
+			<div id="retort_form" class="form"
+			 	<div class="yui-gd">
+					<div class="yui-u first"><%= f.label :content %></div>
+					<div class="yui-u"><%= f.text_field :content %></div>
+				</div>
+				<div class="yui-gd">
+					<div class="yui-u first"><%= f.label :tags %></div>
+					<div class="yui-u"><%= text_field :tags, :value %></div>
+				</div>
+				<div class="yui-gd">
+					<div class="yui-u first"><%= f.label :attribution %></div>
+					<div class="yui-gd">
+						<div class="yui-gd">
+							<div class="yui-u first"><%= f.label :who %></div>
+							<div class="yui-u"><%= text_field :attribution, :who %></div>
+						</div>
+						<div class="yui-gd">
+							<div class="yui-u first"><%= f.label :what %></div>
+							<div class="yui-u"><%= text_field  :attribution, :what %></div>
+						</div>
+						<div class="yui-gd">
+							<div class="yui-u first"><%= f.label :where %></div>
+							<div class="yui-u"><%= text_field :attribution, :where %></div>
+						</div>
+						<div class="yui-gd">
+							<div class="yui-u first"><%= f.label :how %></div>
+							<div class="yui-u"><%= text_field :attribution, :how %></div>
+						</div>
+						<div class="yui-gd">
+							<div class="yui-u first"><%= f.label :when %></div>
+							<div class="yui-u"><%= text_field :attribution, :when %></div>
+						</div>
+					</div>
+				</div>
+				<div class="yui-g">
+					<div class="yui-u first"><%= f.submit "Save" %></div>
+					<div class="yui-u"><%= f.button "Cancel" %></div>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+</div>
 
-<% form_for(@retort) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :content %><br />
-    <%= f.text_field :content %>
-  </p>
-  <p>
-  	<%= f.label :tags %><br />
-	<%= text_field :tags, :value %>
-  </p>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', retorts_path %>

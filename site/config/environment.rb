@@ -33,6 +33,7 @@ Rails::Initializer.run do |config|
   #config.gem 'rspec-rails', :lib => 'spec/rails'
   #config.gem 'cucumber'
   #config.gem 'webrat'
+  config.gem "ambethia-smtp-tls", :lib => "smtp-tls", :source => "http://gems.github.com/"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
@@ -79,6 +80,16 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # Please note that observers generated using script/generate observer need to have an _observer suffix
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
+  config.active_record.observers = :user_observer
+  
+  config.action_mailer.smtp_settings = {
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :domain => 'forwardecho.com',
+    :authentication => :plain,
+    :user_name => 'totallyretorted@forwardecho.com',
+    :password => "th3s3@r3n0tth3dr01dsy0u'veb33nl00k1ngf0r"
+  }
 end
 
 #require 'lib/unmarshal.rb'

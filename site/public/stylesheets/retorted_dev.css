@@ -3,31 +3,47 @@ body{ color: white; }
 .heading{ font-size:400%; font-weight:bold; }
 div.pop{ color:#01B0F0;}
 
+a:link{
+  color:#01b0f0;
+  text-decoration:none;
+}
+a:visited{
+  color:#01b0f0;
+  text-decoration:none;
+}
+a:hover{
+  text-decoration:underline;
+/*  color:#ff358B;*/
+}
+
 #toolbar{ 
   display:block;
   padding-bottom:20px;
   margin-bottom:21px;
   width:70%;
   margin:auto auto 29px auto;
-/*  border:1px solid green;*/
 }
+
 #toolbar_main{
-  /*border:1px solid blue;*/
 }
+
 #toolbar_extras{
-/*  border:1px solid red;*/
   position:relative;
   top:23px;
 }
-#alphabar{
+
+.paging_control {
   padding:0;
   margin:0 auto;
   background-color:inherit;
-  height:10px !important;
+  height:10px;
+  border:0;
 }
-#alphabar a{
+
+.paging_control a{
   color:#01b0f0;
 }
-.apple_pagination{
-  border:0 !important;
+
+.paging_control span.current{
+  background: transparent no-repeat 50% 50%; 
 }
