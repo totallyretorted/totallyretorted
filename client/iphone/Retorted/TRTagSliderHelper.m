@@ -54,7 +54,6 @@ float const PADDING = 10.0;
 	
 	//render tag slider view...
 	for(NSString *item in self.tagArray) {
-		//CGSize textSize = [item sizeWithFont:[UIFont systemFontOfSize: self.fontSize]];
 		CGSize textSize = [(NSValue *)[textCGSizes objectAtIndex:index] CGSizeValue];
 		CGRect attrFrame = CGRectMake(xCoord, yCoord, textSize.width+PADDING, textSize.height);
 		
@@ -68,6 +67,7 @@ float const PADDING = 10.0;
 		[aScrollView addSubview:itemLabel];	//add as subview to scrollview
 		[itemLabel release];
 		xCoord += textSize.width + self.horizontalSpacer;
+		index++;
 	}
 	//adjust the content size area for the scroller...
 	CGSize scrollSize = CGSizeMake(xCoord, self.scrollerHeight);
