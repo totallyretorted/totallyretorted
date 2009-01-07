@@ -24,15 +24,17 @@ Rails::Initializer.run do |config|
   # They can then be installed with "rake gems:install" on new installations.
   # You have to specify the :lib option for libraries, where the Gem name (sqlite3-ruby) differs from the file itself (sqlite3)
   # config.gem "bj"
-  #config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
-  # config.gem "sqlite3-ruby", :lib => "sqlite3"
+  config.gem "rcov"
+  config.gem "hpricot", :version => '~> 0.6'
+  config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'mislav-will_paginate', :version => '~> 2.3.2', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem 'has_finder'
-  #config.gem 'rspec', :lib => 'spec'
-  #config.gem 'rspec-rails', :lib => 'spec/rails'
+  config.gem 'rspec', :lib => 'spec'
+  config.gem 'rspec-rails', :lib => 'spec/rails'
   #config.gem 'cucumber'
   #config.gem 'webrat'
+  config.gem 'fastercsv'
   config.gem "ambethia-smtp-tls", :lib => "smtp-tls", :source => "http://gems.github.com/"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
@@ -93,6 +95,11 @@ Rails::Initializer.run do |config|
 end
 
 #require 'lib/unmarshal.rb'
+<<<<<<< .mine
+#require 'rubygems'
+#gem 'hpricot', '>= 0.6'
+#require 'hpricot'=======
 require 'rubygems'
 gem 'hpricot', '>= 0.6'
 require 'hpricot'
+>>>>>>> .r163
