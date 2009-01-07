@@ -19,9 +19,11 @@
 	UIColor *fontColor;
 	UIColor *backgroundColor;
 	NSArray *tagArray;
+	NSMutableArray *textCGSizes;
 }
 - (id)initWithTagArray:(NSArray *)tags;
 - (void)buildTagScroller:(UIScrollView *)aScrollView;
+- (float)getOffsetForTagsForScrollViewWidth: (float)scrollWidth;
  
 @property float fontSize;
 @property float horizontalSpacer;
@@ -29,6 +31,7 @@
 @property NSPoint origin;
 @property (nonatomic, retain) UIColor *fontColor;
 @property (nonatomic, retain) NSArray *tagArray;
+@property (nonatomic, retain) NSMutableArray *textCGSizes;
 @property (nonatomic, retain) UIColor *backgroundColor;
 
 @end

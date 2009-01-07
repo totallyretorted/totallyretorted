@@ -7,10 +7,10 @@
 //
 
 #import "TRTagSliderHelper.h"
-
+float const PADDING = 10.0;
 
 @implementation TRTagSliderHelper
-@synthesize tagArray, fontColor, backgroundColor;
+@synthesize tagArray, fontColor, backgroundColor, textCGSizes;
 @synthesize fontSize, horizontalSpacer, scrollerHeight;
 @synthesize origin;
 
@@ -42,14 +42,21 @@
 - (void)buildTagScroller:(UIScrollView *)aScrollView {
 	float xCoord = self.origin.x;
 	float yCoord = self.origin.y;
+	NSUInteger index = 0;
 	
 	if (aScrollView == nil) {
 		return;
 	}
 	
+	//determine total width of content and adjust offset if necessary...
+	float offset = [self getOffsetForTagsForScrollViewWidth:[aScrollView frame].size.width];
+	xCoord += offset;
+	
+	//render tag slider view...
 	for(NSString *item in self.tagArray) {
-		CGSize textSize = [item sizeWithFont:[UIFont systemFontOfSize: self.fontSize]];
-		CGRect attrFrame = CGRectMake(xCoord, yCoord, textSize.width+10.0, textSize.height);
+		//CGSize textSize = [item sizeWithFont:[UIFont systemFontOfSize: self.fontSize]];
+		CGSize textSize = [(NSValue *)[textCGSizes objectAtIndex:index] CGSizeValue];
+		CGRect attrFrame = CGRectMake(xCoord, yCoord, textSize.width+PADDING, textSize.height);
 		
 		UILabel *itemLabel = [[UILabel alloc] initWithFrame:attrFrame];
 		
@@ -67,11 +74,22 @@
 	[aScrollView setContentSize:scrollSize];	
 }
 
-- (BOOL)didOriginGetAdjusted {
-	BOOL result = NO;
+- (float)getOffsetForTagsForScrollViewWidth: (float)scrollWidth{
+	float totalWidth = 0.0;
+	float offset=0.0;
+	self.textCGSizes = [[NSMutableArray alloc] init];
 	
+	for (NSString *item in self.tagArray) {
+		CGSize textSize = [item sizeWithFont:[UIFont systemFontOfSize: self.fontSize]];
+		[textCGSizes addObject: [NSValue valueWithCGSize: textSize]];
+		totalWidth += textSize.width+PADDING+self.horizontalSpacer;
+	}
 	
-	return result;
+	if(totalWidth < scrollWidth) {
+		offset = (scrollWidth-totalWidth)/2;
+	}
+	
+	return offset;
 }
 
 @end
