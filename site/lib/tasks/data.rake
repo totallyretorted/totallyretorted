@@ -1,20 +1,75 @@
+task :data => ['data:load']
+
 namespace :data do
   task (:base_load_data => :environment) do
   end
   
+  desc "migrate and load"
+  task(:update => [:base_load_data, 'db:migrate']) do
+    invoke 'load'
+  end
+  
+  desc "drop, migrate and load"
+  task(:refresh => ['db:drop', :update] ) do
+  end
+  
+  desc "load base data"
+  task(:load => :base_load_data) do
+    if ENV['file']
+      invoke 'load_from_file'
+    elsif ENV['dir'] or ENV['directory']
+      invoke 'load_from_fixtures'
+    elsif ENV['url']
+      invoke 'load_from_url'
+    else
+      invoke 'usage'
+    end
+  end
+  
+  task(:usage) do
+    puts 'usage: data:<task> param=value [param=value]'
+    puts 'available tasks:'
+    puts '  load (default)         loads data; requires either a file or a url parameter'
+    puts '  update                 migrates and loads; requires either a file or a url parameter'
+    puts '  refresh                drops, migrates, and loads; requires either a file or a url parameter'
+    puts '  load_from_file         requires file parameter'
+    puts '  load_from_url          requires url parameter'
+    puts '  load_from_google       requires url parameter to google spreadsheet and optional sheet param of comma-delimited list of worksheet names to load'
+    puts '  load_from_spreadsheet  requires file parameter to spreadsheet and optional sheet param of comma-delimited list of worksheet names to load'
+    puts '  load_from_fixtures     requires dir parameter to directory containing fixtures'
+    puts '  load_from_csv          requires file parameter to valid csv'
+  end
+  
+  desc "load base data from a file"
+  task(:load_from_file => :base_load_data) do
+    if ENV['file'] =~ /\.xls$/
+      invoke 'load_from_spreadsheet'
+    else
+      invoke 'load_from_csv'
+    end
+  end
+
+  desc "load base data from a URL"
+  task(:load_from_url => :base_load_data) do
+    invoke 'load_from_google'
+  end
+  
   desc "load base data from a spreadsheet"
   task (:load_from_spreadsheet => :base_load_data) do
+    puts 'load_from_spreadsheet not implemented'
   end
   
   desc "load base data from google spreadsheets"
   task (:load_from_google => :base_load_data) do
+    puts 'load_from_google not implemented'
   end
   
   desc "load base data from fixtures"
   task (:load_from_fixtures => :base_load_data) do
     dir = ENV['directory'] || ENV['dir'] || "#{RAILS_ROOT}/db/data/fixtures"
     require 'active_record/fixtures'
-    Fixtures.create_fixtures(dir, %w{ attributions ratings retorts tags retorts_tags })
+    Fixtures.create_fixtures(dir)
+    # Fixtures.create_fixtures(dir, %w{ attributions ratings retorts tags })
   end
   
   desc "load base data from a CSV; assumes header row and appropriately named columns" 
@@ -41,5 +96,9 @@ namespace :data do
       retort.save
     end
     puts "loading CSV #{file}"
+  end
+private
+  def invoke(taskname)
+    Rake::Task["data:#{taskname}"].invoke
   end
 end
