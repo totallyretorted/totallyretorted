@@ -45,6 +45,14 @@
 		DB2423980F13F2F7000BE2F0 /* TagViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423970F13F2F7000BE2F0 /* TagViewControllerTest.m */; };
 		DB2423D80F1451F6000BE2F0 /* TRTagSliderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423D70F1451F6000BE2F0 /* TRTagSliderHelper.m */; };
 		DB2424230F1463B4000BE2F0 /* TRTagSliderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423D70F1451F6000BE2F0 /* TRTagSliderHelper.m */; };
+		DB2D91580F15932800928E84 /* RetortByTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2D91570F15932800928E84 /* RetortByTagView.xib */; };
+		DB2D915A0F15934800928E84 /* RetortCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2D91590F15934800928E84 /* RetortCellView.xib */; };
+		DB2D91600F15B6D400928E84 /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = DB2D915E0F15B6D400928E84 /* downArrow.png */; };
+		DB2D91610F15B6D400928E84 /* upArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = DB2D915F0F15B6D400928E84 /* upArrow.png */; };
+		DB2D91620F15B6E100928E84 /* RetortCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2D91590F15934800928E84 /* RetortCellView.xib */; };
+		DB2D91630F15B6E500928E84 /* RetortByTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2D91570F15932800928E84 /* RetortByTagView.xib */; };
+		DB2D91640F15B6F600928E84 /* RetortByTagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D91550F15931100928E84 /* RetortByTagListViewController.m */; };
+		DB2D91650F15B70700928E84 /* RetortCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D91520F1592F100928E84 /* RetortCellView.m */; };
 		DB59FE760EF8088700E59D12 /* FEUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126590EEF047300137EBC /* FEUrlHelper.m */; };
 		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
 		DB6D147E0F05E6F400FE89B0 /* TagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC6E44B0F05D7D70041E319 /* TagCellView.m */; };
@@ -148,6 +156,14 @@
 		DB2423D60F1451F6000BE2F0 /* TRTagSliderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTagSliderHelper.h; sourceTree = "<group>"; };
 		DB2423D70F1451F6000BE2F0 /* TRTagSliderHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagSliderHelper.m; sourceTree = "<group>"; };
 		DB261B1C0F0BDD8C004651BE /* TRNotificationInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNotificationInterface.h; sourceTree = "<group>"; };
+		DB2D91510F1592F100928E84 /* RetortCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetortCellView.h; sourceTree = "<group>"; };
+		DB2D91520F1592F100928E84 /* RetortCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetortCellView.m; sourceTree = "<group>"; };
+		DB2D91540F15931100928E84 /* RetortByTagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetortByTagListViewController.h; sourceTree = "<group>"; };
+		DB2D91550F15931100928E84 /* RetortByTagListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetortByTagListViewController.m; sourceTree = "<group>"; };
+		DB2D91570F15932800928E84 /* RetortByTagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RetortByTagView.xib; sourceTree = "<group>"; };
+		DB2D91590F15934800928E84 /* RetortCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RetortCellView.xib; sourceTree = "<group>"; };
+		DB2D915E0F15B6D400928E84 /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downArrow.png; sourceTree = "<group>"; };
+		DB2D915F0F15B6D400928E84 /* upArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upArrow.png; sourceTree = "<group>"; };
 		DB6849C70EF0257B0094CC24 /* CGPointUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointUtils.c; sourceTree = "<group>"; };
 		DB6849C80EF0257B0094CC24 /* CGPointUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointUtils.h; sourceTree = "<group>"; };
 		DB6D14100F05D9F000FE89B0 /* TagCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCellView.xib; sourceTree = "<group>"; };
@@ -245,6 +261,8 @@
 				DB08FFA40EF2D898000FB1AB /* TagView.xib */,
 				DB6D14100F05D9F000FE89B0 /* TagCellView.xib */,
 				DB2423250F13D5AC000BE2F0 /* RedRocketView.xib */,
+				DB2D91570F15932800928E84 /* RetortByTagView.xib */,
+				DB2D91590F15934800928E84 /* RetortCellView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -302,6 +320,7 @@
 		DB1126350EEEECB900137EBC /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DB2D915B0F15939000928E84 /* Custom UI Controls */,
 				28216C950DB411BC00E5133A /* HomeViewController.h */,
 				28216C960DB411BC00E5133A /* HomeViewController.m */,
 				DB1126B90EEF27B600137EBC /* RetortViewController.h */,
@@ -310,10 +329,10 @@
 				DB141E270EF3758300868FAB /* SettingsViewController.m */,
 				76EA75670F0181C000B1ED9C /* TagViewController.h */,
 				76EA75680F0181C000B1ED9C /* TagViewController.m */,
-				DBC6E44A0F05D7D70041E319 /* TagCellView.h */,
-				DBC6E44B0F05D7D70041E319 /* TagCellView.m */,
 				DB2423220F13D595000BE2F0 /* RedRocketViewController.h */,
 				DB2423230F13D595000BE2F0 /* RedRocketViewController.m */,
+				DB2D91540F15931100928E84 /* RetortByTagListViewController.h */,
+				DB2D91550F15931100928E84 /* RetortByTagListViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -330,6 +349,8 @@
 		DB1128830EEF73F200137EBC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DB2D915E0F15B6D400928E84 /* downArrow.png */,
+				DB2D915F0F15B6D400928E84 /* upArrow.png */,
 				45812E900EF1D81400FC2D21 /* Default.png */,
 				45812E750EF1C0B500FC2D21 /* tab-tag.png */,
 				45B947660EF18C0E004C00EE /* Icon.png */,
@@ -387,6 +408,17 @@
 				DB261B1C0F0BDD8C004651BE /* TRNotificationInterface.h */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		DB2D915B0F15939000928E84 /* Custom UI Controls */ = {
+			isa = PBXGroup;
+			children = (
+				DBC6E44A0F05D7D70041E319 /* TagCellView.h */,
+				DBC6E44B0F05D7D70041E319 /* TagCellView.m */,
+				DB2D91510F1592F100928E84 /* RetortCellView.h */,
+				DB2D91520F1592F100928E84 /* RetortCellView.m */,
+			);
+			name = "Custom UI Controls";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,6 +501,10 @@
 				DB6DCA3F0EF8B0B5008C1C62 /* SettingsView.xib in Resources */,
 				DB6D147F0F05E70300FE89B0 /* TagCellView.xib in Resources */,
 				DB2423260F13D5AC000BE2F0 /* RedRocketView.xib in Resources */,
+				DB2D91600F15B6D400928E84 /* downArrow.png in Resources */,
+				DB2D91610F15B6D400928E84 /* upArrow.png in Resources */,
+				DB2D91620F15B6E100928E84 /* RetortCellView.xib in Resources */,
+				DB2D91630F15B6E500928E84 /* RetortByTagView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +515,8 @@
 				DB141F730EF4A3FF00868FAB /* UnitTest Help.rtf in Resources */,
 				DC2519CA0EF86AAD00B84B66 /* TRRetortXMLParserTest_testStandardXml.xml in Resources */,
 				DC2519CC0EF86AE700B84B66 /* TRRetortXMLParserTest_testSuperSimpleXML.xml in Resources */,
+				DB2D91580F15932800928E84 /* RetortByTagView.xib in Resources */,
+				DB2D915A0F15934800928E84 /* RetortCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +564,8 @@
 				DB6D147E0F05E6F400FE89B0 /* TagCellView.m in Sources */,
 				DB2423240F13D595000BE2F0 /* RedRocketViewController.m in Sources */,
 				DB2424230F1463B4000BE2F0 /* TRTagSliderHelper.m in Sources */,
+				DB2D91640F15B6F600928E84 /* RetortByTagListViewController.m in Sources */,
+				DB2D91650F15B70700928E84 /* RetortCellView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

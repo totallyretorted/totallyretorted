@@ -1,9 +1,9 @@
 //
-//  HomeViewController.h
+//  RetortByTagListViewController.h
 //  Retorted
 //
-//  Created by B.J. Ray on 12/2/08.
-//  Copyright Forward Echo, LLC 2008. All rights reserved.
+//  Created by B.J. Ray on 1/7/09.
+//  Copyright 2009 Forward Echo, LLC. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -11,13 +11,15 @@
 
 @class TRRetortFacade;
 
-@interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAccelerometerDelegate, TRNotificationInterface>  {
+@interface RetortByTagListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAccelerometerDelegate, TRNotificationInterface> {
 	IBOutlet UITableView *retortsView;
 	IBOutlet UITextView *loadFailureMessage;
-	IBOutlet UIScrollView *tagSlider;
+	IBOutlet UIActivityIndicatorView *activityIndicator;
 	
 	NSMutableArray *retorts;
 	TRRetortFacade *facade;
+	NSString *selectedTag;
+	NSNumber *tagId;
 	
 	UIAccelerationValue accelX;
 	UIAccelerationValue accelY;
@@ -29,14 +31,13 @@
 
 - (void)loadURL;
 - (void)handleDataLoad:(NSNotification *)note;
-- (void)buildTagSliderView;
 - (void)refreshData;
-
 
 @property (nonatomic, retain) TRRetortFacade *facade;
 @property (nonatomic, retain) NSMutableArray *retorts;
+@property (nonatomic, retain) NSString *selectedTag;
+@property (nonatomic, retain) NSNumber *tagId;
 
 @property (nonatomic, retain) UITableView *retortsView;
 @property (nonatomic, retain) UITextView *loadFailureMessage;
-@property (nonatomic, retain) UIScrollView *tagSlider;
 @end

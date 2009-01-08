@@ -10,6 +10,7 @@
 #import "TRTagFacade.h"
 #import "TRTag.h"
 #import "TagCellView.h"		//our custom cell view class
+#import "RetortByTagListViewController.h"
 
 @implementation TagViewController
 @synthesize tags, tagFacade, tagsView, loadFailurelbl;
@@ -103,7 +104,7 @@
         //cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 		
 		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TagCellView" owner:self options:nil];
-		cell = [nib objectAtIndex:0];		//file's owner is at index 0
+		cell = [nib objectAtIndex:0];		//file's owner is suppose to be at index 0.  Not sure why not?
 		
     }
 
@@ -133,6 +134,14 @@
 	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
 	// [self.navigationController pushViewController:anotherViewController];
 	// [anotherViewController release];
+	
+	RetortByTagListViewController *retortVC = [[RetortByTagListViewController alloc] initWithNibName:@"RetortByTagView" bundle:nil];
+	TRTag *aTag = [tags objectAtIndex:indexPath.row];
+	retortVC.selectedTag = aTag.value;
+	retortVC.tagId = aTag.primaryId;
+	
+	[self.navigationController pushViewController:retortVC animated:YES];
+	[retortVC release];
 }
 
 

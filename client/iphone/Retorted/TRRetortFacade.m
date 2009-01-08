@@ -35,27 +35,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	[self addToNotificationWithSelector:@selector(handleRetortXMLLoad:) notificationName:FEDataFinishedLoadingNotification];
 	[self addToNotificationWithSelector:@selector(handleDataLoadFailure:) notificationName:FEDataFailedLoadingNotification];
 	
-	/*
-	 NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc addObserver:self 
-		   selector:@selector(handleRetortXMLLoad:) 
-			   name:FEDataFinishedLoadingNotification 
-			 object:nil];
-	
-	[nc addObserver:self 
-		   selector:@selector(handleDataLoadFailure:) 
-			   name:FEDataFailedLoadingNotification 
-			 object:nil];
-	*/
-	
-	//Listen for notification from TRRetortXMLParser --> When is the XML read to consume?
-	/* NO LONGER NEEDED
-	[nc addObserver:self 
-		   selector:@selector(handleRetortObjectsLoad:) 
-			   name:TRXMLRetortDataFinishedLoadingNotification 
-			 object:nil];
-	*/
-	NSLog(@"TRRetortFacade: Registered with notification center for: FEDataFinishedLoadingNotification & TRXMLRetortDataFinishedLoadingNotification");
+	NSLog(@"TRRetortFacade: Registered with notification center for: FEDataFinishedLoadingNotification & FEDataFailedLoadingNotification");
 	
 	properties = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Properties" ofType:@"plist"]]; 
 	
@@ -66,8 +46,12 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 
 //Initiate call to URL to get raw XML dataset
 - (void)loadRetorts {
+	[self loadRetortsWithRelativePath:@"retorts/screenzero.xml"];
+}
+
+- (void)loadRetortsWithRelativePath:(NSString *)relPath {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	NSString* retortsURL = [NSString stringWithFormat:@"%@/retorts/screenzero.xml", [properties valueForKey:@"Retorted.Host"]];
+	NSString* retortsURL = [NSString stringWithFormat:@"%@/%@", [properties valueForKey:@"Retorted.Host"], relPath];
 	
 	NSLog(@"TRRetortFacade:  Getting data from URL using URLHelper: %@", retortsURL);
 	
@@ -131,28 +115,6 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	[self removeFromAllNotifications];
 }
 
-//12.31.2008 - Removed by B.J. - not needed as XMLParser is not async - we will handle this in the method that calls the parser
-//Received from notification center when TRRetortXMLParser is done parsing retort content.
-//TRXMLRetortDataFinishedLoadingNotification
-/*
-- (void)handleRetortObjectsLoad: (NSNotification *)note {
-	
-	TRRetortXMLParser *xmlParser  = [note object];
-	
-	//get the salesLead objects that the lead helper gathered...
-	self.retorts = xmlParser.retorts;
-	NSLog(@"TRRetortFacade: Received retort objects.");
-	self.loadSuccessful = YES;
-	
-	//post a notification to be picked up by the Controller...
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	
-	[nc postNotificationName:TRRetortDataFinishedLoadingNotification object:self];
-	NSLog(@"TRRetortFacade: Sending finished notification for Retort object creation");
-	[xmlParser release];
-	 
-}
-*/
 - (void)handleDataLoadFailure: (NSNotification *)note {
 	self.loadSuccessful = NO;
 	

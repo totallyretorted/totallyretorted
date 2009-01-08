@@ -22,6 +22,7 @@ extern NSString * const TRRetortDataFinishedLoadingNotification;
 @property BOOL loadSuccessful;
 
 - (void)loadRetorts;
+- (void)loadRetortsWithRelativePath:(NSString *)relPath;
 - (void)handleDataLoadFailure: (NSNotification *)note;
 - (void)handleRetortXMLLoad: (NSNotification *)note;
 //- (void)handleRetortObjectsLoad: (NSNotification *)note;
