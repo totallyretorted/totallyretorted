@@ -72,14 +72,14 @@ class RetortsController < ApplicationController
         @retort.tags << Tag.find_or_create_by_value(t)
       end
     end
+    unless params[:attribution].nil?
+      @retort.attribution = Attribution.new(params[:attribution])
+    end
 
     respond_to do |format|
       if @retort.save
         flash[:notice] = 'Retort was successfully created.'
         format.html { redirect_to(@retort) }
-        #format.xml { render :xml => @retort.to_xml(:include => [ :tags ], :except => [:retort_id, :tag_id, :created_at, :updated_at] )}
-        #format.xml { render :xml => Retort.to_full_xml(@retort)}
-        #format.xml  { render :xml => Retort.to_full_xml(@retort, :status => :created, :location => @retort) }
         format.xml { render :xml => @retort, :status => :created, :location => @retort }
         #format.iphone # renders index.iphone.erb
       else

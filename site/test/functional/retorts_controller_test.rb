@@ -19,6 +19,26 @@ class RetortsControllerTest < ActionController::TestCase
       post :create, :retort => { }
     end
 
+    assert_difference('Retort.count') do
+      post :create, {:retort => { :content => 'this is a test' }}
+    end
+
+    assert_difference('Retort.count') do
+      post :create, {:retort => { :content => 'this is also a test' }, :tags => { :value => 'one' }}
+    end
+
+    assert_difference('Retort.count') do
+      post :create, {:retort => { :content => 'this is another test' }, :tags => { :value => 'one, two' }}
+    end    
+
+    assert_difference('Retort.count') do
+      post :create, {:retort => { :content => 'this is one more test' }, :tags => { :value => 'one and two, two, three' }, :attribution => { :who => 'fred'}}
+    end  
+
+    assert_difference('Retort.count') do
+      post :create, {:retort => { :content => 'this is the last test' }, :tags => { :value => 'one and two, two, three' }, :attribution => { :when => 'fred'}}
+    end
+
     assert_redirected_to retort_path(assigns(:retort))
   end
 

@@ -1,6 +1,9 @@
 class Attribution < ActiveRecord::Base
   has_many :retorts
   
+#  validates_date :when
+  validates_date :when, :allow_nil => true
+  
   def to_xml(options ={}, &block)
     xml = options[:builder] || Builder::XmlMarkup.new
     
