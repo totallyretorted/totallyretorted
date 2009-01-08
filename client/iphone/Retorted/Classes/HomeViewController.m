@@ -50,6 +50,13 @@
 	self.retortsView.hidden = NO;
 	self.loadFailureMessage.hidden = YES;
 	
+	UIBarButtonItem *refreshButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemRefresh 
+																					target:self 
+																					action:@selector(refreshData)] autorelease];
+	
+	
+	self.navigationItem.rightBarButtonItem = refreshButton;
+	
 	//set up accelerometer...
 	UIAccelerometer *myAccel = [UIAccelerometer sharedAccelerometer];
 	myAccel.updateInterval = .1;
@@ -88,6 +95,16 @@
 #pragma mark -
 #pragma mark Custom Methods
 
+- (void)refreshData {
+	//now go fetch the data!
+	[self.retorts release];
+	
+	//register with notification center to receive callback
+	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
+	NSLog(@"refetching data");
+	[self loadURL];
+}
+
 //starts process of fetching retort content using the TRRetortFacade helper class.
 - (void)loadURL {
 	NSLog(@"HomeViewController: Create instance of TRRetortFacade");
@@ -118,12 +135,9 @@
 		self.loadFailureMessage.font = [UIFont systemFontOfSize:17.0];
 		self.loadFailureMessage.text = @"Unable to acquire data at this time.  Please shake to try again.";
 	}
-	
-	NSLog(@"self.facade: %@", [self.facade description]);
-	NSLog(@"aFacade: %@", [aFacade description]);
+
 	//facade is no longer needed...
 	self.facade = nil;
-	
 	
 	//remove self as observer of notifications...
 	[self removeFromAllNotifications];
@@ -163,6 +177,7 @@
 	slider.fontColor = [UIColor whiteColor];
 	slider.backgroundColor = [UIColor blackColor];
 	[tags release];
+	
 	[slider buildTagScroller:self.tagSlider];
 }
 
@@ -211,12 +226,11 @@
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
 	if ([self didShake:(UIAcceleration *)acceleration]) {
 		
-		//now go fetch the data!
-		[self.retorts release];
-		NSLog(@"refetching data");
-		[self loadURL];
+		[self refreshData];
 	}
 }
+
+
 
 #pragma mark -
 #pragma mark TableView DataSource Methods
@@ -240,7 +254,6 @@
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
     }
     // Configure the cell
-	NSLog(@"indexPath.row: %d", indexPath.row);
 	TRRetort *aRetort = [self.retorts objectAtIndex:indexPath.row];
 	cell.text = aRetort.content;
     return cell;

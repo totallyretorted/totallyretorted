@@ -30,6 +30,7 @@
 - (void)loadURL;
 - (void)handleDataLoad:(NSNotification *)note;
 - (void)buildTagSliderView;
+- (void)refreshData;
 //- (void)removeFromAllNotifications;
 //- (void)addToNotificationWithSelector:(SEL)selector notificationName:(NSString *)name;
 

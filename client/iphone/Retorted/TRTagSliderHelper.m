@@ -43,32 +43,70 @@ float const PADDING = 10.0;
 	float xCoord = self.origin.x;
 	float yCoord = self.origin.y;
 	NSUInteger index = 0;
+	NSUInteger subViewIndex = 0;
+	NSUInteger subViewCount = 0;
+	BOOL usingExistingSubView = NO;
 	
 	if (aScrollView == nil) {
 		return;
 	}
+	subViewCount = [[aScrollView subviews] count];
 	
 	//determine total width of content and adjust offset if necessary...
 	float offset = [self getOffsetForTagsForScrollViewWidth:[aScrollView frame].size.width];
 	xCoord += offset;
 	
-	//render tag slider view...
+	//loop through all tags that need to be added to tag slider...
 	for(NSString *item in self.tagArray) {
+		usingExistingSubView = NO;
+		UILabel *itemLabel = nil;
 		CGSize textSize = [(NSValue *)[textCGSizes objectAtIndex:index] CGSizeValue];
-		CGRect attrFrame = CGRectMake(xCoord, yCoord, textSize.width+PADDING, textSize.height);
+		CGRect lblFrame = CGRectMake(xCoord, yCoord, textSize.width+PADDING, textSize.height);
 		
-		UILabel *itemLabel = [[UILabel alloc] initWithFrame:attrFrame];
+		//check if subviews exist...try and reuse them, if possible...
+		for (NSUInteger i = subViewIndex; i<subViewCount; i++) {
+			id aSubView = [[aScrollView subviews] objectAtIndex:subViewIndex];
+			
+			if ([aSubView isMemberOfClass:[UILabel class]]) {
+				//reuse this object!
+				itemLabel = aSubView;
+				itemLabel.frame = lblFrame;	//adjust the frame accordingly...
+				subViewIndex++;	
+				usingExistingSubView = YES;
+				i = subViewCount;	//exit loop
+			}
+		}
+		
+		if (itemLabel == nil) {
+			//no subview found
+			itemLabel = [[UILabel alloc] initWithFrame:lblFrame];
+		}
 		
 		itemLabel.text = item;
+		NSLog(@"tag: %@", item);
 		itemLabel.textAlignment = UITextAlignmentLeft;
 		itemLabel.textColor = self.fontColor;
 		itemLabel.backgroundColor = self.backgroundColor;
 		itemLabel.font = [UIFont boldSystemFontOfSize:self.fontSize];
-		[aScrollView addSubview:itemLabel];	//add as subview to scrollview
-		[itemLabel release];
+		
+		if (!usingExistingSubView) {
+			[aScrollView addSubview:itemLabel];	//add as subview to scrollview
+			[itemLabel release];
+		}
 		xCoord += textSize.width + self.horizontalSpacer;
 		index++;
 	}
+	
+	//remove any remaining uilabel subviews...
+	if (subViewIndex < subViewCount) {
+		for (NSUInteger i = subViewIndex; i<subViewCount; i++) {
+			id aSubView = [[aScrollView subviews] objectAtIndex:subViewIndex];
+			if ([aSubView isMemberOfClass:[UILabel class]]) {
+				[aSubView removeFromSuperview];
+			}
+		}
+	}
+	
 	//adjust the content size area for the scroller...
 	CGSize scrollSize = CGSizeMake(xCoord, self.scrollerHeight);
 	[aScrollView setContentSize:scrollSize];	
