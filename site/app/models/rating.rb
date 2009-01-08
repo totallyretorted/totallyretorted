@@ -14,5 +14,4 @@ class Rating < ActiveRecord::Base
       xml.rank(self.rating)
     }  
   end  
-  
 end

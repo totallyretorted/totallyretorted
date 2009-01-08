@@ -59,3 +59,22 @@ div.pop .form{
   margin-right:1em;
   margin-left:1em;
 }
+
+#hd {
+	background:transparent center top;
+}
+
+#logo{
+  margin-right:auto;
+  margin-left:auto;
+  text-align:center;
+}
+
+.metadata{
+  font-size:small;
+  margin-left:50%;
+}
+
+#rating{
+  color:gray;
+}
