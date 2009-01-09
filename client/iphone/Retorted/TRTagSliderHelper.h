@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+@class TRTag;
 
 @interface TRTagSliderHelper : NSObject {
-	float fontSize;
+	//float fontSize;
 	float horizontalSpacer;
 	float scrollerHeight;
 	
@@ -20,15 +21,20 @@
 	UIColor *backgroundColor;
 	NSArray *tagArray;
 	NSMutableArray *textCGSizes;
+	UIFont *font;
 }
 - (id)initWithTagArray:(NSArray *)tags;
 - (void)buildTagScroller:(UIScrollView *)aScrollView;
 - (float)getOffsetForTagsForScrollViewWidth: (float)scrollWidth;
- 
-@property float fontSize;
+
+- (UILabel *)getLabelFromTag:(TRTag *)tag atX:(CGFloat)xCoord y:(CGFloat)yCoord;
+- (void)removeOldSubViewsFromScrollView:(UIScrollView *)aScrollView;
+
+//@property float fontSize;
 @property float horizontalSpacer;
 @property float scrollerHeight;
 @property NSPoint origin;
+@property (nonatomic, retain) UIFont *font;
 @property (nonatomic, retain) UIColor *fontColor;
 @property (nonatomic, retain) NSArray *tagArray;
 @property (nonatomic, retain) NSMutableArray *textCGSizes;

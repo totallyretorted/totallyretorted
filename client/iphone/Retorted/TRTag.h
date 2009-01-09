@@ -18,6 +18,7 @@
 
 - (id)initWithId:(NSNumber *)aPrimaryKey value:(NSString *)aValue;
 - (id)initWithId:(NSNumber *)aPrimaryKey value:(NSString *)aValue weight:(NSInteger)wgt tagCloudValue:(NSInteger)cloudValue;
+- (CGSize)sizeOfNonWrappingTagWithFont:(UIFont *)font;
 
 @property (nonatomic, retain) NSString *value;
 @property (nonatomic, retain) NSNumber *primaryId;

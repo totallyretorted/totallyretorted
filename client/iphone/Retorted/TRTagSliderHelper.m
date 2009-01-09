@@ -7,12 +7,14 @@
 //
 
 #import "TRTagSliderHelper.h"
+#import "TRTag.h"
+
 float const PADDING = 10.0;
 
 @implementation TRTagSliderHelper
 @synthesize tagArray, fontColor, backgroundColor, textCGSizes;
-@synthesize fontSize, horizontalSpacer, scrollerHeight;
-@synthesize origin;
+@synthesize horizontalSpacer, scrollerHeight;//, fontSize;
+@synthesize origin, font;
 
 - (id)init {
 	[self dealloc];
@@ -29,7 +31,8 @@ float const PADDING = 10.0;
 	
 	self.tagArray = tags;
 	self.origin = NSMakePoint(20.0, 20.0);
-	self.fontSize = 21.0;
+	self.font = [UIFont systemFontOfSize:21.0];
+	//self.fontSize = 21.0;
 	self.horizontalSpacer = 30.0;
 	self.scrollerHeight = 61.0;
 	self.fontColor = [UIColor blackColor];
@@ -39,6 +42,123 @@ float const PADDING = 10.0;
 }
 
 // Applies object properties to stylize the scroll view passed to the method and populates with the object's tag array.
+- (void)buildTagScroller:(UIScrollView *)aScrollView {
+	float xCoord = self.origin.x;
+	float yCoord = self.origin.y;
+	
+	if (aScrollView == nil) {
+		return;
+	}
+	NSLog(@"subview count: %d", [[aScrollView subviews] count]);
+	//get rid of older subviews...
+	[self removeOldSubViewsFromScrollView:aScrollView];
+	
+	//determine total width of content and adjust offset if necessary...
+	float offset = [self getOffsetForTagsForScrollViewWidth:[aScrollView frame].size.width];
+	xCoord += offset;
+	
+	//add all tags to scrollview
+	for (NSUInteger i=0; i< [self.tagArray count]; i++) {
+		UILabel *itemLabel = [self getLabelFromTag:[self.tagArray objectAtIndex:i] atX:xCoord y:yCoord];
+		[aScrollView addSubview:itemLabel];
+		xCoord += [itemLabel frame].size.width+self.horizontalSpacer;
+	}
+	
+	//adjust the content size area for the scroller...
+	CGSize scrollSize = CGSizeMake(xCoord, self.scrollerHeight);
+	[aScrollView setContentSize:scrollSize];	
+}
+
+- (void)removeOldSubViewsFromScrollView:(UIScrollView *)aScrollView {
+	NSInteger subViewCount = [[aScrollView subviews] count];
+	
+	for (NSInteger i=subViewCount-1; i>-1; i--) {
+		id aSubView = [[aScrollView subviews] objectAtIndex:i];
+		if ([aSubView isMemberOfClass:[UILabel class]]) {
+			[aSubView removeFromSuperview];
+		}
+	}
+}
+
+- (float)getOffsetForTagsForScrollViewWidth: (float)scrollWidth{
+	float totalWidth = 0.0;
+	float offset=0.0;
+	//self.textCGSizes = [[NSMutableArray alloc] init];
+	
+	for (NSUInteger i = 0; i< [self.tagArray count]; i++) {
+		id aTagItem = [self.tagArray objectAtIndex:i];
+		if ([aTagItem isMemberOfClass:[TRTag class]]) {
+			
+			CGSize size = [(TRTag *)aTagItem sizeOfNonWrappingTagWithFont:self.font];
+			totalWidth += size.width+PADDING+self.horizontalSpacer;
+		}
+	}
+	
+	/*			
+	 for (NSString *item in self.tagArray) {
+	 CGSize textSize = [item sizeWithFont:[UIFont systemFontOfSize: self.fontSize]];
+	 [textCGSizes addObject: [NSValue valueWithCGSize: textSize]];
+	 totalWidth += textSize.width+PADDING+self.horizontalSpacer;
+	 }
+	 */	
+	if(totalWidth < scrollWidth) {
+		offset = (scrollWidth-totalWidth)/2;
+	}
+	
+	return offset;
+}
+
+- (UILabel *)getLabelFromTag:(TRTag *)tag atX:(CGFloat)xCoord y:(CGFloat)yCoord {
+	UILabel *itemLabel = nil;
+	CGSize size = [tag sizeOfNonWrappingTagWithFont:self.font];
+	
+	
+	CGRect lblFrame = CGRectMake(xCoord, yCoord, size.width+PADDING, size.height);
+	itemLabel = [[UILabel alloc] initWithFrame:lblFrame];
+	itemLabel.text = tag.value;
+	NSLog(@"tag: %@", tag);
+	itemLabel.textAlignment = UITextAlignmentLeft;
+	itemLabel.textColor = self.fontColor;
+	itemLabel.backgroundColor = self.backgroundColor;
+	itemLabel.font = [UIFont boldSystemFontOfSize:self.font.pointSize];
+	[itemLabel autorelease];
+	return itemLabel;
+}
+
+
+/*
+- (void)addNewSubViewsToScrollView:(UIScrollView *)aScrollView atX:(float)xCoord y:(float)yCoord {
+	NSUInteger index = 0;
+	//float yCoord = self.origin.y;
+	
+	//loop through all tags that need to be added to tag slider...
+	for(NSString *item in self.tagArray) {
+		UILabel *itemLabel = nil;
+		CGSize textSize = [(NSValue *)[textCGSizes objectAtIndex:index] CGSizeValue];
+		CGRect lblFrame = CGRectMake(xCoord, yCoord, textSize.width+PADDING, textSize.height);
+		
+		itemLabel = [[UILabel alloc] initWithFrame:lblFrame];
+		itemLabel.text = item;
+		NSLog(@"tag: %@", item);
+		itemLabel.textAlignment = UITextAlignmentLeft;
+		itemLabel.textColor = self.fontColor;
+		itemLabel.backgroundColor = self.backgroundColor;
+		itemLabel.font = [UIFont boldSystemFontOfSize:self.fontSize];
+		
+		[aScrollView addSubview:itemLabel];	//add as subview to scrollview
+		[itemLabel release];
+		xCoord += textSize.width + self.horizontalSpacer;
+		index++;
+	}
+}
+
+*/
+
+
+
+
+
+/*
 - (void)buildTagScroller:(UIScrollView *)aScrollView {
 	float xCoord = self.origin.x;
 	float yCoord = self.origin.y;
@@ -106,28 +226,12 @@ float const PADDING = 10.0;
 			}
 		}
 	}
-	
 	//adjust the content size area for the scroller...
 	CGSize scrollSize = CGSizeMake(xCoord, self.scrollerHeight);
 	[aScrollView setContentSize:scrollSize];	
 }
+*/
 
-- (float)getOffsetForTagsForScrollViewWidth: (float)scrollWidth{
-	float totalWidth = 0.0;
-	float offset=0.0;
-	self.textCGSizes = [[NSMutableArray alloc] init];
-	
-	for (NSString *item in self.tagArray) {
-		CGSize textSize = [item sizeWithFont:[UIFont systemFontOfSize: self.fontSize]];
-		[textCGSizes addObject: [NSValue valueWithCGSize: textSize]];
-		totalWidth += textSize.width+PADDING+self.horizontalSpacer;
-	}
-	
-	if(totalWidth < scrollWidth) {
-		offset = (scrollWidth-totalWidth)/2;
-	}
-	
-	return offset;
-}
+
 
 @end

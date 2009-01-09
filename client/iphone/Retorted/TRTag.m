@@ -37,8 +37,42 @@
 	return self;
 }
 
+
+
+- (CGSize)sizeOfNonWrappingTagWithFont:(UIFont *)font {
+	return [self.value sizeWithFont:font];
+}
+
 - (NSString *)description {
 	return [NSString stringWithFormat:@"%@", self.value];
+}
+
+- (BOOL)isEqual:(id)someObject {
+	if (someObject == self) {
+		return YES;
+	}
+	if (!someObject || ![someObject isKindOfClass:[self class]]) {
+		return NO;
+	}
+	
+	return [self isEqualTRTagObject: someObject];
+}
+
+- (BOOL)isEqualTRTagObject:(TRTag *)aTag {
+	if (self == aTag) {
+		return YES;
+	}
+	if ([self.primaryId isEqual:aTag.primaryId]) {
+		return YES;
+	}
+    return NO;
+}
+
+- (NSUInteger)hash {
+    NSUInteger hash = 0;
+    hash += [self.value hash];
+    hash += [self.primaryId hash];
+    return hash;
 }
  
 - (void)dealloc {

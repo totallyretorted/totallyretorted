@@ -162,18 +162,21 @@
 
 //adds tags to tag slider
 - (void)buildTagSliderView {
+	
 	NSMutableArray *tags = [[NSMutableArray alloc] init];
 	for(TRRetort *aRetort in self.retorts) {
 		for (TRTag *tag in aRetort.tags) {
+			
 			//in the future, consider a way to use localizedCaseInsensitiveCompare
-			if ([tags indexOfObject:tag.value] == NSNotFound) {
+			if ([tags indexOfObject:tag] == NSNotFound) {
 				//found a new Tag!
-				[tags addObject:tag.value];
+				[tags addObject:tag];
 			}
 		}
 	}
 	
 	TRTagSliderHelper *slider = [[TRTagSliderHelper alloc] initWithTagArray:tags];
+	slider.font = [UIFont systemFontOfSize:21.0];
 	slider.fontColor = [UIColor whiteColor];
 	slider.backgroundColor = [UIColor blackColor];
 	[tags release];

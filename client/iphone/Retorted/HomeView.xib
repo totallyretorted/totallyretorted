@@ -88,6 +88,7 @@
 						<reference key="NSSuperview" ref="5425450"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 						<bool key="IBUIBouncesZoom">NO</bool>
 					</object>
 				</object>
@@ -269,14 +270,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>loadFailureMessage</string>
 							<string>retortsView</string>
-							<string>tagCloud</string>
 							<string>tagSlider</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UITextView</string>
 							<string>UITableView</string>
-							<string>UIWebView</string>
 							<string>UIScrollView</string>
 						</object>
 					</object>
