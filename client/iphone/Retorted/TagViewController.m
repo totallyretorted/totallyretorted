@@ -104,11 +104,20 @@
         //cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 		
 		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"TagCellView" owner:self options:nil];
-		cell = [nib objectAtIndex:0];		//file's owner is suppose to be at index 0.  Not sure why not?
+		for (NSUInteger i=0; i< [nib count]; i++) {
+			id obj = [nib objectAtIndex:i];
+			if ([obj isMemberOfClass:[TagCellView class]]) {
+				cell = obj;
+			}
+		}
+		
+		//cell = [nib objectAtIndex:0];		//file's owner is suppose to be at index 0.  Not sure why not?
 		
     }
 
-	
+	if (cell == nil) {
+		return nil;
+	}
     // Set up the cell...
     TRTag *aTag = [self.tags objectAtIndex:indexPath.row];
 	
