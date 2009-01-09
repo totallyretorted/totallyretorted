@@ -31,7 +31,22 @@ class AttributionsControllerTest < ActionController::TestCase
   end
 
   test "should update attribution" do
-    put :update, :id => attributions(:cartman).id, :attribution => { }, :format => 'html'
+    put :update, :id => attributions(:cartman).id, :attribution => { :when => 'january 7, 2009' }
+    assert_redirected_to attribution_path(assigns(:attribution))
+  end
+
+  test "should update attribution with nil when" do
+    put :update, :id => attributions(:cartman).id, :attribution => { :when => nil }
+    assert_redirected_to attribution_path(assigns(:attribution))
+  end
+  
+  test "should update attribution with empty when" do
+    put :update, :id => attributions(:cartman).id, :attribution => { :when => '' }
+    assert_redirected_to attribution_path(assigns(:attribution))
+  end
+  
+  test "should update attribution with no when" do
+    put :update, :id => attributions(:cartman).id, :attribution => { }
     assert_redirected_to attribution_path(assigns(:attribution))
   end
 
