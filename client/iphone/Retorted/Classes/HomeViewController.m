@@ -173,17 +173,12 @@
 		}
 	}
 	
-	[self.tagSlider setSubviewContentAsArray:tags];
-//	[self.tagSlider refreshData];
+	TRTagSliderHelper *slider = [[TRTagSliderHelper alloc] initWithTagArray:tags];
+	slider.fontColor = [UIColor whiteColor];
+	slider.backgroundColor = [UIColor blackColor];
 	[tags release];
 	
-	
-	//TRTagSliderHelper *slider = [[TRTagSliderHelper alloc] initWithTagArray:tags];
-//	slider.fontColor = [UIColor whiteColor];
-//	slider.backgroundColor = [UIColor blackColor];
-//	[tags release];
-//	
-//	[slider buildTagScroller:self.tagSlider];
+	[slider buildTagScroller:self.tagSlider];
 }
 
 

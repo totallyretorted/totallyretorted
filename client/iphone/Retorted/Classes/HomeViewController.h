@@ -10,12 +10,11 @@
 #import "TRNotificationInterface.h"
 
 @class TRRetortFacade;
-@class FETabScrollView;
 
 @interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAccelerometerDelegate, TRNotificationInterface>  {
 	IBOutlet UITableView *retortsView;
 	IBOutlet UITextView *loadFailureMessage;
-	IBOutlet FETabScrollView *tagSlider;
+	IBOutlet UIScrollView *tagSlider;
 	
 	NSMutableArray *retorts;
 	TRRetortFacade *facade;
@@ -39,5 +38,5 @@
 
 @property (nonatomic, retain) UITableView *retortsView;
 @property (nonatomic, retain) UITextView *loadFailureMessage;
-@property (nonatomic, retain) FETabScrollView *tagSlider;
+@property (nonatomic, retain) UIScrollView *tagSlider;
 @end
