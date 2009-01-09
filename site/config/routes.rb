@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   #map.tags_by_alpha 'tags/alpha/:letter', :controller => 'tags', :action => 'alpha'
   #map.tags_by_alpha_formatted 'tags/alpha/:letter.:format', :controller => 'tags', :action => 'alpha'
 
-  map.resources :retorts, :collection => { :screenzero => :get, :all => :get }
+  map.resources :retorts, :collection => { :screenzero => :get, :all => :get }, :member => { :new_remote => :get }
 
   map.connect ':controller/page/:page', :action => 'paginate'
   map.connect ':controller/alpha/:letter', :action => 'alpha'

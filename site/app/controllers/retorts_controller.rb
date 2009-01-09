@@ -57,6 +57,14 @@ class RetortsController < ApplicationController
       format.xml { render :xml => @retorts.to_xml }
     end
   end
+  
+  def new_remote
+    @retort = Retort.new
+    render :action => 'new', :layout => false
+    # respond_to do |format|
+    #   format.html { render :action => 'new', :layout => false }
+    # end
+  end
 
   # GET /retorts/1/edit
   def edit

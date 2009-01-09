@@ -49,13 +49,13 @@ a:hover{
 }
 
 .center{
-  text-align:center;
-  margin-left:auto;
-  margin-right:auto;
+  text-align:center !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
 }
 
 div.pop .form{
-  border:1px solid blue;
+/*  border:1px solid blue;*/
   margin-right:1em;
   margin-left:1em;
 }
@@ -77,4 +77,51 @@ div.pop .form{
 
 #rating{
   color:gray;
+}
+
+#RB_window {
+  top:15em;
+}
+
+#retort_form {
+  height:10em;
+  /*width:60%;*/
+  /*margin-right:auto;
+    margin-left:auto;*/
+}
+
+#retort_form .first{
+  text-align:left;
+}
+
+#top_menu{
+  width:70%;
+  margin-right:auto;
+  margin-left:auto;
+  text-align:center;
+}
+
+#tag_cloud{
+  padding-top:1em;
+  width:70%;
+  margin-right:auto;
+  margin-left:auto;
+  /*  text-align:center;*/
+}
+
+#tag_cloud a:hover{
+  text-decoration:underline;
+}
+
+#ft{
+  width:100%;
+  padding-top:2em;
+  font-size:x-small;
+  text-align:center;
+}
+
+#ft div{
+  margin-right:auto;
+  margin-left:auto;
+  width:70%;
 }

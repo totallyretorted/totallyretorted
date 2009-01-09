@@ -1,7 +1,15 @@
 <div id="toolbar">
 	<div id="toolbar_main">
 		<div id="controls">
-			<div id="create"><%= link_to image_tag('gear.png', :height => 24, :width => 24, :title => "New #{controller.controller_name.singularize.capitalize}"), :action => 'new' %></div>
+			<div id="create">
+				<%= link_to_remote_redbox image_tag('gear.png', :height => 24, :width => 24, :title => "New #{controller.controller_name.singularize.capitalize}"), 
+					:url => { :action => 'new_remote' },
+					:html => { :class => 'lightbox' }
+					#{:id => 'form_container'}
+					# {:class => 'lightbox', :style => {:height => '15em'}}
+				-%>
+			</div>
+			<div id="form_container" style="display:none"></div>
 		</div>
 		<div id="search">
 			<%= render :partial => "common/search_control" %>

@@ -5,7 +5,7 @@
 					  :frequency => 0.5, 
 					  :update => 'search_results',
 					  :before => "Element.show('spinner')",
-					  :complete => "Element.hide('spinner');new curvyCorners(settings, 'quick_search').applyCornersToAll();Element.show('quick_search')",
+					  :complete => "Element.hide('spinner');Element.show('quick_search')",
 					  :url => {:action => :search},
 					  :with => "'search='+encodeURIComponent(value)"
 					%>

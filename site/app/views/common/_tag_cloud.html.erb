@@ -1,5 +1,5 @@
-<div class="yui-g cloud">
+<div id="tag_cloud" class="yui-g cloud">
 	<% tagcloud.each do |tag| %>
-		<%= link_to tag.value.camelize, tag, {:class => "t#{tag.tier}"} %>
+		<%= link_to tag.value.camelize.gsub(/\s/, '&nbsp;'), tag, {:class => "t#{tag.tier}"} %>
 	<% end %>
 </div>
