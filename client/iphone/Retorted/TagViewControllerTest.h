@@ -7,7 +7,7 @@
 //
 
 #import "GTMSenTestCase.h"
-
+@class TagViewController;
 
 @interface TagViewControllerTest : SenTestCase {
 	TagViewController* subject;

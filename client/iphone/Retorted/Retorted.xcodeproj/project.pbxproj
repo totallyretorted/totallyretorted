@@ -40,6 +40,7 @@
 		DB141F730EF4A3FF00868FAB /* UnitTest Help.rtf in Resources */ = {isa = PBXBuildFile; fileRef = DB141F720EF4A3FF00868FAB /* UnitTest Help.rtf */; };
 		DB1FD1650EF1950F0000E78E /* TRRetortFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */; };
 		DB1FD30C0EF1D39F0000E78E /* TRRetortXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */; };
+		DB2388AA0F17C75200F3F96C /* TRTagSliderHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2388A90F17C75200F3F96C /* TRTagSliderHelperTest.m */; };
 		DB2423240F13D595000BE2F0 /* RedRocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423230F13D595000BE2F0 /* RedRocketViewController.m */; };
 		DB2423260F13D5AC000BE2F0 /* RedRocketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2423250F13D5AC000BE2F0 /* RedRocketView.xib */; };
 		DB2423980F13F2F7000BE2F0 /* TagViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423970F13F2F7000BE2F0 /* TagViewControllerTest.m */; };
@@ -148,6 +149,8 @@
 		DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortFacade.m; sourceTree = "<group>"; };
 		DB1FD30A0EF1D39F0000E78E /* TRRetortXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetortXMLParser.h; sourceTree = "<group>"; };
 		DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortXMLParser.m; sourceTree = "<group>"; };
+		DB2388A80F17C75200F3F96C /* TRTagSliderHelperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTagSliderHelperTest.h; sourceTree = "<group>"; };
+		DB2388A90F17C75200F3F96C /* TRTagSliderHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagSliderHelperTest.m; sourceTree = "<group>"; };
 		DB2423220F13D595000BE2F0 /* RedRocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedRocketViewController.h; sourceTree = "<group>"; };
 		DB2423230F13D595000BE2F0 /* RedRocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedRocketViewController.m; sourceTree = "<group>"; };
 		DB2423250F13D5AC000BE2F0 /* RedRocketView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RedRocketView.xib; sourceTree = "<group>"; };
@@ -385,6 +388,8 @@
 				76EA764C0F01A68100B1ED9C /* TRTagFacadeTest.m */,
 				DB2423960F13F2F7000BE2F0 /* TagViewControllerTest.h */,
 				DB2423970F13F2F7000BE2F0 /* TagViewControllerTest.m */,
+				DB2388A80F17C75200F3F96C /* TRTagSliderHelperTest.h */,
+				DB2388A90F17C75200F3F96C /* TRTagSliderHelperTest.m */,
 			);
 			name = UnitTests;
 			sourceTree = "<group>";
@@ -591,6 +596,7 @@
 				DBC6E4450F0322950041E319 /* TRTagFacade.m in Sources */,
 				DB2423980F13F2F7000BE2F0 /* TagViewControllerTest.m in Sources */,
 				DB2423D80F1451F6000BE2F0 /* TRTagSliderHelper.m in Sources */,
+				DB2388AA0F17C75200F3F96C /* TRTagSliderHelperTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

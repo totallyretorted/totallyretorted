@@ -172,7 +172,7 @@
 - (void)buildTagSliderView {
 	NSMutableArray *tags = [[NSMutableArray alloc] init];
 	for (TRTag *tag in self.retort.tags) {
-		[tags addObject:tag.value];
+		[tags addObject:tag];
 	}
 	
 	TRTagSliderHelper *slider = [[TRTagSliderHelper alloc] initWithTagArray:tags];

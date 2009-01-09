@@ -10,10 +10,12 @@
 #import "RetortViewController.h"
 #import "TRRetortFacade.h"
 #import "TRTagSliderHelper.h"
+#import "RetortCellView.h"		//our custom cell view class
 
 // Model class inclusion
 #import "TRRetort.h"
 #import "TRTag.h"
+#import "TRRating.h"
 
 
 // Constant for maximum acceleration.
@@ -252,17 +254,44 @@
     
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	RetortCellView *cell = (RetortCellView *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+        //cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RetortCellView" owner:self options:nil];
+		for (NSUInteger i=0; i< [nib count]; i++) {
+			id obj = [nib objectAtIndex:i];
+			if ([obj isMemberOfClass:[RetortCellView class]]) {
+				cell = obj;
+			}
+		}
     }
-    // Configure the cell
+	
+	if (cell == nil) {
+		return nil;
+	}
+	
+	// Set up the cell...
 	TRRetort *aRetort = [self.retorts objectAtIndex:indexPath.row];
-	cell.text = aRetort.content;
+	TRRating *retortRating = aRetort.rating;
+	
+	cell.retortValue.text = aRetort.content;
+	if (retortRating.rank > 0.5) {
+		
+		cell.rankIndicator.image = [UIImage imageNamed:@"upArrow.png"];
+	} else {
+		cell.rankIndicator.image = [UIImage imageNamed:@"downArrow.png"];
+	}
+	
+	//TRRetort *aRetort = [self.retorts objectAtIndex:indexPath.row];
+	//cell.text = aRetort.content;
     return cell;
 }
 
 #pragma mark TableView Delegate Methods
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 80; //kTableCellViewRowHeight;
+}
 
 - (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
 	return UITableViewCellAccessoryDisclosureIndicator;
