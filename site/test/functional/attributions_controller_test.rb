@@ -31,7 +31,7 @@ class AttributionsControllerTest < ActionController::TestCase
   end
 
   test "should update attribution" do
-    put :update, :id => attributions(:cartman).id, :attribution => { }
+    put :update, :id => attributions(:cartman).id, :attribution => { }, :format => 'html'
     assert_redirected_to attribution_path(assigns(:attribution))
   end
 

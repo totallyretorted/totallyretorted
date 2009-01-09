@@ -21,8 +21,8 @@ class RetortTest < ActiveSupport::TestCase
   test "deep save" do
     r = Retort.new
     r.content = "Screw you guys I'm going home"
-    r.tags << Tag.new(:value => "south_park")
-    r.tags << Tag.new(:value => "cartman")
+    r.tags << Tag.find_or_create_by_value("south_park")
+    r.tags << Tag.find_or_create_by_value("cartman")
     r.attribution = Attribution.new(:who => "Cartman", :where => "South Park")
     r.rating = Rating.new(:positive => 1, :negative => 0)
     r.save!
