@@ -1,7 +1,7 @@
 <div id="toolbar">
 	<div id="toolbar_main">
 		<div id="controls">
-			<div id="create"><%= link_to 'New', :action => 'new' %></div>
+			<div id="create"><%= link_to image_tag('gear.png', :height => 24, :width => 24, :title => "New #{controller.controller_name.singularize.capitalize}"), :action => 'new' %></div>
 		</div>
 		<div id="search">
 			<%= render :partial => "common/search_control" %>

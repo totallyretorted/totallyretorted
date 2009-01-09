@@ -76,6 +76,7 @@
 		DC77CAEC0EF83D1F0083F5CA /* TRRating.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126460EEEEDC900137EBC /* TRRating.m */; };
 		DC77CAED0EF83D1F0083F5CA /* TRTag.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126490EEEEDD500137EBC /* TRTag.m */; };
 		DC77CAEE0EF83D1F0083F5CA /* TRRetortXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */; };
+		DC8CBDB80F169A5900F3ABE1 /* FETabScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = DC8CBDB70F169A5900F3ABE1 /* FETabScrollView.m */; };
 		DC9D942C0EF9C4E100F372F4 /* FEUrlHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DC9D942B0EF9C4E100F372F4 /* FEUrlHelperTest.m */; };
 		DCC9145C0EF2F67E0076F8C9 /* Properties.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCC9145B0EF2F67E0076F8C9 /* Properties.plist */; };
 /* End PBXBuildFile section */
@@ -186,6 +187,8 @@
 		DC251A870EF9AA0900B84B66 /* TRRatingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRatingTest.m; sourceTree = "<group>"; };
 		DC77CA030EF6F9250083F5CA /* TRRetortXMLParserTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetortXMLParserTest.h; sourceTree = "<group>"; };
 		DC77CA040EF6F9250083F5CA /* TRRetortXMLParserTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortXMLParserTest.m; sourceTree = "<group>"; };
+		DC8CBDB60F169A5900F3ABE1 /* FETabScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FETabScrollView.h; sourceTree = "<group>"; };
+		DC8CBDB70F169A5900F3ABE1 /* FETabScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FETabScrollView.m; sourceTree = "<group>"; };
 		DC9D942A0EF9C4E100F372F4 /* FEUrlHelperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FEUrlHelperTest.h; sourceTree = "<group>"; };
 		DC9D942B0EF9C4E100F372F4 /* FEUrlHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEUrlHelperTest.m; sourceTree = "<group>"; };
 		DCC9145B0EF2F67E0076F8C9 /* Properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Properties.plist; sourceTree = "<group>"; };
@@ -298,6 +301,8 @@
 				76EA75410F01666A00B1ED9C /* TRTagFacade.m */,
 				DB2423D60F1451F6000BE2F0 /* TRTagSliderHelper.h */,
 				DB2423D70F1451F6000BE2F0 /* TRTagSliderHelper.m */,
+				DC8CBDB60F169A5900F3ABE1 /* FETabScrollView.h */,
+				DC8CBDB70F169A5900F3ABE1 /* FETabScrollView.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -566,6 +571,7 @@
 				DB2424230F1463B4000BE2F0 /* TRTagSliderHelper.m in Sources */,
 				DB2D91640F15B6F600928E84 /* RetortByTagListViewController.m in Sources */,
 				DB2D91650F15B70700928E84 /* RetortCellView.m in Sources */,
+				DC8CBDB80F169A5900F3ABE1 /* FETabScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
