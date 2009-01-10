@@ -41,6 +41,8 @@
 		DB1FD1650EF1950F0000E78E /* TRRetortFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */; };
 		DB1FD30C0EF1D39F0000E78E /* TRRetortXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */; };
 		DB2388AA0F17C75200F3F96C /* TRTagSliderHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2388A90F17C75200F3F96C /* TRTagSliderHelperTest.m */; };
+		DB238A250F18152D00F3F96C /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DB238A230F18152D00F3F96C /* blueButton.png */; };
+		DB238A260F18152D00F3F96C /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DB238A240F18152D00F3F96C /* whiteButton.png */; };
 		DB2423240F13D595000BE2F0 /* RedRocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423230F13D595000BE2F0 /* RedRocketViewController.m */; };
 		DB2423260F13D5AC000BE2F0 /* RedRocketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2423250F13D5AC000BE2F0 /* RedRocketView.xib */; };
 		DB2423980F13F2F7000BE2F0 /* TagViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423970F13F2F7000BE2F0 /* TagViewControllerTest.m */; };
@@ -151,6 +153,8 @@
 		DB1FD30B0EF1D39F0000E78E /* TRRetortXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRRetortXMLParser.m; sourceTree = "<group>"; };
 		DB2388A80F17C75200F3F96C /* TRTagSliderHelperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTagSliderHelperTest.h; sourceTree = "<group>"; };
 		DB2388A90F17C75200F3F96C /* TRTagSliderHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagSliderHelperTest.m; sourceTree = "<group>"; };
+		DB238A230F18152D00F3F96C /* blueButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueButton.png; sourceTree = "<group>"; };
+		DB238A240F18152D00F3F96C /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
 		DB2423220F13D595000BE2F0 /* RedRocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedRocketViewController.h; sourceTree = "<group>"; };
 		DB2423230F13D595000BE2F0 /* RedRocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedRocketViewController.m; sourceTree = "<group>"; };
 		DB2423250F13D5AC000BE2F0 /* RedRocketView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RedRocketView.xib; sourceTree = "<group>"; };
@@ -352,6 +356,8 @@
 		DB1128830EEF73F200137EBC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DB238A230F18152D00F3F96C /* blueButton.png */,
+				DB238A240F18152D00F3F96C /* whiteButton.png */,
 				DB2D915E0F15B6D400928E84 /* downArrow.png */,
 				DB2D915F0F15B6D400928E84 /* upArrow.png */,
 				45812E900EF1D81400FC2D21 /* Default.png */,
@@ -510,6 +516,8 @@
 				DB2D91610F15B6D400928E84 /* upArrow.png in Resources */,
 				DB2D91620F15B6E100928E84 /* RetortCellView.xib in Resources */,
 				DB2D91630F15B6E500928E84 /* RetortByTagView.xib in Resources */,
+				DB238A250F18152D00F3F96C /* blueButton.png in Resources */,
+				DB238A260F18152D00F3F96C /* whiteButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

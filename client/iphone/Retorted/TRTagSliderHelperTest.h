@@ -13,7 +13,11 @@
 @interface TRTagSliderHelperTest : SenTestCase {
 	TRTagSliderHelper *subject;
 	NSMutableArray *tags;
+	UILabel *label1;
+	UIImageView *imgView;
 }
 
 @property (nonatomic, retain) NSMutableArray *tags;
+@property (nonatomic, retain) UILabel *label1;
+@property (nonatomic, retain) UIImageView *imgView;
 @end

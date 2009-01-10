@@ -10,10 +10,17 @@
 #import <UIKit/UIKit.h>
 @class TRTag;
 
+typedef enum {
+    TRTagSliderControlsAsButtons  = 0,
+    TRTagSliderControlsAsLabels   = 1,
+} TRTagSliderControls;
+
+
 @interface TRTagSliderHelper : NSObject {
 	//float fontSize;
 	float horizontalSpacer;
 	float scrollerHeight;
+	TRTagSliderControls controlType;
 	
 	NSPoint origin;
 	
@@ -28,9 +35,13 @@
 - (float)getOffsetForTagsForScrollViewWidth: (float)scrollWidth;
 
 - (UILabel *)getLabelFromTag:(TRTag *)tag atX:(CGFloat)xCoord y:(CGFloat)yCoord;
-- (void)removeOldSubViewsFromScrollView:(UIScrollView *)aScrollView;
+- (UIButton *)getButtonFromTag:(TRTag *)tag atX:(CGFloat)xCoord y:(CGFloat)yCoord;
+
+- (void)removeOldButtonSubViewsFromScrollView:(UIScrollView *)aScrollView;
+- (void)removeOldLabelSubViewsFromScrollView:(UIScrollView *)aScrollView;
 
 //@property float fontSize;
+@property TRTagSliderControls controlType;
 @property float horizontalSpacer;
 @property float scrollerHeight;
 @property NSPoint origin;

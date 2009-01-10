@@ -14,7 +14,7 @@ float const PADDING = 10.0;
 @implementation TRTagSliderHelper
 @synthesize tagArray, fontColor, backgroundColor, textCGSizes;
 @synthesize horizontalSpacer, scrollerHeight;//, fontSize;
-@synthesize origin, font;
+@synthesize origin, font, controlType;
 
 - (id)init {
 	[self dealloc];
@@ -30,6 +30,7 @@ float const PADDING = 10.0;
 	}
 	
 	self.tagArray = tags;
+	self.controlType = TRTagSliderControlsAsButtons;
 	self.origin = NSMakePoint(20.0, 20.0);
 	self.font = [UIFont systemFontOfSize:21.0];
 	//self.fontSize = 21.0;
@@ -51,7 +52,11 @@ float const PADDING = 10.0;
 	}
 	NSLog(@"subview count: %d", [[aScrollView subviews] count]);
 	//get rid of older subviews...
-	[self removeOldSubViewsFromScrollView:aScrollView];
+	if (controlType == TRTagSliderControlsAsLabels) {
+		[self removeOldLabelSubViewsFromScrollView:aScrollView];
+	} else {
+		[self removeOldButtonSubViewsFromScrollView:aScrollView];
+	}
 	
 	//determine total width of content and adjust offset if necessary...
 	float offset = [self getOffsetForTagsForScrollViewWidth:[aScrollView frame].size.width];
@@ -59,9 +64,15 @@ float const PADDING = 10.0;
 	
 	//add all tags to scrollview
 	for (NSUInteger i=0; i< [self.tagArray count]; i++) {
-		UILabel *itemLabel = [self getLabelFromTag:[self.tagArray objectAtIndex:i] atX:xCoord y:yCoord];
-		[aScrollView addSubview:itemLabel];
-		xCoord += [itemLabel frame].size.width+self.horizontalSpacer;
+		id item = nil;
+		if (controlType == TRTagSliderControlsAsLabels) {
+			item = [self getLabelFromTag:[self.tagArray objectAtIndex:i] atX:xCoord y:yCoord];
+		} else {
+			item = [self getButtonFromTag:[self.tagArray objectAtIndex:i] atX:xCoord y:yCoord];
+		}
+			
+		[aScrollView addSubview:item];
+		xCoord += [item frame].size.width+self.horizontalSpacer;
 	}
 	
 	//adjust the content size area for the scroller...
@@ -69,12 +80,23 @@ float const PADDING = 10.0;
 	[aScrollView setContentSize:scrollSize];	
 }
 
-- (void)removeOldSubViewsFromScrollView:(UIScrollView *)aScrollView {
+- (void)removeOldLabelSubViewsFromScrollView:(UIScrollView *)aScrollView {
 	NSInteger subViewCount = [[aScrollView subviews] count];
 	
 	for (NSInteger i=subViewCount-1; i>-1; i--) {
 		id aSubView = [[aScrollView subviews] objectAtIndex:i];
 		if ([aSubView isMemberOfClass:[UILabel class]]) {
+			[aSubView removeFromSuperview];
+		}
+	}
+}
+
+- (void)removeOldButtonSubViewsFromScrollView:(UIScrollView *)aScrollView {
+	NSInteger subViewCount = [[aScrollView subviews] count];
+	
+	for (NSInteger i=subViewCount-1; i>-1; i--) {
+		id aSubView = [[aScrollView subviews] objectAtIndex:i];
+		if ([aSubView isMemberOfClass:[UIButton class]]) {
 			[aSubView removeFromSuperview];
 		}
 	}
@@ -107,6 +129,37 @@ float const PADDING = 10.0;
 	
 	return offset;
 }
+
+- (UIButton *)getButtonFromTag:(TRTag *)tag atX:(CGFloat)xCoord y:(CGFloat)yCoord {
+	UIButton *button = nil;
+	CGSize size = [tag sizeOfNonWrappingTagWithFont:self.font];
+	UIImage *image = [UIImage imageNamed:@"whiteButton.png"];
+	UIImage *imagePressed = [UIImage imageNamed:@"blueButton.png"];
+	
+	CGRect lblFrame = CGRectMake(xCoord, yCoord, size.width+PADDING, size.height);
+	button = [[UIButton alloc] initWithFrame:lblFrame];
+	button.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+	
+	NSLog(@"tag: %@", tag);
+	[button setTitle:tag.value forState:UIControlStateNormal];	
+	[button setTitleColor: self.fontColor forState:UIControlStateNormal];
+	
+	UIImage *newImage = [image stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
+	[button setBackgroundImage:newImage forState:UIControlStateNormal];
+	
+	UIImage *newPressedImage = [imagePressed stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
+	[button setBackgroundImage:newPressedImage forState:UIControlStateHighlighted];
+	
+	//[button addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+	
+    // in case the parent view draws with a custom color or gradient, use a transparent color
+	button.backgroundColor = self.backgroundColor; //[UIColor clearColor];
+
+	[button autorelease];
+	return button;
+}
+
 
 - (UILabel *)getLabelFromTag:(TRTag *)tag atX:(CGFloat)xCoord y:(CGFloat)yCoord {
 	UILabel *itemLabel = nil;
