@@ -3,6 +3,10 @@ class Retort < ActiveRecord::Base
   has_and_belongs_to_many :tags
   belongs_to :rating
   
+  validates_presence_of :content
+  validates_uniqueness_of :content
+  validates_associated :attribution, :tags, :rating
+  
   def short_name(max_length = 20)
     if content.size > max_length
       sn = "#{content[0..(max_length - 4)]}..."

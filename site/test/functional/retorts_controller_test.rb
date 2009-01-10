@@ -14,32 +14,66 @@ class RetortsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create retort" do
-    assert_difference('Retort.count') do
+  test "should not create retort with no params" do
+    assert_no_difference('Retort.count') do
       post :create, :retort => { }
     end
+    retort = assigns(:retort)
+    assert !retort
+    assert_redirected_to retort_path(retort)
+  end
 
+  test "should create retort with just content" do  
     assert_difference('Retort.count') do
       post :create, {:retort => { :content => 'this is a test' }}
     end
+    retort = assigns(:retort)
+    assert retort.rating
+    assert !retort.tags
+    assert_redirected_to retort_path(retort)
+  end
 
+  test "should create retort with content and one tag" do
     assert_difference('Retort.count') do
       post :create, {:retort => { :content => 'this is also a test' }, :tags => { :value => 'one' }}
     end
+    retort = assigns(:retort)
+    assert retort.rating
+    assert retort.tags
+    assert_equal 1, retort.tags.size
+    assert_redirected_to retort_path(retort)
+  end
 
+  test "should create retort with content and mult tags" do
     assert_difference('Retort.count') do
       post :create, {:retort => { :content => 'this is another test' }, :tags => { :value => 'one, two' }}
     end    
+    retort = assigns(:retort)
+    assert retort.rating
+    assert retort.tags
+    assert_equal 2, retort.tags.size
+    assert_redirected_to retort_path(retort)
+  end
 
+  test "should create retort with contetn tags attrib" do
     assert_difference('Retort.count') do
       post :create, {:retort => { :content => 'this is one more test' }, :tags => { :value => 'one and two, two, three' }, :attribution => { :who => 'fred'}}
     end  
+    retort = assigns(:retort)
+    assert retort.rating
+    assert retort.attribution
+    assert retort.tags
+    assert_equal 3, retort.tags.size
+    assert_redirected_to retort_path(retort)
+  end
 
+  test "should not create retort with invalid when param value" do
     assert_difference('Retort.count') do
       post :create, {:retort => { :content => 'this is the last test' }, :tags => { :value => 'one and two, two, three' }, :attribution => { :when => 'fred'}}
     end
-
-    assert_redirected_to retort_path(assigns(:retort))
+    retort = assigns(:retort)
+    assert !retort
+    assert_redirected_to retort_path(retort)
   end
 
   test "should show retort" do

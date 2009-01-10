@@ -3,6 +3,9 @@ class Tag < ActiveRecord::Base
   attr_accessor :cloud_tier
   alias :tier :cloud_tier
   
+  validates_presence_of :value
+  validates_uniqueness_of :value
+  
   def name
     self.value.camelize
   end

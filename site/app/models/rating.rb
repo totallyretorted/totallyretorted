@@ -13,5 +13,14 @@ class Rating < ActiveRecord::Base
       xml.negative(self.negative)
       xml.rank(self.rating)
     }  
-  end  
+  end
+  
+  def vote(pos=false)
+    if pos
+      positive += 1
+    else
+      negative += 1
+    end
+    rating
+  end
 end
