@@ -23,12 +23,12 @@ typedef enum {
 	//Controls the layout and spacing of the Tag buttons or labels.  These all have default values.
 	//	If you need to set these values to something other than the default, do so before 
 	//	calling buildTagScroller:
-	float horizontalSpacer;
-	float scrollerHeight;
-	NSPoint origin;
-	UIColor *fontColor;
-	UIColor *backgroundColor;
-	UIFont *font;
+	float horizontalSpacer;			// 30.0
+	float scrollerHeight;			// 61.0
+	NSPoint origin;					// 20.0, 20.0
+	UIColor *fontColor;				// black
+	UIColor *backgroundColor;		// white
+	UIFont *font;					// systemFontOfSize 21
 	
 	//This parameter should not be set externally.  To configure, use
 	//	the method - controlTypeAsButtonWithTarget: selector:

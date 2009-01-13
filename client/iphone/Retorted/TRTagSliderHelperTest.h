@@ -9,15 +9,22 @@
 #import "GTMSenTestCase.h"
 @class TRTagSliderHelper;
 @class TRTag;
+@class TRTagButton;
 
 @interface TRTagSliderHelperTest : SenTestCase {
 	TRTagSliderHelper *subject;
-	NSMutableArray *tags;
+	//NSMutableArray *tags;
 	UILabel *label1;
 	UIImageView *imgView;
+	TRTagButton *btn1;
 }
 
-@property (nonatomic, retain) NSMutableArray *tags;
+- (TRTag *)getShortNameTag;
+- (TRTag *)getLongNameTag;
+- (NSArray *)getThreeTagObjects;
+
+//@property (nonatomic, retain) NSMutableArray *tags;
 @property (nonatomic, retain) UILabel *label1;
 @property (nonatomic, retain) UIImageView *imgView;
+@property (nonatomic, retain) TRTagButton *btn1;
 @end
