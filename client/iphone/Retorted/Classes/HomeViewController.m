@@ -11,6 +11,7 @@
 #import "TRRetortFacade.h"
 #import "TRTagSliderHelper.h"
 #import "RetortCellView.h"		//our custom cell view class
+#import "TRTagButton.h"
 
 // Model class inclusion
 #import "TRRetort.h"
@@ -18,26 +19,36 @@
 #import "TRRating.h"
 
 
-// Constant for maximum acceleration.
-#define kMaxAcceleration 3.0
-// Constant for the high-pass filter.
-#define kFilteringFactor 0.1
-
+#define kFilteringFactor 0.1			// Constant for the high-pass filter.
+#define kRequiredMaxAcceleration 1.25	// Constant for minimum acceleration required to qualify.
+#define kRequiredShakeCount 3			// Constant for # of shakes required to qualify.
 
 @implementation HomeViewController
-@synthesize retorts, facade;
+@synthesize retorts, facade, slider;
 @synthesize retortsView;
 @synthesize loadFailureMessage, tagSlider;
+@synthesize isSingleTag, selectedTag, tagId;
 
 /*
 // Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+	NSLog(@"HomeViewController: initWithNibName");
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-        // Custom initialization
     }
     return self;
 }
 */
+
+
+- (id)initWithCoder:(NSCoder *)coder { 
+	NSLog(@"HomeViewController: initWithCoder");
+	if (self = [super initWithCoder:coder]) {
+		self.isSingleTag = NO;
+		self.selectedTag = nil;
+		self.tagId = nil;
+	}
+	return self;
+}
 
 /*
 // Implement loadView to create a view hierarchy programmatically.
@@ -48,14 +59,10 @@
 
 // Implement viewDidLoad to do additional setup after loading the view.
 - (void)viewDidLoad {
-    self.title = @"Home";
-	self.retortsView.hidden = NO;
-	self.loadFailureMessage.hidden = YES;
 	
 	UIBarButtonItem *refreshButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemRefresh 
 																					target:self 
 																					action:@selector(refreshData)] autorelease];
-	
 	
 	self.navigationItem.rightBarButtonItem = refreshButton;
 	
@@ -63,14 +70,12 @@
 	UIAccelerometer *myAccel = [UIAccelerometer sharedAccelerometer];
 	myAccel.updateInterval = .1;
 	myAccel.delegate = self;
-	
-	
-	//register with notification center to receive callback
+
+	//set self to receive callback notification...
 	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
-	NSLog(@"Controller: Registered with notification center");
-	[self loadURL];
 	
-	//[super viewDidLoad];
+	//begin data loading process...
+	[self loadDataWithUrl:@"retorts/screenzero.xml"];
 }
 
 
@@ -90,29 +95,24 @@
 - (void)dealloc {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
-	[retorts release];
+	
+	self.facade = nil;
+	self.slider = nil;
+	self.selectedTag = nil;
+	self.tagId = nil;
+	self.retorts = nil;
     [super dealloc];
 }
 
 #pragma mark -
 #pragma mark Custom Methods
-
-- (void)refreshData {
-	//now go fetch the data!
-	[self.retorts release];
-	
-	//register with notification center to receive callback
-	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
-	NSLog(@"refetching data");
-	[self loadURL];
-}
-
 //starts process of fetching retort content using the TRRetortFacade helper class.
-- (void)loadURL {
+- (void)loadDataWithUrl:(NSString *)relPath {
+	
 	NSLog(@"HomeViewController: Create instance of TRRetortFacade");
 	self.facade = [[TRRetortFacade alloc] init];
 	
-	[self.facade loadRetorts];
+	[self.facade loadRetortsWithRelativePath:relPath];
 	//[facade release];
 	
 }
@@ -123,15 +123,12 @@
 	TRRetortFacade *aFacade = [note object];
 	
 	if ((aFacade.loadSuccessful) && ([aFacade.retorts count] > 0)) {
-		self.retortsView.hidden = NO;
-		self.loadFailureMessage.hidden = YES;
-		
 		self.retorts = aFacade.retorts;
-		NSLog(@"received retorts");
-		[self.retortsView reloadData];
-		[self buildTagSliderView];
+		NSLog(@"HomeViewController: received retorts");
+		[self.retortsView reloadData];	//starts UITableView reload process
+		[self displayRetortsView];
 	} else {
-		NSLog(@"Display connection failure.");
+		NSLog(@"HomeViewController: Display connection failure.");
 		self.retortsView.hidden = YES;
 		self.loadFailureMessage.hidden = NO;
 		self.loadFailureMessage.font = [UIFont systemFontOfSize:17.0];
@@ -145,22 +142,48 @@
 	[self removeFromAllNotifications];
 }
 
-- (void)addToNotificationWithSelector:(SEL)selector notificationName:(NSString *)notificationName{
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+- (void)displayRetortsView {
+	self.retortsView.hidden = NO;
+	self.loadFailureMessage.hidden = YES;
 	
-	[nc addObserver:self 
-		   selector:selector
-			   name:notificationName
-			 object:nil];
+	if (self.isSingleTag) {
+		[self displayRetortsForSingleTag];		
+	} else {
+		[self buildTagSliderView];
+		[self displayRetortsForScreenZero];
+	}
 }
 
-- (void)removeFromAllNotifications {
-	//remove self from notification center...
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	[nc removeObserver:self];
-	NSLog(@"HomeViewController: Unregistered with notification center.");
+- (void)displayRetortsForSingleTag {
+	[UIView beginAnimations:@"singleTag" context:nil];
+	
+	self.title = self.selectedTag;
+	self.tagSlider.hidden = YES;
+	
+	CGRect newFrame = [self.retortsView superview].frame;
+	self.retortsView.frame = newFrame;
+	
+	[UIView commitAnimations]; 
 }
 
+- (void)displayRetortsForScreenZero {
+	[UIView beginAnimations:@"multiTags" context:nil];
+	
+	self.title = @"Home";
+	self.tagSlider.hidden = NO;
+	
+	CGRect newFrame = self.retortsView.frame;
+	CGFloat sliderHeight = self.tagSlider.frame.size.height;
+	CGFloat sliderY = self.tagSlider.frame.origin.y;
+	CGFloat superHeight = [self.retortsView superview].frame.size.height;
+	
+	newFrame.origin.y = sliderY+sliderHeight;
+	newFrame.size.height = superHeight - sliderHeight;
+	
+	self.retortsView.frame = newFrame;
+	
+	[UIView commitAnimations]; 
+}
 
 //adds tags to tag slider
 - (void)buildTagSliderView {
@@ -177,19 +200,69 @@
 		}
 	}
 	
-	TRTagSliderHelper *slider = [[TRTagSliderHelper alloc] initWithTagArray:tags];
-	slider.font = [UIFont systemFontOfSize:21.0];
-	slider.fontColor = [UIColor whiteColor];
-	slider.backgroundColor = [UIColor blackColor];
-	[tags release];
+	if (self.slider == nil) {
+		self.slider = [[TRTagSliderHelper alloc] initWithTagArray:tags];
+		self.slider.font = [UIFont systemFontOfSize:21.0];
+		self.slider.fontColor = [UIColor whiteColor];
+		self.slider.backgroundColor = [UIColor blackColor];
+		[self.slider controlTypeAsButtonWithTarget:self selector:@selector(handleTagSliderButtonClick:)];
+	} else {
+		self.slider.tagArray = tags;
+	}
 	
+	[tags release];
 	[slider buildTagScroller:self.tagSlider];
 }
 
+#pragma mark -
+#pragma mark User Click Actions
+- (void)handleTagSliderButtonClick:(id)sender {
+	TRTagButton *btn = (TRTagButton *)sender;
+	self.isSingleTag = YES;
+	self.selectedTag = btn.currentTitle;
+	self.tagId = btn.tagId;
+	
+	//set self to receive callback notification...
+	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
+	
 
+	[self loadDataWithUrl:[NSString stringWithFormat:@"tags/%d.xml", [self.tagId intValue]]];
+	//[self loadDataWithUrl:@"retorts/screenzero.xml"];
+	
+}
+
+- (void)refreshData {
+	self.isSingleTag = NO;
+	self.selectedTag = nil;
+	self.tagId = nil;
+	
+	//set self to receive callback notification...
+	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
+	
+	//uses relative path: retorts/screenzero.xml
+	[self loadDataWithUrl:@"retorts/screenzero.xml"];
+}
 
 #pragma mark -
-#pragma mark Shake-Shake motion
+#pragma mark TRNotificationInterface
+- (void)addToNotificationWithSelector:(SEL)selector notificationName:(NSString *)notificationName{
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	
+	[nc addObserver:self 
+		   selector:selector
+			   name:notificationName
+			 object:nil];
+}
+
+- (void)removeFromAllNotifications {
+	//remove self from notification center...
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc removeObserver:self];
+	NSLog(@"HomeViewController: Unregistered with notification center.");
+}
+
+#pragma mark -
+#pragma mark User Shake-Shake motion
 - (BOOL)didShake:(UIAcceleration *)acceleration {
 	accelX = ((acceleration.x * kFilteringFactor) + (accelX * (1 - kFilteringFactor))); 
 	float moveX = acceleration.x - accelX; 
@@ -197,7 +270,7 @@
 	float moveY = acceleration.x - accelY; 
 	if (lasttime && acceleration.timestamp > lasttime + .25) { 
 		BOOL result;
-		if (shakecount >= 3 && biggestshake >= 1.25) {
+		if (shakecount >= kRequiredShakeCount && biggestshake >= kRequiredMaxAcceleration) {
 			result = YES;
 		} else {
 			result = NO;
@@ -254,7 +327,6 @@
     
     static NSString *CellIdentifier = @"Cell";
     
-    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	RetortCellView *cell = (RetortCellView *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         //cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
@@ -283,8 +355,6 @@
 		cell.rankIndicator.image = [UIImage imageNamed:@"downArrow.png"];
 	}
 	
-	//TRRetort *aRetort = [self.retorts objectAtIndex:indexPath.row];
-	//cell.text = aRetort.content;
     return cell;
 }
 

@@ -22,6 +22,7 @@
 		76EA764F0F01A7D900B1ED9C /* TRTagFacadeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA764C0F01A68100B1ED9C /* TRTagFacadeTest.m */; };
 		DB0030BC0EF0A44F00404183 /* TRTagSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0030BB0EF0A44F00404183 /* TRTagSorter.m */; };
 		DB08FFA50EF2D898000FB1AB /* TagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB08FFA40EF2D898000FB1AB /* TagView.xib */; };
+		DB0FFC940F1D091500595977 /* TRTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6075150F1CF9BD00401EC3 /* TRTagButton.m */; };
 		DB11263B0EEEED5600137EBC /* TRAttribution.m in Sources */ = {isa = PBXBuildFile; fileRef = DB11263A0EEEED5600137EBC /* TRAttribution.m */; };
 		DB11263E0EEEED7300137EBC /* TRRetort.m in Sources */ = {isa = PBXBuildFile; fileRef = DB11263D0EEEED7300137EBC /* TRRetort.m */; };
 		DB1126470EEEEDC900137EBC /* TRRating.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126460EEEEDC900137EBC /* TRRating.m */; };
@@ -57,6 +58,7 @@
 		DB2D91640F15B6F600928E84 /* RetortByTagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D91550F15931100928E84 /* RetortByTagListViewController.m */; };
 		DB2D91650F15B70700928E84 /* RetortCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D91520F1592F100928E84 /* RetortCellView.m */; };
 		DB59FE760EF8088700E59D12 /* FEUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126590EEF047300137EBC /* FEUrlHelper.m */; };
+		DB6075160F1CF9BD00401EC3 /* TRTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6075150F1CF9BD00401EC3 /* TRTagButton.m */; };
 		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
 		DB6D147E0F05E6F400FE89B0 /* TagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC6E44B0F05D7D70041E319 /* TagCellView.m */; };
 		DB6D147F0F05E70300FE89B0 /* TagCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6D14100F05D9F000FE89B0 /* TagCellView.xib */; };
@@ -171,6 +173,8 @@
 		DB2D91590F15934800928E84 /* RetortCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RetortCellView.xib; sourceTree = "<group>"; };
 		DB2D915E0F15B6D400928E84 /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downArrow.png; sourceTree = "<group>"; };
 		DB2D915F0F15B6D400928E84 /* upArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upArrow.png; sourceTree = "<group>"; };
+		DB6075140F1CF9BD00401EC3 /* TRTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTagButton.h; sourceTree = "<group>"; };
+		DB6075150F1CF9BD00401EC3 /* TRTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagButton.m; sourceTree = "<group>"; };
 		DB6849C70EF0257B0094CC24 /* CGPointUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointUtils.c; sourceTree = "<group>"; };
 		DB6849C80EF0257B0094CC24 /* CGPointUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointUtils.h; sourceTree = "<group>"; };
 		DB6D14100F05D9F000FE89B0 /* TagCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCellView.xib; sourceTree = "<group>"; };
@@ -428,6 +432,8 @@
 				DBC6E44B0F05D7D70041E319 /* TagCellView.m */,
 				DB2D91510F1592F100928E84 /* RetortCellView.h */,
 				DB2D91520F1592F100928E84 /* RetortCellView.m */,
+				DB6075140F1CF9BD00401EC3 /* TRTagButton.h */,
+				DB6075150F1CF9BD00401EC3 /* TRTagButton.m */,
 			);
 			name = "Custom UI Controls";
 			sourceTree = "<group>";
@@ -579,6 +585,7 @@
 				DB2424230F1463B4000BE2F0 /* TRTagSliderHelper.m in Sources */,
 				DB2D91640F15B6F600928E84 /* RetortByTagListViewController.m in Sources */,
 				DB2D91650F15B70700928E84 /* RetortCellView.m in Sources */,
+				DB6075160F1CF9BD00401EC3 /* TRTagButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,6 +612,7 @@
 				DB2423980F13F2F7000BE2F0 /* TagViewControllerTest.m in Sources */,
 				DB2423D80F1451F6000BE2F0 /* TRTagSliderHelper.m in Sources */,
 				DB2388AA0F17C75200F3F96C /* TRTagSliderHelperTest.m in Sources */,
+				DB0FFC940F1D091500595977 /* TRTagButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

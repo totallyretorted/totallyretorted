@@ -8,13 +8,14 @@
 
 #import "TRTagSliderHelper.h"
 #import "TRTag.h"
+#import "TRTagButton.h"
 
 float const PADDING = 10.0;
 
 @implementation TRTagSliderHelper
-@synthesize tagArray, fontColor, backgroundColor, textCGSizes;
-@synthesize horizontalSpacer, scrollerHeight;//, fontSize;
-@synthesize origin, font, controlType;
+@synthesize tagArray, fontColor, backgroundColor;
+@synthesize horizontalSpacer, scrollerHeight;
+@synthesize origin, font;
 
 - (id)init {
 	[self dealloc];
@@ -30,17 +31,28 @@ float const PADDING = 10.0;
 	}
 	
 	self.tagArray = tags;
-	self.controlType = TRTagSliderControlsAsButtons;
+	controlType = TRTagSliderControlsAsLabels;
 	self.origin = NSMakePoint(20.0, 20.0);
 	self.font = [UIFont systemFontOfSize:21.0];
-	//self.fontSize = 21.0;
 	self.horizontalSpacer = 30.0;
 	self.scrollerHeight = 61.0;
 	self.fontColor = [UIColor blackColor];
 	self.backgroundColor = [UIColor whiteColor];
+	tagButtonTarget = nil;
+	tagButtonSelector = NULL;
 
 	return self;
 }
+
+- (void)controlTypeAsButtonWithTarget:(id)aTarget selector:(SEL)aSelector {
+	[aTarget retain];
+	[tagButtonTarget release];
+	tagButtonTarget = aTarget;
+	
+	tagButtonSelector = aSelector;
+	controlType = TRTagSliderControlsAsButtons;
+}
+
 
 // Applies object properties to stylize the scroll view passed to the method and populates with the object's tag array.
 - (void)buildTagScroller:(UIScrollView *)aScrollView {
@@ -50,7 +62,7 @@ float const PADDING = 10.0;
 	if (aScrollView == nil) {
 		return;
 	}
-	NSLog(@"subview count: %d", [[aScrollView subviews] count]);
+	NSLog(@"TRTagSliderHelper: subview count: %d", [[aScrollView subviews] count]);
 	//get rid of older subviews...
 	if (controlType == TRTagSliderControlsAsLabels) {
 		[self removeOldLabelSubViewsFromScrollView:aScrollView];
@@ -96,7 +108,8 @@ float const PADDING = 10.0;
 	
 	for (NSInteger i=subViewCount-1; i>-1; i--) {
 		id aSubView = [[aScrollView subviews] objectAtIndex:i];
-		if ([aSubView isMemberOfClass:[UIButton class]]) {
+		//if ([aSubView isMemberOfClass:[UIButton class]]) {
+		if ([aSubView isMemberOfClass:[TRTagButton class]]) {
 			[aSubView removeFromSuperview];
 		}
 	}
@@ -105,7 +118,6 @@ float const PADDING = 10.0;
 - (float)getOffsetForTagsForScrollViewWidth: (float)scrollWidth{
 	float totalWidth = 0.0;
 	float offset=0.0;
-	//self.textCGSizes = [[NSMutableArray alloc] init];
 	
 	for (NSUInteger i = 0; i< [self.tagArray count]; i++) {
 		id aTagItem = [self.tagArray objectAtIndex:i];
@@ -116,20 +128,42 @@ float const PADDING = 10.0;
 		}
 	}
 	
-	/*			
-	 for (NSString *item in self.tagArray) {
-	 CGSize textSize = [item sizeWithFont:[UIFont systemFontOfSize: self.fontSize]];
-	 [textCGSizes addObject: [NSValue valueWithCGSize: textSize]];
-	 totalWidth += textSize.width+PADDING+self.horizontalSpacer;
-	 }
-	 */	
 	if(totalWidth < scrollWidth) {
 		offset = (scrollWidth-totalWidth)/2;
 	}
 	
 	return offset;
 }
-
+- (TRTagButton *)getButtonFromTag:(TRTag *)tag atX:(CGFloat)xCoord y:(CGFloat)yCoord {
+	TRTagButton *button = nil;
+	CGSize size = [tag sizeOfNonWrappingTagWithFont:self.font];
+	UIImage *image = [UIImage imageNamed:@"whiteButton.png"];
+	UIImage *imagePressed = [UIImage imageNamed:@"blueButton.png"];
+	
+	CGRect lblFrame = CGRectMake(xCoord, yCoord, size.width+PADDING, size.height);
+	button = [[TRTagButton alloc] initWithFrame:lblFrame];
+	button.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
+	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
+	
+	NSLog(@"tag: %@", tag);
+	[button setTitle:tag.value forState:UIControlStateNormal];	
+	[button setTitleColor: self.fontColor forState:UIControlStateNormal];
+	
+	UIImage *newImage = [image stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
+	[button setBackgroundImage:newImage forState:UIControlStateNormal];
+	
+	UIImage *newPressedImage = [imagePressed stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
+	[button setBackgroundImage:newPressedImage forState:UIControlStateHighlighted];
+	[button addTarget:tagButtonTarget action:tagButtonSelector forControlEvents:UIControlEventTouchUpInside];
+	
+    // in case the parent view draws with a custom color or gradient, use a transparent color
+	button.backgroundColor = self.backgroundColor; //[UIColor clearColor];
+	button.tagId = tag.primaryId;
+	
+	[button autorelease];
+	return button;
+}
+/*
 - (UIButton *)getButtonFromTag:(TRTag *)tag atX:(CGFloat)xCoord y:(CGFloat)yCoord {
 	UIButton *button = nil;
 	CGSize size = [tag sizeOfNonWrappingTagWithFont:self.font];
@@ -150,8 +184,7 @@ float const PADDING = 10.0;
 	
 	UIImage *newPressedImage = [imagePressed stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
 	[button setBackgroundImage:newPressedImage forState:UIControlStateHighlighted];
-	
-	//[button addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+	[button addTarget:tagButtonTarget action:tagButtonSelector forControlEvents:UIControlEventTouchUpInside];
 	
     // in case the parent view draws with a custom color or gradient, use a transparent color
 	button.backgroundColor = self.backgroundColor; //[UIColor clearColor];
@@ -159,7 +192,7 @@ float const PADDING = 10.0;
 	[button autorelease];
 	return button;
 }
-
+*/
 
 - (UILabel *)getLabelFromTag:(TRTag *)tag atX:(CGFloat)xCoord y:(CGFloat)yCoord {
 	UILabel *itemLabel = nil;
@@ -285,6 +318,13 @@ float const PADDING = 10.0;
 }
 */
 
+- (void)dealloc {
+	self.font = nil;
+	self.fontColor = nil;
+	self.backgroundColor = nil;
+	self.tagArray = nil;
+	[super dealloc];
+}
 
 
 @end

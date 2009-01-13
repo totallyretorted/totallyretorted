@@ -28,7 +28,7 @@
 	[subject release];
 }
 
-
+/*
 - (void) testSubViewRemovalWithSingleLabel {
 	UIScrollView *aScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 80.0)];
 	NSUInteger answer = 1;
@@ -52,5 +52,6 @@
 	//TRTag *aTag = [[TRTag alloc] initWithId:[NSNumber numberWithInt:1] value:@"Test" weight:2 tagCloudValue:0];
 	//self.tags
 }
+ */
 
 @end
