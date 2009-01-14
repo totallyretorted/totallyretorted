@@ -1,15 +1,17 @@
 @import "corners.css";
 /* start { retorted } */
-body {background:#000 url(/images/bg-black-grad.jpg) repeat-x;min-height:768px;font-family: Georgia, "Times New Roman", Times, serif;}
+body {background:#000 url(/images/bg-black-grad.jpg) repeat-x;min-height:768px;font-family: Georgia, "Times New Roman", Times, serif;color:#fff;}
 /* start { header } */
 #hd {text-align:center;}
 #hd #top_menu {font-size:161%;color:#FDE92B;margin:2em 0;}
 #hd #top_menu a {color:#ED1164;text-decoration:none;padding:0.25em;}
 #hd #top_menu a:hover {background-color:#FDE92B;}
+
 /* end { header } */
 /* start { body } */
+#bd {padding:2em 0 4em;}
 /* start { hollah } */
-#hollah {color:#fff;font-size:200%;line-height:150%;padding-left:60px;margin:-1em 0 1em;}
+#hollah {color:#fff;font-size:200%;line-height:150%;padding-left:60px;margin:-2em 0 16px;}
 #hollah div.icon {width:48px;height:48px;float:left;margin-left:-60px;}
 #hollah.ajax div.icon {background:url(/images/ajax.gif) no-repeat;}
 #hollah.no {color:#efba00;}
@@ -59,32 +61,26 @@ div.cloud a {
 	text-decoration:none;
 	padding:0 0.25em;
 }
-div.cloud a.t1 {
-	color:#AEEE00;
-	font-size:300%;
+div.cloud a:hover {
+	background-color:#FDE92B;
 }
-div.cloud a.t1:hover {
-	border-bottom:1px dashed #AEEE00;
+div.cloud a.t1 {
+	color:#74c343;
+	font-size:300%;
 }
 div.cloud .t2 {
 	color:#01B0F0;
 	font-size:250%;
 }
-div.cloud a.t2:hover {
-	border-bottom:1px dashed #01B0F0;
-}
 div.cloud .t3 {
 	color:#FF931E;
 	font-size:200%;
-}
-div.cloud a.t3:hover {
-	border-bottom:1px dashed #FF931E;
 }
 div.cloud .t4 {
 	color:#ED1164;
 	font-size:150%;
 }
-div.cloud a.t4:hover {
-	border-bottom:1px dashed #ED1164;
-}
 /* end { cloud } */
+/* start { footer } */
+#ft {color:#666;text-align:center;}
+/* end { footer } */
