@@ -1,8 +1,8 @@
-<div class="yui-g">
-	<div class="heading"><%= @tag.name %></div>
-	<% curvy_corners do%>
+<div class="heading"><%= @tag.name %></div>
+<div style="width: 100%;" class="v-chrome">
+	<div class="v-chrome-bd">
 		<% if @tag.retorts and @tag.retorts.size > 0 %>
-			<ul>
+			<ul class="pop">
 			<% for r in @tag.retorts %>
 				<%= render :partial => "retorts/li", :locals => { :r => r }%>
 			<% end %>
@@ -10,5 +10,10 @@
 		<% else %>
 			<span style="width:100%;text-align:center">No retorts assigned</span>
 		<% end %>
-	<% end %>
+	</div>
+	<div style="opacity: 1;" class="bgnd">
+	    <u class="w"></u><u class="e"></u>
+	    <i class="w"></i><i class="e"></i>
+	    <b class="w"></b><b class="e"></b>
+	</div>
 </div>
