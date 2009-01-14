@@ -1,29 +1,29 @@
 /* start { corner-theme } */
-.v-chrome{
+.corn{
 	margin-bottom:30px;
 }
-.v-chrome-bd{
+.corn-bd{
 	padding:15px 20px 30px 40px;
 }
-.v-chrome .bgnd *{
+.corn .bgnd *{
 	background-image:url(/images/corners.png);
 	_background-image:url(/images/corners.gif);
 }
 /* end { corner-theme } */
 /* start { corner-chrome } */
-.v-chrome{
+.corn{
 	position:relative;
 	z-index:2;  
 	margin:3px;
 	zoom:1;
 }
-.v-chrome-bd{
+.corn-bd{
 	padding:12px;
 	_height:100px;
 	min-height:100px;
 	zoom:1;
 }
-.v-chrome .bgnd{
+.corn .bgnd{
 	position:absolute;
 	z-index:-1;
 	top:0;
@@ -32,26 +32,26 @@
 	bottom:0;
 	zoom:1;
 }
-.v-chrome .bgnd *{
+.corn .bgnd *{
 	position:absolute;
 	overflow:hidden;
 	background-repeat:no-repeat;
 	zoom:1;
 }
-.v-chrome .bgnd u.w{
+.corn .bgnd u.w{
 	left:0;
 	top:0;
 	right:40px;
 	height:60px;
 }
-.v-chrome .bgnd u.e{
+.corn .bgnd u.e{
 	top:0;
 	right:0;
 	height:60px;
 	width:40px;
 	background-position:-960px 0;
 }
-.v-chrome .bgnd i.w{
+.corn .bgnd i.w{
 	left:0;
 	top:60px;
 	right:40px;
@@ -59,7 +59,7 @@
 	background-repeat:repeat-y;
 	background-position:-1000px 0;
 }
-.v-chrome .bgnd i.e{
+.corn .bgnd i.e{
 	top:60px;
 	right:0px;
 	width:40px;
@@ -67,14 +67,14 @@
 	background-repeat:repeat-y;
 	background-position:100% 0;
 }
-.v-chrome .bgnd b.w{
+.corn .bgnd b.w{
 	left:0;
 	bottom:0;
 	right:40px;
 	height:40px;
 	background-position:0 100%;
 }
-.v-chrome .bgnd b.e{
+.corn .bgnd b.e{
 	height:40px;
 	bottom:0;
 	right:0;
