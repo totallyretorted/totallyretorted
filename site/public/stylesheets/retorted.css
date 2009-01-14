@@ -9,7 +9,7 @@ body {background:#000 url(/images/bg-black-grad.jpg) repeat-x;min-height:768px;f
 
 /* end { header } */
 /* start { body } */
-#bd {padding:2em 0 4em;}
+#bd {padding:2em 0 4em;color:#7f7772;}
 /* start { hollah } */
 #hollah {color:#fff;font-size:200%;line-height:150%;padding-left:60px;margin:-2em 0 16px;}
 #hollah div.icon {width:48px;height:48px;float:left;margin-left:-60px;}
@@ -48,6 +48,9 @@ ul.pop {
 	background:url(/images/qr.png) no-repeat 0 2px;
 	line-height:200%;
 }
+.uno span.qr {
+	width:32px;
+}
 .pop span.qr img {
 	margin-left:95px;
 }
@@ -81,6 +84,18 @@ div.cloud .t4 {
 	font-size:150%;
 }
 /* end { cloud } */
+/* start { metadata } */
+.metadata{
+	font-size:small;
+	margin-left:50%;
+	width:50%;
+}
+#rating{
+	margin-top:1em;
+	color:#999;
+}
+
+/* end { metadata } */
 /* start { footer } */
 #ft {color:#666;text-align:center;}
 /* end { footer } */

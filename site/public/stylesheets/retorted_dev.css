@@ -1,4 +1,4 @@
-.heading{ font-size:400%; font-weight:bold; }
+.heading{ font-size:400%; font-weight:700;color:#fff;}
 
 a:link{
   color:#01b0f0;
@@ -14,11 +14,8 @@ a:hover{
 }
 
 #toolbar{ 
-  display:block;
   padding-bottom:20px;
   margin-bottom:21px;
-  width:70%;
-  margin:auto auto 29px auto;
 }
 
 #toolbar_main{
@@ -57,14 +54,7 @@ div.pop .form{
   margin-left:1em;
 }
 
-.metadata{
-  font-size:small;
-  margin-left:50%;
-}
 
-#rating{
-  color:gray;
-}
 
 #RB_window {
   top:15em;

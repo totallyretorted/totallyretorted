@@ -1,28 +1,32 @@
-<div class="yui-g">
-	<% curvy_corners do %>
-		<ul>
-			<li class="quote">
-				<div id="retort-content" class="quote">
-					<%= @retort.content %>
-					<span class="qr"><img onclick="" src="/images/gt.png"></span>
-				</div>
-				<div id="retort-metadata" class="metadata">
-					<% if @retort.attribution %>
-						<div id="attribution">
-							<% %w{ who what where how when }.each do |attrib| %>
-								<% val = @retort.attribution.send attrib %>
-								<% if val and val.size > 0 %>
-									<div class="attrib"><%= val %></div>
-								<% end %>
-							<% end %>
-						</div>
-					<% end %>
-					<div id="rating">
-						positive: <%= @retort.rating.positive %>,&nbsp;negative: <%= @retort.rating.negative %>
-					</div>
-				</div>
+<div style="width: 100%;" class="corn">
+	<div class="corn-bd">
+		<ul class="pop uno">
+			<li>
+				<span class="qr">&nbsp;</span>
+				<%= @retort.content %>
 			</li>
 		</ul>
-	<% end %>
+		<div id="retort-metadata" class="metadata">
+			<% if @retort.attribution %>
+				<div id="attribution">
+					<!-- Request: Apply class to each type (SD) -->
+					<% %w{ who what where how when }.each do |attrib| %>
+						<% val = @retort.attribution.send attrib %>
+						<% if val and val.size > 0 %>
+							<div class="attrib"><%= val %></div>
+						<% end %>
+					<% end %>
+				</div>
+			<% end %>
+			<div id="rating">
+				positive: <%= @retort.rating.positive %>,&nbsp;negative: <%= @retort.rating.negative %>
+			</div>
+		</div>
+	</div>
+	<div style="opacity: 1;" class="bgnd">
+	    <u class="w"></u><u class="e"></u>
+	    <i class="w"></i><i class="e"></i>
+	    <b class="w"></b><b class="e"></b>
+	</div>
 </div>
 <%= render_tagcloud @tagcloud %>
