@@ -1,12 +1,17 @@
-<div class="yui-g">
-	<%= render_toolbar %>
-	<% curvy_corners do %>
-		<ul>
+<%= render_toolbar %>
+<div style="width: 100%;" class="v-chrome">
+	<div class="v-chrome-bd">
+		<ul class="pop">
 		<% if @retorts %>
 			<% @retorts.each do |retort| %>
 				<%= render :partial => "retorts/li", :locals => { :r => retort }%>
 			<% end %>			
 		<% end %>
 		</ul>
-	<% end %>
+	</div>
+	<div style="opacity: 1;" class="bgnd">
+	    <u class="w"></u><u class="e"></u>
+	    <i class="w"></i><i class="e"></i>
+	    <b class="w"></b><b class="e"></b>
+	</div>
 </div>

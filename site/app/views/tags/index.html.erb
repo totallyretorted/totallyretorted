@@ -1,14 +1,19 @@
-<div class="yui-g">
-	<%= render_toolbar %>
-	<% curvy_corners do %>
+<%= render_toolbar %>
+<div style="width: 100%;" class="v-chrome">
+	<div class="v-chrome-bd">
 		<% if @tags and @tags.size > 0 %>
-			<ul>	
+		<ul class="pop">
 			<% for tag in @tags %>
 				<%= render :partial => "li", :locals => { :t => tag } %>
 			<% end %>
-			</ul>
+		</ul>
 		<% else %>
 			<span style="width:100%;text-align:center">No tags defined</span>
 		<% end %>
-	<% end %>
+	</div>
+	<div style="opacity: 1;" class="bgnd">
+	    <u class="w"></u><u class="e"></u>
+	    <i class="w"></i><i class="e"></i>
+	    <b class="w"></b><b class="e"></b>
+	</div>
 </div>

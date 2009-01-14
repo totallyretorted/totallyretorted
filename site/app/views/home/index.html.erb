@@ -1,16 +1,21 @@
-<div class="yui-g">
-	<% curvy_corners "retorts" do %>
-		<ul>
+<div style="width: 100%;" class="v-chrome">
+	<div class="v-chrome-bd">
+		<ul class="pop">
 		<% if @retorts and @retorts.size > 0 %>	
 		<% for retort in @retorts %>
-			<%= render :partial => "retorts/li", :locals => { :r => retort }%>
+		<%= render :partial => "retorts/li", :locals => { :r => retort }%>
 		<% end %>
 		<% else %>	
-			<% ["My cousin Belo is a reeetard!", "WTF?", "C'mon now, squeal!  Squeal now!  SQWEEE!!!"].each do |c| %>
-				<%= render :partial => "li", :locals => { :r => Retort.new(:content => c) } %>
-			<% end %>
+		<% ["My cousin Belo is a reeetard!", "WTF?", "C'mon now, squeal!  Squeal now!  SQWEEE!!!"].each do |c| %>
+			<%= render :partial => "li", :locals => { :r => Retort.new(:content => c) } %>
+		<% end %>
 		<% end %>
 		</ul>
-	<% end %>
+	</div>
+	<div style="opacity: 1;" class="bgnd">
+	    <u class="w"></u><u class="e"></u>
+	    <i class="w"></i><i class="e"></i>
+	    <b class="w"></b><b class="e"></b>
+	</div>
 </div>
 <%= render_tagcloud @tagcloud %>
