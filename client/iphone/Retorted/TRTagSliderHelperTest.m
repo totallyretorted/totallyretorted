@@ -151,8 +151,15 @@
 
 
 
-- (void) testSingleTagPlacement {
-	//TODO:Write this test
+- (void) testSingleTagPlacementAsButton {
+	//TODO: Write this test
+	
+	//TRTag *aTag = [[TRTag alloc] initWithId:[NSNumber numberWithInt:1] value:@"Test" weight:2 tagCloudValue:0];
+	//self.tags
+}
+
+- (void) testSingleTagPlacementAsLabel {
+	//TODO: Write this test
 	
 	//TRTag *aTag = [[TRTag alloc] initWithId:[NSNumber numberWithInt:1] value:@"Test" weight:2 tagCloudValue:0];
 	//self.tags

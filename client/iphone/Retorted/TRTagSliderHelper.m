@@ -32,7 +32,7 @@ float const PADDING = 10.0;
 	
 	self.tagArray = tags;
 	controlType = TRTagSliderControlsAsLabels;
-	self.origin = NSMakePoint(20.0, 20.0);
+	self.origin = CGPointMake(20.0, 20.0);
 	self.font = [UIFont systemFontOfSize:21.0];
 	self.horizontalSpacer = 30.0;
 	self.scrollerHeight = 61.0;

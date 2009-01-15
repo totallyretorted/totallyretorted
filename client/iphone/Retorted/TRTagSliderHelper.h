@@ -25,7 +25,7 @@ typedef enum {
 	//	calling buildTagScroller:
 	float horizontalSpacer;			// 30.0
 	float scrollerHeight;			// 61.0
-	NSPoint origin;					// 20.0, 20.0
+	CGPoint origin;					// 20.0, 20.0
 	UIColor *fontColor;				// black
 	UIColor *backgroundColor;		// white
 	UIFont *font;					// systemFontOfSize 21
@@ -68,7 +68,7 @@ typedef enum {
 
 @property float horizontalSpacer;
 @property float scrollerHeight;
-@property NSPoint origin;
+@property CGPoint origin;
 @property (nonatomic, retain) UIFont *font;
 @property (nonatomic, retain) UIColor *fontColor;
 @property (nonatomic, retain) NSArray *tagArray;
