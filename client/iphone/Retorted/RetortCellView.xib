@@ -49,7 +49,7 @@
 									<object class="IBUIImageView" id="1009238523">
 										<reference key="NSNextResponder" ref="455377018"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{0, 2}, {290, 90}}</string>
+										<string key="NSFrame">{{5, 2}, {310, 90}}</string>
 										<reference key="NSSuperview" ref="455377018"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -57,13 +57,13 @@
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<object class="NSCustomResource" key="IBUIImage">
 											<string key="NSClassName">NSImage</string>
-											<string key="NSResourceName">bubble.png</string>
+											<string key="NSResourceName">bubble-310x90.png</string>
 										</object>
 									</object>
 									<object class="IBUILabel" id="177717105">
 										<reference key="NSNextResponder" ref="455377018"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{35, 12}, {218, 70}}</string>
+										<string key="NSFrame">{{51, 12}, {218, 70}}</string>
 										<reference key="NSSuperview" ref="455377018"/>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
