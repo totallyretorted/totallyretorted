@@ -62,11 +62,15 @@
 	self.retortsView.hidden = YES;
 	self.loadFailureMessage.hidden = YES;
 	
-	UIBarButtonItem *refreshButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem: UIBarButtonSystemItemRefresh 
+	UIBarButtonItem *refreshButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
 																					target:self 
 																					action:@selector(refreshData)] autorelease];
+	UIBarButtonItem *homeButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks 
+																				 target:self 
+																				 action:@selector(homeButtonClicked)] autorelease];
 	
 	self.navigationItem.rightBarButtonItem = refreshButton;
+	self.navigationItem.leftBarButtonItem = homeButton;
 	
 	//set up accelerometer...
 	UIAccelerometer *myAccel = [UIAccelerometer sharedAccelerometer];
@@ -231,20 +235,34 @@
 	
 
 	[self loadDataWithUrl:[NSString stringWithFormat:@"tags/%d.xml", [self.tagId intValue]]];
-	//[self loadDataWithUrl:@"retorts/screenzero.xml"];
-	
 }
 
 - (void)refreshData {
-	self.isSingleTag = NO;
-	self.selectedTag = nil;
-	self.tagId = nil;
 	
 	//set self to receive callback notification...
 	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
 	
-	//uses relative path: retorts/screenzero.xml
-	[self loadDataWithUrl:@"retorts/screenzero.xml"];
+	
+	
+	if (self.isSingleTag) {
+		[self loadDataWithUrl:[NSString stringWithFormat:@"tags/%d.xml", [self.tagId intValue]]];
+	} else {
+		[self loadDataWithUrl:@"retorts/screenzero.xml"];
+	}
+}
+
+//only refresh the data if the user was previously viewing the single tag view.
+- (void)homeButtonClicked {
+	if (self.isSingleTag) {
+		self.isSingleTag = NO;
+		self.selectedTag = nil;
+		self.tagId = nil;
+		
+		//set self to receive callback notification...
+		[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
+		
+		[self loadDataWithUrl:@"retorts/screenzero.xml"];
+	}
 }
 
 #pragma mark -
