@@ -58,6 +58,7 @@
 		DB2D91630F15B6E500928E84 /* RetortByTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2D91570F15932800928E84 /* RetortByTagView.xib */; };
 		DB2D91640F15B6F600928E84 /* RetortByTagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D91550F15931100928E84 /* RetortByTagListViewController.m */; };
 		DB2D91650F15B70700928E84 /* RetortCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D91520F1592F100928E84 /* RetortCellView.m */; };
+		DB4513E00F211C97007ACEC6 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = DB4513DF0F211C97007ACEC6 /* home.png */; };
 		DB59FE760EF8088700E59D12 /* FEUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126590EEF047300137EBC /* FEUrlHelper.m */; };
 		DB6075160F1CF9BD00401EC3 /* TRTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6075150F1CF9BD00401EC3 /* TRTagButton.m */; };
 		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
@@ -175,6 +176,7 @@
 		DB2D91590F15934800928E84 /* RetortCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RetortCellView.xib; sourceTree = "<group>"; };
 		DB2D915E0F15B6D400928E84 /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downArrow.png; sourceTree = "<group>"; };
 		DB2D915F0F15B6D400928E84 /* upArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upArrow.png; sourceTree = "<group>"; };
+		DB4513DF0F211C97007ACEC6 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		DB6075140F1CF9BD00401EC3 /* TRTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTagButton.h; sourceTree = "<group>"; };
 		DB6075150F1CF9BD00401EC3 /* TRTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagButton.m; sourceTree = "<group>"; };
 		DB6849C70EF0257B0094CC24 /* CGPointUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointUtils.c; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 		DB1128830EEF73F200137EBC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DB4513DF0F211C97007ACEC6 /* home.png */,
 				452D5D720F210FC900F12CEC /* bubble-310x90.png */,
 				DB238A230F18152D00F3F96C /* blueButton.png */,
 				DB238A240F18152D00F3F96C /* whiteButton.png */,
@@ -528,6 +531,7 @@
 				DB238A250F18152D00F3F96C /* blueButton.png in Resources */,
 				DB238A260F18152D00F3F96C /* whiteButton.png in Resources */,
 				452D5D730F210FC900F12CEC /* bubble-310x90.png in Resources */,
+				DB4513E00F211C97007ACEC6 /* home.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

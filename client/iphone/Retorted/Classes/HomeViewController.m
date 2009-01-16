@@ -65,9 +65,15 @@
 	UIBarButtonItem *refreshButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh 
 																					target:self 
 																					action:@selector(refreshData)] autorelease];
-	UIBarButtonItem *homeButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks 
-																				 target:self 
-																				 action:@selector(homeButtonClicked)] autorelease];
+	
+	UIBarButtonItem *homeButton = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home.png"] 
+																	style:UIBarButtonItemStylePlain 
+																   target:self 
+																   action:@selector(homeButtonClicked)] autorelease];
+	
+//	UIBarButtonItem *homeButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks 
+//																				 target:self 
+//																				 action:@selector(homeButtonClicked)] autorelease];
 	
 	self.navigationItem.rightBarButtonItem = refreshButton;
 	self.navigationItem.leftBarButtonItem = homeButton;
