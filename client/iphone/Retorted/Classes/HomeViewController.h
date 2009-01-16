@@ -16,6 +16,7 @@
 	IBOutlet UITableView *retortsView;			//list of retorts
 	IBOutlet UITextView *loadFailureMessage;	//message if there is no data
 	IBOutlet UIScrollView *tagSlider;			//tag slider control
+	IBOutlet UIActivityIndicatorView *activityIndicator;
 	
 	//Handles details on getting data from internet, parsing XML, and populating model objects.
 	TRRetortFacade *facade;
@@ -85,4 +86,5 @@
 @property (nonatomic, retain) UITableView *retortsView;
 @property (nonatomic, retain) UITextView *loadFailureMessage;
 @property (nonatomic, retain) UIScrollView *tagSlider;
+@property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
 @end

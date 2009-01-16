@@ -11,10 +11,10 @@
 
 @interface RetortCellView : UITableViewCell {
 	IBOutlet UILabel *retortValue;
-	IBOutlet UIImageView *rankIndicator;
+	//IBOutlet UIImageView *rankIndicator;
 }
 
 @property (nonatomic, retain) UILabel *retortValue;
-@property (nonatomic, retain) UIImageView *rankIndicator;
+//@property (nonatomic, retain) UIImageView *rankIndicator;
 
 @end

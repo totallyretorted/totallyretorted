@@ -10,7 +10,7 @@
 
 
 @implementation RetortCellView
-@synthesize retortValue, rankIndicator;
+@synthesize retortValue; //, rankIndicator;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {

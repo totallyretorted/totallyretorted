@@ -125,14 +125,14 @@
     
     // Set up the cell...
 	TRRetort *aRetort = [self.retorts objectAtIndex:indexPath.row];
-	TRRating *retortRating = aRetort.rating;
+	//TRRating *retortRating = aRetort.rating;
 	
 	cell.retortValue.text = aRetort.content;
-	if (retortRating.rank > 0.5) {
-		cell.rankIndicator.image = [UIImage imageNamed:@"upArrow.png"];
-	} else {
-		cell.rankIndicator.image = [UIImage imageNamed:@"downArrow.png"];
-	}
+	//if (retortRating.rank > 0.5) {
+//		cell.rankIndicator.image = [UIImage imageNamed:@"upArrow.png"];
+//	} else {
+//		cell.rankIndicator.image = [UIImage imageNamed:@"downArrow.png"];
+//	}
 	
 
     return cell;
@@ -145,7 +145,7 @@
 }
 */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 80; //kTableCellViewRowHeight;
+	return 94; //kTableCellViewRowHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

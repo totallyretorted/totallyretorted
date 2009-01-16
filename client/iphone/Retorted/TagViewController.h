@@ -14,12 +14,15 @@
 	TRTagFacade *tagFacade;
 	IBOutlet UILabel *loadFailurelbl;
 	IBOutlet UITableView *tagsView;
+	IBOutlet UIActivityIndicatorView *activityIndicator;
+	
 }
 
 @property (nonatomic, retain) NSMutableArray *tags;
 @property (nonatomic, retain) TRTagFacade *tagFacade;
 @property (nonatomic, retain) UITableView *tagsView;
 @property (nonatomic, retain) UILabel *loadFailurelbl;
+@property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
 
 -(void) loadURL;
 -(void) handleDataLoad:(NSNotification *)note;

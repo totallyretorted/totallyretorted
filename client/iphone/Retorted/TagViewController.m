@@ -13,7 +13,7 @@
 #import "RetortByTagListViewController.h"
 
 @implementation TagViewController
-@synthesize tags, tagFacade, tagsView, loadFailurelbl;
+@synthesize tags, tagFacade, tagsView, loadFailurelbl, activityIndicator;
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -28,7 +28,8 @@
 - (void)viewDidLoad {
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-	
+	self.tagsView.hidden = YES;
+	self.loadFailurelbl.hidden = YES;
 	
 	NSNotificationCenter *nc =[NSNotificationCenter defaultCenter];
 	[nc addObserver:self 
@@ -193,11 +194,13 @@
 #pragma mark Custom Methods
 -(void)loadURL{
 	self.tagFacade = [[TRTagFacade alloc] init];
+	[self.activityIndicator startAnimating];
 	[self.tagFacade loadTags];
 }
 
 -(void)handleDataLoad: (NSNotification *)note{
 	TRTagFacade *tagF=[note object];
+	[self.activityIndicator stopAnimating];
 	
 	if(tagF.loadSucessful && [tagF.tags count]>0)
 	{
