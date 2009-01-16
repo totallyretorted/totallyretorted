@@ -1,4 +1,10 @@
 <div id="top_menu">
+	<% if logged_in? %>
+		Whatchoo talkin' about, <%= current_user.login %>?
+	<% else %>
+		<%= link_to_remote_redbox "You talkin' to me?", :url => {:controller => 'sessions', :action => 'new'} %>
+	<% end %>
+	&nbsp;&middot;&nbsp;
 	<%= link_to "WTF?", :controller => 'home' %>
 	&nbsp;&middot;&nbsp;
 	<%= link_to "Knock yourself a pro slick", :controller => 'retorts' %>

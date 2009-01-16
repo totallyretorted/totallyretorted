@@ -70,7 +70,7 @@ class RetortTest < ActiveSupport::TestCase
     #assert_equal "south_park", (tags[0]/:value).inner_html
     #assert_equal "cartman", (tags[1]/:value).inner_html
     #assert_equal ["cartman", "south_park"], (tags/:value).inner_html
-    assert_equal ["cartman", "south_park"], tags.search("value").collect{|v| v.inner_html}
+    assert_equal ["cartman", "south_park"], tags.search("value").collect{|v| v.inner_html}.sort
   end
   
   test "from_xml" do

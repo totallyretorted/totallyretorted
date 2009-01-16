@@ -1,5 +1,5 @@
 <div>
-	<% curvy_corners do %>
+	<% curvy_corners "new-retort-form", :css_class => ['compact'] do %>
 		<% form_for(@retort) do |f| %>
 	  		<% if f.error_messages -%>
 				<div class="errors"><%= f.error_messages %></div>

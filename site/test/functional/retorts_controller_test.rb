@@ -1,6 +1,31 @@
 require 'test_helper'
+require 'assert_xpath'
+require 'assert2'
+
+class RetortsController
+  def rescue_action(e)
+    raise e
+  end
+  
+  def _renderizer
+    render params[:args]
+  end
+end
 
 class RetortsControllerTest < ActionController::TestCase
+  def render(args)
+    get :_renderizer, :args => args
+  end
+  
+  test "should show toolbar" do
+    render :partial => 'common/toolbar'
+    assert_xpath :div, :toolbar do
+      assert_xpath :div, :toolbar_main do
+        assert_xpath :div, :search
+      end
+    end        
+  end
+  
   test "should get index" do
     get :index
     assert_response :success
@@ -29,7 +54,7 @@ class RetortsControllerTest < ActionController::TestCase
     end
     retort = assigns(:retort)
     assert retort.rating
-    assert !retort.tags
+    assert_equal 0, retort.tags.size
     assert_redirected_to retort_path(retort)
   end
 
@@ -70,6 +95,7 @@ class RetortsControllerTest < ActionController::TestCase
   test "should not create retort with invalid when param value" do
     assert_difference('Retort.count') do
       post :create, {:retort => { :content => 'this is the last test' }, :tags => { :value => 'one and two, two, three' }, :attribution => { :when => 'fred'}}
+      
     end
     retort = assigns(:retort)
     assert !retort
