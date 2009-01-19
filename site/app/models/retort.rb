@@ -36,7 +36,7 @@ class Retort < ActiveRecord::Base
   end
   
   def self.find_highly_regarded
-    Retort.find(:all, :limit => 100)
+    Retort.find(:all)
   end
   
   def self.screenzero_retorts
