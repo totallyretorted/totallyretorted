@@ -157,10 +157,10 @@
 	if (buttonIndex == 0)
 	{
 		NSLog(@"favorites");
-	}
-	else if (buttonIndex == 1)
-	{
-		NSLog(@"facebook");
+//	}
+//	else if (buttonIndex == 1)
+//	{
+//		NSLog(@"facebook");
 	} else  {
 		NSLog(@"cancel");
 	}
@@ -200,7 +200,7 @@
 															 delegate:self 
 													cancelButtonTitle:@"Cancel" 
 											   destructiveButtonTitle:nil
-													otherButtonTitles:@"Add to Favorites", @"Add To Facebook Wall", nil];
+													otherButtonTitles:@"Add to Favorites", nil];
 	
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
 	//actionSheet.destructiveButtonIndex = 1;	// make the second button red (destructive)
