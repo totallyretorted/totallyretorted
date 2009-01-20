@@ -3,6 +3,6 @@
 /home/retorted/retorted/current/script/process/spawner \
   mongrel \
   --environment=production \
-  --instances=1 \
+  --instances=5 \
   --address=127.0.0.1 \
   --port=8000
