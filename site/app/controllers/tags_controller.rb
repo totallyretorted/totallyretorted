@@ -106,4 +106,15 @@ class TagsController < ApplicationController
       format.xml { render :xml => @tags }
     end
   end
+
+  # def paginate
+  #    @tags = Tag.paginate :page => params[:page]
+  #    @paginate = true
+  #    @listing = @tags
+  # 
+  #    respond_to do |format|
+  #      format.html { render :action => 'index'}
+  #      format.xml { render :xml => @tags }
+  #    end
+  #  end
 end
