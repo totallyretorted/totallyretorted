@@ -25,15 +25,7 @@
 - (void)viewDidLoad {
 	self.title = NSLocalizedString(@"Settings", @"Title for the nav bar on the settings view screen");
 	self.view.backgroundColor = [UIColor blackColor];
-	/*
-	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
-									 initWithTitle:@"Cancel"
-									 style:UIBarButtonItemStylePlain
-									 target:self
-									 action:@selector(cancel:)];
-	self.navigationItem.leftBarButtonItem = cancelButton;
-	[cancelButton release];
-	*/
+
 	UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]
 								   initWithTitle:NSLocalizedString(@"Save", @"Nav bar button to save the user's settings")
 								   style:UIBarButtonItemStyleDone

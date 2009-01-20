@@ -65,6 +65,7 @@
 		DBCD537A0F268C3400F4F7A5 /* RetortCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD53790F268C3400F4F7A5 /* RetortCellView.xib */; };
 		DBCD537B0F268C3400F4F7A5 /* RetortCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD53790F268C3400F4F7A5 /* RetortCellView.xib */; };
 		DBCD53800F268D6200F4F7A5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD537F0F268D6200F4F7A5 /* MainWindow.xib */; };
+		DBCD53B90F2694F200F4F7A5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DBCD53B80F2694F200F4F7A5 /* Localizable.strings */; };
 		DBDC5EE30EF091740055CD29 /* tab-favs.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE20EF091740055CD29 /* tab-favs.png */; };
 		DBDC5EE50EF0917C0055CD29 /* tab-five.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE40EF0917C0055CD29 /* tab-five.png */; };
 		DBDC5EE70EF091890055CD29 /* tab-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE60EF091890055CD29 /* tab-settings.png */; };
@@ -201,6 +202,9 @@
 		DBCD537D0F268C3E00F4F7A5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/RetortCellView.xib; sourceTree = "<group>"; };
 		DBCD53810F268D6900F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		DBCD53820F268D6C00F4F7A5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		DBCD53B60F2694DF00F4F7A5 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DBCD53BF0F26951800F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DBCD53C00F26951C00F4F7A5 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DBDC5EE20EF091740055CD29 /* tab-favs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-favs.png"; sourceTree = "<group>"; };
 		DBDC5EE40EF0917C0055CD29 /* tab-five.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-five.png"; sourceTree = "<group>"; };
 		DBDC5EE60EF091890055CD29 /* tab-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-settings.png"; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DBCD53B80F2694F200F4F7A5 /* Localizable.strings */,
 				DCC9145B0EF2F67E0076F8C9 /* Properties.plist */,
 				DB1128830EEF73F200137EBC /* Images */,
 				DBCD537F0F268D6200F4F7A5 /* MainWindow.xib */,
@@ -550,6 +555,7 @@
 				DB238A260F18152D00F3F96C /* whiteButton.png in Resources */,
 				452D5D730F210FC900F12CEC /* bubble-310x90.png in Resources */,
 				DB4513FC0F216B34007ACEC6 /* home.png in Resources */,
+				DBCD53B90F2694F200F4F7A5 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,6 +747,16 @@
 				DBCD53820F268D6C00F4F7A5 /* de */,
 			);
 			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		DBCD53B80F2694F200F4F7A5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DBCD53B60F2694DF00F4F7A5 /* English */,
+				DBCD53BF0F26951800F4F7A5 /* fr */,
+				DBCD53C00F26951C00F4F7A5 /* de */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
