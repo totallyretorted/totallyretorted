@@ -117,7 +117,7 @@
 	//retortText.text = self.retort.content;
     //[super viewDidLoad];
 	
-	self.title = @"Retort";
+	self.title = NSLocalizedString(@"Retorts", @"Title for the nav bar on the retorts view screen");
 	self.navigationItem.rightBarButtonItem = self.retortActionButton;
 	
 }
@@ -198,9 +198,9 @@
 	// open a dialog with two custom buttons
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
 															 delegate:self 
-													cancelButtonTitle:@"Cancel" 
+													cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel button title")
 											   destructiveButtonTitle:nil
-													otherButtonTitles:@"Add to Favorites", nil];
+													otherButtonTitles:NSLocalizedString(@"Add to Favorites", @"Add to favorites button on retort view actionsheet"), nil];
 	
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
 	//actionSheet.destructiveButtonIndex = 1;	// make the second button red (destructive)
@@ -208,6 +208,7 @@
 	[actionSheet release];
 }
 
+//Won't work here - will need to add to a custom uiview class and then pass to the view controller.
 /*
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	if ([touches count] == 2) {

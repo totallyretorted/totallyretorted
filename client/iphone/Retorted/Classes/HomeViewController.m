@@ -146,7 +146,7 @@
 		self.retortsView.hidden = YES;
 		self.loadFailureMessage.hidden = NO;
 		self.loadFailureMessage.font = [UIFont systemFontOfSize:17.0];
-		self.loadFailureMessage.text = @"Unable to acquire data at this time.  Please shake to try again.";
+		self.loadFailureMessage.text = NSLocalizedString(@"Unable to acquire data at this time.  Please shake to try again.", @"Message on Home list view to let the user know that data could not be received and they need to refresh.");
 	}
 
 	//facade is no longer needed...
@@ -183,7 +183,7 @@
 - (void)displayRetortsForScreenZero {
 	[UIView beginAnimations:@"multiTags" context:nil];
 	
-	self.title = @"Home";
+	self.title = NSLocalizedString(@"Home", @"Used to label the nav bar on the home screen");//@"Home";
 	self.tagSlider.hidden = NO;
 	
 	CGRect newFrame = self.retortsView.frame;
@@ -373,15 +373,8 @@
 	
 	// Set up the cell...
 	TRRetort *aRetort = [self.retorts objectAtIndex:indexPath.row];
-	//TRRating *retortRating = aRetort.rating;
-	
 	cell.retortValue.text = aRetort.content;
-	//if (retortRating.rank > 0.5) {
-//		
-//		cell.rankIndicator.image = [UIImage imageNamed:@"upArrow.png"];
-//	} else {
-//		cell.rankIndicator.image = [UIImage imageNamed:@"downArrow.png"];
-//	}
+
 	
     return cell;
 }
@@ -397,7 +390,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	RetortViewController *retortVC = [[RetortViewController alloc] initWithNibName:@"RetortView" bundle:nil];
-	retortVC.retortTitle = @"Retorts";
+	retortVC.retortTitle = NSLocalizedString(@"Retorts", @"Title for the nav bar on the retorts view screen");
 	retortVC.retort = [self.retorts objectAtIndex:indexPath.row];
 	
 	[self.navigationController pushViewController:retortVC animated:YES];

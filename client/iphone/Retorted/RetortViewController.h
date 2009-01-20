@@ -13,10 +13,11 @@
 #define kMinimumPinchDelta 100		//defines the minimum distance that constitues a pinch
 
 @interface RetortViewController : UIViewController <UIWebViewDelegate, UIActionSheetDelegate> {
-	IBOutlet UIScrollView *retortContainer;
-	IBOutlet UIScrollView *tagSlider;
-	IBOutlet UISegmentedControl *ratingVote;
-	UIBarButtonItem *retortActionButton;
+	//UI componenets
+	IBOutlet UIScrollView *retortContainer;		//container for retort text and retort attributions
+	IBOutlet UIScrollView *tagSlider;			//list of tags associated with the retort
+	IBOutlet UISegmentedControl *ratingVote;	//rocks vs sucks
+	UIBarButtonItem *retortActionButton;		//activates a uiactionsheet to allow the user to add to favorites (eventually facebook)
 	
 	TRRetort *retort;
 	NSString *retortTitle;		//Temp holder until we get REST up and running.

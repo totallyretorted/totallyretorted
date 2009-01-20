@@ -23,7 +23,7 @@
 
 
 - (void)viewDidLoad {
-	self.title = @"Settings";
+	self.title = NSLocalizedString(@"Settings", @"Title for the nav bar on the settings view screen");
 	self.view.backgroundColor = [UIColor blackColor];
 	/*
 	UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
@@ -35,7 +35,7 @@
 	[cancelButton release];
 	*/
 	UIBarButtonItem *saveButton = [[UIBarButtonItem alloc]
-								   initWithTitle:@"Save" 
+								   initWithTitle:NSLocalizedString(@"Save", @"Nav bar button to save the user's settings")
 								   style:UIBarButtonItemStyleDone
 								   target:self
 								   action:@selector(save:)];
@@ -134,14 +134,14 @@
     
 	switch (row) {
 		case kEmailRowIndex:
-			label.text = @"Email";
+			label.text = NSLocalizedString(@"Email", @"The label 'Email' for the settings table cell");
 			textField.keyboardType = UIKeyboardTypeEmailAddress;
 			textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
 			
 			if ([[tempValues allKeys] containsObject:rowAsNum]) {
 				textField.text = [tempValues objectForKey:rowAsNum];
 			} else {
-				textField.placeholder = @"Enter Email Here";
+				textField.placeholder = NSLocalizedString(@"Enter Email Here","Placeholder text requesting email address in settings table cell");
 			}
 			break;
 		case kPasswordRowIndex:
@@ -152,7 +152,7 @@
 				textField.text = [tempValues objectForKey:rowAsNum];
 			else
 				//textField.text = @"Test Data";
-				textField.placeholder = @"Enter Password Here";
+				textField.placeholder = NSLocalizedString(@"Enter Password Here", "Placeholder text requesting password in settings table cell");
 			break;
 		default:
 			break;

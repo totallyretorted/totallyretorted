@@ -13,7 +13,6 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		28216C970DB411BC00E5133A /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28216C960DB411BC00E5133A /* HomeViewController.m */; };
 		288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765070DF74369002DB57D /* CoreGraphics.framework */; };
-		28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD73870D9D96C1002E5188 /* MainWindow.xib */; };
 		452D5D730F210FC900F12CEC /* bubble-310x90.png in Resources */ = {isa = PBXBuildFile; fileRef = 452D5D720F210FC900F12CEC /* bubble-310x90.png */; };
 		45812E760EF1C0B500FC2D21 /* tab-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = 45812E750EF1C0B500FC2D21 /* tab-tag.png */; };
 		45812E910EF1D81400FC2D21 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 45812E900EF1D81400FC2D21 /* Default.png */; };
@@ -22,7 +21,6 @@
 		76EA75690F0181C000B1ED9C /* TagViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA75680F0181C000B1ED9C /* TagViewController.m */; };
 		76EA764F0F01A7D900B1ED9C /* TRTagFacadeTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA764C0F01A68100B1ED9C /* TRTagFacadeTest.m */; };
 		DB0030BC0EF0A44F00404183 /* TRTagSorter.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0030BB0EF0A44F00404183 /* TRTagSorter.m */; };
-		DB08FFA50EF2D898000FB1AB /* TagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB08FFA40EF2D898000FB1AB /* TagView.xib */; };
 		DB0FFC940F1D091500595977 /* TRTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6075150F1CF9BD00401EC3 /* TRTagButton.m */; };
 		DB11263B0EEEED5600137EBC /* TRAttribution.m in Sources */ = {isa = PBXBuildFile; fileRef = DB11263A0EEEED5600137EBC /* TRAttribution.m */; };
 		DB11263E0EEEED7300137EBC /* TRRetort.m in Sources */ = {isa = PBXBuildFile; fileRef = DB11263D0EEEED7300137EBC /* TRRetort.m */; };
@@ -30,8 +28,6 @@
 		DB11264A0EEEEDD500137EBC /* TRTag.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126490EEEEDD500137EBC /* TRTag.m */; };
 		DB11265A0EEF047300137EBC /* FEUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126590EEF047300137EBC /* FEUrlHelper.m */; };
 		DB1126BB0EEF27B600137EBC /* RetortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126BA0EEF27B600137EBC /* RetortViewController.m */; };
-		DB1126C00EEF28B600137EBC /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB1126BF0EEF28B600137EBC /* HomeView.xib */; };
-		DB1126C40EEF28E900137EBC /* RetortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB1126C30EEF28E900137EBC /* RetortView.xib */; };
 		DB1128680EEF618700137EBC /* TRTagCloudHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1128670EEF618700137EBC /* TRTagCloudHelper.m */; };
 		DB1128860EEF73FA00137EBC /* ql.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1128840EEF73FA00137EBC /* ql.png */; };
 		DB1128870EEF73FA00137EBC /* qr.png in Resources */ = {isa = PBXBuildFile; fileRef = DB1128850EEF73FA00137EBC /* qr.png */; };
@@ -46,16 +42,9 @@
 		DB238A250F18152D00F3F96C /* blueButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DB238A230F18152D00F3F96C /* blueButton.png */; };
 		DB238A260F18152D00F3F96C /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = DB238A240F18152D00F3F96C /* whiteButton.png */; };
 		DB2423240F13D595000BE2F0 /* RedRocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423230F13D595000BE2F0 /* RedRocketViewController.m */; };
-		DB2423260F13D5AC000BE2F0 /* RedRocketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2423250F13D5AC000BE2F0 /* RedRocketView.xib */; };
 		DB2423980F13F2F7000BE2F0 /* TagViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423970F13F2F7000BE2F0 /* TagViewControllerTest.m */; };
 		DB2423D80F1451F6000BE2F0 /* TRTagSliderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423D70F1451F6000BE2F0 /* TRTagSliderHelper.m */; };
 		DB2424230F1463B4000BE2F0 /* TRTagSliderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423D70F1451F6000BE2F0 /* TRTagSliderHelper.m */; };
-		DB2D91580F15932800928E84 /* RetortByTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2D91570F15932800928E84 /* RetortByTagView.xib */; };
-		DB2D915A0F15934800928E84 /* RetortCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2D91590F15934800928E84 /* RetortCellView.xib */; };
-		DB2D91600F15B6D400928E84 /* downArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = DB2D915E0F15B6D400928E84 /* downArrow.png */; };
-		DB2D91610F15B6D400928E84 /* upArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = DB2D915F0F15B6D400928E84 /* upArrow.png */; };
-		DB2D91620F15B6E100928E84 /* RetortCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2D91590F15934800928E84 /* RetortCellView.xib */; };
-		DB2D91630F15B6E500928E84 /* RetortByTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2D91570F15932800928E84 /* RetortByTagView.xib */; };
 		DB2D91640F15B6F600928E84 /* RetortByTagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D91550F15931100928E84 /* RetortByTagListViewController.m */; };
 		DB2D91650F15B70700928E84 /* RetortCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D91520F1592F100928E84 /* RetortCellView.m */; };
 		DB4513FC0F216B34007ACEC6 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = DB4513FB0F216B34007ACEC6 /* home.png */; };
@@ -63,10 +52,19 @@
 		DB6075160F1CF9BD00401EC3 /* TRTagButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6075150F1CF9BD00401EC3 /* TRTagButton.m */; };
 		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
 		DB6D147E0F05E6F400FE89B0 /* TagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC6E44B0F05D7D70041E319 /* TagCellView.m */; };
-		DB6D147F0F05E70300FE89B0 /* TagCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6D14100F05D9F000FE89B0 /* TagCellView.xib */; };
-		DB6DCA3F0EF8B0B5008C1C62 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB6DCA3E0EF8B0B5008C1C62 /* SettingsView.xib */; };
 		DB6DCA420EF8B0D1008C1C62 /* TRViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6DCA410EF8B0D1008C1C62 /* TRViewHelper.m */; };
 		DBC6E4450F0322950041E319 /* TRTagFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA75410F01666A00B1ED9C /* TRTagFacade.m */; };
+		DBCD53100F2682BA00F4F7A5 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD530F0F2682BA00F4F7A5 /* HomeView.xib */; };
+		DBCD535A0F2687FD00F4F7A5 /* RetortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD53590F2687FD00F4F7A5 /* RetortView.xib */; };
+		DBCD53600F268AB600F4F7A5 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD535F0F268AB600F4F7A5 /* SettingsView.xib */; };
+		DBCD53650F268BB500F4F7A5 /* TagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD53640F268BB500F4F7A5 /* TagView.xib */; };
+		DBCD536B0F268BEA00F4F7A5 /* RedRocketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD536A0F268BEA00F4F7A5 /* RedRocketView.xib */; };
+		DBCD53700F268C0700F4F7A5 /* RetortByTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD536F0F268C0700F4F7A5 /* RetortByTagView.xib */; };
+		DBCD53710F268C0700F4F7A5 /* RetortByTagView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD536F0F268C0700F4F7A5 /* RetortByTagView.xib */; };
+		DBCD53760F268C2600F4F7A5 /* TagCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD53750F268C2600F4F7A5 /* TagCellView.xib */; };
+		DBCD537A0F268C3400F4F7A5 /* RetortCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD53790F268C3400F4F7A5 /* RetortCellView.xib */; };
+		DBCD537B0F268C3400F4F7A5 /* RetortCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD53790F268C3400F4F7A5 /* RetortCellView.xib */; };
+		DBCD53800F268D6200F4F7A5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD537F0F268D6200F4F7A5 /* MainWindow.xib */; };
 		DBDC5EE30EF091740055CD29 /* tab-favs.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE20EF091740055CD29 /* tab-favs.png */; };
 		DBDC5EE50EF0917C0055CD29 /* tab-five.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE40EF0917C0055CD29 /* tab-five.png */; };
 		DBDC5EE70EF091890055CD29 /* tab-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = DBDC5EE60EF091890055CD29 /* tab-settings.png */; };
@@ -107,7 +105,7 @@
 		28216C960DB411BC00E5133A /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = Classes/HomeViewController.m; sourceTree = "<group>"; };
 		288765070DF74369002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AB4B0D9B1048005BE974 /* Retorted_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Retorted_Prefix.pch; sourceTree = "<group>"; };
-		28AD73870D9D96C1002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28AD73870D9D96C1002E5188 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		452D5D720F210FC900F12CEC /* bubble-310x90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bubble-310x90.png"; sourceTree = "<group>"; };
 		45812E750EF1C0B500FC2D21 /* tab-tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-tag.png"; sourceTree = "<group>"; };
@@ -122,7 +120,7 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB0030BA0EF0A44F00404183 /* TRTagSorter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTagSorter.h; sourceTree = "<group>"; };
 		DB0030BB0EF0A44F00404183 /* TRTagSorter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagSorter.m; sourceTree = "<group>"; };
-		DB08FFA40EF2D898000FB1AB /* TagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagView.xib; sourceTree = "<group>"; };
+		DB08FFA40EF2D898000FB1AB /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TagView.xib; sourceTree = "<group>"; };
 		DB1126390EEEED5600137EBC /* TRAttribution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRAttribution.h; sourceTree = "<group>"; };
 		DB11263A0EEEED5600137EBC /* TRAttribution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRAttribution.m; sourceTree = "<group>"; };
 		DB11263C0EEEED7300137EBC /* TRRetort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRRetort.h; sourceTree = "<group>"; };
@@ -135,8 +133,8 @@
 		DB1126590EEF047300137EBC /* FEUrlHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FEUrlHelper.m; sourceTree = "<group>"; };
 		DB1126B90EEF27B600137EBC /* RetortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetortViewController.h; sourceTree = "<group>"; };
 		DB1126BA0EEF27B600137EBC /* RetortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetortViewController.m; sourceTree = "<group>"; };
-		DB1126BF0EEF28B600137EBC /* HomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
-		DB1126C30EEF28E900137EBC /* RetortView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RetortView.xib; sourceTree = "<group>"; };
+		DB1126BF0EEF28B600137EBC /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/HomeView.xib; sourceTree = "<group>"; };
+		DB1126C30EEF28E900137EBC /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/RetortView.xib; sourceTree = "<group>"; };
 		DB1128660EEF618700137EBC /* TRTagCloudHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTagCloudHelper.h; sourceTree = "<group>"; };
 		DB1128670EEF618700137EBC /* TRTagCloudHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagCloudHelper.m; sourceTree = "<group>"; };
 		DB1128840EEF73FA00137EBC /* ql.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ql.png; sourceTree = "<group>"; };
@@ -162,7 +160,7 @@
 		DB238A240F18152D00F3F96C /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
 		DB2423220F13D595000BE2F0 /* RedRocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedRocketViewController.h; sourceTree = "<group>"; };
 		DB2423230F13D595000BE2F0 /* RedRocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RedRocketViewController.m; sourceTree = "<group>"; };
-		DB2423250F13D5AC000BE2F0 /* RedRocketView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RedRocketView.xib; sourceTree = "<group>"; };
+		DB2423250F13D5AC000BE2F0 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/RedRocketView.xib; sourceTree = "<group>"; };
 		DB2423960F13F2F7000BE2F0 /* TagViewControllerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagViewControllerTest.h; sourceTree = "<group>"; };
 		DB2423970F13F2F7000BE2F0 /* TagViewControllerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagViewControllerTest.m; sourceTree = "<group>"; };
 		DB2423D60F1451F6000BE2F0 /* TRTagSliderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTagSliderHelper.h; sourceTree = "<group>"; };
@@ -172,21 +170,37 @@
 		DB2D91520F1592F100928E84 /* RetortCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetortCellView.m; sourceTree = "<group>"; };
 		DB2D91540F15931100928E84 /* RetortByTagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetortByTagListViewController.h; sourceTree = "<group>"; };
 		DB2D91550F15931100928E84 /* RetortByTagListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetortByTagListViewController.m; sourceTree = "<group>"; };
-		DB2D91570F15932800928E84 /* RetortByTagView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RetortByTagView.xib; sourceTree = "<group>"; };
-		DB2D91590F15934800928E84 /* RetortCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RetortCellView.xib; sourceTree = "<group>"; };
-		DB2D915E0F15B6D400928E84 /* downArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = downArrow.png; sourceTree = "<group>"; };
-		DB2D915F0F15B6D400928E84 /* upArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = upArrow.png; sourceTree = "<group>"; };
+		DB2D91570F15932800928E84 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/RetortByTagView.xib; sourceTree = "<group>"; };
+		DB2D91590F15934800928E84 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/RetortCellView.xib; sourceTree = "<group>"; };
 		DB4513FB0F216B34007ACEC6 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
 		DB6075140F1CF9BD00401EC3 /* TRTagButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTagButton.h; sourceTree = "<group>"; };
 		DB6075150F1CF9BD00401EC3 /* TRTagButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRTagButton.m; sourceTree = "<group>"; };
 		DB6849C70EF0257B0094CC24 /* CGPointUtils.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CGPointUtils.c; sourceTree = "<group>"; };
 		DB6849C80EF0257B0094CC24 /* CGPointUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPointUtils.h; sourceTree = "<group>"; };
-		DB6D14100F05D9F000FE89B0 /* TagCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagCellView.xib; sourceTree = "<group>"; };
-		DB6DCA3E0EF8B0B5008C1C62 /* SettingsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		DB6D14100F05D9F000FE89B0 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TagCellView.xib; sourceTree = "<group>"; };
+		DB6DCA3E0EF8B0B5008C1C62 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/SettingsView.xib; sourceTree = "<group>"; };
 		DB6DCA400EF8B0D1008C1C62 /* TRViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRViewHelper.h; sourceTree = "<group>"; };
 		DB6DCA410EF8B0D1008C1C62 /* TRViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRViewHelper.m; sourceTree = "<group>"; };
 		DBC6E44A0F05D7D70041E319 /* TagCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCellView.h; sourceTree = "<group>"; };
 		DBC6E44B0F05D7D70041E319 /* TagCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCellView.m; sourceTree = "<group>"; };
+		DBCD53140F26836000F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/HomeView.xib; sourceTree = "<group>"; };
+		DBCD532C0F26856C00F4F7A5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/HomeView.xib; sourceTree = "<group>"; };
+		DBCD535B0F26880700F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/RetortView.xib; sourceTree = "<group>"; };
+		DBCD535C0F26880C00F4F7A5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/RetortView.xib; sourceTree = "<group>"; };
+		DBCD53610F268ABE00F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/SettingsView.xib; sourceTree = "<group>"; };
+		DBCD53620F268AC200F4F7A5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/SettingsView.xib; sourceTree = "<group>"; };
+		DBCD53660F268BBC00F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/TagView.xib; sourceTree = "<group>"; };
+		DBCD53670F268BC100F4F7A5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/TagView.xib; sourceTree = "<group>"; };
+		DBCD536C0F268BF000F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/RedRocketView.xib; sourceTree = "<group>"; };
+		DBCD536D0F268BF300F4F7A5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/RedRocketView.xib; sourceTree = "<group>"; };
+		DBCD53720F268C0E00F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/RetortByTagView.xib; sourceTree = "<group>"; };
+		DBCD53730F268C1200F4F7A5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/RetortByTagView.xib; sourceTree = "<group>"; };
+		DBCD53770F268C2C00F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/TagCellView.xib; sourceTree = "<group>"; };
+		DBCD53780F268C2F00F4F7A5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/TagCellView.xib; sourceTree = "<group>"; };
+		DBCD537C0F268C3A00F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/RetortCellView.xib; sourceTree = "<group>"; };
+		DBCD537D0F268C3E00F4F7A5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/RetortCellView.xib; sourceTree = "<group>"; };
+		DBCD53810F268D6900F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		DBCD53820F268D6C00F4F7A5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		DBDC5EE20EF091740055CD29 /* tab-favs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-favs.png"; sourceTree = "<group>"; };
 		DBDC5EE40EF0917C0055CD29 /* tab-five.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-five.png"; sourceTree = "<group>"; };
 		DBDC5EE60EF091890055CD29 /* tab-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-settings.png"; sourceTree = "<group>"; };
@@ -268,16 +282,16 @@
 			children = (
 				DCC9145B0EF2F67E0076F8C9 /* Properties.plist */,
 				DB1128830EEF73F200137EBC /* Images */,
-				28AD73870D9D96C1002E5188 /* MainWindow.xib */,
+				DBCD537F0F268D6200F4F7A5 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				DB1126BF0EEF28B600137EBC /* HomeView.xib */,
-				DB6DCA3E0EF8B0B5008C1C62 /* SettingsView.xib */,
-				DB1126C30EEF28E900137EBC /* RetortView.xib */,
-				DB08FFA40EF2D898000FB1AB /* TagView.xib */,
-				DB2423250F13D5AC000BE2F0 /* RedRocketView.xib */,
-				DB2D91570F15932800928E84 /* RetortByTagView.xib */,
-				DB6D14100F05D9F000FE89B0 /* TagCellView.xib */,
-				DB2D91590F15934800928E84 /* RetortCellView.xib */,
+				DBCD530F0F2682BA00F4F7A5 /* HomeView.xib */,
+				DBCD535F0F268AB600F4F7A5 /* SettingsView.xib */,
+				DBCD53590F2687FD00F4F7A5 /* RetortView.xib */,
+				DBCD53640F268BB500F4F7A5 /* TagView.xib */,
+				DBCD536A0F268BEA00F4F7A5 /* RedRocketView.xib */,
+				DBCD536F0F268C0700F4F7A5 /* RetortByTagView.xib */,
+				DBCD53750F268C2600F4F7A5 /* TagCellView.xib */,
+				DBCD53790F268C3400F4F7A5 /* RetortCellView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -368,8 +382,6 @@
 				452D5D720F210FC900F12CEC /* bubble-310x90.png */,
 				DB238A230F18152D00F3F96C /* blueButton.png */,
 				DB238A240F18152D00F3F96C /* whiteButton.png */,
-				DB2D915E0F15B6D400928E84 /* downArrow.png */,
-				DB2D915F0F15B6D400928E84 /* upArrow.png */,
 				45812E900EF1D81400FC2D21 /* Default.png */,
 				45812E750EF1C0B500FC2D21 /* tab-tag.png */,
 				45B947660EF18C0E004C00EE /* Icon.png */,
@@ -491,6 +503,14 @@
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Retorted" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				fr,
+				de,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Retorted */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -507,9 +527,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC77CA6F0EF7206D0083F5CA /* UnitTest Help.rtf in Resources */,
-				28AD73880D9D96C1002E5188 /* MainWindow.xib in Resources */,
-				DB1126C00EEF28B600137EBC /* HomeView.xib in Resources */,
-				DB1126C40EEF28E900137EBC /* RetortView.xib in Resources */,
+				DBCD53800F268D6200F4F7A5 /* MainWindow.xib in Resources */,
+				DBCD53100F2682BA00F4F7A5 /* HomeView.xib in Resources */,
+				DBCD535A0F2687FD00F4F7A5 /* RetortView.xib in Resources */,
 				DB1128860EEF73FA00137EBC /* ql.png in Resources */,
 				DB1128870EEF73FA00137EBC /* qr.png in Resources */,
 				DBDC5EE30EF091740055CD29 /* tab-favs.png in Resources */,
@@ -519,15 +539,13 @@
 				45B947670EF18C0E004C00EE /* Icon.png in Resources */,
 				45812E760EF1C0B500FC2D21 /* tab-tag.png in Resources */,
 				45812E910EF1D81400FC2D21 /* Default.png in Resources */,
-				DB08FFA50EF2D898000FB1AB /* TagView.xib in Resources */,
+				DBCD53650F268BB500F4F7A5 /* TagView.xib in Resources */,
 				DCC9145C0EF2F67E0076F8C9 /* Properties.plist in Resources */,
-				DB6DCA3F0EF8B0B5008C1C62 /* SettingsView.xib in Resources */,
-				DB6D147F0F05E70300FE89B0 /* TagCellView.xib in Resources */,
-				DB2423260F13D5AC000BE2F0 /* RedRocketView.xib in Resources */,
-				DB2D91600F15B6D400928E84 /* downArrow.png in Resources */,
-				DB2D91610F15B6D400928E84 /* upArrow.png in Resources */,
-				DB2D91620F15B6E100928E84 /* RetortCellView.xib in Resources */,
-				DB2D91630F15B6E500928E84 /* RetortByTagView.xib in Resources */,
+				DBCD53600F268AB600F4F7A5 /* SettingsView.xib in Resources */,
+				DBCD53760F268C2600F4F7A5 /* TagCellView.xib in Resources */,
+				DBCD536B0F268BEA00F4F7A5 /* RedRocketView.xib in Resources */,
+				DBCD537A0F268C3400F4F7A5 /* RetortCellView.xib in Resources */,
+				DBCD53700F268C0700F4F7A5 /* RetortByTagView.xib in Resources */,
 				DB238A250F18152D00F3F96C /* blueButton.png in Resources */,
 				DB238A260F18152D00F3F96C /* whiteButton.png in Resources */,
 				452D5D730F210FC900F12CEC /* bubble-310x90.png in Resources */,
@@ -542,8 +560,8 @@
 				DB141F730EF4A3FF00868FAB /* UnitTest Help.rtf in Resources */,
 				DC2519CA0EF86AAD00B84B66 /* TRRetortXMLParserTest_testStandardXml.xml in Resources */,
 				DC2519CC0EF86AE700B84B66 /* TRRetortXMLParserTest_testSuperSimpleXML.xml in Resources */,
-				DB2D91580F15932800928E84 /* RetortByTagView.xib in Resources */,
-				DB2D915A0F15934800928E84 /* RetortCellView.xib in Resources */,
+				DBCD53710F268C0700F4F7A5 /* RetortByTagView.xib in Resources */,
+				DBCD537B0F268C3400F4F7A5 /* RetortCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,6 +651,99 @@
 			targetProxy = DC6775850EF8629900913900 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DBCD530F0F2682BA00F4F7A5 /* HomeView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB1126BF0EEF28B600137EBC /* English */,
+				DBCD53140F26836000F4F7A5 /* fr */,
+				DBCD532C0F26856C00F4F7A5 /* de */,
+			);
+			name = HomeView.xib;
+			sourceTree = "<group>";
+		};
+		DBCD53590F2687FD00F4F7A5 /* RetortView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB1126C30EEF28E900137EBC /* English */,
+				DBCD535B0F26880700F4F7A5 /* fr */,
+				DBCD535C0F26880C00F4F7A5 /* de */,
+			);
+			name = RetortView.xib;
+			sourceTree = "<group>";
+		};
+		DBCD535F0F268AB600F4F7A5 /* SettingsView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB6DCA3E0EF8B0B5008C1C62 /* English */,
+				DBCD53610F268ABE00F4F7A5 /* fr */,
+				DBCD53620F268AC200F4F7A5 /* de */,
+			);
+			name = SettingsView.xib;
+			sourceTree = "<group>";
+		};
+		DBCD53640F268BB500F4F7A5 /* TagView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB08FFA40EF2D898000FB1AB /* English */,
+				DBCD53660F268BBC00F4F7A5 /* fr */,
+				DBCD53670F268BC100F4F7A5 /* de */,
+			);
+			name = TagView.xib;
+			sourceTree = "<group>";
+		};
+		DBCD536A0F268BEA00F4F7A5 /* RedRocketView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB2423250F13D5AC000BE2F0 /* English */,
+				DBCD536C0F268BF000F4F7A5 /* fr */,
+				DBCD536D0F268BF300F4F7A5 /* de */,
+			);
+			name = RedRocketView.xib;
+			sourceTree = "<group>";
+		};
+		DBCD536F0F268C0700F4F7A5 /* RetortByTagView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB2D91570F15932800928E84 /* English */,
+				DBCD53720F268C0E00F4F7A5 /* fr */,
+				DBCD53730F268C1200F4F7A5 /* de */,
+			);
+			name = RetortByTagView.xib;
+			sourceTree = "<group>";
+		};
+		DBCD53750F268C2600F4F7A5 /* TagCellView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB6D14100F05D9F000FE89B0 /* English */,
+				DBCD53770F268C2C00F4F7A5 /* fr */,
+				DBCD53780F268C2F00F4F7A5 /* de */,
+			);
+			name = TagCellView.xib;
+			sourceTree = "<group>";
+		};
+		DBCD53790F268C3400F4F7A5 /* RetortCellView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB2D91590F15934800928E84 /* English */,
+				DBCD537C0F268C3A00F4F7A5 /* fr */,
+				DBCD537D0F268C3E00F4F7A5 /* de */,
+			);
+			name = RetortCellView.xib;
+			sourceTree = "<group>";
+		};
+		DBCD537F0F268D6200F4F7A5 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				28AD73870D9D96C1002E5188 /* English */,
+				DBCD53810F268D6900F4F7A5 /* fr */,
+				DBCD53820F268D6C00F4F7A5 /* de */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {

@@ -37,7 +37,7 @@
 			   name:TRTagDataDidFinishedNotification 
 			 object:nil];
 	
-	self.title = @"Tags";
+	self.title = NSLocalizedString(@"Tags", @"Title for the nav bar on the Tag list view screen");
 	[self loadURL];
 	
 }
@@ -219,7 +219,7 @@
 		self.loadFailurelbl.textColor = [UIColor whiteColor];
 		self.loadFailurelbl.numberOfLines = 2;
 		self.loadFailurelbl.textAlignment = UITextAlignmentCenter;
-		self.loadFailurelbl.text = @"Unable to acquire data.  Reboot the internet.";
+		self.loadFailurelbl.text = NSLocalizedString(@"Unable to acquire data.  Reboot the internet.", @"Message on Tag list view to let the user know that data could not be received and they need to refresh.");
 	}
 }
 

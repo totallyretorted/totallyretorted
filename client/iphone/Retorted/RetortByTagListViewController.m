@@ -150,7 +150,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     RetortViewController *retortVC = [[RetortViewController alloc] initWithNibName:@"RetortView" bundle:nil];
-	retortVC.retortTitle = @"Retort";
+	retortVC.retortTitle = NSLocalizedString(@"Retort", @"Used to label the nav bar on the retort by tag list view screen");
 	retortVC.retort = [self.retorts objectAtIndex:indexPath.row];
 	
 	[self.navigationController pushViewController:retortVC animated:YES];
@@ -228,7 +228,7 @@
 		self.retortsView.hidden = YES;
 		self.loadFailureMessage.hidden = NO;
 		self.loadFailureMessage.font = [UIFont systemFontOfSize:17.0];
-		self.loadFailureMessage.text = @"Unable to acquire data at this time.  Please shake to try again.";
+		self.loadFailureMessage.text = NSLocalizedString(@"Unable to acquire data at this time.  Please shake to try again.", @"Message on Retort By Tag list view to let the user know that data could not be received and they need to refresh.");
 	}
 		self.facade = nil;
 		[self removeFromAllNotifications];
