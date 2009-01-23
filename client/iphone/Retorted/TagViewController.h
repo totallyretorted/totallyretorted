@@ -26,5 +26,6 @@
 
 -(void) loadURL;
 -(void) handleDataLoad:(NSNotification *)note;
+-(void) cleanTags: (NSMutableArray *)ts;
 
 @end
