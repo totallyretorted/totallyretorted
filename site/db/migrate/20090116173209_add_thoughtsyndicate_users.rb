@@ -13,8 +13,8 @@ class AddThoughtsyndicateUsers < ActiveRecord::Migration
   @@ts = [
     {:login => 'adam.strickland', :email => 'adam.strickland@gmail.com', :password => 'supragen1us'},
     {:login => 'jay.walker', :email => 'mr_calamari@yahoo.com', :password => 'uravag'},
-    {:login => 'shant.donabedian', :email => '', :password => 'n0catchphrase'},
-    {:login => 'bj.ray', :email => 'shantd@gmail.com', :password => '1amgay'},
+    {:login => 'shant.donabedian', :email => 'shantd@gmail.com', :password => 'n0catchphrase'},
+    {:login => 'bj.ray', :email => 'bjandraney@mac.com', :password => '1amgay'},
     {:login => 'alex.jo', :email => 'me@alexjo.net', :password => 'ohsosp1cy'},
   ]
   
