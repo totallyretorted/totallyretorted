@@ -766,6 +766,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adam Strickland";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -774,6 +775,7 @@
 				INFOPLIST_FILE = Info.plist;
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_NAME = Retorted;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7AB531D2-2265-48BA-AD6C-C306D165EE29";
 			};
 			name = Debug;
 		};
@@ -781,11 +783,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adam Strickland";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Retorted_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = Retorted;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7AB531D2-2265-48BA-AD6C-C306D165EE29";
 			};
 			name = Release;
 		};
@@ -793,8 +797,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William J. Ray";
+				CODE_SIGN_ENTITLEMENTS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.2.sdk/Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Adam Strickland";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adam Strickland";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -802,8 +807,9 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = Retorted;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E9966E61-4C85-4170-A890-2401CD6A3069";
-				SDKROOT = iphoneos2.1;
+				PROVISIONING_PROFILE = "7AB531D2-2265-48BA-AD6C-C306D165EE29";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7AB531D2-2265-48BA-AD6C-C306D165EE29";
+				SDKROOT = iphoneos2.2;
 			};
 			name = Debug;
 		};
@@ -811,12 +817,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.2.sdk/Entitlements.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Adam Strickland";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adam Strickland";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos2.1;
+				PRODUCT_NAME = Retorted;
+				PROVISIONING_PROFILE = "7AB531D2-2265-48BA-AD6C-C306D165EE29";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7AB531D2-2265-48BA-AD6C-C306D165EE29";
+				SDKROOT = iphoneos2.2;
 			};
 			name = Release;
 		};

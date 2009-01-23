@@ -17,8 +17,8 @@ test:
 
 production:
   adapter: mysql
-  database: retorted_production
+  database: retorted_produ
   pool: 5
   timeout: 5000
-  username: retorted_appuser
+  username: retorted
   password:  BjL1k3$L1++l3B0yz
