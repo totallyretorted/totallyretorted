@@ -94,7 +94,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 
@@ -331,7 +331,7 @@
 #pragma mark UIAcceleration delegate method
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
 	if ([self didShake:(UIAcceleration *)acceleration]) {
-		
+		NSLog(@"HomeViewController: Shake detected");
 		[self refreshData];
 	}
 }
@@ -389,6 +389,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	RetortViewController *retortVC = [[RetortViewController alloc] initWithNibName:@"RetortView" bundle:nil];
 	retortVC.retortTitle = NSLocalizedString(@"Retorts", @"Title for the nav bar on the retorts view screen");
 	retortVC.retort = [self.retorts objectAtIndex:indexPath.row];

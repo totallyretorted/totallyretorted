@@ -16,25 +16,15 @@
 #import "TRTag.h"
 #import "TRRating.h"
 
-// Constant for maximum acceleration.
-#define kMaxAcceleration 3.0
-// Constant for the high-pass filter.
-#define kFilteringFactor 0.1
+// //Constant for maximum acceleration.
+//#define kMaxAcceleration 3.0
+// //Constant for the high-pass filter.
+//#define kFilteringFactor 0.1
 
 @implementation RetortByTagListViewController
 @synthesize retorts, facade, selectedTag, tagId;
 @synthesize retortsView;
 @synthesize loadFailureMessage;
-
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    if (self = [super initWithStyle:style]) {
-    }
-    return self;
-}
-*/
-
 
 - (void)viewDidLoad {
 	self.retortsView.hidden = YES;
@@ -42,42 +32,19 @@
 	[activityIndicator startAnimating];
 	self.title = self.selectedTag;
 
-	//set up accelerometer...
-	UIAccelerometer *myAccel = [UIAccelerometer sharedAccelerometer];
-	myAccel.updateInterval = .1;
-	myAccel.delegate = self;
+//	//set up accelerometer...
+//	UIAccelerometer *myAccel = [UIAccelerometer sharedAccelerometer];
+//	myAccel.updateInterval = .1;
+//	myAccel.delegate = self;
 	
 	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
 	[self loadURL];
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
 
-
-/*
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
 }
-*/
-/*
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-}
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -111,44 +78,39 @@
 		NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RetortCellView" owner:self options:nil];
 		for (NSUInteger i=0; i< [nib count]; i++) {
 			id obj = [nib objectAtIndex:i];
+			//if ([obj isMemberOfClass:[RetortCellView class]]) {
 			if ([obj isMemberOfClass:[RetortCellView class]]) {
 				cell = obj;
 			}
 		}
 		
-		//NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"RetortCellView" owner:self options:nil];
-		//cell = [nib objectAtIndex:0];	//file's owner is suppose to be at index 0.  Not sure why not?
     }
+	
+	//TODO: Why doesn't this debug section get called when compliling for debugging?
+#if DEBUG
 	if (cell == nil) {
-		return nil;
+		UITableViewCell *badCell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+		badCell.text = @"You are not using the correct NIB bundle for the cell";
+		return badCell;
 	}
+#endif
+	
     
     // Set up the cell...
 	TRRetort *aRetort = [self.retorts objectAtIndex:indexPath.row];
 	//TRRating *retortRating = aRetort.rating;
 	
 	cell.retortValue.text = aRetort.content;
-	//if (retortRating.rank > 0.5) {
-//		cell.rankIndicator.image = [UIImage imageNamed:@"upArrow.png"];
-//	} else {
-//		cell.rankIndicator.image = [UIImage imageNamed:@"downArrow.png"];
-//	}
-	
-
     return cell;
 }
 
 #pragma mark TableView Delegate Methods
-/*
-- (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
-	return UITableViewCellAccessoryDisclosureIndicator;
-}
-*/
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return 94; //kTableCellViewRowHeight;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
     RetortViewController *retortVC = [[RetortViewController alloc] initWithNibName:@"RetortView" bundle:nil];
 	retortVC.retortTitle = NSLocalizedString(@"Retort", @"Used to label the nav bar on the retort by tag list view screen");
 	retortVC.retort = [self.retorts objectAtIndex:indexPath.row];
@@ -156,46 +118,6 @@
 	[self.navigationController pushViewController:retortVC animated:YES];
 	[retortVC release];
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 - (void)dealloc {

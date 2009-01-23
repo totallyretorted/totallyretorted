@@ -7,15 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TRNotificationInterface.h"
 @class TRTagFacade;
 
-@interface TagViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-	NSMutableArray *tags;
-	TRTagFacade *tagFacade;
-	IBOutlet UILabel *loadFailurelbl;
-	IBOutlet UITableView *tagsView;
-	IBOutlet UIActivityIndicatorView *activityIndicator;
+@interface TagViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, TRNotificationInterface> {
+	IBOutlet UILabel *loadFailurelbl;						//failure message in the event we do not reach the url
+	IBOutlet UITableView *tagsView;							//the table view containing the list of tags
+	IBOutlet UIActivityIndicatorView *activityIndicator;	//indicator for arriving data
 	
+	NSMutableArray *tags;			// an array of TRTag objects
+	TRTagFacade *tagFacade;			//Handles details on getting data from internet, parsing XML, and populating model objects.
 }
 
 @property (nonatomic, retain) NSMutableArray *tags;

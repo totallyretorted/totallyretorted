@@ -26,16 +26,10 @@
 
 
 - (void)viewDidLoad {
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	self.tagsView.hidden = YES;
 	self.loadFailurelbl.hidden = YES;
 	
-	NSNotificationCenter *nc =[NSNotificationCenter defaultCenter];
-	[nc addObserver:self 
-           selector:@selector(handleDataLoad:) 
-			   name:TRTagDataDidFinishedNotification 
-			 object:nil];
+	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRTagDataDidFinishedNotification];
 	
 	self.title = NSLocalizedString(@"Tags", @"Title for the nav bar on the Tag list view screen");
 	[self loadURL];
@@ -66,7 +60,7 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -138,13 +132,10 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
 	
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	RetortByTagListViewController *retortVC = [[RetortByTagListViewController alloc] initWithNibName:@"RetortByTagView" bundle:nil];
-	TRTag *aTag = [tags objectAtIndex:indexPath.row];
+	TRTag *aTag = [self.tags objectAtIndex:indexPath.row];
 	retortVC.selectedTag = aTag.value;
 	retortVC.tagId = aTag.primaryId;
 	
@@ -191,8 +182,28 @@
     return YES;
 }
 */
+
+#pragma mark -
+#pragma mark TRNotificationInterface
+- (void)addToNotificationWithSelector:(SEL)selector notificationName:(NSString *)notificationName{
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	
+	[nc addObserver:self 
+		   selector:selector
+			   name:notificationName
+			 object:nil];
+}
+
+- (void)removeFromAllNotifications {
+	//remove self from notification center...
+	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+	[nc removeObserver:self];
+	NSLog(@"TagViewViewController: Unregistered with notification center.");
+}
+
 #pragma mark -
 #pragma mark Custom Methods
+// Initiates the process of fetching the tag data and populating the objects.
 -(void)loadURL{
 	self.tagFacade = [[TRTagFacade alloc] init];
 	[self.activityIndicator startAnimating];

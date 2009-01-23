@@ -21,12 +21,12 @@
 	NSString *selectedTag;
 	NSNumber *tagId;
 	
-	UIAccelerationValue accelX;
-	UIAccelerationValue accelY;
-	NSTimeInterval lasttime;
-	float shakecount;
-	float biggestshake;
-	float lastX, lastY;
+//	UIAccelerationValue accelX;
+//	UIAccelerationValue accelY;
+//	NSTimeInterval lasttime;
+//	float shakecount;
+//	float biggestshake;
+//	float lastX, lastY;
 }
 
 - (void)loadURL;

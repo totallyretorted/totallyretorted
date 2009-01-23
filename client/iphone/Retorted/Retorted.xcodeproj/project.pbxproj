@@ -45,7 +45,6 @@
 		DB2423980F13F2F7000BE2F0 /* TagViewControllerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423970F13F2F7000BE2F0 /* TagViewControllerTest.m */; };
 		DB2423D80F1451F6000BE2F0 /* TRTagSliderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423D70F1451F6000BE2F0 /* TRTagSliderHelper.m */; };
 		DB2424230F1463B4000BE2F0 /* TRTagSliderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2423D70F1451F6000BE2F0 /* TRTagSliderHelper.m */; };
-		DB2D91640F15B6F600928E84 /* RetortByTagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D91550F15931100928E84 /* RetortByTagListViewController.m */; };
 		DB2D91650F15B70700928E84 /* RetortCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D91520F1592F100928E84 /* RetortCellView.m */; };
 		DB4513FC0F216B34007ACEC6 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = DB4513FB0F216B34007ACEC6 /* home.png */; };
 		DB59FE760EF8088700E59D12 /* FEUrlHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126590EEF047300137EBC /* FEUrlHelper.m */; };
@@ -53,6 +52,13 @@
 		DB6849C90EF0257B0094CC24 /* CGPointUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = DB6849C70EF0257B0094CC24 /* CGPointUtils.c */; };
 		DB6D147E0F05E6F400FE89B0 /* TagCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC6E44B0F05D7D70041E319 /* TagCellView.m */; };
 		DB6DCA420EF8B0D1008C1C62 /* TRViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6DCA410EF8B0D1008C1C62 /* TRViewHelper.m */; };
+		DB7E1A0A0F2A3B95006D9FB1 /* RetortCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB2D91520F1592F100928E84 /* RetortCellView.m */; };
+		DB7E1A0B0F2A3BA4006D9FB1 /* TRRetortFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1FD1640EF1950F0000E78E /* TRRetortFacade.m */; };
+		DB7E1A0D0F2A3BF1006D9FB1 /* RetortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB1126BA0EEF27B600137EBC /* RetortViewController.m */; };
+		DB7E1A0F0F2A3BFC006D9FB1 /* TRViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DB6DCA410EF8B0D1008C1C62 /* TRViewHelper.m */; };
+		DB7E1AD20F2A6427006D9FB1 /* RetortByTagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E1AD10F2A6427006D9FB1 /* RetortByTagListViewController.m */; };
+		DB7E1AD30F2A6427006D9FB1 /* RetortByTagListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E1AD10F2A6427006D9FB1 /* RetortByTagListViewController.m */; };
+		DB7E1AE20F2A6463006D9FB1 /* RetortByTagListVCTest.m in Sources */ = {isa = PBXBuildFile; fileRef = DB7E1AE10F2A6463006D9FB1 /* RetortByTagListVCTest.m */; };
 		DBC6E4450F0322950041E319 /* TRTagFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA75410F01666A00B1ED9C /* TRTagFacade.m */; };
 		DBCD53100F2682BA00F4F7A5 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD530F0F2682BA00F4F7A5 /* HomeView.xib */; };
 		DBCD535A0F2687FD00F4F7A5 /* RetortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD53590F2687FD00F4F7A5 /* RetortView.xib */; };
@@ -169,8 +175,6 @@
 		DB261B1C0F0BDD8C004651BE /* TRNotificationInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRNotificationInterface.h; sourceTree = "<group>"; };
 		DB2D91510F1592F100928E84 /* RetortCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetortCellView.h; sourceTree = "<group>"; };
 		DB2D91520F1592F100928E84 /* RetortCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetortCellView.m; sourceTree = "<group>"; };
-		DB2D91540F15931100928E84 /* RetortByTagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetortByTagListViewController.h; sourceTree = "<group>"; };
-		DB2D91550F15931100928E84 /* RetortByTagListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetortByTagListViewController.m; sourceTree = "<group>"; };
 		DB2D91570F15932800928E84 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/RetortByTagView.xib; sourceTree = "<group>"; };
 		DB2D91590F15934800928E84 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/RetortCellView.xib; sourceTree = "<group>"; };
 		DB4513FB0F216B34007ACEC6 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
@@ -182,6 +186,10 @@
 		DB6DCA3E0EF8B0B5008C1C62 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/SettingsView.xib; sourceTree = "<group>"; };
 		DB6DCA400EF8B0D1008C1C62 /* TRViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRViewHelper.h; sourceTree = "<group>"; };
 		DB6DCA410EF8B0D1008C1C62 /* TRViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRViewHelper.m; sourceTree = "<group>"; };
+		DB7E1AD00F2A6427006D9FB1 /* RetortByTagListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetortByTagListViewController.h; sourceTree = "<group>"; };
+		DB7E1AD10F2A6427006D9FB1 /* RetortByTagListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetortByTagListViewController.m; sourceTree = "<group>"; };
+		DB7E1AE00F2A6463006D9FB1 /* RetortByTagListVCTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetortByTagListVCTest.h; sourceTree = "<group>"; };
+		DB7E1AE10F2A6463006D9FB1 /* RetortByTagListVCTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetortByTagListVCTest.m; sourceTree = "<group>"; };
 		DBC6E44A0F05D7D70041E319 /* TagCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCellView.h; sourceTree = "<group>"; };
 		DBC6E44B0F05D7D70041E319 /* TagCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCellView.m; sourceTree = "<group>"; };
 		DBCD53140F26836000F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/HomeView.xib; sourceTree = "<group>"; };
@@ -363,10 +371,10 @@
 				DB141E270EF3758300868FAB /* SettingsViewController.m */,
 				76EA75670F0181C000B1ED9C /* TagViewController.h */,
 				76EA75680F0181C000B1ED9C /* TagViewController.m */,
+				DB7E1AD00F2A6427006D9FB1 /* RetortByTagListViewController.h */,
+				DB7E1AD10F2A6427006D9FB1 /* RetortByTagListViewController.m */,
 				DB2423220F13D595000BE2F0 /* RedRocketViewController.h */,
 				DB2423230F13D595000BE2F0 /* RedRocketViewController.m */,
-				DB2D91540F15931100928E84 /* RetortByTagListViewController.h */,
-				DB2D91550F15931100928E84 /* RetortByTagListViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -423,6 +431,8 @@
 				DB2423970F13F2F7000BE2F0 /* TagViewControllerTest.m */,
 				DB2388A80F17C75200F3F96C /* TRTagSliderHelperTest.h */,
 				DB2388A90F17C75200F3F96C /* TRTagSliderHelperTest.m */,
+				DB7E1AE00F2A6463006D9FB1 /* RetortByTagListVCTest.h */,
+				DB7E1AE10F2A6463006D9FB1 /* RetortByTagListVCTest.m */,
 			);
 			name = UnitTests;
 			sourceTree = "<group>";
@@ -615,9 +625,9 @@
 				DB6D147E0F05E6F400FE89B0 /* TagCellView.m in Sources */,
 				DB2423240F13D595000BE2F0 /* RedRocketViewController.m in Sources */,
 				DB2424230F1463B4000BE2F0 /* TRTagSliderHelper.m in Sources */,
-				DB2D91640F15B6F600928E84 /* RetortByTagListViewController.m in Sources */,
 				DB2D91650F15B70700928E84 /* RetortCellView.m in Sources */,
 				DB6075160F1CF9BD00401EC3 /* TRTagButton.m in Sources */,
+				DB7E1AD20F2A6427006D9FB1 /* RetortByTagListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +655,12 @@
 				DB2423D80F1451F6000BE2F0 /* TRTagSliderHelper.m in Sources */,
 				DB2388AA0F17C75200F3F96C /* TRTagSliderHelperTest.m in Sources */,
 				DB0FFC940F1D091500595977 /* TRTagButton.m in Sources */,
+				DB7E1A0A0F2A3B95006D9FB1 /* RetortCellView.m in Sources */,
+				DB7E1A0B0F2A3BA4006D9FB1 /* TRRetortFacade.m in Sources */,
+				DB7E1A0D0F2A3BF1006D9FB1 /* RetortViewController.m in Sources */,
+				DB7E1A0F0F2A3BFC006D9FB1 /* TRViewHelper.m in Sources */,
+				DB7E1AD30F2A6427006D9FB1 /* RetortByTagListViewController.m in Sources */,
+				DB7E1AE20F2A6463006D9FB1 /* RetortByTagListVCTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -766,7 +782,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adam Strickland";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -775,7 +790,6 @@
 				INFOPLIST_FILE = Info.plist;
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_NAME = Retorted;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7AB531D2-2265-48BA-AD6C-C306D165EE29";
 			};
 			name = Debug;
 		};
@@ -783,13 +797,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adam Strickland";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Retorted_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = Retorted;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7AB531D2-2265-48BA-AD6C-C306D165EE29";
 			};
 			name = Release;
 		};
@@ -797,9 +809,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.2.sdk/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Adam Strickland";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adam Strickland";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William J. Ray";
 				CODE_SIGN_RESOURCE_RULES_PATH = "";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -807,9 +818,8 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
 				PRODUCT_NAME = Retorted;
-				PROVISIONING_PROFILE = "7AB531D2-2265-48BA-AD6C-C306D165EE29";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7AB531D2-2265-48BA-AD6C-C306D165EE29";
-				SDKROOT = iphoneos2.2;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A7F53C61-F899-437A-952F-F6F55FDD218B";
+				SDKROOT = iphoneos2.1;
 			};
 			name = Debug;
 		};
@@ -817,17 +827,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_ENTITLEMENTS = /Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS2.2.sdk/Entitlements.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Adam Strickland";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Adam Strickland";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William J. Ray";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				PRODUCT_NAME = Retorted;
-				PROVISIONING_PROFILE = "7AB531D2-2265-48BA-AD6C-C306D165EE29";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7AB531D2-2265-48BA-AD6C-C306D165EE29";
-				SDKROOT = iphoneos2.2;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "60AF058C-0613-41C9-9ABC-588B4E8EFCFE";
+				SDKROOT = iphoneos2.1;
 			};
 			name = Release;
 		};
