@@ -1,8 +1,8 @@
 #!/bin/sh
 
-/home/retorted/retorted/current/script/process/spawner \
+/var/webapps/rails/retorted/current/script/process/spawner \
   mongrel \
   --environment=production \
-  --instances=5 \
+  --instances=2 \
   --address=127.0.0.1 \
   --port=8000

@@ -18,8 +18,8 @@ body {background:#000 url(/images/bg-black-grad.jpg) repeat-x;min-height:768px;f
 #hollah.no div.icon {background:url(/images/i-no.png) no-repeat;}
 #hollah.ok {color:#7cd300;}
 #hollah.ok div.icon {background:url(/images/i-ok.png) no-repeat;}
-#hollah.foobar {color:#cc0000;}
-#hollah.foobar div.icon {background:url(/images/i-foobar.png) no-repeat;}
+#hollah.fubar {color:#cc0000;}
+#hollah.fubar div.icon {background:url(/images/i-foobar.png) no-repeat;}
 #hollah.fyi {color:#77c5cf;}
 #hollah.fyi div.icon {background:url(/images/i-fyi.png) no-repeat;}
 /* end { hollah } */

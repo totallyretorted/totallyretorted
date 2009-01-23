@@ -2,24 +2,23 @@
 default_run_options[:pty] = true
 
 set :application, "retorted"
+set :user, "retorted"
+set :port, 4222
+
 set :repository,  "https://development.forwardecho.com/repos/retorted/trunk/site/"
 #set :repository,  "https://development.forwardecho.com/repos/retorted/tags/0.1.1/site/"
 
-# If you aren't deploying to /u/apps/#{application} on the target
-# servers (which is the default), you can specify the actual location
-# via the :deploy_to variable:
-# set :deploy_to, "/var/www/#{application}"
-set :deploy_to, "/home/retorted/railsapp"
+set :deploy_to, "/var/webapps/rails/#{application}"
+set :deploy_via, :copy
 
-# If you aren't using Subversion to manage your source code, specify
-# your SCM below:
-# set :scm, :subversion
+set :location, "totallyretorted.com"
+role :app, location
+role :web, location
+role :db,  location, :primary => true
 
-role :app, "totallyretorted.com"
-role :web, "totallyretorted.com"
-role :db,  "totallyretorted.com", :primary => true
-
-set :user, "retorted"
 set :scm_username, "capistrano"
 set :scm_password, "capistrano"
 set :use_sudo, false
+
+# user that will start the mongrel instance(s)
+set :runner, user
