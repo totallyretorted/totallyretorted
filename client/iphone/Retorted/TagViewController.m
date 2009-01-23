@@ -131,6 +131,7 @@
     return cell;
 }
 
+//TODO: what is the significance of 65?
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return 65; //kTableCellViewRowHeight;
 }
@@ -198,6 +199,25 @@
 	[self.tagFacade loadTags];
 }
 
+
+//This method removes tags with weight 0 because there is no value to the user in clicking a tag with no associated retorts.
+-(void)cleanTags: (NSMutableArray *)ts {
+	if (nil == ts)
+		return;
+	
+	//since we are removing items, iterate in reverse
+	for (NSInteger i=[ts count]-1; i>=0; i--) {
+		TRTag* tag = [ts objectAtIndex:i];
+		if (nil == tag) {
+			continue;			
+		}
+		if (0 == [tag weight]) {
+			[ts removeObjectAtIndex:i];
+		}
+	}
+}
+
+
 -(void)handleDataLoad: (NSNotification *)note{
 	TRTagFacade *tagF=[note object];
 	[self.activityIndicator stopAnimating];
@@ -207,7 +227,11 @@
 		self.tagsView.hidden=NO;
 		
 		self.loadFailurelbl.hidden=YES;
-		self.tags=tagF.tags;
+		
+		NSMutableArray * t = tagF.tags;
+		[self cleanTags:t];		
+		self.tags=t;
+		
 		[self.tagsView reloadData];
 		
 	}
@@ -219,7 +243,7 @@
 		self.loadFailurelbl.textColor = [UIColor whiteColor];
 		self.loadFailurelbl.numberOfLines = 2;
 		self.loadFailurelbl.textAlignment = UITextAlignmentCenter;
-		self.loadFailurelbl.text = NSLocalizedString(@"Unable to acquire data.  Reboot the internet.", @"Message on Tag list view to let the user know that data could not be received and they need to refresh.");
+		self.loadFailurelbl.text = NSLocalizedString(@"Unable to acquire data at this time.  Please shake to try again.", @"Message on Home list view to let the user know that data could not be received and they need to refresh.");
 	}
 }
 
