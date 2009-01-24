@@ -39,7 +39,7 @@
 					<object class="IBUITableView" id="202827475">
 						<reference key="NSNextResponder" ref="5425450"/>
 						<int key="NSvFlags">310</int>
-						<string key="NSFrame">{{0, 62}, {320, 305}}</string>
+						<string key="NSFrameSize">{320, 367}</string>
 						<reference key="NSSuperview" ref="5425450"/>
 						<object class="NSColor" key="IBUIBackgroundColor" id="595652329">
 							<int key="NSColorSpace">1</int>
@@ -85,7 +85,7 @@
 					<object class="IBUIScrollView" id="519587234">
 						<reference key="NSNextResponder" ref="5425450"/>
 						<int key="NSvFlags">310</int>
-						<string key="NSFrameSize">{320, 61}</string>
+						<string key="NSFrame">{{0, 306}, {320, 61}}</string>
 						<reference key="NSSuperview" ref="5425450"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -206,9 +206,9 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="863764741"/>
-							<reference ref="519587234"/>
-							<reference ref="202827475"/>
 							<reference ref="808563901"/>
+							<reference ref="202827475"/>
+							<reference ref="519587234"/>
 						</object>
 						<reference key="parent" ref="360949347"/>
 					</object>
@@ -252,7 +252,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>HomeViewController</string>
 					<string>UIResponder</string>
-					<string>{{21, 376}, {320, 480}}</string>
+					<string>{{334, 376}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -325,7 +325,7 @@
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.LastKnownRelativeProjectPath">Retorted.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">../Retorted.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 	</data>
 </archive>

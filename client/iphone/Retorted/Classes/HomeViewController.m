@@ -188,11 +188,12 @@
 	
 	CGRect newFrame = self.retortsView.frame;
 	CGFloat sliderHeight = self.tagSlider.frame.size.height;
-	CGFloat sliderY = self.tagSlider.frame.origin.y;
+	//CGFloat sliderY = self.tagSlider.frame.origin.y;
 	CGFloat superHeight = [self.retortsView superview].frame.size.height;
 	
-	newFrame.origin.y = sliderY+sliderHeight;
+	//newFrame.origin.y = sliderY+sliderHeight;
 	newFrame.size.height = superHeight - sliderHeight;
+	//newFrame.size.height -= sliderHeight;
 	
 	self.retortsView.frame = newFrame;
 	
