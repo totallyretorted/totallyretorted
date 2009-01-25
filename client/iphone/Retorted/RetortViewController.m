@@ -15,6 +15,7 @@
 #define kAttrSpacing		4.0			//spacing between attribution items
 #define kRetortBottomSpace	6.0
 
+
 #import "RetortViewController.h"
 #import "TRRetort.h"
 #import "TRTag.h"
@@ -196,15 +197,20 @@
 
 - (IBAction)retortActionClick {
 	// open a dialog with two custom buttons
+
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
 															 delegate:self 
 													cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel button title")
 											   destructiveButtonTitle:nil
 													otherButtonTitles:NSLocalizedString(@"Add to Favorites", @"Add to favorites button on retort view actionsheet"), nil];
 	
+	
 	actionSheet.actionSheetStyle = UIActionSheetStyleBlackTranslucent;
 	//actionSheet.destructiveButtonIndex = 1;	// make the second button red (destructive)
-	[actionSheet showInView:self.view];
+	
+	//Normally, this line is good, but when it belongs to a tab bar controller, it needs to be added to it's view.  See: FE tutorial :)
+	//[actionSheet showInView:self.view];
+	[actionSheet showInView:self.tabBarController.view];
 	[actionSheet release];
 }
 

@@ -7,21 +7,38 @@
 //
 
 #import "RetortedAppDelegate.h"
-
+#import "PerformanceStats.h"
+#import "Statistic.h"
 
 @implementation RetortedAppDelegate
 
-@synthesize window;
-@synthesize tabBarController;
+@synthesize window, tabBarController;
+@synthesize statHelper; 
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
     
+	self.statHelper = [[PerformanceStats alloc] init];
+	
+	
     // Add the tab bar controller's current view as a subview of the window
 	[application setStatusBarStyle:UIStatusBarStyleBlackOpaque]; 
     [window addSubview:tabBarController.view];
 }
 
+- (void)addParserStatistic:(Statistic *)stat {
+	self.statHelper.parserStat = stat;
+	NSLog(@"RetortedAppDelegate: Parser: %@", stat);
+}
+
+- (void)addDownloadStatistic:(Statistic *)stat {
+	self.statHelper.downloadStat = stat;
+	NSLog(@"RetortedAppDelegate: Download: %@", stat);
+}
+
+- (void)saveStatistic {
+	[self.statHelper saveCurrentStatistics];
+}
 
 /*
 // Optional UITabBarControllerDelegate method
@@ -37,6 +54,7 @@
 
 
 - (void)dealloc {
+	[statHelper release];
     [tabBarController release];
     [window release];
     [super dealloc];

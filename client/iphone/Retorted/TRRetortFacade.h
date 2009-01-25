@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TRNotificationInterface.h"
+@class Statistic;		//used for performance testing...
 
 extern NSString * const TRRetortDataFinishedLoadingNotification;
 
@@ -16,10 +17,16 @@ extern NSString * const TRRetortDataFinishedLoadingNotification;
 	NSMutableArray *retorts;	
 	NSDictionary *properties;
 	BOOL loadSuccessful;
+
+@private
+	// ---- PERFORMANCE TESTING ----
+	Statistic *parseStat;
+	Statistic *downloadStat;
 }
 
 @property (nonatomic, retain) NSMutableArray *retorts;
 @property BOOL loadSuccessful;
+
 
 - (void)loadRetorts;
 - (void)loadRetortsWithRelativePath:(NSString *)relPath;

@@ -10,11 +10,18 @@
 
 #import "FEUrlHelper.h"
 #import "TRRetortXMLParser.h"
+#import "Statistic.h"			//performance testing
+#import "RetortedAppDelegate.h"	//performance testing
 
 NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishedLoading";
 
 @interface TRRetortFacade()
 @property(nonatomic, retain)NSDictionary *properties;
+
+// ---- PERFORMANCE TESTING ----
+@property (nonatomic, retain) Statistic *parseStat;
+@property (nonatomic, retain) Statistic *downloadStat;
+
 @end
 
 
@@ -22,15 +29,15 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 @synthesize retorts, loadSuccessful;
 @synthesize properties;
 
+//performance testing...
+@synthesize parseStat, downloadStat;
+
 - (id)init {
 	if (![super init]) {
 		return nil;
 	}
 	
 	self.loadSuccessful = NO;
-	
-	
-	
 	//Listen for notification from FEUrlHelper --> When do we have the raw content?
 	[self addToNotificationWithSelector:@selector(handleRetortXMLLoad:) notificationName:FEDataFinishedLoadingNotification];
 	[self addToNotificationWithSelector:@selector(handleDataLoadFailure:) notificationName:FEDataFailedLoadingNotification];
@@ -39,6 +46,11 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	
 	properties = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Properties" ofType:@"plist"]]; 
 	
+	// -----------------------------
+	// ---- PERFORMANCE TESTING ----
+	// -----------------------------
+	self.parseStat = [[Statistic alloc] init];
+	self.downloadStat = [[Statistic alloc] init];
 	
 	return self;
 }
@@ -57,6 +69,12 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	
 	
 	FEUrlHelper *aHelper = [[FEUrlHelper alloc] init];
+	// -----------------------------
+	// ---- PERFORMANCE TESTING ----
+	// -----------------------------
+	self.downloadStat.start = [NSDate timeIntervalSinceReferenceDate];
+	self.downloadStat.url = retortsURL;
+	
 	[aHelper loadURLFromString:retortsURL withContentType:@"application/xml" HTTPMethod:@"GET" body:nil];
 	
 	[aHelper release];
@@ -82,13 +100,25 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 
 //Received from notification center when FEUrlHelper is done getting raw retort content.
 - (void) handleRetortXMLLoad: (NSNotification *)note {
+	
 	NSLog(@"TRRetortFacade:  FEDataFinishedLoadingNotification notification received: %@", note);
 	NSError *parseError = nil;
 	
 	FEUrlHelper *aHelper = [note object];
 	
-	//use DWLeadHelper to parse XML and get lead objects...
+	// -----------------------------
+	// ---- PERFORMANCE TESTING ----
+	// -----------------------------
+	self.downloadStat.end = [NSDate timeIntervalSinceReferenceDate];
+	self.downloadStat.byteCount = aHelper.xmlData.length;
 	
+	// -----------------------------
+	// ---- PERFORMANCE TESTING ----
+	// -----------------------------
+	self.parseStat.start = [NSDate timeIntervalSinceReferenceDate];
+	
+	
+	//use DWLeadHelper to parse XML and get lead objects...
 	TRRetortXMLParser *xmlParser = [[TRRetortXMLParser alloc] init];
 	NSLog(@"TRRetortFacade: Calling TRRetortXMLParser to parse XML.");
 	
@@ -103,6 +133,15 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 		self.retorts = xmlParser.retorts;
 		self.loadSuccessful = YES;
 	}
+	
+	// -----------------------------
+	// ---- PERFORMANCE TESTING ----
+	// -----------------------------
+	self.parseStat.end = [NSDate timeIntervalSinceReferenceDate];
+	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	[appDelegate addParserStatistic:self.parseStat];
+	[appDelegate addDownloadStatistic:self.downloadStat];
+	[appDelegate saveStatistic];
 	
 	//post a notification to be picked up by the Controller...
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
