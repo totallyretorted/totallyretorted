@@ -43,4 +43,5 @@
 @property (nonatomic, retain) Statistic *downloadStat;
 
 - (void)saveCurrentStatistics;
+- (double)meanParseTimeForUrl:(NSString *) aUrl;
 @end
