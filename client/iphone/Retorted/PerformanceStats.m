@@ -152,11 +152,20 @@ static sqlite3_stmt *reset_statement = NULL;
 
 #pragma mark -
 #pragma mark Querying Data
-
-// returns all entries in table and calculates average times for downloading, parsing, and total
 - (void)calculateAverageForFullHistory {
 	
+}
+
+- (double)meanParseTime {
+	return [self meanParseTimeForUrl:nil];
+}
+
+// returns all entries in table and calculates average times for downloading, parsing, and total
+- (double)meanParseTimeForUrl:(NSString *) aUrl {
+	
 	sqlite3 *db = [self getOpenDB];
+	
+	//parse times...
     if (mean_parse_time_statement == NULL) {
         static const char *sql = "SELECT AVG(parse_duration) FROM stats";
         if (sqlite3_prepare_v2(db, sql, -1, &mean_parse_time_statement, NULL) != SQLITE_OK) {
@@ -164,6 +173,10 @@ static sqlite3_stmt *reset_statement = NULL;
         }
     }
     
+	int success = sqlite3_step(mean_parse_time_statement);
+	double parseMeanValue = 0.0;
+	
+	
 //	if (sqlite3_bind_int(mean_parse_time_statement, 1, type) != SQLITE_OK) {
 //        NSCAssert1(0, @"Error: failed to bind variable with message '%s'.", sqlite3_errmsg(db));
 //    }
