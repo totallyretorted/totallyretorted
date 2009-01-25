@@ -47,6 +47,12 @@
 	return parseTime;
 }
 
+- (double)getMeanParseTimeForUrl:(NSString *) aUrl {
+	double parseTime = [self.statHelper meanParseTimeForUrl: aUrl];
+	[self.statHelper cleanupDBConnection:[self.statHelper getOpenDB]];
+	
+	return parseTime;
+}
 /*
 // Optional UITabBarControllerDelegate method
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {

@@ -167,20 +167,16 @@ static sqlite3_stmt *reset_statement = NULL;
 	
 	//parse times...
     if (mean_parse_time_statement == NULL) {
-        static const char *sql = "SELECT AVG(parse_duration) FROM stats";
+        static const char *sql = "SELECT AVG(parse_duration) FROM stats WHERE url = ifnull(?,url)";
         if (sqlite3_prepare_v2(db, sql, -1, &mean_parse_time_statement, NULL) != SQLITE_OK) {
             NSCAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(db));
         }
     }
 	
-
-	
-	//if (sqlite3_bind_text(mean_parse_time_statement, 1, type) != SQLITE_OK) {
-//        NSCAssert1(0, @"Error: failed to bind variable with message '%s'.", sqlite3_errmsg(db));
-//    }
-    
+	sqlite3_bind_text(mean_parse_time_statement, 1, aUrl, -1, SQLITE_TRANSIENT);
 	int success = sqlite3_step(mean_parse_time_statement);
 	double meanValue = 0.0;
+	
 	 if (success == SQLITE_ROW) {
 		   meanValue = sqlite3_column_double(mean_parse_time_statement, 0);
 	 } else {

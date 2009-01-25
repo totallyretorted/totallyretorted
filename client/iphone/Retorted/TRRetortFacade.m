@@ -142,7 +142,8 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	[appDelegate addParserStatistic:self.parseStat];
 	[appDelegate addDownloadStatistic:self.downloadStat];
 	[appDelegate saveStatistic];
-	NSLog(@"Avg Parse Time: %f", [appDelegate getMeanParseTime]);
+	NSLog(@"Avg Parse Time for all URLs: %f", [appDelegate getMeanParseTime]);
+	NSLog(@"Avg Parse Time for http://totallyretorted.com/retorts/screenzero.xml: %f", [appDelegate getMeanParseTimeForUrl:@"http://totallyretorted.com/retorts/screenzero.xml"]);
 	
 	//post a notification to be picked up by the Controller...
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
