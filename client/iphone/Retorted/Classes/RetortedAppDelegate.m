@@ -40,6 +40,13 @@
 	[self.statHelper saveCurrentStatistics];
 }
 
+- (double)getMeanParseTime {
+	double parseTime = [self.statHelper meanParseTime];
+	[self.statHelper cleanupDBConnection:[self.statHelper getOpenDB]];
+	
+	return parseTime;
+}
+
 /*
 // Optional UITabBarControllerDelegate method
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {

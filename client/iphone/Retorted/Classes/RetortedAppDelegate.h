@@ -23,6 +23,8 @@
 //instructs the PerformanceStats class to save the "current" property sets to the database
 - (void)saveStatistic;
 
+- (double)getMeanParseTime;
+
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) PerformanceStats *statHelper;

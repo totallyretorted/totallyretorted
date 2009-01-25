@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#include <sqlite3.h>
+
 @class Statistic;
 
 @interface PerformanceStats : NSObject {
@@ -44,4 +46,7 @@
 
 - (void)saveCurrentStatistics;
 - (double)meanParseTimeForUrl:(NSString *) aUrl;
+- (double)meanParseTime;
+- (void)cleanupDBConnection:(sqlite3 *)db;
+- (sqlite3 *)getOpenDB;
 @end

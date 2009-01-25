@@ -10,7 +10,7 @@
 
 #import "PerformanceStats.h"
 #import "Statistic.h"
-#include <sqlite3.h>
+
 
 NSString * const DATABASE_FILE_NAME = @"statistics.db";
 NSString * const DATABASE_RESOURCE_NAME = @"statistics";
@@ -172,23 +172,24 @@ static sqlite3_stmt *reset_statement = NULL;
             NSCAssert1(0, @"Error: failed to prepare statement with message '%s'.", sqlite3_errmsg(db));
         }
     }
-    
-	int success = sqlite3_step(mean_parse_time_statement);
-	double parseMeanValue = 0.0;
 	
+
 	
-//	if (sqlite3_bind_int(mean_parse_time_statement, 1, type) != SQLITE_OK) {
+	//if (sqlite3_bind_text(mean_parse_time_statement, 1, type) != SQLITE_OK) {
 //        NSCAssert1(0, @"Error: failed to bind variable with message '%s'.", sqlite3_errmsg(db));
 //    }
-//    int success = sqlite3_step(mean_parse_time_statement);
-//    double meanValue = 0;
-//    if (success == SQLITE_ROW) {
-//        meanValue = sqlite3_column_double(mean_parse_time_statement, 0);
-//    } else {
-//        NSCAssert1(0, @"Error: failed to execute query with message '%s'.", sqlite3_errmsg(db));
-//    }
+    
+	int success = sqlite3_step(mean_parse_time_statement);
+	double meanValue = 0.0;
+	 if (success == SQLITE_ROW) {
+		   meanValue = sqlite3_column_double(mean_parse_time_statement, 0);
+	 } else {
+		 NSCAssert1(0, @"Error: failed to execute query with message '%s'.", sqlite3_errmsg(db));
+	 }
+	
     // Reset the query for the next use.
     sqlite3_reset(mean_parse_time_statement);
+	return meanValue;
 }
 
 // returns all entries in table that match the url and calculates average times for downloading, parsing, and total

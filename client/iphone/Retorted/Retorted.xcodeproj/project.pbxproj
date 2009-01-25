@@ -64,6 +64,7 @@
 		DB8EF8FD0F2BDF180062FC2C /* statistics.db in Resources */ = {isa = PBXBuildFile; fileRef = DB8EF8FC0F2BDF180062FC2C /* statistics.db */; };
 		DB8EF9450F2C253C0062FC2C /* PerformanceStats.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8EF8E10F2BCECA0062FC2C /* PerformanceStats.m */; };
 		DB8EF9590F2C28A10062FC2C /* Statistic.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8EF9580F2C28A10062FC2C /* Statistic.m */; };
+		DB8EFAEC0F2D15E60062FC2C /* StatsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8EFAEB0F2D15E60062FC2C /* StatsView.m */; };
 		DBC6E4450F0322950041E319 /* TRTagFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA75410F01666A00B1ED9C /* TRTagFacade.m */; };
 		DBCD53100F2682BA00F4F7A5 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD530F0F2682BA00F4F7A5 /* HomeView.xib */; };
 		DBCD535A0F2687FD00F4F7A5 /* RetortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD53590F2687FD00F4F7A5 /* RetortView.xib */; };
@@ -198,9 +199,11 @@
 		DB8EF8E00F2BCECA0062FC2C /* PerformanceStats.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PerformanceStats.h; sourceTree = "<group>"; };
 		DB8EF8E10F2BCECA0062FC2C /* PerformanceStats.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PerformanceStats.m; sourceTree = "<group>"; };
 		DB8EF8EB0F2BD0390062FC2C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		DB8EF8FC0F2BDF180062FC2C /* statistics.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = statistics.db; path = ../../../../../../Users/bjandraney/Projects/retorted/trunk/client/iphone/Retorted/statistics.db; sourceTree = SDKROOT; };
+		DB8EF8FC0F2BDF180062FC2C /* statistics.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = statistics.db; sourceTree = SOURCE_ROOT; };
 		DB8EF9570F2C28A10062FC2C /* Statistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statistic.h; sourceTree = "<group>"; };
 		DB8EF9580F2C28A10062FC2C /* Statistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statistic.m; sourceTree = "<group>"; };
+		DB8EFAEA0F2D15E60062FC2C /* StatsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsView.h; sourceTree = "<group>"; };
+		DB8EFAEB0F2D15E60062FC2C /* StatsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsView.m; sourceTree = "<group>"; };
 		DBC6E44A0F05D7D70041E319 /* TagCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCellView.h; sourceTree = "<group>"; };
 		DBC6E44B0F05D7D70041E319 /* TagCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCellView.m; sourceTree = "<group>"; };
 		DBCD53140F26836000F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/HomeView.xib; sourceTree = "<group>"; };
@@ -482,6 +485,8 @@
 				DB2D91520F1592F100928E84 /* RetortCellView.m */,
 				DB6075140F1CF9BD00401EC3 /* TRTagButton.h */,
 				DB6075150F1CF9BD00401EC3 /* TRTagButton.m */,
+				DB8EFAEA0F2D15E60062FC2C /* StatsView.h */,
+				DB8EFAEB0F2D15E60062FC2C /* StatsView.m */,
 			);
 			name = "Custom UI Controls";
 			sourceTree = "<group>";
@@ -657,6 +662,7 @@
 				DB7E1AD20F2A6427006D9FB1 /* RetortByTagListViewController.m in Sources */,
 				DB8EF9450F2C253C0062FC2C /* PerformanceStats.m in Sources */,
 				DB8EF9590F2C28A10062FC2C /* Statistic.m in Sources */,
+				DB8EFAEC0F2D15E60062FC2C /* StatsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
