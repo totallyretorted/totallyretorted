@@ -9,7 +9,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session
 
   map.resources :attributions
-
   map.resources :ratings
 
   map.resources :tags, :collection => { :search => :get }

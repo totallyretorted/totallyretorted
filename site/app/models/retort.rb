@@ -2,6 +2,7 @@ class Retort < ActiveRecord::Base
   belongs_to :attribution
   has_and_belongs_to_many :tags
   belongs_to :rating
+  belongs_to :user
   
   validates_presence_of :content
   validates_uniqueness_of :content

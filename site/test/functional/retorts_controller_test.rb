@@ -1,6 +1,7 @@
 require 'test_helper'
-require 'assert_xpath'
-require 'assert2'
+require 'authenticated_test_helper'
+# require 'assert_xpath'
+# require 'assert2'
 
 class RetortsController
   def rescue_action(e)
@@ -13,6 +14,8 @@ class RetortsController
 end
 
 class RetortsControllerTest < ActionController::TestCase
+  include AuthenticatedTestHelper
+  
   def render(args)
     get :_renderizer, :args => args
   end
@@ -38,6 +41,12 @@ class RetortsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
+  
+  test "should not create retort when not browser-authenticated" do
+    assert_no_difference('Retort.count') do
+      post :create, {:retort => { :content => 'this is a test' }}
+    end
+  end
 
   test "should not create retort with no params" do
     assert_no_difference('Retort.count') do
@@ -47,7 +56,8 @@ class RetortsControllerTest < ActionController::TestCase
     #     assert_redirected_to retort_path(retort)
   end
 
-  test "should create retort with just content" do  
+  test "should create retort with just content browser authentication" do  
+    login_as(:valid)
     assert_difference('Retort.count') do
       post :create, {:retort => { :content => 'this is a test' }}
     end
@@ -57,7 +67,25 @@ class RetortsControllerTest < ActionController::TestCase
     assert_redirected_to retort_path(retort)
   end
 
-  test "should create retort with content and one tag" do
+  test "should create retort with just content basic authentication" do
+    # authorize_as is a convenience method that Base64 encodes the string "#{login}:#{password}"
+    #  concats it to the string 'Basic '
+    #  and assigns it to the request's HTTP_AUTHORIZATION header.
+    #  i.e. @request.env['HTTP_AUTHORIZATION'] = "Basic #{Base64::encode64(username+':'+password)}"
+    authorize_as(:valid)
+    assert_difference('Retort.count') do
+      post :create, :format => 'xml', :retort => { :content => 'this is a basic-auth test' }
+    end
+    assert_response :success
+    retort = assigns(:retort)
+    assert retort.rating
+    assert_equal 0, retort.tags.size
+    #assert_redirected_to retort_path(retort)
+    assert_response 201
+  end
+
+  test "should create retort with content and one tag" do 
+    login_as(:valid)
     assert_difference('Retort.count') do
       post :create, {:retort => { :content => 'this is also a test' }, :tags => { :value => 'one' }}
     end
@@ -68,7 +96,8 @@ class RetortsControllerTest < ActionController::TestCase
     assert_redirected_to retort_path(retort)
   end
 
-  test "should create retort with content and mult tags" do
+  test "should create retort with content and mult tags" do 
+    login_as(:valid)
     assert_difference('Retort.count') do
       post :create, {:retort => { :content => 'this is another test' }, :tags => { :value => 'one, two' }}
     end    
@@ -79,7 +108,8 @@ class RetortsControllerTest < ActionController::TestCase
     assert_redirected_to retort_path(retort)
   end
 
-  test "should create retort with contetn tags attrib" do
+  test "should create retort with contetn tags attrib" do 
+    login_as(:valid)
     assert_difference('Retort.count') do
       post :create, {:retort => { :content => 'this is one more test' }, :tags => { :value => 'one and two, two, three' }, :attribution => { :who => 'fred'}}
     end  
@@ -91,7 +121,8 @@ class RetortsControllerTest < ActionController::TestCase
     assert_redirected_to retort_path(retort)
   end
 
-  test "should not create retort with invalid when param value" do
+  test "should not create retort with invalid when param value" do 
+    login_as(:valid)
     assert_no_difference('Retort.count') do
       post :create, {:retort => { :content => 'this is the last test' }, :tags => { :value => 'one and two, two, three' }, :attribution => { :when => 'fred'}}
       
@@ -106,16 +137,19 @@ class RetortsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
+    login_as(:valid)
     get :edit, :id => retorts(:kennys_dad).id
     assert_response :success
   end
 
-  test "should update retort" do
+  test "should update retort" do 
+    login_as(:valid)
     put :update, :id => retorts(:kennys_dad).id, :retort => { }
     assert_redirected_to retort_path(assigns(:retort))
   end
 
-  test "should destroy retort" do
+  test "should destroy retort" do 
+    login_as(:valid)
     assert_difference('Retort.count', -1) do
       delete :destroy, :id => retorts(:kennys_dad).id
     end

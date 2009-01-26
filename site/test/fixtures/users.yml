@@ -1,0 +1,13 @@
+<%
+  require 'digest/sha1'
+  salt = Digest::SHA1.hexdigest(1.to_s)
+%>
+valid:
+  login: quentin
+  email: quentin@example.com
+  salt: <%= salt %>
+  crypted_password: <%= User.password_digest('monkey', salt) %>
+  created_at: <%= 5.days.ago.to_s :db %>
+  remember_token_expires_at: <%= 1.days.from_now.to_s :db %>
+  remember_token: <%= salt %>
+  activated_at: <%= 5.days.ago.to_s :db %>

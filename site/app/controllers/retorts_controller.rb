@@ -1,6 +1,8 @@
 require "rexml/document"
 
 class RetortsController < ApplicationController
+  before_filter :login_required, :only => [ :edit, :update, :create ]
+  
   # GET /retorts
   # GET /retorts.xml
   def index
@@ -85,6 +87,7 @@ class RetortsController < ApplicationController
     unless params[:attribution].nil?
       @retort.attribution = Attribution.new(params[:attribution])
     end
+    @retort.user = current_user
 
     respond_to do |format|
       if @retort.save
@@ -144,4 +147,17 @@ class RetortsController < ApplicationController
     end
     render :partial => 'search', :layout => false
   end
+  
+  def thumbs_up
+    @retort = Retort.find(params[:id])
+    @retort.rating.vote
+    render :action => "show"
+  end
+  
+  def thumbs_down
+    @retort = Retort.find(params[:id])
+    @retort.rating.vote(false)
+    render :action => "show"
+  end
+    
 end
