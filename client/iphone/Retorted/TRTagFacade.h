@@ -10,6 +10,8 @@
 #import "TRNotificationInterface.h"
 
 @class TRRetortXMLParser;
+@class Statistic;			//used for performance testing...
+@class PerformanceStats;	//used for performance testing...
 
 extern NSString * const TRTagDataDidFinishedNotification;
 
@@ -18,6 +20,12 @@ extern NSString * const TRTagDataDidFinishedNotification;
 	BOOL loadSucessful;
 	NSDictionary *properties;
 	TRRetortXMLParser *xmlParser;
+	
+@private
+	// ---- PERFORMANCE TESTING ----
+	Statistic *parseStat;
+	Statistic *downloadStat;
+	PerformanceStats *statHelper;
 }
 
 @property (nonatomic, retain) NSMutableArray *tags;

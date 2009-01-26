@@ -48,6 +48,7 @@
 	float shakecount;
 	float biggestshake;
 	
+	
 }
 
 // Handles the passoff to TRRetortFacade to begin data loading process.
@@ -87,4 +88,6 @@
 @property (nonatomic, retain) UITextView *loadFailureMessage;
 @property (nonatomic, retain) UIScrollView *tagSlider;
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
+
+
 @end

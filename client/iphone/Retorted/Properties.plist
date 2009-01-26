@@ -4,5 +4,7 @@
 <dict>
 	<key>Retorted.Host</key>
 	<string>http://totallyretorted.com</string>
+	<key>Simulator.Host</key>
+	<string>http://localhost:3000</string>
 </dict>
 </plist>

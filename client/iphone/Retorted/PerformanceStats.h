@@ -16,37 +16,29 @@
 	BOOL isDBAvailable;
 	
 	//current instance...
-	Statistic *parserStat;
+	Statistic *parseStat;
 	Statistic *downloadStat;
-	
-	// Historical Data - ReadOnly?
-//	NSUInteger totalRunCount;
-//	double avgDownloadTime;
-//	double avgParseTime;
-//	double avgTotalTime;			//sum of two above
-//	
-//	double meanDownloadTime;
-//	double meanParseTime;
-//	double meanTotalTime;			//sum of two above
-//	
-//	double minParseTime;
-//	double maxParseTime;
-//	double minDownloadTime;	
-//	double maxDownloadTime;	
-//	
-//	NSString *historicalURL;		//the url for which the stats are gathered.
-//	NSArray *urlListing;			//a list of the urls that we have data for.
 }
 
 @property (nonatomic, retain) NSString *dbFilePath;
 @property BOOL isDBAvailable;
 
-@property (nonatomic, retain) Statistic *parserStat;
+@property (nonatomic, retain) Statistic *parseStat;
 @property (nonatomic, retain) Statistic *downloadStat;
 
 - (void)saveCurrentStatistics;
-- (double)meanParseTimeForUrl:(NSString *) aUrl;
 - (double)meanParseTime;
-- (void)cleanupDBConnection:(sqlite3 *)db;
-- (sqlite3 *)getOpenDB;
+- (double)meanParseTimeForUrl:(NSString *) aUrl;
+- (double)meanDownloadTime;
+- (double)meanDownloadTimeForUrl:(NSString *)aUrl;
+- (double)meanTotalTime;
+- (double)meanTotalTimeForUrl:(NSString *)aUrl;
+- (NSUInteger)totalRecordCount;
+- (NSUInteger)totalRecordCountForUrl:(NSString *)aUrl;
+- (NSUInteger)meanByteCount;
+- (NSUInteger)meanByteCountByUrl:(NSString *)aUrl;
+
+- (void)cleanupDBConnection;	//optional clean up method. This is called automatically when the class's dealloc method is invoked.
+- (BOOL)resetPerformanceStatsDatabase;
+
 @end

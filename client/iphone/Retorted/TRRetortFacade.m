@@ -11,7 +11,7 @@
 #import "FEUrlHelper.h"
 #import "TRRetortXMLParser.h"
 #import "Statistic.h"			//performance testing
-#import "RetortedAppDelegate.h"	//performance testing
+#import "PerformanceStats.h"	//performance testing
 
 NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishedLoading";
 
@@ -21,7 +21,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 // ---- PERFORMANCE TESTING ----
 @property (nonatomic, retain) Statistic *parseStat;
 @property (nonatomic, retain) Statistic *downloadStat;
-
+@property (nonatomic, retain) PerformanceStats *statHelper;
 @end
 
 
@@ -29,8 +29,8 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 @synthesize retorts, loadSuccessful;
 @synthesize properties;
 
-//performance testing...
-@synthesize parseStat, downloadStat;
+// ---- PERFORMANCE TESTING ----
+@synthesize parseStat, downloadStat, statHelper;
 
 - (id)init {
 	if (![super init]) {
@@ -51,6 +51,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	// -----------------------------
 	self.parseStat = [[Statistic alloc] init];
 	self.downloadStat = [[Statistic alloc] init];
+	self.statHelper = [[PerformanceStats alloc] init];
 	
 	return self;
 }
@@ -63,7 +64,13 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 
 - (void)loadRetortsWithRelativePath:(NSString *)relPath {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+
+#if TARGET_CPU_ARM
 	NSString* retortsURL = [NSString stringWithFormat:@"%@/%@", [properties valueForKey:@"Retorted.Host"], relPath];
+#else
+	NSString* retortsURL = [NSString stringWithFormat:@"%@/%@", [properties valueForKey:@"Simulator.Host"], relPath];
+#endif 
+	
 	
 	NSLog(@"TRRetortFacade:  Getting data from URL using URLHelper: %@", retortsURL);
 	
@@ -138,12 +145,10 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	// ---- PERFORMANCE TESTING ----
 	// -----------------------------
 	self.parseStat.end = [NSDate timeIntervalSinceReferenceDate];
-	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-	[appDelegate addParserStatistic:self.parseStat];
-	[appDelegate addDownloadStatistic:self.downloadStat];
-	[appDelegate saveStatistic];
-	NSLog(@"Avg Parse Time for all URLs: %f", [appDelegate getMeanParseTime]);
-	NSLog(@"Avg Parse Time for http://totallyretorted.com/retorts/screenzero.xml: %f", [appDelegate getMeanParseTimeForUrl:@"http://totallyretorted.com/retorts/screenzero.xml"]);
+	self.statHelper.parseStat = self.parseStat;
+	self.statHelper.downloadStat = self.downloadStat;
+	[self.statHelper saveCurrentStatistics];
+	[self.statHelper cleanupDBConnection];
 	
 	//post a notification to be picked up by the Controller...
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
@@ -170,10 +175,14 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 }
 
 - (void)dealloc {
+	//PERFORMANCE TESTING...
+	self.statHelper = nil;
+	self.parseStat = nil;
+	self.downloadStat = nil;
+	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
 	NSLog(@"TRRetortFacade: Unregistered with notification center.");
-	
 	[retorts release];
 	
 	[super dealloc];

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TRNotificationInterface.h"
 @class Statistic;		//used for performance testing...
+@class PerformanceStats;
 
 extern NSString * const TRRetortDataFinishedLoadingNotification;
 
@@ -22,6 +23,7 @@ extern NSString * const TRRetortDataFinishedLoadingNotification;
 	// ---- PERFORMANCE TESTING ----
 	Statistic *parseStat;
 	Statistic *downloadStat;
+	PerformanceStats *statHelper;
 }
 
 @property (nonatomic, retain) NSMutableArray *retorts;

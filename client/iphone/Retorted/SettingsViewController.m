@@ -10,17 +10,22 @@
 #import "StatsView.h"
 #import "PerformanceStats.h"
 
+//private methods and classes
+@interface SettingsViewController()
+@property BOOL refeshTableNeeded;
+
+- (void)setupSettingsCell:(UITableViewCell *)cell;
+- (void)configureSettingsCell:(UITableViewCell *)cell atRow:(NSUInteger)row;
+
+- (void)setupStatsCell:(UITableViewCell *)cell;
+- (void)configureStatsCell:(UITableViewCell *)cell atRow:(NSUInteger)row;
+@end
+
+
 @implementation SettingsViewController
 @synthesize textFieldBeingEdited, tempValues;
-
-/*
-- (id)initWithStyle:(UITableViewStyle)style {
-    // Override initWithStyle: if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-    if (self = [super initWithStyle:style]) {
-    }
-    return self;
-}
-*/
+@synthesize footerView, reset, sendStats, statsHelper;
+@synthesize refeshTableNeeded;
 
 
 - (void)viewDidLoad {
@@ -35,54 +40,36 @@
 	self.navigationItem.rightBarButtonItem = saveButton;
 	[saveButton release];
 	
-	//Create StatsView instance and add to parent view...
-//	StatsView *statsView = nil;
-//	
-//	NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StatsView" owner:self options:nil];
-//	for (NSUInteger i=0; i< [nib count]; i++) {
-//		id obj = [nib objectAtIndex:i];
-//		if ([obj isMemberOfClass:[StatsView class]]) {
-//			statsView = obj;
-//		}
-//	}
+	// set up the table's footer view based on our UIView 'myFooterView' outlet
+	CGRect newFrame = CGRectMake(0.0, 0.0, self.tableView.bounds.size.width-20.0, self.footerView.frame.size.height);
+	//self.footerView.backgroundColor = [UIColor clearColor];
+	self.footerView.frame = newFrame;
 	
-	PerformanceStats *statHelper = [[PerformanceStats alloc] init];
-	double meanParseTime = [statHelper meanParseTime];
-//	statsView.avgParseDuration.text = [NSString stringWithFormat:@"%f", meanParseTime];
+	self.tableView.tableFooterView = self.footerView;	// note this will override UITableView's 'sectionFooterHeight' property
 	
-	[statHelper release];
-	//CGRect newFrame = statsView.frame;
-//	newFrame.origin = CGPointMake(
-//	
-//	[self.view addSubview:statsView];
+	//initialize stats helper...
+	self.statsHelper = [[PerformanceStats alloc] init];
+	self.refeshTableNeeded = NO;
 	
-    [super viewDidLoad];
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 
-/*
+
 - (void)viewWillAppear:(BOOL)animated {
+	if (self.refeshTableNeeded) {
+		[self.tableView reloadData];
+	}
+	
     [super viewWillAppear:animated];
 }
-*/
-/*
+
+
 - (void)viewDidAppear:(BOOL)animated {
+	NSLog(@"SettingsViewController: viewDidAppear");
+	self.refeshTableNeeded = YES;
     [super viewDidAppear:animated];
 }
-*/
-/*
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-}
-*/
-/*
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-}
-*/
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -97,13 +84,24 @@
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
-
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return kNumberOfEditableRows;
+    if (section == 0) {
+		return kNumberOfEditableRows;
+	} else {
+		return 5;
+	}
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	if (section == 0) {
+		return @"User Settings";
+	} else {
+		return @"Data Statistics";
+	}
 }
 
 
@@ -116,116 +114,36 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 		
-		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 25)];
-		label.textAlignment = UITextAlignmentRight;
-		label.tag = kLabelTag;
-		label.font = [UIFont boldSystemFontOfSize:14];
-		[cell.contentView addSubview:label];
-		[label release];
-		
-		
-		UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
-		textField.clearsOnBeginEditing = NO;
-		[textField setDelegate:self];
-		//textField.returnKeyType = UIReturnKeyDone;
-		[textField addTarget:self 
-					  action:@selector(textFieldDone:) 
-			forControlEvents:UIControlEventEditingDidEndOnExit];
-		[cell.contentView addSubview:textField];	
+		if (indexPath.section == 0) {
+			//user settings...
+			[self setupSettingsCell:cell];
+		} else {
+			//statistical information...
+			[self setupStatsCell:cell];
+		}
     }
 	NSUInteger row = [indexPath row];
-	
-	UILabel *label = (UILabel *)[cell viewWithTag:kLabelTag];
-	UITextField *textField = nil;
-	for (UIView *oneView in cell.contentView.subviews)
-	{
-		if ([oneView isMemberOfClass:[UITextField class]])
-			textField = (UITextField *)oneView;
+	if (indexPath.section == 0) {
+		[self configureSettingsCell:cell atRow:row];
+	} else {
+		[self configureStatsCell:cell atRow:row];
 	}
 	
-	//label.text = [fieldLabels objectAtIndex:row];
-	NSNumber *rowAsNum = [[NSNumber alloc] initWithInt:row];
-    
-	switch (row) {
-		case kEmailRowIndex:
-			label.text = NSLocalizedString(@"Email", @"The label 'Email' for the settings table cell");
-			textField.keyboardType = UIKeyboardTypeEmailAddress;
-			textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-			
-			if ([[tempValues allKeys] containsObject:rowAsNum]) {
-				textField.text = [tempValues objectForKey:rowAsNum];
-			} else {
-				textField.placeholder = NSLocalizedString(@"Enter Email Here","Placeholder text requesting email address in settings table cell");
-			}
-			break;
-		case kPasswordRowIndex:
-			label.text = @"Password";
-			textField.keyboardType = UIKeyboardTypeDefault;
-			textField.secureTextEntry = YES;
-			if ([[tempValues allKeys] containsObject:rowAsNum])
-				textField.text = [tempValues objectForKey:rowAsNum];
-			else
-				//textField.text = @"Test Data";
-				textField.placeholder = NSLocalizedString(@"Enter Password Here", "Placeholder text requesting password in settings table cell");
-			break;
-		default:
-			break;
-	}
-	if (textFieldBeingEdited == textField)
-		textFieldBeingEdited = nil;
 	
-	textField.tag = row;
-	[rowAsNum release];
+	
 	return cell;
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
-	// [self.navigationController pushViewController:anotherViewController];
-	// [anotherViewController release];
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+//    // Navigation logic may go here. Create and push another view controller.
+//	// AnotherViewController *anotherViewController = [[AnotherViewController alloc] initWithNibName:@"AnotherView" bundle:nil];
+//	// [self.navigationController pushViewController:anotherViewController];
+//	// [anotherViewController release];
+//}
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:YES];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark -
 #pragma mark Table Delegate Methods
@@ -245,7 +163,126 @@
 
 - (void)dealloc {
 	[textFieldBeingEdited release];
+	[tempValues release];
+	[statsHelper release];
     [super dealloc];
+}
+
+#pragma mark -
+#pragma mark Custom Helper Methods
+
+//Adds a UILabel and UITextView to cell's content view, to prepare it for the actual data values...
+- (void)setupSettingsCell:(UITableViewCell *)cell {
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 75, 25)];
+	label.textAlignment = UITextAlignmentRight;
+	label.tag = kLabelTag;
+	label.font = [UIFont boldSystemFontOfSize:14];
+	[cell.contentView addSubview:label];
+	[label release];
+	
+	UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(90, 12, 200, 25)];
+	textField.clearsOnBeginEditing = NO;
+	[textField setDelegate:self];
+	//textField.returnKeyType = UIReturnKeyDone;
+	[textField addTarget:self 
+				  action:@selector(textFieldDone:) 
+		forControlEvents:UIControlEventEditingDidEndOnExit];
+	[cell.contentView addSubview:textField];	
+	[textField release];
+}
+
+//Adds the actual data to the cell and it's contents that were set up by setupSettingsCell: method.
+- (void)configureSettingsCell:(UITableViewCell *)cell atRow:(NSUInteger)row {
+	UILabel *label = (UILabel *)[cell viewWithTag:kLabelTag];
+	UITextField *textField = nil;
+	for (UIView *oneView in cell.contentView.subviews)
+	{
+		if ([oneView isMemberOfClass:[UITextField class]])
+			textField = (UITextField *)oneView;
+	}
+	
+	NSNumber *rowAsNum = [[NSNumber alloc] initWithInt:row];
+    
+	switch (row) {
+		case kEmailRowIndex:
+			label.text = NSLocalizedString(@"Email", @"The label 'Email' for the settings table cell");
+			textField.keyboardType = UIKeyboardTypeEmailAddress;
+			textField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+			
+			if ([[tempValues allKeys] containsObject:rowAsNum]) {
+				textField.text = [tempValues objectForKey:rowAsNum];
+			} else {
+				textField.placeholder = NSLocalizedString(@"Enter Email Here","Placeholder text requesting email address in settings table cell");
+			}
+			break;
+		case kPasswordRowIndex:
+			label.text = NSLocalizedString(@"Password", @"The label 'Password' for settings table cell");
+			textField.keyboardType = UIKeyboardTypeDefault;
+			textField.secureTextEntry = YES;
+			if ([[tempValues allKeys] containsObject:rowAsNum])
+				textField.text = [tempValues objectForKey:rowAsNum];
+			else
+				//textField.text = @"Test Data";
+				textField.placeholder = NSLocalizedString(@"Enter Password Here", "Placeholder text requesting password in settings table cell");
+			break;
+		default:
+			break;
+	}
+	if (textFieldBeingEdited == textField)
+		textFieldBeingEdited = nil;
+	
+	textField.tag = row;
+	[rowAsNum release];
+}
+
+//Adds two UILabels to cell's content view, to prepare it for the actual data values...
+- (void)setupStatsCell:(UITableViewCell *)cell {
+	UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 149, 25)];
+	label.textAlignment = UITextAlignmentRight;
+	label.tag = kLabelTag;
+	label.font = [UIFont boldSystemFontOfSize:14];
+	[cell.contentView addSubview:label];
+	[label release];
+	
+	label = [[UILabel alloc] initWithFrame:CGRectMake(177, 10, 123, 25)];
+	label.textAlignment = UITextAlignmentLeft;
+	label.tag = kResultTag;
+	label.font = [UIFont systemFontOfSize:14];
+	label.textColor = [UIColor blueColor];
+	[cell.contentView addSubview:label];
+	[label release];
+}
+
+//adds the content to the four statistics cells
+- (void)configureStatsCell:(UITableViewCell *)cell atRow:(NSUInteger)row {
+	UILabel *titleLbl = (UILabel *)[cell viewWithTag:kLabelTag];
+	UILabel *valueLbl = (UILabel *)[cell viewWithTag:kResultTag];
+
+
+	switch (row) {
+		case 0:
+			titleLbl.text = @"Run Count:";
+			valueLbl.text = [NSString stringWithFormat:@"%d", [self.statsHelper totalRecordCount]];
+			break;
+		case 1:
+			titleLbl.text = @"Avg. Download Time:";
+			valueLbl.text = [NSString stringWithFormat:@"%.2f sec.", [self.statsHelper meanDownloadTime]];
+			break;
+		case 2:
+			titleLbl.text = @"Avg. Parse Time:";
+			valueLbl.text = [NSString stringWithFormat:@"%.2f sec.", [self.statsHelper meanParseTime]];
+			break;
+		case 3:
+			titleLbl.text = @"Avg. Total Time:";
+			valueLbl.text = [NSString stringWithFormat:@"%.2f sec.", [self.statsHelper meanTotalTime]];
+			break;
+		case 4:
+			titleLbl.text = @"Avg. Total Bytes:";
+			valueLbl.text = [NSString stringWithFormat:@"%d bytes.", [self.statsHelper meanByteCount]];
+			break;
+		default:
+			break;
+	}
 }
 
 #pragma mark -
@@ -282,5 +319,32 @@
 	[nextField becomeFirstResponder];
 }
 
+- (IBAction)sendStatsToServer:(id)sender {
+	NSLog(@"SettingsViewController: sending stats to server...");
+}
+
+- (IBAction)resetDB:(id)sender {
+	NSLog(@"SettingsViewController: reseting local stats database...");
+	BOOL result = [self.statsHelper resetPerformanceStatsDatabase];
+	
+	// open an alert with just an OK button
+	NSString *msg = nil;
+	if (result) {
+		msg = [NSString stringWithFormat:@"Successful reseting statistics database."];
+	} else {
+		msg = [NSString stringWithFormat:@"Failed reseting statistics database."];
+	}
+	
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reset Stats DB" message:msg
+												   delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+	[alert show];
+	[alert release];
+	
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	NSLog(@"%@", buttonIndex);
+	[self.tableView reloadData];
+}
 @end
 
