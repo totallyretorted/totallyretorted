@@ -7,7 +7,8 @@
 //
 
 #import "SettingsViewController.h"
-
+#import "StatsView.h"
+#import "PerformanceStats.h"
 
 @implementation SettingsViewController
 @synthesize textFieldBeingEdited, tempValues;
@@ -33,6 +34,27 @@
 								   action:@selector(save:)];
 	self.navigationItem.rightBarButtonItem = saveButton;
 	[saveButton release];
+	
+	//Create StatsView instance and add to parent view...
+//	StatsView *statsView = nil;
+//	
+//	NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"StatsView" owner:self options:nil];
+//	for (NSUInteger i=0; i< [nib count]; i++) {
+//		id obj = [nib objectAtIndex:i];
+//		if ([obj isMemberOfClass:[StatsView class]]) {
+//			statsView = obj;
+//		}
+//	}
+	
+	PerformanceStats *statHelper = [[PerformanceStats alloc] init];
+	double meanParseTime = [statHelper meanParseTime];
+//	statsView.avgParseDuration.text = [NSString stringWithFormat:@"%f", meanParseTime];
+	
+	[statHelper release];
+	//CGRect newFrame = statsView.frame;
+//	newFrame.origin = CGPointMake(
+//	
+//	[self.view addSubview:statsView];
 	
     [super viewDidLoad];
 

@@ -10,7 +10,7 @@
 
 
 @implementation StatsView
-
+@synthesize avgTotalDuration, avgParseDuration, avgDownloadDuration, runCount;
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -29,5 +29,8 @@
     [super dealloc];
 }
 
+- (IBAction)resetStatisticsDB:(id)sender {
+	NSLog(@"Reset Statistics button clicked");
+}
 
 @end

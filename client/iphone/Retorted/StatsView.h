@@ -17,4 +17,9 @@
 	
 }
 
+@property (nonatomic, retain) UILabel *avgTotalDuration;
+@property (nonatomic, retain) UILabel *avgParseDuration;
+@property (nonatomic, retain) UILabel *avgDownloadDuration;
+@property (nonatomic, retain) UILabel *runCount;
+- (IBAction)resetStatisticsDB:(id)sender;
 @end

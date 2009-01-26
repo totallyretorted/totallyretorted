@@ -65,6 +65,7 @@
 		DB8EF9450F2C253C0062FC2C /* PerformanceStats.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8EF8E10F2BCECA0062FC2C /* PerformanceStats.m */; };
 		DB8EF9590F2C28A10062FC2C /* Statistic.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8EF9580F2C28A10062FC2C /* Statistic.m */; };
 		DB8EFAEC0F2D15E60062FC2C /* StatsView.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8EFAEB0F2D15E60062FC2C /* StatsView.m */; };
+		DB8EFB4E0F2D1B390062FC2C /* StatsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB8EFB4D0F2D1B390062FC2C /* StatsView.xib */; };
 		DBC6E4450F0322950041E319 /* TRTagFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA75410F01666A00B1ED9C /* TRTagFacade.m */; };
 		DBCD53100F2682BA00F4F7A5 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD530F0F2682BA00F4F7A5 /* HomeView.xib */; };
 		DBCD535A0F2687FD00F4F7A5 /* RetortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD53590F2687FD00F4F7A5 /* RetortView.xib */; };
@@ -204,6 +205,9 @@
 		DB8EF9580F2C28A10062FC2C /* Statistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statistic.m; sourceTree = "<group>"; };
 		DB8EFAEA0F2D15E60062FC2C /* StatsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatsView.h; sourceTree = "<group>"; };
 		DB8EFAEB0F2D15E60062FC2C /* StatsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatsView.m; sourceTree = "<group>"; };
+		DB8EFB4B0F2D1B2F0062FC2C /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/StatsView.xib; sourceTree = "<group>"; };
+		DB8EFB510F2D1BA80062FC2C /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/StatsView.xib; sourceTree = "<group>"; };
+		DB8EFB520F2D1BAC0062FC2C /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/StatsView.xib; sourceTree = "<group>"; };
 		DBC6E44A0F05D7D70041E319 /* TagCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCellView.h; sourceTree = "<group>"; };
 		DBC6E44B0F05D7D70041E319 /* TagCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCellView.m; sourceTree = "<group>"; };
 		DBCD53140F26836000F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/HomeView.xib; sourceTree = "<group>"; };
@@ -321,6 +325,7 @@
 				DBCD536F0F268C0700F4F7A5 /* RetortByTagView.xib */,
 				DBCD53750F268C2600F4F7A5 /* TagCellView.xib */,
 				DBCD53790F268C3400F4F7A5 /* RetortCellView.xib */,
+				DB8EFB4D0F2D1B390062FC2C /* StatsView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -556,6 +561,8 @@
 				German,
 				fr,
 				de,
+				fr.proj,
+				fr.lproj,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Retorted */;
 			projectDirPath = "";
@@ -598,6 +605,7 @@
 				DB4513FC0F216B34007ACEC6 /* home.png in Resources */,
 				DBCD53B90F2694F200F4F7A5 /* Localizable.strings in Resources */,
 				DB8EF8FD0F2BDF180062FC2C /* statistics.db in Resources */,
+				DB8EFB4E0F2D1B390062FC2C /* StatsView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,6 +719,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		DB8EFB4D0F2D1B390062FC2C /* StatsView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DB8EFB4B0F2D1B2F0062FC2C /* English */,
+				DB8EFB510F2D1BA80062FC2C /* fr */,
+				DB8EFB520F2D1BAC0062FC2C /* de */,
+			);
+			name = StatsView.xib;
+			sourceTree = "<group>";
+		};
 		DBCD530F0F2682BA00F4F7A5 /* HomeView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
