@@ -7,7 +7,6 @@
 //
 
 #import "SettingsViewController.h"
-#import "StatsView.h"
 #import "PerformanceStats.h"
 
 //private methods and classes

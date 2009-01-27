@@ -71,6 +71,8 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	NSString* retortsURL = [NSString stringWithFormat:@"%@/%@", [properties valueForKey:@"Simulator.Host"], relPath];
 #endif 
 	
+	//NSString *buildSettingStr = [[NSString alloc] initWithString:@"%@",$(retortedSimulatorHost)];
+	
 	
 	NSLog(@"TRRetortFacade:  Getting data from URL using URLHelper: %@", retortsURL);
 	

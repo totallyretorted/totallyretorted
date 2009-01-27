@@ -847,11 +847,15 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 2.2;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-DDEBUG";
 				PREBINDING = NO;
 				PRODUCT_NAME = Retorted;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A7F53C61-F899-437A-952F-F6F55FDD218B";
-				SDKROOT = iphoneos2.1;
+				RETORTED_DEVICE_HOST = "http://totallyretorted.com";
+				RETORTED_SIMULATOR_HOST = "http://localhost:3000";
+				SDKROOT = iphoneos2.2;
 			};
 			name = Debug;
 		};
@@ -866,6 +870,8 @@
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "60AF058C-0613-41C9-9ABC-588B4E8EFCFE";
 				SDKROOT = iphoneos2.1;
+				retortedDeviceHost = "http://totallyretorted.com";
+				retortedSimulatorHost = "http://localhost:3000";
 			};
 			name = Release;
 		};
