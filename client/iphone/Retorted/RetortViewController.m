@@ -60,7 +60,7 @@
 	heightOfContent = heightOfContent+20.0;
 	int rowsOfContent = ceil(heightOfContent / kStdFontSize)+1;
 	nextY = heightOfContent + kRetortBottomSpace;	//sets the next origin y-point at kRetortBottomSpace pixels below the main content (retort).
-	NSLog(@"heightOfContent: %f, rows: %d", heightOfContent, rowsOfContent);
+	JLog(@"heightOfContent: %f, rows: %d", heightOfContent, rowsOfContent);
 	
 	//create a new content rect size based on size of retort...
 	CGRect retortContentFrame = CGRectMake(kStdOriginX, kStdOriginY, kStdWidth, heightOfContent);
@@ -98,7 +98,7 @@
 		nextY = nextY + heightOfContent + kAttrSpacing;
 	}
 	
-	NSLog(@"nextY: %d", nextY);
+	JLog(@"nextY: %d", nextY);
 	//determine overflow size of scroll view...
 	CGSize scrollSize = CGSizeMake(kStdWidth, nextY);
 	
@@ -146,7 +146,7 @@
 #pragma mark WebView Delegate methods
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
 	NSURL *url = [request URL];
-	NSLog(@"Absolute URL: %@", [url absoluteString]);
+	JLog(@"Absolute URL: %@", [url absoluteString]);
 	return NO;
 }
 
@@ -157,13 +157,13 @@
 	
 	if (buttonIndex == 0)
 	{
-		NSLog(@"favorites");
+		JLog(@"favorites");
 //	}
 //	else if (buttonIndex == 1)
 //	{
-//		NSLog(@"facebook");
+//		JLog(@"facebook");
 	} else  {
-		NSLog(@"cancel");
+		JLog(@"cancel");
 	}
 }
 
@@ -189,9 +189,9 @@
 	NSInteger segment = segmentedControl.selectedSegmentIndex;
 	
 	if (segment == 0) {
-		NSLog(@"Your vote is Awesome!");
+		JLog(@"Your vote is Awesome!");
 	} else {
-		NSLog(@"Your vote is Sucks!");
+		JLog(@"Your vote is Sucks!");
 	}
 }
 
@@ -236,15 +236,15 @@
 			initialDistance = currentDistance;
 		} else if (currentDistance - initialDistance > kMinimumPinchDelta) {
 			//grow
-			NSLog(@"grow tag cloud");
+			JLog(@"grow tag cloud");
 		} else if (initialDistance - currentDistance > kMinimumPinchDelta) {
 			//shrink
-			NSLog(@"shrink tag cloud");
+			JLog(@"shrink tag cloud");
 		}
 	} else {
 		UITouch *singleTouch = [[touches allObjects] objectAtIndex:0];
 		CGPoint point = [singleTouch locationInView:self.view];
-		NSLog(@"x=%f, d=%f", point.x, point.y);
+		JLog(@"x=%f, d=%f", point.x, point.y);
 	}
 }
 

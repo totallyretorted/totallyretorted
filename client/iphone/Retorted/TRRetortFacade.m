@@ -42,7 +42,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	[self addToNotificationWithSelector:@selector(handleRetortXMLLoad:) notificationName:FEDataFinishedLoadingNotification];
 	[self addToNotificationWithSelector:@selector(handleDataLoadFailure:) notificationName:FEDataFailedLoadingNotification];
 	
-	NSLog(@"TRRetortFacade: Registered with notification center for: FEDataFinishedLoadingNotification & FEDataFailedLoadingNotification");
+	JLog(@"Registered with notification center for: FEDataFinishedLoadingNotification & FEDataFailedLoadingNotification");
 	
 	properties = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Properties" ofType:@"plist"]]; 
 	
@@ -74,7 +74,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	//NSString *buildSettingStr = [[NSString alloc] initWithString:@"%@",$(retortedSimulatorHost)];
 	
 	
-	NSLog(@"TRRetortFacade:  Getting data from URL using URLHelper: %@", retortsURL);
+	JLog(@"Getting data from URL using URLHelper: %@", retortsURL);
 	
 	
 	FEUrlHelper *aHelper = [[FEUrlHelper alloc] init];
@@ -103,14 +103,14 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	//remove self from notification center...
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
-	NSLog(@"TRRetortFacade: Unregistered with notification center.");
+	JLog(@"Unregistered with notification center.");
 }
 
 
 //Received from notification center when FEUrlHelper is done getting raw retort content.
 - (void) handleRetortXMLLoad: (NSNotification *)note {
 	
-	NSLog(@"TRRetortFacade:  FEDataFinishedLoadingNotification notification received: %@", note);
+	JLog(@"FEDataFinishedLoadingNotification notification received: %@", note);
 	NSError *parseError = nil;
 	
 	FEUrlHelper *aHelper = [note object];
@@ -129,16 +129,16 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	
 	//use DWLeadHelper to parse XML and get lead objects...
 	TRRetortXMLParser *xmlParser = [[TRRetortXMLParser alloc] init];
-	NSLog(@"TRRetortFacade: Calling TRRetortXMLParser to parse XML.");
+	JLog(@"Calling TRRetortXMLParser to parse XML.");
 	
 	[xmlParser parseRetortXML:aHelper.xmlData parseError:&parseError];
 	
 	if (parseError !=nil) {
 		//handle parser error...
-		NSLog(@"Description: %@", [parseError localizedDescription]);
+		JLog(@"Description: %@", [parseError localizedDescription]);
 		self.loadSuccessful = NO;
 	} else {
-		NSLog(@"# of retorts: %d", [xmlParser.retorts count]);
+		JLog(@"# of retorts: %d", [xmlParser.retorts count]);
 		self.retorts = xmlParser.retorts;
 		self.loadSuccessful = YES;
 	}
@@ -156,7 +156,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 
 	[nc postNotificationName:TRRetortDataFinishedLoadingNotification object:self];
-	NSLog(@"TRRetortFacade: Sending finished notification for Retort object creation");
+	JLog(@"Sending finished notification for Retort object creation");
 	[xmlParser release];
 	
 	//remove self as an observer...
@@ -170,7 +170,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	
 	[nc postNotificationName:TRRetortDataFinishedLoadingNotification object:self];
-	NSLog(@"TRRetortFacade: FAILED data call - Sending finished notification for Retort object creation");
+	JLog(@"FAILED data call - Sending finished notification for Retort object creation");
 	
 	//remove self as an observer...
 	[self removeFromAllNotifications];
@@ -184,7 +184,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
-	NSLog(@"TRRetortFacade: Unregistered with notification center.");
+	JLog(@"Unregistered with notification center.");
 	[retorts release];
 	
 	[super dealloc];

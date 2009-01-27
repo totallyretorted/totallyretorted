@@ -39,7 +39,7 @@ const NSInteger quantas = 5;
 	
 	for (TRTag *aTag in tags) {
 		
-		//NSLog(@"element: %@", element);
+		//JLog(@"element: %@", element);
 		//font-size percentage 200% to 50%
 		switch (aTag.tagCloudValue) {
 			case 0:

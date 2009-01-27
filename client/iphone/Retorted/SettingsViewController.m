@@ -64,7 +64,7 @@
 
 
 - (void)viewDidAppear:(BOOL)animated {
-	NSLog(@"SettingsViewController: viewDidAppear");
+	JLog(@"Refreshing tableview");
 	self.refeshTableNeeded = YES;
     [super viewDidAppear:animated];
 }
@@ -288,13 +288,13 @@
 #pragma mark VC custom event methods
 
 - (IBAction)cancel:(id)sender {
-	NSLog(@"Cancel action");
+	JLog(@"Cancel action");
 	[textFieldBeingEdited resignFirstResponder];
 	
 }
 
 - (IBAction)save:(id)sender {
-	NSLog(@"Initiate save action");
+	JLog(@"Initiate save action");
 	[textFieldBeingEdited resignFirstResponder];
 }
 
@@ -319,11 +319,11 @@
 }
 
 - (IBAction)sendStatsToServer:(id)sender {
-	NSLog(@"SettingsViewController: sending stats to server...");
+	JLog(@"Sending stats to server...");
 }
 
 - (IBAction)resetDB:(id)sender {
-	NSLog(@"SettingsViewController: reseting local stats database...");
+	JLog(@"Reseting local stats database...");
 	BOOL result = [self.statsHelper resetPerformanceStatsDatabase];
 	
 	// open an alert with just an OK button
@@ -342,7 +342,7 @@
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	NSLog(@"%@", buttonIndex);
+	JLog(@"%@", buttonIndex);
 	[self.tableView reloadData];
 }
 @end

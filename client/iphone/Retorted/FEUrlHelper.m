@@ -26,18 +26,19 @@ NSString * const FEDataFailedLoadingNotification = @"DWDataFailedLoading";
 }
 
 - (void)loadURLFromString:(NSString *)sUrl withContentType:(NSString *)contentType HTTPMethod:(NSString *)method body:(NSString *)httpBody {
-	NSLog(@"UrlHelper: loadUrlFromString: called");
+	JLog(@"Start download process.");
 	NSURL *url = [[NSURL alloc] initWithString:sUrl];
-	NSLog(@"UrlHelper: created url...");
-	NSLog(@"UrlHelper: url port: %@", [url port]);
+	JLog(@"Created url: %@ with port: %@", url, [url port]);
 	
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-	NSLog(@"UrlHelper: created request...");
-	if (self.ignoreBadCertificate) {
-		// Use the private method setAllowsAnyHTTPSCertificate:forHost:
-		// to not validate the HTTPS certificate.
-		[NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[url host]];
-	}
+	JLog(@"Created request...");
+	
+//	TODO: May not need - leave code in until we finish SSL and test
+//	if (self.ignoreBadCertificate) {
+//		// Use the private method setAllowsAnyHTTPSCertificate:forHost:
+//		// to not validate the HTTPS certificate.
+//		[NSURLRequest setAllowsAnyHTTPSCertificate:YES forHost:[url host]];
+//	}
 	
 	[request setHTTPMethod:method];												//for example, POST or GET
 	[request setValue:contentType forHTTPHeaderField:@"Content-Type"];			//for example: @"application/xml"
@@ -50,7 +51,7 @@ NSString * const FEDataFailedLoadingNotification = @"DWDataFailedLoading";
 	//[request setHTTPBody:[[self xml] dataUsingEncoding:NSUTF8StringEncoding]];
 	
 	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-	NSLog(@"UrlHelper: created connection...");
+	JLog(@"Created connection...");
 	[connection release];
 	[request release];
 	[url release];
@@ -68,25 +69,22 @@ Issue: NSURLRequest will not handle XML, so we will need to use NSXMLParser.
 
 - (void)connectionDidFinishLoading: (NSURLConnection *)connection {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	NSLog(@"URLHelper: Sending finished notification: FEDataFinishedLoadingNotification");
-	NSLog(@"URLHelper: total data byte length: %d", self.xmlData.length);
 	[nc postNotificationName:FEDataFinishedLoadingNotification object:self];
-	NSLog(@"URLHelper: call back after url done loading notification.");
+	JLog(@"Sending finished notification: FEDataFinishedLoadingNotification - Call back after url done loading notification.");
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	NSLog(@"URLHelper: receiving data");
 	[self.xmlData appendData:data];
-	NSLog(@"URLHelper: data byte length: %d", data.length);
+	JLog(@"Receiving data - Data byte length: %d", data.length);
 }
 	
 - (void)connection: (NSURLConnection *)connection didFailWithError: (NSError *)error {
 
-	NSLog(@"URLHelper: Error encountered: Failed loading with code: %d and description: %@", [error code], [error localizedDescription]);
+	JLog(@"Error encountered: Failed loading with code: %d and description: %@", [error code], [error localizedDescription]);
 	self.errorMsg = [error localizedDescription];
 	self.errorCode = [error code];
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	NSLog(@"URLHelper: Sending failure notification");
+	JLog(@"Sending failure notification");
 	[nc postNotificationName:FEDataFailedLoadingNotification object:self];
 
 }
@@ -122,7 +120,7 @@ Issue: NSURLRequest will not handle XML, so we will need to use NSXMLParser.
 								   persistence:NSURLCredentialPersistenceForSession];
 	[[aChallenge sender] useCredential:credential forAuthenticationChallenge:aChallenge];
 	[credential release];
-	NSLog(@"Sending authentication credential");
+	JLog(@"Sending authentication credential");
 }
 
 

@@ -29,19 +29,10 @@
 @synthesize loadFailureMessage, tagSlider;
 @synthesize isSingleTag, selectedTag, tagId;
 
-/*
-// Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	NSLog(@"HomeViewController: initWithNibName");
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-    }
-    return self;
-}
-*/
 
 
 - (id)initWithCoder:(NSCoder *)coder { 
-	NSLog(@"HomeViewController: initWithCoder");
+	JLog(@"Initializing");
 	if (self = [super initWithCoder:coder]) {
 		self.isSingleTag = NO;
 		self.selectedTag = nil;
@@ -120,8 +111,7 @@
 #pragma mark Custom Methods
 //starts process of fetching retort content using the TRRetortFacade helper class.
 - (void)loadDataWithUrl:(NSString *)relPath {
-	
-	NSLog(@"HomeViewController: Create instance of TRRetortFacade");
+	JLog(@"Create instance of TRRetortFacade");
 	self.facade = [[TRRetortFacade alloc] init];
 	
 	[self.activityIndicator startAnimating];
@@ -132,17 +122,17 @@
 
 //Called when all Retorts have been loaded.
 - (void)handleDataLoad:(NSNotification *)note {
-	NSLog(@"HomeViewController: handleDataLoad received.");
+	JLog(@" handleDataLoad received.");
 	TRRetortFacade *aFacade = [note object];
 	[self.activityIndicator stopAnimating];
 	
 	if ((aFacade.loadSuccessful) && ([aFacade.retorts count] > 0)) {
 		self.retorts = aFacade.retorts;
-		NSLog(@"HomeViewController: received retorts");
+		JLog(@"Received retorts");
 		[self.retortsView reloadData];	//starts UITableView reload process
 		[self displayRetortsView];
 	} else {
-		NSLog(@"HomeViewController: Display connection failure.");
+		JLog(@"Display connection failure.");
 		self.retortsView.hidden = YES;
 		self.loadFailureMessage.hidden = NO;
 		self.loadFailureMessage.font = [UIFont systemFontOfSize:17.0];
@@ -287,7 +277,7 @@
 	//remove self from notification center...
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
-	NSLog(@"HomeViewController: Unregistered with notification center.");
+	JLog(@"Unregistered with notification center.");
 }
 
 #pragma mark -
@@ -332,7 +322,7 @@
 #pragma mark UIAcceleration delegate method
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration {
 	if ([self didShake:(UIAcceleration *)acceleration]) {
-		NSLog(@"HomeViewController: Shake detected");
+		JLog(@"Shake detected");
 		[self refreshData];
 	}
 }

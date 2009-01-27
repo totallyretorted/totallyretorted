@@ -2,7 +2,8 @@
 //  TRRetortXMLParser.m
 //  Retorted
 //
-//  TO BE REPLACED BY SOMETHING LIKE: http://code.google.com/p/touchcode/wiki/TouchXML
+//  MAY BE REPLACED BY SOMETHING LIKE: http://code.google.com/p/touchcode/wiki/TouchXML
+//	ALSO CHECK OUT APPLE'S SAMPLE CODE: XMLPerformance - COMPARES NSParse AND LOWER LEVEL C ROUTINES
 //
 //  Created by B.J. Ray on 12/9/08.
 //  Copyright 2008 Forward Echo, LLC. All rights reserved.
@@ -50,7 +51,7 @@ int const INVALID_PK = 8;
     [parser setShouldReportNamespacePrefixes:NO];
     [parser setShouldResolveExternalEntities:NO];
 	
-	NSLog(@"RetortXMLParser: Begin Parsing");
+	JLog(@"Begin Parsing");
 	[parser parse];
     
     NSError *parseError = [parser parserError];
@@ -58,7 +59,7 @@ int const INVALID_PK = 8;
         *error = parseError;	//error is handled by calling class
     }
 	
-	NSLog(@"Parsing Complete!");
+	JLog(@"Parsing Complete!");
     [parser release];
 }
 
@@ -67,7 +68,7 @@ int const INVALID_PK = 8;
 
 // Optional:  Use this if there is any preprocessing necessary that isn't handled in the init: method.
 - (void)parserDidStartDocument:(NSXMLParser *)parser {
-	NSLog(@"RetortXMLParser: started parsing document");
+	JLog(@"Started parsing document");
 	//self.currentTextNode = [[NSMutableString alloc] init];
 	
 }
@@ -76,7 +77,7 @@ int const INVALID_PK = 8;
 #pragma mark Start Element parsing
 // Called when the parser encounters a new element.  For Example: <myTag>
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
-	NSLog(@"RetortXMLParser: didStartElement: %@", elementName);
+	JLog(@"didStartElement: %@", elementName);
 	
 	canAppend = YES;
 	if (self.currentTextNode != nil)		//maybe we just send it the message nil?
@@ -154,14 +155,11 @@ int const INVALID_PK = 8;
 		self.currentAttribution = [[TRAttribution alloc] init];
 		return;
 	}
-	
-	//TODO: rating and subtags. rating has a child element with same name. that should be corrected.
-	//NSLog(@"RetortXMLParser: Unknown element: %@.", elementName);
 }
 
 // Called when the parser encounters the closing tag of an element.  For Example: </myTag>
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-	NSLog(@"RetortXMLParser: didEndElement: %@", elementName);
+	JLog(@"didEndElement: %@", elementName);
 	
 	canAppend = NO;
 	
@@ -176,7 +174,7 @@ int const INVALID_PK = 8;
 	//===================
 	if ([elementName isEqualToString:@"retort"]) 
 	{
-		NSLog(@"RetortXMLParser: adding %@ to retorts array: ", [self.currentRetort description]);
+		JLog(@"Adding %@ to retorts array: ", [self.currentRetort description]);
 		[self.retorts addObject:self.currentRetort];
 		self.currentRetort = nil; //same as release - should remain retained by retorts array.
 		return;
@@ -205,7 +203,7 @@ int const INVALID_PK = 8;
 	if ([elementName isEqualToString:@"rating"]) {
 		self.currentRetort.rating = self.currentRating;
 		self.currentRating = nil; //same as release - should be retained by currentRetort.
-		NSLog(@"RetortXMLParser: Added rating");
+		JLog(@"Added rating");
 		return;
 	}
 	
@@ -215,7 +213,7 @@ int const INVALID_PK = 8;
 	// TAGS node...
 	//===================
 	if ([elementName isEqualToString:@"tag"]) {
-		NSLog(@"RetortXMLParser: adding tag to currentRetort");
+		JLog(@"Adding tag to currentRetort");
 		self.currentTag = nil; //same as release - should be retained by currentRetort tag array.
 		return;
 	}
@@ -271,17 +269,17 @@ int const INVALID_PK = 8;
 	{
 		self.currentRetort.attribution = self.currentAttribution;
 		self.currentAttribution = nil; //same as release - should be retained by currentRetort.
-		NSLog(@"RetortXMLParser: Added attribution");
+		JLog(@"Added attribution");
 		return;
 	}
 	
 
-	NSLog(@"RetortXMLParser: Unknown element: %@.", elementName);
+	JLog(@"Unknown element: %@.", elementName);
 }
 
 // Called as periodically as the parser gets the data between a given tag.  This may be called more than once for a given element, so append the data!
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-	NSLog(@"RetortXMLParser: foundCharacters: %@", string);
+	JLog(@"foundCharacters: %@", string);
 	
 	if (canAppend) {
 		[self.currentTextNode appendString:string];
@@ -290,16 +288,7 @@ int const INVALID_PK = 8;
 
 //Optional - use this if there is any clean up or call back (i.e. if we use notifications)
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
-	NSLog(@"RetortXMLParser: parserDidEndDocument");
-	/*
-	
-	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-	NSLog(@"RetortXMLParser: Sending finished notification");
-	NSLog(@"RetortXMLParser: total retort objects: %d", self.retorts.count);
-	[nc postNotificationName:TRXMLRetortDataFinishedLoadingNotification object:self];
-	
-	NSLog(@"RetortXMLParser: callback after xml parse complete notification");
-	*/ 
+	JLog(@"parserDidEndDocument");
 }
 
 #pragma mark -

@@ -137,7 +137,7 @@
 }
 
 - (void)handleDataLoad:(NSNotification *)note {
-	NSLog(@"RetortByTagListViewController:handleDataLoad called!");
+	JLog(@"HandleDataLoad called!");
 	TRRetortFacade *aFacade = [note object];
 	[activityIndicator stopAnimating];
 	
@@ -173,7 +173,7 @@
 	//remove self from notification center...
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc removeObserver:self];
-	NSLog(@"RetortByTagListViewController: Unregistered with notification center.");
+	JLog(@"Unregistered with notification center.");
 }
 
 @end

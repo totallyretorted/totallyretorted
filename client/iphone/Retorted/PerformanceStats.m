@@ -42,7 +42,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 	}
 	self.isDBAvailable = [self prepareDataBase];
 	
-	NSLog(@"PerformanceStats: init");
+	JLog(@"Setup properties");
 	return self;
 }
 
@@ -57,7 +57,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 #pragma mark -
 #pragma mark Configuration of Database
 - (BOOL)prepareDataBase {
-	NSLog (@"PerformanceStats: initializeDB");
+	JLog (@"Initialize DB");
 	// look to see if DB is in known location (~/Documents/$DATABASE_FILE_NAME)
 	NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentFolderPath = [searchPaths objectAtIndex: 0];
@@ -80,7 +80,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 			}
 		}
 	}
-	NSLog (@"PerformanceStats: initializeDB completed");
+	JLog (@"Initialize DB completed");
 	return YES;
 }
 
@@ -90,7 +90,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 	if (dbrc) {
 		return NULL;
 	}
-	NSLog (@"PerformanceStats: getOpenDB");
+	JLog (@"Returning opened DB");
 	return db;
 }
 
@@ -100,7 +100,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 
 //using NULL due to C code (i.e. not obj-c objects)
 - (void)cleanupDBConnection:(sqlite3 *)db {
-	NSLog (@"PerformanceStats: cleanupDBConnection");
+	JLog (@"Clean up DB Connection");
 	if (reset_statement != NULL) {
 		sqlite3_finalize(reset_statement);
 		reset_statement = NULL;
@@ -135,16 +135,16 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 	}
 	sqlite3_close(db);
 	db = NULL;
-	NSLog (@"PerformanceStats: cleanupDBConnection complete");
+	JLog (@"DB closed and statements cleared");
 }
 
 - (BOOL)resetPerformanceStatsDatabase {
-	NSLog (@"PerformanceStats: resetPerformanceStatsDatabase");
+	JLog (@"Reset the PerformanceStats Database");
     sqlite3 *db;
 	BOOL result = NO;
 	int dbrc = sqlite3_open ([self.dbFilePath UTF8String], &db);
 	if (dbrc) {
-		NSLog(@"Failed to reset stats database");
+		JLog(@"Failed to reset stats database");
 		return NO;
 	}
 	//prepare reset statement...
@@ -163,7 +163,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 	}
     // Reset the query for the next use.
 
-	NSLog (@"PerformanceStats: resetPerformanceStatsDatabase complete");
+	JLog (@"PerformanceStats database reset complete");
 	sqlite3_reset(reset_statement);
 	return result;
 }
@@ -171,7 +171,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 #pragma mark -
 #pragma mark Inserting Data
 - (void)saveCurrentStatistics {
-	NSLog (@"PerformanceStats: saveCurrentStatistics");
+	JLog (@"Attempting to save current statistics");
 	double download = [self.downloadStat duration];
 	double parse = [self.parseStat duration];
 	double totalDuration = download + parse;
@@ -181,10 +181,10 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 	int dbrc; // database return code
 	dbrc = sqlite3_open ([self.dbFilePath UTF8String], &db);
 	if (dbrc) {
-		NSLog (@"PerformanceStats: couldn't open db:");
+		JLog (@"Couldn't open db:");
 		return;
 	}
-	NSLog (@"PerformanceStats: opened db");
+	JLog (@"Opened db");
 	
 	// add stuff
 	sqlite3_stmt *dbps; // database prepared statement
@@ -192,19 +192,18 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 								   @"insert into \"%@\" (download_duration, parse_duration, total_duration, data_size, url) values (%f, %f, %f, %d, \"%@\")",
 								   TABLE_NAME, download, parse, totalDuration, self.downloadStat.byteCount, self.downloadStat.url];
 
-	NSLog(@"PerformanceStats: %@", insertStatementNS);
+	JLog(@"Insert statement: %@", insertStatementNS);
 	
 	const char *insertStatement = [insertStatementNS UTF8String];
 	dbrc = sqlite3_prepare_v2 (db, insertStatement, -1, &dbps, NULL);
 	dbrc = sqlite3_step (dbps);		//should return SQLITE_DONE
 	
 	if (dbrc == SQLITE_DONE) {
-		NSLog(@"PerformanceStats: save went as planned.");
+		JLog(@"Save went as planned.");
 	}
 	
 	sqlite3_finalize (dbps);
 	sqlite3_close(db);
-	NSLog (@"PerformanceStats: saveCurrentStatistics complete");
 } 
 
 #pragma mark -
@@ -216,7 +215,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 
 // returns all entries in table and calculates average times for downloading, parsing, and total
 - (double)meanParseTimeForUrl:(NSString *) aUrl {
-	NSLog (@"PerformanceStats: meanParseTimeForUrl");
+	JLog (@"Average Parse Time For Url");
 	sqlite3 *db = [self getOpenDB];
 	
 	//parse times...
@@ -237,7 +236,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 		 NSCAssert1(0, @"Error: failed to execute query with message '%s'.", sqlite3_errmsg(db));
 	 }
 	
-	NSLog (@"PerformanceStats: meanParseTimeForUrl complete");
+	JLog (@"Avg Parse Time For Url complete");
 	
     // Reset the query for the next use.
     sqlite3_reset(mean_parse_time_statement);
@@ -249,7 +248,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 }
 
 - (double)meanDownloadTimeForUrl:(NSString *)aUrl {
-	NSLog (@"PerformanceStats: meanDownloadTimeForUrl");
+	JLog (@"Avg Download Time For Url");
 	
 	double downloadTime = 0.0;
 	sqlite3 *db = [self getOpenDB];
@@ -269,7 +268,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 		NSCAssert1(0, @"Error: failed to execute query with message '%s'.", sqlite3_errmsg(db));
 	}
 	
-	NSLog (@"PerformanceStats: meanDownloadTimeForUrl complete");
+	JLog (@"Avg Download Time For Url complete");
 	
     // Reset the query for the next use.
     sqlite3_reset(mean_download_time_statement);
@@ -281,7 +280,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 }
 
 - (double)meanTotalTimeForUrl:(NSString *)aUrl {
-	NSLog (@"PerformanceStats: meanTotalTimeForUrl");
+	JLog (@"Avg Total Time For Url");
 	
 	double totalTime = 0.0;
 	sqlite3 *db = [self getOpenDB];
@@ -301,7 +300,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 		NSCAssert1(0, @"Error: failed to execute query with message '%s'.", sqlite3_errmsg(db));
 	}
 	
-	NSLog (@"PerformanceStats: meanTotalTimeForUrl");
+	JLog (@"Completed avg total time for Url");
 	
     // Reset the query for the next use.
     sqlite3_reset(mean_total_time_statement);
@@ -313,7 +312,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 }
 
 - (NSUInteger)totalRecordCountForUrl:(NSString *)aUrl {
-	NSLog (@"PerformanceStats: totalRecordCountForUrl");
+	JLog (@"total record count for Url");
 	
 	NSUInteger rowCount = 0;
 	sqlite3 *db = [self getOpenDB];
@@ -333,7 +332,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 		NSCAssert1(0, @"Error: failed to execute query with message '%s'.", sqlite3_errmsg(db));
 	}
 	
-	NSLog (@"PerformanceStats: totalRecordCountForUrl completed");
+	JLog (@" total record count for Url completed");
 	
     // Reset the query for the next use.
     sqlite3_reset(count_statement);
@@ -345,7 +344,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 }
 
 - (NSUInteger)meanByteCountByUrl:(NSString *)aUrl {
-	NSLog (@"PerformanceStats: meanByteCountByUrl");
+	JLog (@"Avg byte count by Url");
 	
 	NSUInteger avgBytes = 0;
 	sqlite3 *db = [self getOpenDB];
@@ -365,7 +364,7 @@ static sqlite3_stmt *mean_byte_count_statement = NULL;
 		NSCAssert1(0, @"Error: failed to execute query with message '%s'.", sqlite3_errmsg(db));
 	}
 	
-	NSLog (@"PerformanceStats: meanTotalTimeForUrl");
+	JLog (@"Avg byte count by url completed");
 	
     // Reset the query for the next use.
     sqlite3_reset(mean_byte_count_statement);

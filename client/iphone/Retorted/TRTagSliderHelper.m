@@ -62,7 +62,7 @@ float const PADDING = 10.0;
 	if (aScrollView == nil) {
 		return;
 	}
-	NSLog(@"TRTagSliderHelper: subview count: %d", [[aScrollView subviews] count]);
+	JLog(@"Subview count: %d", [[aScrollView subviews] count]);
 	//get rid of older subviews...
 	if (controlType == TRTagSliderControlsAsLabels) {
 		[self removeOldLabelSubViewsFromScrollView:aScrollView];
@@ -145,7 +145,7 @@ float const PADDING = 10.0;
 	button.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
 	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
 	
-	NSLog(@"tag: %@", tag);
+	JLog(@"tag: %@", tag);
 	[button setTitle:tag.value forState:UIControlStateNormal];	
 	[button setTitleColor: self.fontColor forState:UIControlStateNormal];
 	
@@ -163,36 +163,6 @@ float const PADDING = 10.0;
 	[button autorelease];
 	return button;
 }
-/*
-- (UIButton *)getButtonFromTag:(TRTag *)tag atX:(CGFloat)xCoord y:(CGFloat)yCoord {
-	UIButton *button = nil;
-	CGSize size = [tag sizeOfNonWrappingTagWithFont:self.font];
-	UIImage *image = [UIImage imageNamed:@"whiteButton.png"];
-	UIImage *imagePressed = [UIImage imageNamed:@"blueButton.png"];
-	
-	CGRect lblFrame = CGRectMake(xCoord, yCoord, size.width+PADDING, size.height);
-	button = [[UIButton alloc] initWithFrame:lblFrame];
-	button.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-	button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
-	
-	NSLog(@"tag: %@", tag);
-	[button setTitle:tag.value forState:UIControlStateNormal];	
-	[button setTitleColor: self.fontColor forState:UIControlStateNormal];
-	
-	UIImage *newImage = [image stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
-	[button setBackgroundImage:newImage forState:UIControlStateNormal];
-	
-	UIImage *newPressedImage = [imagePressed stretchableImageWithLeftCapWidth:12.0 topCapHeight:0.0];
-	[button setBackgroundImage:newPressedImage forState:UIControlStateHighlighted];
-	[button addTarget:tagButtonTarget action:tagButtonSelector forControlEvents:UIControlEventTouchUpInside];
-	
-    // in case the parent view draws with a custom color or gradient, use a transparent color
-	button.backgroundColor = self.backgroundColor; //[UIColor clearColor];
-
-	[button autorelease];
-	return button;
-}
-*/
 
 - (UILabel *)getLabelFromTag:(TRTag *)tag atX:(CGFloat)xCoord y:(CGFloat)yCoord {
 	UILabel *itemLabel = nil;
@@ -202,7 +172,7 @@ float const PADDING = 10.0;
 	CGRect lblFrame = CGRectMake(xCoord, yCoord, size.width+PADDING, size.height);
 	itemLabel = [[UILabel alloc] initWithFrame:lblFrame];
 	itemLabel.text = tag.value;
-	NSLog(@"tag: %@", tag);
+	JLog(@"tag: %@", tag);
 	itemLabel.textAlignment = UITextAlignmentLeft;
 	itemLabel.textColor = self.fontColor;
 	itemLabel.backgroundColor = self.backgroundColor;
@@ -211,112 +181,6 @@ float const PADDING = 10.0;
 	return itemLabel;
 }
 
-
-/*
-- (void)addNewSubViewsToScrollView:(UIScrollView *)aScrollView atX:(float)xCoord y:(float)yCoord {
-	NSUInteger index = 0;
-	//float yCoord = self.origin.y;
-	
-	//loop through all tags that need to be added to tag slider...
-	for(NSString *item in self.tagArray) {
-		UILabel *itemLabel = nil;
-		CGSize textSize = [(NSValue *)[textCGSizes objectAtIndex:index] CGSizeValue];
-		CGRect lblFrame = CGRectMake(xCoord, yCoord, textSize.width+PADDING, textSize.height);
-		
-		itemLabel = [[UILabel alloc] initWithFrame:lblFrame];
-		itemLabel.text = item;
-		NSLog(@"tag: %@", item);
-		itemLabel.textAlignment = UITextAlignmentLeft;
-		itemLabel.textColor = self.fontColor;
-		itemLabel.backgroundColor = self.backgroundColor;
-		itemLabel.font = [UIFont boldSystemFontOfSize:self.fontSize];
-		
-		[aScrollView addSubview:itemLabel];	//add as subview to scrollview
-		[itemLabel release];
-		xCoord += textSize.width + self.horizontalSpacer;
-		index++;
-	}
-}
-
-*/
-
-
-
-
-
-/*
-- (void)buildTagScroller:(UIScrollView *)aScrollView {
-	float xCoord = self.origin.x;
-	float yCoord = self.origin.y;
-	NSUInteger index = 0;
-	NSUInteger subViewIndex = 0;
-	NSUInteger subViewCount = 0;
-	BOOL usingExistingSubView = NO;
-	
-	if (aScrollView == nil) {
-		return;
-	}
-	subViewCount = [[aScrollView subviews] count];
-	
-	//determine total width of content and adjust offset if necessary...
-	float offset = [self getOffsetForTagsForScrollViewWidth:[aScrollView frame].size.width];
-	xCoord += offset;
-	
-	//loop through all tags that need to be added to tag slider...
-	for(NSString *item in self.tagArray) {
-		usingExistingSubView = NO;
-		UILabel *itemLabel = nil;
-		CGSize textSize = [(NSValue *)[textCGSizes objectAtIndex:index] CGSizeValue];
-		CGRect lblFrame = CGRectMake(xCoord, yCoord, textSize.width+PADDING, textSize.height);
-		
-		//check if subviews exist...try and reuse them, if possible...
-		for (NSUInteger i = subViewIndex; i<subViewCount; i++) {
-			id aSubView = [[aScrollView subviews] objectAtIndex:subViewIndex];
-			
-			if ([aSubView isMemberOfClass:[UILabel class]]) {
-				//reuse this object!
-				itemLabel = aSubView;
-				itemLabel.frame = lblFrame;	//adjust the frame accordingly...
-				subViewIndex++;	
-				usingExistingSubView = YES;
-				i = subViewCount;	//exit loop
-			}
-		}
-		
-		if (itemLabel == nil) {
-			//no subview found
-			itemLabel = [[UILabel alloc] initWithFrame:lblFrame];
-		}
-		
-		itemLabel.text = item;
-		NSLog(@"tag: %@", item);
-		itemLabel.textAlignment = UITextAlignmentLeft;
-		itemLabel.textColor = self.fontColor;
-		itemLabel.backgroundColor = self.backgroundColor;
-		itemLabel.font = [UIFont boldSystemFontOfSize:self.fontSize];
-		
-		if (!usingExistingSubView) {
-			[aScrollView addSubview:itemLabel];	//add as subview to scrollview
-			[itemLabel release];
-		}
-		xCoord += textSize.width + self.horizontalSpacer;
-		index++;
-	}
-	
-	//remove any remaining uilabel subviews...
-	if (subViewIndex < subViewCount) {
-		for (NSUInteger i = subViewIndex; i<subViewCount; i++) {
-			id aSubView = [[aScrollView subviews] objectAtIndex:subViewIndex];
-			if ([aSubView isMemberOfClass:[UILabel class]]) {
-				[aSubView removeFromSuperview];
-			}
-		}
-	}
-	//adjust the content size area for the scroller...
-	CGSize scrollSize = CGSizeMake(xCoord, self.scrollerHeight);
-	[aScrollView setContentSize:scrollSize];	
-}
-*/
 
 - (void)dealloc {
 	self.font = nil;
