@@ -1,12 +1,26 @@
 class Retort < ActiveRecord::Base
   belongs_to :attribution
   has_and_belongs_to_many :tags
-  belongs_to :rating
+  has_many :votes
+  
   belongs_to :user
   
   validates_presence_of :content
   validates_uniqueness_of :content
-  validates_associated :attribution, :tags, :rating
+  validates_associated :attribution, :tags
+  
+  def positive
+    self.votes.positive.size
+  end
+  
+  def negative
+    self.votes.negative.size
+  end
+  
+  def rank
+    denom = self.positive.to_f + self.negative.to_f
+    denom == 0 ? 0 : self.positive.to_f / denom
+  end
   
   def short_name(max_length = 20)
     if content.size > max_length
@@ -67,7 +81,10 @@ class Retort < ActiveRecord::Base
     xml.retort(:id => self.id){
       xml.content(self.content)
       self.attribution.to_xml(:builder => xml) unless attribution.nil?
-      self.rating.to_xml(:builder => xml) unless rating.nil?
+      # self.rating.to_xml(:builder => xml) unless rating.nil?
+      xml.positive(self.positive)
+      xml.negative(self.negative)
+      xml.rating(self.rank)
       if tags && tags.count > 0 
         xml.tags{
           tags.each{ |tag| 

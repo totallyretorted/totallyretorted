@@ -1,0 +1,48 @@
+valid_kennys_dad:
+  retort: kennys_dad
+  user: valid
+  value: 1
+
+valid_choc_salty_balls:
+  retort: choc_salty_balls
+  user: valid
+  value: 1
+
+# valid_authoritah:
+#   retort: authoritah
+#   user: valid
+#   value: 1
+
+valid_kill_people:
+  retort: kill_people
+  user: valid
+  value: 1
+
+valid_hippies:
+  retort: hippies
+  user: valid
+  value: 1
+
+valid_afghan_goat:
+  retort: afghan_goat
+  user: valid
+  value: 1
+
+<% 80.times do |i| %>
+user_<%= i %>_authoritah:
+  retort: authoritah
+  user: user_<%= i %>
+  <% if i > 30 %>
+  value: 1
+  <% else %>
+  value: -1
+  <% end %>
+<% end %>
+
+<% 80.times do |i| %>
+user_<%= i %>_afghan_goat:
+  retort: afghan_goat
+  user: user_<%= i %>
+  value: -1
+<% end %>
+

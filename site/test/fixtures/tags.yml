@@ -9,5 +9,6 @@ chef_tag:
 cartman_tag:
   value: cartman
 
-  
+unused:
+  value: unused
     

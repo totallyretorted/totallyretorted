@@ -9,6 +9,13 @@ require 'rake/rdoctask'
 
 require 'tasks/rails'
 
+begin
+  require 'vlad'
+  Vlad.load
+rescue LoadError
+  puts "AAAAAAAAAAARRRRRGGGGHHHHHHH!!!"
+end
+
 rule "" do |t|
   if /(.*)_([^.]+)$/.match(t.name)
     file_name = $1

@@ -3,35 +3,29 @@
 kennys_dad:
   content: Too bad drinking Scotch isn't a paying job or Kenny's dad would be a millionaire!
   attribution: cartman
-  rating: pos_neg_sm
   tags: south_park_tag, cartman_tag
 
 choc_salty_balls:
   content: Lick my chocolate salty balls
   attribution: chef
-  rating: neg_pos_med
   tags: south_park_tag, chef_tag
 
 authoritah:
   content: Respect My Authority!
   attribution: cartman
-  rating: neg_pos_sm
   tags: south_park_tag, cartman_tag
 
 kill_people:
   content: I have sex and I kill people!
   attribution: cartman
-  rating: pos_neg_lg
   tags: south_park_tag, cartman_tag
 
 hippies:
   content: Hippies.They're everywhere. They wanna save the earth, but all they do is smoke pot and smell bad.
   attribution: cartman
-  rating: neg_pos_med
   tags: south_park_tag, cartman_tag
 
 afghan_goat:
   content: It's an Afghanistan goat, so it can't stay here, or else it'll choke on the sweet air of freedom.
   attribution: cartman
-  rating: pos_only
   tags: south_park_tag, cartman_tag

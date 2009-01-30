@@ -11,9 +11,9 @@ class RetortTest < ActiveSupport::TestCase
     #assert_equal 3, r.id
     assert_equal 2, r.tags.count
     assert_equal ["cartman", "south_park"], r.tags.collect{|t| t.value}
-    assert_equal 30, r.rating.positive
-    assert_equal 50, r.rating.negative
-    assert_equal 0.375, r.rating.rating
+    assert_equal 30, r.positive
+    assert_equal 50, r.negative
+    assert_equal 0.375, r.rating
     assert_equal "Eric Cartman", r.attribution.who
     assert_equal "South Park", r.attribution.where
   end
@@ -24,7 +24,7 @@ class RetortTest < ActiveSupport::TestCase
     r.tags << Tag.find_or_create_by_value("south_park")
     r.tags << Tag.find_or_create_by_value("cartman")
     r.attribution = Attribution.new(:who => "Cartman", :where => "South Park")
-    r.rating = Rating.new(:positive => 1, :negative => 0)
+    # r.rating = Rating.new(:positive => 1, :negative => 0)
     r.save!
     
     ctrl = Retort.find_by_content("Screw you guys I'm going home")
@@ -32,8 +32,8 @@ class RetortTest < ActiveSupport::TestCase
     assert_equal 2, ctrl.tags.count
     assert ctrl.attribution
     assert_equal "Cartman", ctrl.attribution.who
-    assert ctrl.rating
-    assert_equal 1, ctrl.rating.positive
+    # assert ctrl.rating
+    # assert_equal 1, ctrl.rating.positive
   end
   
   test "to_xml" do    
@@ -47,7 +47,7 @@ class RetortTest < ActiveSupport::TestCase
     
     r.to_xml
     
-    assert_equal "<retort id=\"123\"><content>Foo</content></retort>", r.to_xml
+    assert_equal "<retort id=\"123\"><content>Foo</content><positive>0</positive><negative>0</negative><rating>0</rating></retort>", r.to_xml
   end
   
   test "deep xml" do
@@ -55,16 +55,17 @@ class RetortTest < ActiveSupport::TestCase
     r.tags << Tag.find_or_create_by_value(:value => "south_park")
     r.tags << Tag.find_or_create_by_value(:value => "cartman")
     r.attribution = Attribution.new(:who => "Cartman", :where => "South Park")
-    r.rating = Rating.new(:positive => 1, :negative => 0)
+    # r.rating = Rating.new(:positive => 1, :negative => 0)
+    r.votes << Vote.new(:user => users(:valid), :value => 1)
     r.save
     
     doc = Hpricot::XML(r.to_xml)
     assert_equal "Screw you guys I'm going home", (doc/:retort/:content).inner_html
     assert_equal "South Park", (doc/:retort/:attribution/:where).inner_html
     assert_equal "Cartman", (doc/:retort/:attribution/:who).inner_html
-    assert_equal 1, (doc/:retort/:rating/:positive).inner_html.to_i
-    assert_equal 0, (doc/:retort/:rating/:negative).inner_html.to_i
-    assert_equal 0, (doc/:retort/:rating/:rating).inner_html.to_i
+    assert_equal 1, (doc/:retort/:positive).inner_html.to_i
+    assert_equal 0, (doc/:retort/:negative).inner_html.to_i
+    assert_equal 1, (doc/:retort/:rating).inner_html.to_i
     tags = doc.search("//retort/tags/tag")
     assert_equal 2, tags.size
     #assert_equal "south_park", (tags[0]/:value).inner_html
@@ -85,11 +86,11 @@ class RetortTest < ActiveSupport::TestCase
         xml.who("Cartman")
         xml.where("South Park")
       end
-      xml.rating(:id => 88) do
+      # xml.rating(:id => 88) do
         xml.positive(1)
         xml.negative(0)
         xml.rating(1)
-      end
+      # end
     end
     
     r = Retort.from_xml(xml)

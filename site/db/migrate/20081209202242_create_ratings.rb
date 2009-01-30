@@ -11,6 +11,7 @@ class CreateRatings < ActiveRecord::Migration
   end
 
   def self.down
+    remove_column :retorts, :rating_id
     drop_table :ratings
   end
 end

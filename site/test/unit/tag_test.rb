@@ -129,7 +129,13 @@ class TagTest < ActiveSupport::TestCase
     
   test "find all alphas" do
     assert_equal ['C', 'S'], Tag.find_all_alphas
-    Tag.new(:value => 'ALPHA').save!
+    t = Tag.new(:value => 'ALPHA')
+    t.retorts << Retort.new(:content => 'something')
+    t.save!
     assert_equal ['A', 'C', 'S'], Tag.find_all_alphas
+  end
+  
+  test "find tags in use" do
+    assert_equal 3, Tag.find_tags_in_use.size
   end
 end

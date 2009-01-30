@@ -11,3 +11,15 @@ valid:
   remember_token_expires_at: <%= 1.days.from_now.to_s :db %>
   remember_token: <%= salt %>
   activated_at: <%= 5.days.ago.to_s :db %>
+  
+<% 80.times do |i| %>
+user_<%= i %>:
+  login: user_<%= i %>
+  email: user_<%= 1 %>@bugmenot.com
+  salt: <%= salt %>
+  crypted_password: <%= User.password_digest('password', salt) %>
+  created_at: <%= 5.days.ago.to_s :db %>
+  remember_token_expires_at: <%= 1.days.from_now.to_s :db %>
+  remember_token: <%= salt %>
+  activated_at: <%= 5.days.ago.to_s :db %>
+<% end %>
