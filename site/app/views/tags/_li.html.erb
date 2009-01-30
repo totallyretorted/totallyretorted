@@ -1,4 +1,4 @@
 <li>
-	<span class="qr"><img onclick="" src="/images/gt.png"></span>
-	<%= link_to "#{t.value} (#{t.weight})", tag_path(t) %>
+	<img src="/images/gt.png">
+	<%= link_to "#{t.value} (#{t.weight})", tag_path(t), :title => "View " + t.value + " retorts" %>
 </li>

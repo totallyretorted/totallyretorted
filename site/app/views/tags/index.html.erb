@@ -2,7 +2,7 @@
 <div style="width: 100%;" class="corn">
 	<div class="corn-bd">
 		<% if @tags and @tags.size > 0 %>
-		<ul class="pop">
+		<ul class="taglist">
 			<% for tag in @tags %>
 				<%= render :partial => "li", :locals => { :t => tag } %>
 			<% end %>

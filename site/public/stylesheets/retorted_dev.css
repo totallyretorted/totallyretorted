@@ -1,31 +1,8 @@
-.heading{ font-size:400%; font-weight:700;color:#fff;}
-
-a:link{
-  color:#01b0f0;
-  text-decoration:none;
-}
-a:visited{
-  color:#01b0f0;
-  text-decoration:none;
-}
-a:hover{
-  text-decoration:underline;
-/*  color:#ff358B;*/
-}
-
-#toolbar{ 
-  padding-bottom:20px;
-  margin-bottom:21px;
-}
-
-#toolbar_main{
-}
-
 #toolbar_extras{
   position:relative;
   top:23px;
 }
-
+/*
 .paging_control {
   padding:0;
   margin:0 auto;
@@ -41,6 +18,7 @@ a:hover{
 .paging_control span.current{
   background: transparent no-repeat 50% 50%; 
 }
+*/
 
 .center{
   text-align:center !important;

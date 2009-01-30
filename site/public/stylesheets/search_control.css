@@ -1,10 +1,11 @@
 .search_wrapper, .search_wrapper *{
-  margin: 0;
-  padding: 0;
-  font-family: Arial,sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+	margin: 0;
+	padding: 0;
+	font-family: Arial,sans-serif;
+	font-size: 13px;
+	line-height: 18px;
 	position: relative;
+	z-index:999;
 }
 
 .search_wrapper{
@@ -106,9 +107,11 @@
 }
 
 #quick_search{
+/*	
   z-index:99;
-  float:right;
   left:150px;
+*/
+	top:25px;
   width:150px;
   background-color:white;
 }

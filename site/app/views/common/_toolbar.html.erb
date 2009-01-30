@@ -1,30 +1,25 @@
 <div id="toolbar">
-	<div id="toolbar_main">
-		<div id="controls">
-			<% ['new'].each do |mthd| %>
-				<% if logged_in? and controller.respond_to?("#{mthd}_remote") == true %>
-					<%= render :partial => "common/#{mthd}_control" %>
-				<% end %>
-			<% end %>
-		</div>
-		<div id="search">
-			<%= render :partial => "common/search_control" %>
-		</div>
-	</div>
-	<div id="toolbar_extras">
-		<% if @alphabar %>
-		<div id="alphabar" class="paging_control apple_pagination">
-			<% (["#"]+(65..90).collect{ |i| i.chr }).each do |ltr| %>
-				<% if @alphabar.include?(ltr) %>
-					<%=	link_to ltr, :action => 'alpha', :letter => ltr	%>
-				<% else %>
-					<span class="disabled"><%= ltr %></span>
-				<% end %>
-			<% end %>
-		</div>
-		<% end %>
-		<% if @paginate %>
-		<%= will_paginate @listing, :id => 'pagebar', :class => 'paging_control apple_pagination' %>
+	<div id="controls">
+		<% if logged_in? and controller.respond_to?("new_remote") == true %>
+			<%= link_to_remote_redbox image_tag('add.png', :title => "New #{controller.controller_name.singularize.capitalize}"), 
+				:url => { :action => 'new_remote' },
+				:html => { :class => 'lightbox' }
+			-%>
 		<% end %>
 	</div>
+	<% if @alphabar %>
+	<div id="alphabar" class="paging">
+		<% (["#"]+(65..90).collect{ |i| i.chr }).each do |ltr| %>
+			<% if @alphabar.include?(ltr) %>
+				<%=	link_to ltr, :action => 'alpha', :letter => ltr	%>
+			<% else %>
+				<span class="disabled"><%= ltr %></span>
+			<% end %>
+		<% end %>
+	</div>
+	<% end %>
+	<% if @paginate %>
+	<%= will_paginate @listing, :id => 'pagebar', :class => 'paging' %>
+	<% end %>
+	<%= render :partial => "common/search_control" %>
 </div>

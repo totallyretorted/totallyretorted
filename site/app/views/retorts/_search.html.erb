@@ -1,4 +1,4 @@
-<ul>
+<ul class="results">
 <% if @results and not @results.empty? %>
 	<% @results.each do |retort| %>
 	<li><%= link_to retort.short_name, retort_path(retort) %></li>

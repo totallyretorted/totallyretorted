@@ -6,11 +6,10 @@ body {background:#000 url(/images/bg-black-grad.jpg) repeat-x;min-height:768px;f
 #hd #top_menu {font-size:161%;color:#FDE92B;margin:2em 0;}
 #hd #top_menu a {color:#ED1164;text-decoration:none;padding:0.25em;}
 #hd #top_menu a:hover {background-color:#FDE92B;}
-
 /* end { header } */
 /* start { body } */
 #bd {padding:2em 0 4em;color:#7f7772;}
-/* start { hollah } */
+/* start { hollah (aka notification: ajax, no, ok, fubar, fyi) } */
 #hollah {color:#fff;font-size:200%;line-height:150%;padding-left:60px;margin:-2em 0 16px;}
 #hollah div.icon {width:48px;height:48px;float:left;margin-left:-60px;}
 #hollah.ajax div.icon {background:url(/images/ajax.gif) no-repeat;}
@@ -23,78 +22,56 @@ body {background:#000 url(/images/bg-black-grad.jpg) repeat-x;min-height:768px;f
 #hollah.fyi {color:#77c5cf;}
 #hollah.fyi div.icon {background:url(/images/i-fyi.png) no-repeat;}
 /* end { hollah } */
-/* start screen0  */
-ul.pop {
-	width: 100%;
-	font-size: 200%;
-}
-.pop li {
-	border-bottom:2px solid #eee;
-	padding:0.5em 0;
-	margin: 0 70px 0 50px;
-	text-indent: -45px;
-	list-style: disc url(/images/ql.png) inside;
-}
-.pop li:last-child {
-	border-bottom:0; /* Most CSS3 selectors are not supported in IE(any), sigh. */
-}
-.pop li a {
-	color:#01B0F0;
-	text-decoration:none;
-}
-.pop span.qr {
-	position:absolute;
-	right:15px;
-	background:url(/images/qr.png) no-repeat 0 2px;
-	line-height:200%;
-}
-.uno span.qr {
-	width:32px;
-}
-.pop span.qr img {
-	margin-left:95px;
-}
+/* start { toolbar } */
+#toolbar{width:100%;height:48px;}
+#toolbar #controls {width:144px;float:left;}
+#toolbar #paging, #toolbar #alphabar {width:600px;float:left;}
+/*
+#toolbar #search2 {width:144px;float:right;}
+*/
+/* end { tooldbar } */
+/* start { heading } */
+.heading {font-size:300%;font-weight:700;color:#fff;}
+/* end { heading } */
+/* start { paging } */
+div.paging {font-size:167%;text-align:center;}
+div.paging a, div.paging span {margin: 0 0.05em;}
+/* end { paging } */
+/* start { retort list } */
+ul.pop {width: 100%;font-size: 200%;}
+.pop li {border-bottom:2px solid #eee;padding:0.5em 0;margin: 0 70px 0 50px;text-indent: -45px;list-style: disc url(/images/ql.png) inside;}
+.pop li:last-child {border-bottom:0; /* Most CSS3 selectors are not supported in IE(any), sigh. */}
+.pop li a,div.paging a {color:#01B0F0;text-decoration:none;}
+.pop li a:hover,div.paging a:hover {text-decoration:underline;}
+.pop span.qr {position:absolute;right:15px;background:url(/images/qr.png) no-repeat 0 2px;line-height:200%;}
+.uno span.qr {width:32px;}
+.pop span.qr img {margin-left:95px;}
+/* end { retort list }  */
+/* start { tag list } */
+ul.taglist {width: 100%;font-size: 200%;}
+.taglist li {border-bottom:2px solid #eee;padding:0.5em 0;margin: 0 70px 0 25px;text-indent: 0px;list-style: none inside;}
+.taglist li:last-child {border-bottom:0; /* Most CSS3 selectors are not supported in IE(any), sigh. */}
+.taglist li a {color:#01B0F0;text-decoration:none;}
+.taglist img {position:absolute;right:25px;line-height:200%;margin-left:95px;}
+/* end { tag list } */
+/* start { results } */
+ul.results {width: 100%;font-size: 200%;background:#323232;border:1px solid #000;}
+.results li {border-bottom:1px solid #eee;padding:0.5em 0;margin:0.25em;text-indent: 0px;font-family: Georgia, "Times New Roman", Times, serif;}
+.results li:last-child {border-bottom:0; /* Most CSS3 selectors are not supported in IE(any), sigh. */}
+.results li a {color:#01B0F0;text-decoration:none;}
+/* end { results } */
 /* start { cloud } */
-div.cloud {
-	font-size:100%;
-	margin-top:2em;
-	text-align:center;
-}
-div.cloud a {
-	text-decoration:none;
-	padding:0 0.25em;
-}
-div.cloud a:hover {
-	background-color:#FDE92B;
-}
-div.cloud a.t1 {
-	color:#74c343;
-	font-size:300%;
-}
-div.cloud .t2 {
-	color:#01B0F0;
-	font-size:250%;
-}
-div.cloud .t3 {
-	color:#FF931E;
-	font-size:200%;
-}
-div.cloud .t4 {
-	color:#ED1164;
-	font-size:150%;
-}
+div.cloud {font-size:100%;margin-top:2em;text-align:center;}
+div.cloud a {text-decoration:none;padding:0 0.25em;}
+div.cloud a:hover {background-color:#FDE92B;}
+div.cloud a.t1 {color:#74c343;font-size:300%;}
+div.cloud .t2 {color:#01B0F0;font-size:250%;}
+div.cloud .t3 {color:#FF931E;font-size:200%;}
+div.cloud .t4 {color:#ED1164;font-size:150%;}
 /* end { cloud } */
-/* start { metadata } */
-.metadata{
-	font-size:small;
-	margin-left:50%;
-	width:50%;
-}
-#rating{
-	margin-top:1em;
-	color:#999;
-}
-
+/* start { metadata (aka attrib) } */
+.metadata{font-size:small;margin-left:50%;width:50%;}
+#rating{margin-top:1em;color:#999;}
 /* end { metadata } */
 /* start { footer } */
 #ft {color:#666;text-align:center;}
