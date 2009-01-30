@@ -25,7 +25,7 @@ class AddThoughtsyndicateUsers < ActiveRecord::Migration
       u.activate!      
     end
   end
-
+  
   def self.down
     @@ts.each do |h|
       User.find_by_login(h[:login]).delete

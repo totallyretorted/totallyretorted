@@ -1,9 +1,17 @@
 require 'fastercsv'
 
+class Rating < ActiveRecord::Base; end
+
+class Retort < ActiveRecord::Base
+  belongs_to :rating
+  belongs_to :attribution
+  has_and_belongs_to_many :tags
+end
+
 class LoadRetortData < ActiveRecord::Migration
   def self.up
     clear_data
-    
+        
     FasterCSV.foreach(File.join(File.dirname(__FILE__), "..", "data", ENV['RAILS_ENV'] || 'development', 'retorts.csv'), {:headers => :first_row}) do |row|
       retort = Retort.new(:content => row["retort"])
       row["tags"].split(/,\s*/).each do |tag|
@@ -24,7 +32,7 @@ class LoadRetortData < ActiveRecord::Migration
   end
 
   def self.down
-    clear_data
+    # clear_data
   end
   
   def self.clear_data

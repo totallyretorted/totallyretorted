@@ -72,30 +72,63 @@ namespace :data do
     # Fixtures.create_fixtures(dir, %w{ attributions ratings retorts tags })
   end
   
+  desc "load user data"
+  task (:load_user_data => :base_load_data) do
+    # class UserObserver < ActiveRecord::Observer
+    #      def after_create(user)
+    #        user.reload
+    #      end
+    # 
+    #      def after_save(user)
+    #        user.reload
+    #      end
+    #    end
+    #    
+    #    @@ts = [
+    #      {:login => 'adam.strickland', :email => 'adam.strickland@gmail.com', :password => 'supragen1us'},
+    #      {:login => 'jay.walker', :email => 'mr_calamari@yahoo.com', :password => 'uravag'},
+    #      {:login => 'shant.donabedian', :email => 'shantd@gmail.com', :password => 'n0catchphrase'},
+    #      {:login => 'bj.ray', :email => 'bjandraney@mac.com', :password => '1amgay'},
+    #      {:login => 'alex.jo', :email => 'me@alexjo.net', :password => 'ohsosp1cy'},
+    #    ]
+    #    @@ts.each do |h|
+    #      u = User.new(:login => h[:login], :email => h[:email], :password => h[:password], :password_confirmation => h[:password])
+    #      u.save
+    #      u.activate!      
+    #    end
+    #    
+    #    pwd = 'k0w@bung@!!1!'
+    #    u = User.new(:login => 'system', :email => 'system@totallyretorted.com', :password => pwd, :password_confirmation => pwd)
+    #    u.save
+  end
+  
   desc "load base data from a CSV; assumes header row and appropriately named columns" 
-  task (:load_from_csv => :base_load_data) do
-    file = ENV['file'] || "#{RAILS_ROOT}/db/data.csv"
-    require 'fastercsv'
-    options = {}
-    options[:headers] = :first_row
-    FasterCSV.foreach(file, options) do |row|
-      retort = Retort.new(:content => row["retort"])
-      row["tags"].split(/,\s*/).each do |tag|
-        retort.tags << Tag.find_or_create_by_value(tag)
-      end
-      retort.rating = Rating.new(:positive => 1)
-      if(row["who"] or row["what"] or row["where"] or row["when"] or row["how"])
-        a = Attribution.new
-        a.who = row["who"]
-        a.when = row["when"]
-        a.what = row["what"]
-        a.where = row["where"]
-        a.how = row["how"]
-        retort.attribution = a
-      end
-      retort.save
-    end
-    puts "loading CSV #{file}"
+  task (:load_from_csv => [:base_load_data, :load_user_data]) do
+    puts "task has been deprecated"
+    # admin_user = User.find_by_login('system')
+    #   
+    #   file = ENV['file'] || "#{RAILS_ROOT}/db/data.csv"
+    #   require 'fastercsv'
+    #   options = {}
+    #   options[:headers] = :first_row
+    #   FasterCSV.foreach(file, options) do |row|
+    #     retort = Retort.new(:content => row["retort"])
+    #     row["tags"].split(/,\s*/).each do |tag|
+    #       retort.tags << Tag.find_or_create_by_value(tag)
+    #     end
+    #     retort.votes << Vote.new(:user => admin_user, :value => 1)
+    #     if(row["who"] or row["what"] or row["where"] or row["when"] or row["how"])
+    #       a = Attribution.new
+    #       a.who = row["who"]
+    #       a.when = row["when"]
+    #       a.what = row["what"]
+    #       a.where = row["where"]
+    #       a.how = row["how"]
+    #       retort.attribution = a
+    #     end
+    #     retort.save
+    #   end
+    #   puts "loading CSV #{file}"
   end
 private
   def invoke(taskname)

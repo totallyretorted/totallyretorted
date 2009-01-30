@@ -38,17 +38,17 @@ class SessionsController < ApplicationController
 
   def create
     logout_keeping_session!
-    respond_to do |format|
-      format.xml do
-        xml = Builder::XmlMarkup.new()
-        xml.failed{
-          xml.reason{
-            "invalid client type"
-          }
-        }
-        render :xml => xml, :status => :forbidden
-      end
-      format.html do
+    # respond_to do |format|
+    #   format.xml do
+    #     xml = Builder::XmlMarkup.new()
+    #     xml.failed{
+    #       xml.reason{
+    #         "invalid client type"
+    #       }
+    #     }
+    #     render :xml => xml, :status => :forbidden
+    #   end
+    #   format.html do
         user = User.authenticate(params[:login], params[:password])
         if user
           # Protects against session fixation attacks, causes request forgery
@@ -67,8 +67,8 @@ class SessionsController < ApplicationController
           @remember_me = params[:remember_me]
           render :action => 'new'
         end
-      end
-    end
+    #   end
+    # end
   end
 
   def destroy

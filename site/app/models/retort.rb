@@ -17,7 +17,7 @@ class Retort < ActiveRecord::Base
     self.votes.negative.size
   end
   
-  def rank
+  def rating
     denom = self.positive.to_f + self.negative.to_f
     denom == 0 ? 0 : self.positive.to_f / denom
   end
@@ -84,7 +84,7 @@ class Retort < ActiveRecord::Base
       # self.rating.to_xml(:builder => xml) unless rating.nil?
       xml.positive(self.positive)
       xml.negative(self.negative)
-      xml.rating(self.rank)
+      xml.rating(self.rating)
       if tags && tags.count > 0 
         xml.tags{
           tags.each{ |tag| 

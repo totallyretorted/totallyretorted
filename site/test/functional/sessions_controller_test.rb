@@ -16,11 +16,11 @@ class SessionsControllerTest < ActionController::TestCase
     assert_response :not_acceptable
   end
   
-  test "check create action disabled for restful clients" do
-    authorize_as(:valid)
-    post :create, :format => 'xml'
-    assert_response :forbidden  
-  end
+  # test "check create action disabled for restful clients" do
+  #   authorize_as(:valid)
+  #   post :create, :format => 'xml'
+  #   assert_response :forbidden  
+  # end
   
   test "check verify disabled for browser clients" do
     login_as(:valid)
