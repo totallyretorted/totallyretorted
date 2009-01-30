@@ -77,8 +77,9 @@ class RetortsController < ApplicationController
   # POST /retorts.xml
   def create
     @retort = Retort.new(params[:retort])
-    @retort.rating = Rating.new
-    @retort.rating.vote(true)
+    # @retort.rating = Rating.new
+    # @retort.rating.vote(true)
+    @retort.votes << Vote.new(:user => current_user, :value => 1)
     unless params[:tags].nil? 
       params[:tags][:value].split(/,\s?/).each do |t|
         @retort.tags << Tag.find_or_create_by_value(t)

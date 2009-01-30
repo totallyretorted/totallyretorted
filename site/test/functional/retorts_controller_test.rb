@@ -62,7 +62,7 @@ class RetortsControllerTest < ActionController::TestCase
       post :create, {:retort => { :content => 'this is a test' }}
     end
     retort = assigns(:retort)
-    assert retort.rating
+    assert_equal 1, retort.votes.size
     assert_equal 0, retort.tags.size
     assert_redirected_to retort_path(retort)
   end
@@ -78,7 +78,7 @@ class RetortsControllerTest < ActionController::TestCase
     end
     assert_response :success
     retort = assigns(:retort)
-    assert retort.rating
+    assert_equal 1, retort.votes.size
     assert_equal 0, retort.tags.size
     #assert_redirected_to retort_path(retort)
     assert_response 201
@@ -90,7 +90,7 @@ class RetortsControllerTest < ActionController::TestCase
       post :create, {:retort => { :content => 'this is also a test' }, :tags => { :value => 'one' }}
     end
     retort = assigns(:retort)
-    assert retort.rating
+    assert_equal 1, retort.votes.size
     assert retort.tags
     assert_equal 1, retort.tags.size
     assert_redirected_to retort_path(retort)
@@ -102,7 +102,7 @@ class RetortsControllerTest < ActionController::TestCase
       post :create, {:retort => { :content => 'this is another test' }, :tags => { :value => 'one, two' }}
     end    
     retort = assigns(:retort)
-    assert retort.rating
+    assert_equal 1, retort.votes.size
     assert retort.tags
     assert_equal 2, retort.tags.size
     assert_redirected_to retort_path(retort)
@@ -114,7 +114,7 @@ class RetortsControllerTest < ActionController::TestCase
       post :create, {:retort => { :content => 'this is one more test' }, :tags => { :value => 'one and two, two, three' }, :attribution => { :who => 'fred'}}
     end  
     retort = assigns(:retort)
-    assert retort.rating
+    assert_equal 1, retort.votes.size
     assert retort.attribution
     assert retort.tags
     assert_equal 3, retort.tags.size
