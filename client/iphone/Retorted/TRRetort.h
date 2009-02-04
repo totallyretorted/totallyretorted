@@ -7,24 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TRRating;
 @class TRAttribution;
 
 @interface TRRetort : NSObject {
 	NSString *content;
 	TRAttribution *attribution;
-	TRRating *rating;
 	NSMutableArray *tags;
 	NSNumber *primaryId;
-	
+	NSUInteger positive;
+	NSUInteger negative;
 }
 
 - (NSArray *)attributionListAsStringArray;		//convenience method so classes don't have to know about attribution
 
 @property (nonatomic, retain) NSString *content;
 @property (nonatomic, retain) TRAttribution *attribution;
-@property (nonatomic, retain) TRRating *rating;
 @property (nonatomic, retain) NSMutableArray *tags;
 @property (nonatomic, retain) NSNumber *primaryId;
-
+@property NSUInteger positive;
+@property NSUInteger negative;
 @end

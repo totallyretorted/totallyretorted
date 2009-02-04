@@ -28,7 +28,8 @@ typedef enum {
 	CGPoint origin;					// 20.0, 20.0
 	UIColor *fontColor;				// black
 	UIColor *backgroundColor;		// white
-	UIFont *font;					// systemFontOfSize 21
+	UIFont *font;					// Georgia font of size 21
+	BOOL displayBackgroundImage;	// NO
 	
 	//This parameter should not be set externally.  To configure, use
 	//	the method - controlTypeAsButtonWithTarget: selector:
@@ -48,23 +49,8 @@ typedef enum {
 // Begins the process of building the slider by removing old views and adding new controls
 //	as subviews to the UIScrollView that is passed in.
 - (void)buildTagScroller:(UIScrollView *)aScrollView;
+//- (void)buildTagScroller:(UIScrollView *)aScrollView withBackgroundImage:(BOOL)displayBackground;
 
-
-//INTERNAL METHODS - SHOULD NOT BE CALLED DIRECTLY
-// Calculates the x-offset if all tags are viewable (i.e. an attempt to center)
-- (float)getOffsetForTagsForScrollViewWidth: (float)scrollWidth;
-
-// Creates a UILabel at a given point from a given TRTag object.
-- (UILabel *)getLabelFromTag:(TRTag *)tag atX:(CGFloat)xCoord y:(CGFloat)yCoord;
-
-// Creates a TRTagButton at a given point from a given TRTag object.
-- (TRTagButton *)getButtonFromTag:(TRTag *)tag atX:(CGFloat)xCoord y:(CGFloat)yCoord;
-
-// Removes old UILabel subviews from UIScrolView
-- (void)removeOldLabelSubViewsFromScrollView:(UIScrollView *)aScrollView;
-
-// Removes old TRTagButton subviews from UIScrolView
-- (void)removeOldButtonSubViewsFromScrollView:(UIScrollView *)aScrollView;
 
 @property float horizontalSpacer;
 @property float scrollerHeight;
@@ -73,5 +59,6 @@ typedef enum {
 @property (nonatomic, retain) UIColor *fontColor;
 @property (nonatomic, retain) NSArray *tagArray;
 @property (nonatomic, retain) UIColor *backgroundColor;
+@property BOOL displayBackgroundImage;
 
 @end

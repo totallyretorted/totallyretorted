@@ -16,7 +16,6 @@
 // Model class inclusion
 #import "TRRetort.h"
 #import "TRTag.h"
-#import "TRRating.h"
 
 
 #define kFilteringFactor 0.1			// Constant for the high-pass filter.
@@ -207,16 +206,18 @@
 	
 	if (self.slider == nil) {
 		self.slider = [[TRTagSliderHelper alloc] initWithTagArray:tags];
-		self.slider.font = [UIFont systemFontOfSize:21.0];
+		//self.slider.font = [UIFont systemFontOfSize:21.0];
 		self.slider.fontColor = [UIColor whiteColor];
-		self.slider.backgroundColor = [UIColor blackColor];
+		//self.slider.backgroundColor = [UIColor blackColor];
+		self.slider.displayBackgroundImage = YES;
 		[self.slider controlTypeAsButtonWithTarget:self selector:@selector(handleTagSliderButtonClick:)];
 	} else {
 		self.slider.tagArray = tags;
 	}
 	
+	
 	[tags release];
-	[slider buildTagScroller:self.tagSlider];
+	[self.slider buildTagScroller:self.tagSlider];
 }
 
 #pragma mark -

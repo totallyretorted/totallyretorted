@@ -8,12 +8,11 @@
 
 #import "TRRetort.h"
 #import "TRAttribution.h"
-#import "TRRating.h"
 #import "TRTag.h"
 
 @implementation TRRetort
 @synthesize content;
-@synthesize attribution, tags, rating;
+@synthesize attribution, tags, positive, negative;
 @synthesize primaryId;
 
 -(id)init {
@@ -36,7 +35,6 @@
 	[content release];
 	[attribution release];
 	[tags release];
-	[rating release];
 	[primaryId release];
 	
 	[super dealloc];

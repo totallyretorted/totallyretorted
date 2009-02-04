@@ -22,11 +22,16 @@
 	IBOutlet UIView *footerView;
 	IBOutlet UIButton *reset;
 	IBOutlet UIButton *sendStats;
-	
 	NSMutableDictionary *tempValues;
-	PerformanceStats *statsHelper;
+	
+	
 @private
+	PerformanceStats *statsHelper;
 	BOOL refeshTableNeeded;
+	UITextField *userNameField;
+	UITextField *passwordField;
+	UILabel *settingsSectionLabel;
+	UILabel *statsSectionLabel;
 }
 
 @property (nonatomic, retain) UITextField *textFieldBeingEdited;
@@ -34,7 +39,6 @@
 @property (nonatomic, retain) UIView *footerView;
 @property (nonatomic, retain) UIButton *reset;
 @property (nonatomic, retain) UIButton *sendStats;
-@property (nonatomic, retain) PerformanceStats *statsHelper;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)save:(id)sender;

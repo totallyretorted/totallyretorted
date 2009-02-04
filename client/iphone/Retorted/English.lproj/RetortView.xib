@@ -115,6 +115,8 @@
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
+						<int key="IBUIIndicatorStyle">1</int>
 						<bool key="IBUIBouncesZoom">NO</bool>
 					</object>
 				</object>
@@ -263,7 +265,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>RetortViewController</string>
 					<string>UIResponder</string>
-					<string>{{169, 376}, {320, 480}}</string>
+					<string>{{364, 376}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -326,14 +328,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>ratingVote</string>
 							<string>retortContainer</string>
-							<string>tagCloud</string>
 							<string>tagSlider</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UISegmentedControl</string>
 							<string>UIScrollView</string>
-							<string>UIWebView</string>
 							<string>UIScrollView</string>
 						</object>
 					</object>
@@ -345,7 +345,7 @@
 			</object>
 		</object>
 		<int key="IBDocument.localizationMode">0</int>
-		<string key="IBDocument.LastKnownRelativeProjectPath">Retorted.xcodeproj</string>
+		<string key="IBDocument.LastKnownRelativeProjectPath">../Retorted.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 	</data>
 </archive>

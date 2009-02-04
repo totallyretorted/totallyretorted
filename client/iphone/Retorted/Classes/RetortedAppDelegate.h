@@ -9,13 +9,15 @@
 #import <UIKit/UIKit.h>
 @class PerformanceStats;
 @class Statistic;
+@class TRUser;
 
 @interface RetortedAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
     UITabBarController *tabBarController;
+	TRUser *currentUser;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-
+@property (nonatomic, retain) TRUser *currentUser;
 @end

@@ -10,7 +10,6 @@
 #import "TRRetortXMLParser.h"
 #import "TRRetort.h"
 #import "TRTag.h"
-#import "TRRating.h"
 #import "TRAttribution.h"
 
 @interface TRRetortXMLParserTest : SenTestCase {

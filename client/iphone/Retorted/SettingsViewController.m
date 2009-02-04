@@ -8,10 +8,19 @@
 
 #import "SettingsViewController.h"
 #import "PerformanceStats.h"
+#import "TRSettingsFacade.h"
+
+//#import "TRUser.h"
+//#import "TRAuthenticationHelper.h"
 
 //private methods and classes
 @interface SettingsViewController()
 @property BOOL refeshTableNeeded;
+@property (nonatomic, retain) PerformanceStats *statsHelper;
+@property (nonatomic, retain) UITextField *userNameField;
+@property (nonatomic, retain) UITextField *passwordField;
+@property (nonatomic, retain) UILabel *settingsSectionLabel;
+@property (nonatomic, retain) UILabel *statsSectionLabel;
 
 - (void)setupSettingsCell:(UITableViewCell *)cell;
 - (void)configureSettingsCell:(UITableViewCell *)cell atRow:(NSUInteger)row;
@@ -25,7 +34,8 @@
 @synthesize textFieldBeingEdited, tempValues;
 @synthesize footerView, reset, sendStats, statsHelper;
 @synthesize refeshTableNeeded;
-
+@synthesize userNameField, passwordField;
+@synthesize settingsSectionLabel, statsSectionLabel;
 
 - (void)viewDidLoad {
 	self.title = NSLocalizedString(@"Settings", @"Title for the nav bar on the settings view screen");
@@ -52,7 +62,32 @@
 	
 }
 
-
+- (void)awakeFromNib {
+	
+	NSString *title = NSLocalizedString(@"User Settings:", @"User settings section header");
+	UIFont *aFont = [UIFont fontWithName:@"Georgia" size:17.0];
+	CGSize sectionSize = [title sizeWithFont:aFont];
+	CGRect sectionRect = CGRectMake(0, 0, sectionSize.width, sectionSize.height+20.0);
+	
+	//set label for settings section...
+	self.settingsSectionLabel = [[UILabel alloc] initWithFrame:sectionRect];
+	self.settingsSectionLabel.textColor = [UIColor whiteColor];
+	self.settingsSectionLabel.backgroundColor = [UIColor blackColor];
+	self.settingsSectionLabel.text = title;
+	self.settingsSectionLabel.font = aFont;
+	
+	
+	//set label for data stats section...
+	title = @"Data Statistics:";
+	sectionSize = [title sizeWithFont:aFont];
+	sectionRect = CGRectMake(0, 0, sectionSize.width, sectionSize.height+20.0);
+	
+	self.statsSectionLabel = [[UILabel alloc] initWithFrame:sectionRect];
+	self.statsSectionLabel.textColor = [UIColor whiteColor];
+	self.statsSectionLabel.backgroundColor = [UIColor blackColor];
+	self.statsSectionLabel.text = title;
+	self.statsSectionLabel.font = aFont;
+}
 
 - (void)viewWillAppear:(BOOL)animated {
 	if (self.refeshTableNeeded) {
@@ -78,6 +113,18 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)dealloc {
+	self.textFieldBeingEdited = nil;
+	self.footerView = nil;
+	self.reset = nil;
+	self.sendStats = nil;
+	self.userNameField = nil;
+	self.passwordField = nil;
+	[tempValues release];
+	[statsHelper release];
+    [super dealloc];
 }
 
 #pragma mark Table view methods
@@ -149,6 +196,41 @@
 - (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	return nil;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+	
+	return self.settingsSectionLabel.frame.size.height;
+//	CGFloat height = 0.0;
+//	switch (section) {
+//		case 0:
+//			height = self.settingsSectionLabel.frame.size.height+10.0;
+//			break;
+//		case 1:
+//			height = self.statsSectionLabel.frame.size.height+10.0;
+//		default:
+//			height = 80.0;
+//			break;
+//	}
+//	
+//	return height;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+	
+	switch (section) {
+		case 0:
+			return self.settingsSectionLabel;
+			
+			break;
+		case 1:
+			return self.statsSectionLabel;
+			break;
+		default:
+			return [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+			break;
+	}
+}
+
 #pragma mark Text Field Delegate Methods
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
 	self.textFieldBeingEdited = textField;
@@ -159,13 +241,6 @@
 	[tagAsNum release];		
 }
 
-
-- (void)dealloc {
-	[textFieldBeingEdited release];
-	[tempValues release];
-	[statsHelper release];
-    [super dealloc];
-}
 
 #pragma mark -
 #pragma mark Custom Helper Methods
@@ -213,6 +288,7 @@
 			} else {
 				textField.placeholder = NSLocalizedString(@"Enter Email Here","Placeholder text requesting email address in settings table cell");
 			}
+			self.userNameField = textField;	//hold reference for later use
 			break;
 		case kPasswordRowIndex:
 			label.text = NSLocalizedString(@"Password", @"The label 'Password' for settings table cell");
@@ -223,6 +299,8 @@
 			else
 				//textField.text = @"Test Data";
 				textField.placeholder = NSLocalizedString(@"Enter Password Here", "Placeholder text requesting password in settings table cell");
+			
+			self.passwordField = textField;	//hold reference for later use
 			break;
 		default:
 			break;
@@ -294,7 +372,29 @@
 }
 
 - (IBAction)save:(id)sender {
-	JLog(@"Initiate save action");
+	NSString *userStr = self.userNameField.text;
+	NSString *pwd = self.passwordField.text;
+	JLog(@"Initiate save action for %@", userStr);
+	TRSettingsFacade *facade = [[TRSettingsFacade alloc] init];
+	
+	BOOL success = [facade loginWithUserName:userStr password:pwd];
+	[facade release];
+	
+	NSString *msg = nil;
+	
+	if (success) {
+		msg = [NSString localizedStringWithFormat:@"Successful logging into TotallyRetorted.com.", "Login success message"];
+	} else {
+		msg = [NSString	localizedStringWithFormat:@"Failed logging into TotallyRetorted.com. Please visit the site to setup or administer your account.", @"Login failure message"];
+		self.userNameField.text = nil;
+		self.passwordField.text = nil;
+	}
+	
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login to TotallyRetorted.com",@"Login alert box") message:msg
+												   delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Ok button for login alert") otherButtonTitles: nil];
+	[alert show];
+	[alert release];
+	
 	[textFieldBeingEdited resignFirstResponder];
 }
 

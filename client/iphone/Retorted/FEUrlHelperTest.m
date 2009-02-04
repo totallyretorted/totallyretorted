@@ -27,7 +27,7 @@
 
 - (void) testLoadURLFromString
 {	
-	NSLog(@"running testLoadURLFromString");
+	JLog(@"running testLoadURLFromString");
 	[nc addObserver:self 
 		   selector:@selector(completeLoadURLFromString:) 
 			   name:FEDataFinishedLoadingNotification 
@@ -37,7 +37,7 @@
 }
 
 - (void) completeLoadURLFromString:(NSNotification *)note {
-	NSLog(@"running completeLoadURLFromString");
+	JLog(@"running completeLoadURLFromString");
 }
 
 /*

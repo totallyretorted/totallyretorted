@@ -12,7 +12,7 @@
 
 #import "TRRetortXMLParser.h"
 #import "TRRetort.h"
-#import "TRRating.h"
+//#import "TRRating.h"
 #import "TRTag.h"
 #import "TRAttribution.h"
 
@@ -25,7 +25,7 @@ int const INVALID_PK = 8;
 
 @implementation TRRetortXMLParser
 @synthesize currentTextNode;
-@synthesize currentRating, currentRetort, currentTag, currentAttribution;
+@synthesize currentRetort, currentTag, currentAttribution;
 @synthesize retorts, tags;
 @synthesize canAppend;
 
@@ -142,11 +142,11 @@ int const INVALID_PK = 8;
 		return;
 	}
 	
-	
-	if ([elementName isEqualToString:@"rating"]) {
-		self.currentRating = [[TRRating alloc] init];
-		return;
-	}
+//	
+//	if ([elementName isEqualToString:@"rating"]) {
+//		self.currentRating = [[TRRating alloc] init];
+//		return;
+//	}
 	
 
 	if ([elementName isEqualToString:@"attribution"]) 
@@ -185,27 +185,24 @@ int const INVALID_PK = 8;
 		return;
 	}
 	
-	//===================
-	// RATINGS node...
-	//===================
 	if ([elementName isEqualToString:@"positive"]) {
-		self.currentRating.positive = [self.currentTextNode intValue];
+		self.currentRetort.positive = [self.currentTextNode intValue];
 		return;
 	}
 	if ([elementName isEqualToString:@"negative"]) {
-		self.currentRating.negative = [self.currentTextNode intValue];
+		self.currentRetort.negative = [self.currentTextNode intValue];
 		return;
 	}
-	if ([elementName isEqualToString:@"rank"]) {
-		self.currentRating.rank = [self.currentTextNode floatValue];
-		return;
-	}
-	if ([elementName isEqualToString:@"rating"]) {
-		self.currentRetort.rating = self.currentRating;
-		self.currentRating = nil; //same as release - should be retained by currentRetort.
-		JLog(@"Added rating");
-		return;
-	}
+//	if ([elementName isEqualToString:@"rank"]) {
+//		self.currentRating.rank = [self.currentTextNode floatValue];
+//		return;
+//	}
+//	if ([elementName isEqualToString:@"rating"]) {
+//		self.currentRetort.rating = self.currentRating;
+//		self.currentRating = nil; //same as release - should be retained by currentRetort.
+//		JLog(@"Added rating");
+//		return;
+//	}
 	
 	
 	
@@ -296,7 +293,7 @@ int const INVALID_PK = 8;
 - (void) dealloc {
 	self.currentTag = nil;
 	self.currentRetort = nil;
-	self.currentRating = nil;
+	//self.currentRating = nil;
 	self.currentAttribution = nil;
 	self.retorts = nil;
 	//self.tags = nil;

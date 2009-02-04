@@ -51,6 +51,7 @@
 	
 
 	//TEST 3: Remove labels and verify that there is only one subview left.
+	//PRIVATE METHOD - IGNORE WARNING
 	[subject removeOldLabelSubViewsFromScrollView:aScrollView];
 	STAssertEquals([[aScrollView subviews] count], (NSUInteger)1, nil);
 	
@@ -72,6 +73,7 @@
 	STAssertEquals([[aScrollView subviews] count], (NSUInteger)2, nil);
 	
 	//TEST 3: Remove labels and verify that there is only one subview left.
+	//PRIVATE METHOD - IGNORE WARNING
 	[subject removeOldButtonSubViewsFromScrollView:aScrollView];
 	STAssertEquals([[aScrollView subviews] count], (NSUInteger)1, nil);
 	
@@ -83,21 +85,24 @@
 
 - (void)testTagRenderAsLabel {
 	//NSArray *tags = [[NSArray alloc] initWithObjects:[self getShortNameTag], nil];
+	//PRIVATE METHOD - IGNORE WARNING
 	UILabel *testLabel = nil;
+	CGFloat x = 20.0;
+	CGFloat y = 20.0;
 	testLabel = [subject getLabelFromTag:[self getShortNameTag] 
-									 atX:20.0 
-									   y:20.0];
+									 atX:x 
+									   y:y];
 
 	//TEST 1: Verify that a UILabel object is returned
 	STAssertEquals([testLabel isMemberOfClass:[UILabel class]], YES, nil);
 	
 	//TEST 2: Verify that the UILabel has the correct attributes
 	STAssertEquals(testLabel.textColor == [UIColor blackColor], 1, nil);		//not sure why YES doesn't work here
-	STAssertEquals(subject.backgroundColor == [UIColor whiteColor], 1, nil);
+	STAssertEquals(subject.backgroundColor == [UIColor clearColor], 1, nil);
 	
 	//NOT SURE WHY TEST DOESN'T WORK - THE RESULT IS A COLOR THAT MATCHES THE subject.backgroundColor
-	//NSLog(@"subject.backgroundColor: %@", subject.backgroundColor);
-	//NSLog(@"testLabel.backgroundColor: %@", testLabel.backgroundColor);
+	//JLog(@"subject.backgroundColor: %@", subject.backgroundColor);
+	//JLog(@"testLabel.backgroundColor: %@", testLabel.backgroundColor);
 	//STAssertEquals(testLabel.backgroundColor == [UIColor whiteColor], 1, nil);
 	STAssertEquals([testLabel frame].origin.x == 20.0, 1, nil);
 	STAssertEquals([testLabel frame].origin.y == 20.0, 1, nil);

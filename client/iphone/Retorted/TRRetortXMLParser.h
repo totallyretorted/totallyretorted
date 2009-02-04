@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TRRating;
 @class TRRetort;
 @class TRTag;
 @class TRAttribution;
@@ -16,12 +15,6 @@ extern NSString * const TRXMLRetortDataFinishedLoadingNotification;
 
 
 @interface TRRetortXMLParser : NSObject {
-	//NSMutableDictionary *currentRetort;
-	//NSMutableDictionary *currentTag;
-	//NSMutableDictionary *currentRating;
-	//NSMutableDictionary *currentAttribution;
-	//NSMutableArray *tags;
-	
 	NSMutableString *currentTextNode;
 	NSMutableArray *retorts;
 	NSMutableArray *tags;		//hold as independent array when only parsing tags, not retorts
@@ -30,7 +23,6 @@ extern NSString * const TRXMLRetortDataFinishedLoadingNotification;
 	
 	TRRetort *currentRetort;
 	TRTag *currentTag;
-	TRRating *currentRating;
 	TRAttribution *currentAttribution;
 	
 
@@ -43,15 +35,8 @@ extern NSString * const TRXMLRetortDataFinishedLoadingNotification;
 @property (nonatomic, retain) NSMutableArray *retorts;
 @property (nonatomic, retain) NSMutableArray *tags;
 
-//@property (nonatomic, retain) NSMutableDictionary *currentRetort;
-//@property (nonatomic, retain) NSMutableDictionary *currentTag;
-//@property (nonatomic, retain) NSMutableDictionary *currentRating;
-//@property (nonatomic, retain) NSMutableArray *tags;
-//@property (nonatomic, retain) NSMutableDictionary *currentAttribution;
-
 @property (nonatomic, retain) TRRetort *currentRetort;
 @property (nonatomic, retain) TRTag *currentTag;
-@property (nonatomic, retain) TRRating *currentRating;
 @property (nonatomic, retain) TRAttribution *currentAttribution;
 
 

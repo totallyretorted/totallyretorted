@@ -9,6 +9,11 @@
 #import "TRTag.h"
 #import "TRRating.h"
 
+@interface TRTag()
+- (BOOL)isEqualTRTagObject:(TRTag *)aTag;
+@end
+
+
 @implementation TRTag
 @synthesize value;
 @synthesize weight;

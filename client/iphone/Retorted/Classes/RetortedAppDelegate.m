@@ -11,7 +11,7 @@
 
 @implementation RetortedAppDelegate
 
-@synthesize window, tabBarController;
+@synthesize window, tabBarController, currentUser;
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
@@ -22,6 +22,7 @@
 
 - (void)dealloc {
 	//[statHelper release];
+	[currentUser release];
     [tabBarController release];
     [window release];
     [super dealloc];

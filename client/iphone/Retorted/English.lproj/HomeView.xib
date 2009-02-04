@@ -84,11 +84,12 @@
 					</object>
 					<object class="IBUIScrollView" id="519587234">
 						<reference key="NSNextResponder" ref="5425450"/>
-						<int key="NSvFlags">310</int>
+						<int key="NSvFlags">270</int>
 						<string key="NSFrame">{{0, 306}, {320, 61}}</string>
 						<reference key="NSSuperview" ref="5425450"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
 						<bool key="IBUIShowsVerticalScrollIndicator">NO</bool>
 						<int key="IBUIIndicatorStyle">2</int>
 						<bool key="IBUIBouncesZoom">NO</bool>
@@ -252,7 +253,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>HomeViewController</string>
 					<string>UIResponder</string>
-					<string>{{334, 376}, {320, 480}}</string>
+					<string>{{40, 376}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
