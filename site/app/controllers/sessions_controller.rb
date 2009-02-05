@@ -3,9 +3,7 @@ class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   
-  protect_from_forgery :except => [:verify] 
-  
-  # @failed = Builder::XmlMarkup.new().failed{ "invalid client type"}
+  protect_from_forgery :except => [:verify]
 
   # render new.rhtml
   def new
@@ -23,15 +21,9 @@ class SessionsController < ApplicationController
         authenticate_with_http_basic do |login, password|
           user = User.authenticate(login, password)
           if user
-            render :xml => user, :status => :accepted
+            render :xml => {:authorization => {:success => {:user =>user}}}, :status => :accepted
           else
-            xml = Builder::XmlMarkup.new()
-            xml.failed{
-              xml.reason{
-                "invalid credentials"
-              }
-            }
-            render :xml => xml, :status => :not_acceptable
+            render :xml => {:authorization => {:failed => {:reason => "Invalid Credentials"}}}, :status => :not_acceptable
           end
         end
       end
