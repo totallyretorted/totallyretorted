@@ -3,6 +3,8 @@ class SessionsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   
+  protect_from_forgery :except => [:verify] 
+  
   # @failed = Builder::XmlMarkup.new().failed{ "invalid client type"}
 
   # render new.rhtml
