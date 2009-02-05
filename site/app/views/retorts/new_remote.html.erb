@@ -1,0 +1,15 @@
+<div>
+	<% 
+	# form_remote_for(@retort) do |f|
+		# {:loading => "Element.show('ajax');",:loaded => "Element.hide('ajax');",:complete => "alert('Right-o!');Element.show('ok');",:failure => "Element.show('fubar');"}  
+		#:loading => "Element.show('ajax');", :loaded => "Element.hide('ajax');", 
+	remote_form_for :retort, @retort, :url => {:action => 'create'}, :html => { :method => :post }, :failure => "Element.show('fubar');RedBox.close();", :complete => "Element.show('ok');RedBox.close();" do |f|
+	%>
+		<%= render :partial => 'entry_form', :locals => {:f => f} %>
+		<div class="center">
+			<%= f.submit "Save" %>
+			<%= button_to_close_redbox 'Cancel' %>
+		</div>
+	<% end %>
+</div>
+

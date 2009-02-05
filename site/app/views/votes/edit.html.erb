@@ -1,0 +1,12 @@
+<h1>Editing vote</h1>
+
+<% form_for([@retort, @vote]) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', retort_vote_path(@retort, @vote) %> |
+<%= link_to 'Back', retort_votes_path(@retort) %>

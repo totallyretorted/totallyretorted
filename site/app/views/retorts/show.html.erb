@@ -19,7 +19,12 @@
 				</div>
 			<% end %>
 			<div id="rating">
-				positive: <%= @retort.positive %>,&nbsp;negative: <%= @retort.negative %>
+				thumbs up: <%= @retort.positive %>,&nbsp;thumbs down: <%= @retort.negative %>
+				<% if logged_in? %>
+				<br/>
+				<!-- rate it! <%= link_to "awesome", :controller => 'vote', :action => 'thumbs_up'%>&nbsp;<%= link_to "sucks", :controller => 'vote', :action => 'thumbs_down'%> -->
+				rate it! <%= link_to "awesome", new_retort_vote_path(@retort) %>&nbsp;<%= link_to "sucks", new_retort_vote_path(@retort) %>
+				<% end -%>
 			</div>
 		</div>
 	</div>

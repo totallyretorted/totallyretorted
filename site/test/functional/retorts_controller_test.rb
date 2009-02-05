@@ -166,4 +166,10 @@ class RetortsControllerTest < ActionController::TestCase
     assert_not_nil retorts
     assert_equal 5, retorts.size
   end
+  
+  test "search retorts" do
+    get :search, :search => 'Afghanistan'
+    assert_response :success
+    assert_equal 1, assigns(:results).size
+  end
 end

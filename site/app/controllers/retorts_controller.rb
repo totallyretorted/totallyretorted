@@ -62,10 +62,7 @@ class RetortsController < ApplicationController
   
   def new_remote
     @retort = Retort.new
-    render :action => 'new', :layout => false
-    # respond_to do |format|
-    #   format.html { render :action => 'new', :layout => false }
-    # end
+    render :layout => false
   end
 
   # GET /retorts/1/edit
@@ -91,16 +88,35 @@ class RetortsController < ApplicationController
     @retort.user = current_user
 
     respond_to do |format|
-      if @retort.save
-        flash[:notice] = 'Retort was successfully created.'
-        format.html { redirect_to(@retort) }
-        format.xml { render :xml => @retort, :status => :created, :location => @retort }
-        #format.iphone # renders index.iphone.erb
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @retort.errors, :status => :unprocessable_entity }
-        #format.iphone # renders index.iphone.erb
+      format.html do
+        if @retort.save
+          flash[:notice] = 'Retort was successfully created'
+          # redirect_to 'index'
+          redirect_to(@retort)
+        else
+          flash[:error] = @retort.errors
+          render :action => "new"
+        end
       end
+      format.xml do
+        if @retort.save
+          render :xml => @retort, :status => :created, :location => @retort
+        else
+          render :xml => @retort.erros, :status => :unprocessable_entity
+        end
+      end
+      # format.iphone do
+      # end
+      # if @retort.save
+      #        flash[:notice] = 'Retort was successfully created.'
+      #        format.html { redirect_to(@retort) }
+      #        format.xml { render :xml => @retort, :status => :created, :location => @retort }
+      #        #format.iphone # renders index.iphone.erb
+      #      else
+      #        format.html { render :action => "new" }
+      #        format.xml  { render :xml => @retort.errors, :status => :unprocessable_entity }
+      #        #format.iphone # renders index.iphone.erb
+      #      end
     end
   end
 
@@ -141,24 +157,11 @@ class RetortsController < ApplicationController
     unless params[:search].blank?
       @results = Retort.paginate :page => params[:page], 
                               :per_page => 10, 
-                              :include => [:rating],
+                              # :include => [:rating],
                               :order => 'content ASC', 
                               :conditions => Retort.conditions_by_like(params[:search])
       logger.info @results.size
     end
     render :partial => 'search', :layout => false
-  end
-  
-  def thumbs_up
-    @retort = Retort.find(params[:id])
-    @retort.rating.vote
-    render :action => "show"
-  end
-  
-  def thumbs_down
-    @retort = Retort.find(params[:id])
-    @retort.rating.vote(false)
-    render :action => "show"
-  end
-    
+  end    
 end

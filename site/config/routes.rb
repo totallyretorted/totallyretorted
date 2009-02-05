@@ -4,18 +4,27 @@ ActionController::Routing::Routes.draw do |map|
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
-  map.resources :users
+  
+  map.resources :users do |user|
+    # user.resources :votes
+  end
 
   map.resource :session, :member => { :verify => :post }
 
-  map.resources :attributions
-  map.resources :ratings
-
-  map.resources :tags, :collection => { :search => :get }
+  map.resources :tags, :collection => { :search => :get } do |tag|
+    tag.resources :retorts
+  end
+  
+  # map.resources :votes
+  
   #map.tags_by_alpha 'tags/alpha/:letter', :controller => 'tags', :action => 'alpha'
   #map.tags_by_alpha_formatted 'tags/alpha/:letter.:format', :controller => 'tags', :action => 'alpha'
 
-  map.resources :retorts, :collection => { :screenzero => :get, :all => :get }, :member => { :new_remote => :get }
+  map.resources :retorts, :collection => { :screenzero => :get, :all => :get, :search => :get }, :member => { :new_remote => :get } do |retort|
+    retort.resources :attributions
+    retort.resources :votes
+    # retort.resources :tags
+  end
 
   map.connect ':controller/page/:page', :action => 'paginate'
   map.connect ':controller/alpha/:letter', :action => 'alpha'

@@ -86,3 +86,17 @@ div.pop .form{
   line-height: 18px !important;
 }
 */
+
+#ft a{
+  color:#777777;
+}
+
+#rating a{
+  text-decoration: none;
+  padding: 0.25em;
+  color: #ED1164;
+}
+
+#rating a:hover{
+  background-color: #FDE92B;
+}

@@ -21,15 +21,25 @@
 				<%= render :partial => "common/top_menu" %>
 			</div>
 			<div id="bd">
-				<div id="hollah" class="ok"><div class="icon"></div>
-					<ul>
-						<li>Msg </li>
-					</ul>
+				<div id="hollah">
+					<div id="ajax" style="display:none"><div class="icon"></div></div>
+					<div id="ok" style="display:none"><div class="icon"></div>
+						<%= flash[:notice] %>
+					</div>
+					<div id="fyi" style="display:none"><div class="icon"></div>
+						<%= flash[:notice] %>
+					</div>
+					<div id="no" style="display:none"><div class="icon"></div>
+						<%= flash[:notice] %>
+					</div>
+					<div id="fubar" style="display:none"><div class="icon"></div>
+						<%= flash[:error] %>
+					</div>					
 				</div>
 				<%= yield :layout %>
 			</div>
 			<div id="ft">
-				<div id="copyright">&copy; 2009, <%= link_to "ThoughtSyndicate LLC", "http://www.thoughtsyndicate.com" %>. All Rights Reserved.</div>
+				<div id="copyright">&copy; 2009, <%= link_to "ThoughtSyndicate LLC", "http://www.thoughtsyndicate.com" %>, all rights reserved.</div>
 			</div>
 		</div>
 		<script type="text/javascript">

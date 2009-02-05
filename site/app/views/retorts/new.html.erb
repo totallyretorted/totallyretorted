@@ -1,49 +1,6 @@
 <div>
-	<% curvy_corners "new-retort-form", :css_class => ['compact'] do %>
 		<% form_for(@retort) do |f| %>
-	  		<% if f.error_messages -%>
-				<div class="errors"><%= f.error_messages %></div>
-			<% end -%>
-			<div id="retort_form" class="form">
-			 	<div class="yui-gd">
-					<div class="yui-u first"><%= f.label :content %></div>
-					<div class="yui-u"><%= f.text_field :content %></div>
-				</div>
-				<div class="yui-gd">
-					<div class="yui-u first"><%= f.label :tags %></div>
-					<div class="yui-u"><%= text_field :tags, :value %></div>
-				</div>
-				<div class="yui-gd">
-					<div class="yui-u first"><%= f.label :attribution %><%= link_to_function(image_tag("streamlined/add_16.png"), "Element.toggle('attribution_attribs')") %></div>
-					<div id="attribution_attribs" style="display:none" class="yui-u">
-						<div class="yui-gd">
-							<div class="yui-u first"><%= f.label :who %></div>
-							<div class="yui-u"><%= text_field :attribution, :who %></div>
-						</div>
-						<div class="yui-gd">
-							<div class="yui-u first"><%= f.label :what %></div>
-							<div class="yui-u"><%= text_field  :attribution, :what %></div>
-						</div>
-						<div class="yui-gd">
-							<div class="yui-u first"><%= f.label :where %></div>
-							<div class="yui-u"><%= text_field :attribution, :where %></div>
-						</div>
-						<div class="yui-gd">
-							<div class="yui-u first"><%= f.label :how %></div>
-							<div class="yui-u"><%= text_field :attribution, :how %></div>
-						</div>
-						<div class="yui-gd">
-							<div class="yui-u first"><%= f.label :when %></div>
-							<div class="yui-u"><%= text_field :attribution, :when %></div>
-						</div>
-					</div>
-				</div>
-				<div class="yui-g">
-					<div class="yui-u first center"><%= f.submit "Save" %></div>
-		<% end # end the main form %>
-					<div class="yui-u center"><%= button_to "Cancel", { :action => 'index' }, { :method => :get } %></div>
-				</div>
-			</div>
-	<% end %>
+			<%= render :partial => 'entry_form', :locals => {:f => f} %>
+		<% end %>
 </div>
 

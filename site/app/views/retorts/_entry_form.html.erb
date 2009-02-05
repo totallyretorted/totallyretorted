@@ -1,0 +1,23 @@
+<% curvy_corners "new-retort-form", :css_class => ['compact'] do %>
+<div>
+	<% if f.error_messages -%>
+		<%= f.error_messages %>
+	<% end -%>
+	<div>
+		<label><%= f.label :content %></label><%= f.text_area :content, :height => 5, :width => 50 %>
+	</div>
+	<div>
+		<label><%= f.label :tags %></label><%= text_field :tags, :value, :width => 50 %>
+	</div>
+	<div>
+		<label><%= f.label :attributions %></label><%= link_to_function(image_tag("streamlined/add_16.png"), "Element.toggle('attribution_attribs')") %>
+		<div id="attribution_attribs" style="display:none">
+			<% [:who, :what, :where, :how, :when].each do |a| %>
+			<div>
+				<label><%= f.label a %></label><%= text_field :attribution, a, :width => 50 %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<% end %>

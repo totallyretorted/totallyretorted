@@ -61,4 +61,10 @@ class TagsControllerTest < ActionController::TestCase
     assert_equal 'south_park', results[0].value
     
   end
+  
+  test "search tags" do
+    get :search, :search => 'South'
+    assert_response :success
+    assert_equal 1, assigns(:results).size
+  end
 end
