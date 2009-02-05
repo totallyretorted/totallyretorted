@@ -64,13 +64,24 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 
 - (void)loadRetortsWithRelativePath:(NSString *)relPath {
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-
-#if TARGET_CPU_ARM
-	NSString* retortsURL = [NSString stringWithFormat:@"%@/%@", [properties valueForKey:@"Retorted.Host"], relPath];
-#else
-	NSString* retortsURL = [NSString stringWithFormat:@"%@/%@", [properties valueForKey:@"Simulator.Host"], relPath];
-#endif 
+	NSString *urlScheme = nil;
+	NSString *urlHost = nil;
+	NSString* retortsURL = nil;
 	
+#if TARGET_CPU_ARM
+	urlScheme = [properties valueForKey:@"Retorted.Scheme"];
+	urlHost = [properties valueForKey:@"Retorted.Host"];	
+#else
+	urlScheme = [properties valueForKey:@"Simulator.Scheme"];
+	urlHost = [properties valueForKey:@"Simulator.Host"];
+#endif
+//#if TARGET_CPU_ARM
+//	NSString* retortsURL = [NSString stringWithFormat:@"%@/%@", [properties valueForKey:@"Retorted.Host"], relPath];
+//#else
+//	NSString* retortsURL = [NSString stringWithFormat:@"%@/%@", [properties valueForKey:@"Simulator.Host"], relPath];
+//#endif 
+	
+	retortsURL = [NSString stringWithFormat:@"%@%@/%@", urlScheme, urlHost, relPath];
 	//NSString *buildSettingStr = [[NSString alloc] initWithString:@"%@",$(retortedSimulatorHost)];
 	
 	

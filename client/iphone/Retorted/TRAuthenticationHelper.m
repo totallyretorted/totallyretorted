@@ -9,6 +9,7 @@
 #import "TRAuthenticationHelper.h"
 #import "TRUser.h"
 #import "FEUrlHelper.h"
+#import "RetortedAppDelegate.h"
 
 @implementation TRAuthenticationHelper
 
@@ -22,27 +23,19 @@
 
 - (BOOL)connectAsUser:(TRUser *)user {
 	BOOL success = NO;
-	JLog(@"Attempting to connect as %@", user);
 	
-//	FEUrlHelper *urlHelper = [[FEUrlHelper alloc] init];
-//	[urlHelper loadURLFromString:<#(NSString *)sUrl#> withContentType:<#(NSString *)contentType#> HTTPMethod:<#(NSString *)method#> body:<#(NSString *)httpBody#>
 	
-	NSDictionary *properties = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Properties" ofType:@"plist"]]; 
-#if TARGET_CPU_ARM
-	NSString* sURL = [NSString stringWithFormat:@"http://%@:%@@totallyretorted.com/path/to/resource.xml", 
-					  user.userName,
-					  user.password];
-#else
-	NSString* sUrl = [NSString stringWithFormat:@"http://%@:%@@localhost:3000/path/to/resource.xml", 
-					  user.userName,
-					  user.password,
-					  [properties valueForKey:@"Simulator.Host"]];
-#endif
+	NSString *sUrl = [NSString stringWithFormat:@"%@/session/verify.xml", [user userCredentialsURLBase]];
 
-	JLog(@"URL: %@", sUrl);
+	JLog(@"Attempting to connect as %@ to url:%@", user, sUrl);
 	NSURL *url = [[NSURL alloc] initWithString:sUrl];
+	//NSString *body = @"";
+	NSData *dataBody = [[NSData alloc] init];
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+	//NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
 	[request setHTTPMethod:@"POST"];
+	//[request setHTTPBody:[body dataUsingEncoding: NSUTF8StringEncoding]];
+	[request setHTTPBody:dataBody];
 	
 	NSHTTPURLResponse* urlResponse = nil;  
 	NSError *error = [[NSError alloc] init];
@@ -53,8 +46,14 @@
 	NSString *result = [[NSString alloc] initWithData:responseData
 											 encoding:NSUTF8StringEncoding];
 	JLog(@"Response Code: %d", [urlResponse statusCode]);
-	if ([urlResponse statusCode] >= 200 && [urlResponse statusCode] < 300 && error != nil)
+	if ([urlResponse statusCode] == 202 && error != nil) {
 		success = YES;
+	}
+	
+	//update user object and add to app delegate for session.
+	[user userValidationStatus:success];
+	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	appDelegate.currentUser = user;
 	
 	[url release];
 	[request release];
@@ -63,6 +62,25 @@
 	
 	return success;
 }
+
+////Return the appropriate url based on simulator vs device for a given user.
+//- (NSString *)URLForUser:(TRUser *)user {
+//	NSString *urlScheme = nil;
+//	NSString *urlHost = nil;
+//	NSDictionary *properties = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Properties" 
+//																										  ofType:@"plist"]]; 
+//	
+//#if TARGET_CPU_ARM
+//	urlScheme = [properties valueForKey:@"Retorted.Scheme"];
+//	urlHost = [properties valueForKey:@"Retorted.Host"];
+//#else
+//	urlScheme = [properties valueForKey:@"Simulator.Scheme"];
+//	urlHost = [properties valueForKey:@"Simulator.Host"];
+//#endif
+//	
+//	//EXAMPLE: http://shant.donabedian:durkadurka@totallyretorted.com/path/to/resource.xml
+//	return [NSString stringWithFormat:@"%@%@:%@@%@", urlScheme, user.userName, user.password, urlHost];
+//}
 
 - (void)dealloc {
 	[super dealloc];

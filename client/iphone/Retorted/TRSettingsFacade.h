@@ -12,8 +12,8 @@
 @interface TRSettingsFacade : NSObject {
 
 }
-- (NSDictionary *)getCurrentUserNameAndPasswordInDictionary;
-- (BOOL)loginWithUserName:(NSString *)userName password:(NSString *)pwd;
-
-- (TRUser *)retrieveStoredUser;
+- (NSDictionary *)getStoredUserNameAndPasswordInDictionary;
+- (BOOL)saveAndLoginWithUserName:(NSString *)userName password:(NSString *)pwd;
+- (BOOL)loginWithUser:(TRUser *)aUser;		//does not save, just attempts to login.
+- (TRUser *)getStoredUser;
 @end

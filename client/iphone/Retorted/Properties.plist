@@ -2,9 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Retorted.Scheme</key>
+	<string>http://</string>
 	<key>Retorted.Host</key>
-	<string>http://totallyretorted.com</string>
+	<string>totallyretorted.com</string>
+	<key>Simulator.Scheme</key>
+	<string>http://</string>
 	<key>Simulator.Host</key>
-	<string>http://localhost:3000</string>
+	<string>localhost:3000</string>
 </dict>
 </plist>

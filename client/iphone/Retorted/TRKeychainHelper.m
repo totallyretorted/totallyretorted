@@ -120,6 +120,14 @@ static const UInt8 kKeychainIdentifier[]    = "com.forwardecho.retorted\0";
 	return success;
 }
 
+- (NSString *)login {
+	return (NSString *)[self objectForKey:(id)kSecAttrLabel];
+}
+
+- (NSString *)password {
+	return (NSString *)[self objectForKey:(id)kSecValueData];
+}
+
 - (id)objectForKey:(id)key {
     return [keychainData objectForKey:key];
 }

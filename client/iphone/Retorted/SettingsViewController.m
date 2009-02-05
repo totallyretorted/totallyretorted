@@ -9,8 +9,9 @@
 #import "SettingsViewController.h"
 #import "PerformanceStats.h"
 #import "TRSettingsFacade.h"
+#import "RetortedAppDelegate.h"
 
-//#import "TRUser.h"
+#import "TRUser.h"
 //#import "TRAuthenticationHelper.h"
 
 //private methods and classes
@@ -27,6 +28,7 @@
 
 - (void)setupStatsCell:(UITableViewCell *)cell;
 - (void)configureStatsCell:(UITableViewCell *)cell atRow:(NSUInteger)row;
+- (void)refreshUserAuthenticatedMessage;
 @end
 
 
@@ -34,7 +36,7 @@
 @synthesize textFieldBeingEdited, tempValues;
 @synthesize footerView, reset, sendStats, statsHelper;
 @synthesize refeshTableNeeded;
-@synthesize userNameField, passwordField;
+@synthesize userNameField, passwordField, authenticationStatus;
 @synthesize settingsSectionLabel, statsSectionLabel;
 
 - (void)viewDidLoad {
@@ -59,6 +61,9 @@
 	//initialize stats helper...
 	self.statsHelper = [[PerformanceStats alloc] init];
 	self.refeshTableNeeded = NO;
+	
+	//ensure user authentication message is correct.
+	[self refreshUserAuthenticatedMessage];
 	
 }
 
@@ -200,19 +205,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
 	
 	return self.settingsSectionLabel.frame.size.height;
-//	CGFloat height = 0.0;
-//	switch (section) {
-//		case 0:
-//			height = self.settingsSectionLabel.frame.size.height+10.0;
-//			break;
-//		case 1:
-//			height = self.statsSectionLabel.frame.size.height+10.0;
-//		default:
-//			height = 80.0;
-//			break;
-//	}
-//	
-//	return height;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -244,6 +236,14 @@
 
 #pragma mark -
 #pragma mark Custom Helper Methods
+- (void)refreshUserAuthenticatedMessage {
+	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	if (appDelegate.currentUser != nil && appDelegate.currentUser.isValid == YES) {
+		self.authenticationStatus.text = @"Authenticated";
+	} else {
+		self.authenticationStatus.text = @"Not Authenticated";
+	}
+}
 
 //Adds a UILabel and UITextView to cell's content view, to prepare it for the actual data values...
 - (void)setupSettingsCell:(UITableViewCell *)cell {
@@ -269,6 +269,8 @@
 - (void)configureSettingsCell:(UITableViewCell *)cell atRow:(NSUInteger)row {
 	UILabel *label = (UILabel *)[cell viewWithTag:kLabelTag];
 	UITextField *textField = nil;
+	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	
 	for (UIView *oneView in cell.contentView.subviews)
 	{
 		if ([oneView isMemberOfClass:[UITextField class]])
@@ -285,6 +287,8 @@
 			
 			if ([[tempValues allKeys] containsObject:rowAsNum]) {
 				textField.text = [tempValues objectForKey:rowAsNum];
+			} else if (appDelegate.currentUser != nil && appDelegate.currentUser.userName != nil) {
+				textField.text = appDelegate.currentUser.userName;
 			} else {
 				textField.placeholder = NSLocalizedString(@"Enter Email Here","Placeholder text requesting email address in settings table cell");
 			}
@@ -294,11 +298,14 @@
 			label.text = NSLocalizedString(@"Password", @"The label 'Password' for settings table cell");
 			textField.keyboardType = UIKeyboardTypeDefault;
 			textField.secureTextEntry = YES;
-			if ([[tempValues allKeys] containsObject:rowAsNum])
+			if ([[tempValues allKeys] containsObject:rowAsNum]) {
 				textField.text = [tempValues objectForKey:rowAsNum];
-			else
+			} else if (appDelegate.currentUser != nil && appDelegate.currentUser.password != nil) {
+				textField.text = appDelegate.currentUser.password;
+			} else {
 				//textField.text = @"Test Data";
 				textField.placeholder = NSLocalizedString(@"Enter Password Here", "Placeholder text requesting password in settings table cell");
+			}
 			
 			self.passwordField = textField;	//hold reference for later use
 			break;
@@ -377,7 +384,10 @@
 	JLog(@"Initiate save action for %@", userStr);
 	TRSettingsFacade *facade = [[TRSettingsFacade alloc] init];
 	
-	BOOL success = [facade loginWithUserName:userStr password:pwd];
+	[textFieldBeingEdited resignFirstResponder];
+	
+	BOOL success = [facade saveAndLoginWithUserName:userStr password:pwd];
+//	BOOL success = [facade loginWithUserName:userStr password:pwd];
 	[facade release];
 	
 	NSString *msg = nil;
@@ -386,16 +396,15 @@
 		msg = [NSString localizedStringWithFormat:@"Successful logging into TotallyRetorted.com.", "Login success message"];
 	} else {
 		msg = [NSString	localizedStringWithFormat:@"Failed logging into TotallyRetorted.com. Please visit the site to setup or administer your account.", @"Login failure message"];
-		self.userNameField.text = nil;
-		self.passwordField.text = nil;
+//		self.userNameField.text = nil;
+//		self.passwordField.text = nil;
 	}
-	
+	[self refreshUserAuthenticatedMessage];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Login to TotallyRetorted.com",@"Login alert box") message:msg
 												   delegate:self cancelButtonTitle:NSLocalizedString(@"OK", @"Ok button for login alert") otherButtonTitles: nil];
 	[alert show];
 	[alert release];
 	
-	[textFieldBeingEdited resignFirstResponder];
 }
 
 - (IBAction)textFieldDone:(id)sender {

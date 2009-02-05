@@ -36,12 +36,12 @@
 }
 
 //saves and validates login
-- (BOOL)loginWithUserName:(NSString *)userName password:(NSString *)pwd {
+- (BOOL)saveAndLoginWithUserName:(NSString *)userName password:(NSString *)pwd {
 	BOOL success = NO;
 	BOOL saveUserSuccessful = NO;
 	TRUser *aUser = [[TRUser alloc] initWithUser:userName password:pwd];
-	TRAuthenticationHelper *authHelper = [[TRAuthenticationHelper alloc] init];
 	
+	//Attempt to save user settings.
 #if TARGET_IPHONE_SIMULATOR 
 	JLog(@"Saving user: %@ to disk", [aUser description]);
 	saveUserSuccessful = [self saveUserToNSUserDefault:aUser];
@@ -51,19 +51,29 @@
 #endif
 	
 	if (saveUserSuccessful) {
-		success = [authHelper connectAsUser:aUser];
+		success = [self loginWithUser:aUser];
 	}
 	
 	[aUser release];
+	return success;
+}
+
+// Attempts to login as user and sets TRUser property.
+- (BOOL)loginWithUser:(TRUser *)aUser {
+	TRAuthenticationHelper *authHelper = [[TRAuthenticationHelper alloc] init];
+	BOOL success = NO;
+	success = [authHelper connectAsUser:aUser];
+	JLog(@"connecting as user: %@.  Success = %d", [aUser description], success);
+	[aUser userValidationStatus:success];
 	[authHelper release];
 	return success;
 }
 
 //returns the username and password of the current user, if saved...
-- (NSDictionary *)getCurrentUserNameAndPasswordInDictionary {
+- (NSDictionary *)getStoredUserNameAndPasswordInDictionary {
 	TRUser *aUser = nil;
 	
-	aUser = [self retrieveStoredUser];
+	aUser = [self getStoredUser];
 	NSDictionary *dict = [[NSDictionary alloc] initWithObjectsAndKeys:aUser.userName, @"name", aUser.password, @"password", nil];
 	
 	[dict autorelease];
@@ -71,8 +81,8 @@
 }
 
 
-
-- (TRUser *)retrieveStoredUser {
+//Retrieves the stored user name and password and returns in the form of a user object.
+- (TRUser *)getStoredUser {
 	TRUser *aUser = nil;
 	
 #if TARGET_IPHONE_SIMULATOR
@@ -108,7 +118,13 @@
 	TRUser *aUser = nil;
 	TRKeychainHelper *keyHelper = [[TRKeychainHelper alloc] init];
 	
-	//TODO: Add retrieval method in TRKeychainHelper class
+	NSString *uName = [keyHelper login];
+	NSString *pwd = [keyHelper password];
+	
+	if (uName != nil && pwd != nil) {
+		aUser = [[TRUser alloc] initWithUser:uName password:pwd];
+		[aUser autorelease];
+	}
 	
 	[keyHelper release];
 	return aUser;
@@ -134,6 +150,7 @@
 	
 	if (uName != nil && pwd != nil) {
 		aUser = [[TRUser alloc] initWithUser:uName password:pwd];
+		[aUser autorelease];
 	}
 	
 	return aUser;

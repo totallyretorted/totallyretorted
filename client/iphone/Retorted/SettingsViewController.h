@@ -22,6 +22,7 @@
 	IBOutlet UIView *footerView;
 	IBOutlet UIButton *reset;
 	IBOutlet UIButton *sendStats;
+	IBOutlet UILabel *authenticationStatus;
 	NSMutableDictionary *tempValues;
 	
 	
@@ -39,6 +40,7 @@
 @property (nonatomic, retain) UIView *footerView;
 @property (nonatomic, retain) UIButton *reset;
 @property (nonatomic, retain) UIButton *sendStats;
+@property (nonatomic, retain) UILabel *authenticationStatus;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)save:(id)sender;

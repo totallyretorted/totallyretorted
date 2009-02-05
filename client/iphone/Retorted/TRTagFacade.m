@@ -53,13 +53,25 @@ NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 }
 
 - (void)loadTags{
+	NSString *urlScheme = nil;
+	NSString *urlHost = nil;
+	NSString *tagUrl = nil;
 	
 #if TARGET_CPU_ARM
-	NSString *tagUrl = [NSString stringWithFormat:@"%@/tags.xml",[self.properties valueForKey:@"Retorted.Host"]];
+	urlScheme = [properties valueForKey:@"Retorted.Scheme"];
+	urlHost = [properties valueForKey:@"Retorted.Host"];	
 #else
-	NSString *tagUrl = [NSString stringWithFormat:@"%@/tags.xml",[self.properties valueForKey:@"Simulator.Host"]];
-#endif 
+	urlScheme = [properties valueForKey:@"Simulator.Scheme"];
+	urlHost = [properties valueForKey:@"Simulator.Host"];
+#endif
 	
+//#if TARGET_CPU_ARM
+//	NSString *tagUrl = [NSString stringWithFormat:@"%@/tags.xml",[self.properties valueForKey:@"Retorted.Host"]];
+//#else
+//	NSString *tagUrl = [NSString stringWithFormat:@"%@/tags.xml",[self.properties valueForKey:@"Simulator.Host"]];
+//#endif 
+
+	tagUrl = [NSString stringWithFormat:@"%@%@/tags.xml", urlScheme, urlHost];
 	//NSString *tagUrl = [NSString stringWithFormat:@"%@/tags.xml",[self.properties valueForKey:@"Retorted.Host"]];
 	
 	JLog(@"URL:%@ and performing a GET",tagUrl);

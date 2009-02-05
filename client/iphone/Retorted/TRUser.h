@@ -16,13 +16,19 @@
 @interface TRUser : NSObject {
 	NSString *userName;
 	NSString *password;
-@private
 	BOOL isValid;
 }
 
 - (id)initWithUser:(NSString *)user password:(NSString *)pwd;
 
+// Seperate method was added to require explicit setting of this value.  Only the AuthenticationHelper should set this value.
+- (void)userValidationStatus:(BOOL)status;
+
+// Constructs the base portion a the url necessary to post data or login.
+//EXAMPLE: http://shant.donabedian:durkadurka@totallyretorted.com/path/to/resource.xml
+- (NSString *)userCredentialsURLBase;
+
 @property (nonatomic, retain) NSString *userName;
 @property (nonatomic, retain) NSString *password;
-
+@property (readonly) BOOL isValid;
 @end
