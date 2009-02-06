@@ -15,6 +15,7 @@
     UIWindow *window;
     UITabBarController *tabBarController;
 	TRUser *currentUser;
+	NSString *baseURL;
 }
 
 - (void)authenticateUser;
@@ -22,4 +23,5 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 @property (nonatomic, retain) TRUser *currentUser;
+@property (nonatomic, retain) NSString *baseURL;
 @end

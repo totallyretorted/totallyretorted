@@ -74,9 +74,9 @@
 											<double key="NSSize">1.700000e+01</double>
 											<int key="NSfFlags">16</int>
 										</object>
-										<object class="NSColor" key="IBUITextColor">
-											<int key="NSColorSpace">2</int>
-											<bytes key="NSRGB">MC4wMDM5MjE1Njg5IDAuNjkwMTk2MSAwLjk0MTE3NjUzAA</bytes>
+										<object class="NSColor" key="IBUITextColor" id="267441232">
+											<int key="NSColorSpace">1</int>
+											<bytes key="NSRGB">MCAwIDAAA</bytes>
 										</object>
 										<nil key="IBUIHighlightedColor"/>
 										<int key="IBUIBaselineAdjustment">1</int>
@@ -86,10 +86,7 @@
 								</object>
 								<string key="NSFrameSize">{320, 94}</string>
 								<reference key="NSSuperview" ref="109499531"/>
-								<object class="NSColor" key="IBUIBackgroundColor">
-									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAAA</bytes>
-								</object>
+								<reference key="IBUIBackgroundColor" ref="267441232"/>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 							</object>
 						</object>

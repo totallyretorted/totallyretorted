@@ -81,7 +81,6 @@
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 						<int key="IBNumberOfSegments">2</int>
-						<int key="IBSelectedSegmentIndex">0</int>
 						<object class="NSArray" key="IBSegmentTitles">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>Awesome</string>
@@ -328,12 +327,16 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>ratingVote</string>
 							<string>retortContainer</string>
+							<string>rocksVote</string>
+							<string>sucksVote</string>
 							<string>tagSlider</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UISegmentedControl</string>
 							<string>UIScrollView</string>
+							<string>UIButton</string>
+							<string>UIButton</string>
 							<string>UIScrollView</string>
 						</object>
 					</object>

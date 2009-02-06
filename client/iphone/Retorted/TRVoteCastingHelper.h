@@ -8,9 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum {
+    TRRetortVoteCastAsSucks  = -1,
+    TRRetortVoteCastAsRocks   = 1,
+} TRRetortVoteCast;
 
 @interface TRVoteCastingHelper : NSObject {
-
+	NSUInteger retortId;
+	
 }
+@property NSUInteger retortId;
+
+- (BOOL)castVote:(TRRetortVoteCast)voteCasted;
 
 @end

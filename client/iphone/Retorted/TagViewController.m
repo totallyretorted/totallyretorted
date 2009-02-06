@@ -95,7 +95,6 @@
     return cell;
 }
 
-//TODO: what is the significance of 65? - It is the height of the custom cell.  This is fired before the table cell is rendered, which is why the value is here. - BJR
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return 65; //kTableCellViewRowHeight;
 }

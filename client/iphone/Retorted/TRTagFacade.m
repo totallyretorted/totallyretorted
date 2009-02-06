@@ -11,6 +11,7 @@
 #import "FEUrlHelper.h"
 #import "Statistic.h"			//performance testing
 #import "PerformanceStats.h"	//performance testing
+#import "RetortedAppDelegate.h"
 
 NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 
@@ -53,27 +54,10 @@ NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 }
 
 - (void)loadTags{
-	NSString *urlScheme = nil;
-	NSString *urlHost = nil;
 	NSString *tagUrl = nil;
-	
-#if TARGET_CPU_ARM
-	urlScheme = [properties valueForKey:@"Retorted.Scheme"];
-	urlHost = [properties valueForKey:@"Retorted.Host"];	
-#else
-	urlScheme = [properties valueForKey:@"Simulator.Scheme"];
-	urlHost = [properties valueForKey:@"Simulator.Host"];
-#endif
-	
-//#if TARGET_CPU_ARM
-//	NSString *tagUrl = [NSString stringWithFormat:@"%@/tags.xml",[self.properties valueForKey:@"Retorted.Host"]];
-//#else
-//	NSString *tagUrl = [NSString stringWithFormat:@"%@/tags.xml",[self.properties valueForKey:@"Simulator.Host"]];
-//#endif 
+	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
 
-	tagUrl = [NSString stringWithFormat:@"%@%@/tags.xml", urlScheme, urlHost];
-	//NSString *tagUrl = [NSString stringWithFormat:@"%@/tags.xml",[self.properties valueForKey:@"Retorted.Host"]];
-	
+	tagUrl = [NSString stringWithFormat:@"%@/tags.xml", appDelegate.baseURL];
 	JLog(@"URL:%@ and performing a GET",tagUrl);
 	
 	FEUrlHelper *urlHelp =[[FEUrlHelper alloc] init];

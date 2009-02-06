@@ -11,9 +11,14 @@
 #import "TRUser.h"
 #import "TRSettingsFacade.h"
 
+@interface RetortedAppDelegate()
+- (NSString *)fetchBaseURL;
+@end
+
+
 @implementation RetortedAppDelegate
 
-@synthesize window, tabBarController, currentUser;
+@synthesize window, tabBarController, currentUser, baseURL;
 
 - (void)authenticateUser {
 	TRSettingsFacade *aFacade = [[TRSettingsFacade alloc] init];
@@ -29,10 +34,30 @@
     // Add the tab bar controller's current view as a subview of the window
 	[application setStatusBarStyle:UIStatusBarStyleBlackOpaque]; 
     [window addSubview:tabBarController.view];
+
+	self.baseURL = [self fetchBaseURL];
 	
 	
 	[self authenticateUser];
 	//[NSThread detachNewThreadSelector:@selector(authenticateUser) toTarget:self withObject:nil];
+}
+
+- (NSString *)fetchBaseURL {
+	NSString *urlScheme = nil;
+	NSString *urlHost = nil;
+	NSDictionary *properties = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Properties" 
+																										  ofType:@"plist"]];
+	
+#if TARGET_CPU_ARM
+	urlScheme = [properties valueForKey:@"Retorted.Scheme"];
+	urlHost = [properties valueForKey:@"Retorted.Host"];
+#else
+	urlScheme = [properties valueForKey:@"Simulator.Scheme"];
+	urlHost = [properties valueForKey:@"Simulator.Host"];
+#endif
+	
+	return [NSString stringWithFormat:@"%@%@", urlScheme, urlHost];
+	
 }
 
 

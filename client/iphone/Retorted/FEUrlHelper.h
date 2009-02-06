@@ -23,6 +23,7 @@ extern NSString * const FEDataFailedLoadingNotification;
 			   HTTPMethod:(NSString *)method
 					 body:(NSString *)httpBody;
 
+- (NSString *)base64EncodedWithUserName:(NSString *)user password:(NSString *)pwd;
 
 @property(nonatomic, retain) NSMutableData *xmlData;
 @property(nonatomic, retain) NSString *errorMsg;

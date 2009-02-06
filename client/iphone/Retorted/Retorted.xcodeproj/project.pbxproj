@@ -69,6 +69,8 @@
 		DB8EF8FD0F2BDF180062FC2C /* statistics.db in Resources */ = {isa = PBXBuildFile; fileRef = DB8EF8FC0F2BDF180062FC2C /* statistics.db */; };
 		DB8EF9450F2C253C0062FC2C /* PerformanceStats.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8EF8E10F2BCECA0062FC2C /* PerformanceStats.m */; };
 		DB8EF9590F2C28A10062FC2C /* Statistic.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8EF9580F2C28A10062FC2C /* Statistic.m */; };
+		DBA612CF0F3CEECC00EFFE51 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = DBA612CE0F3CEECC00EFFE51 /* base64.c */; };
+		DBA612D20F3CEF5700EFFE51 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = DBA612D10F3CEF5700EFFE51 /* Base64Category.m */; };
 		DBAE3ADA0F32113F0037D817 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8EF8EB0F2BD0390062FC2C /* libsqlite3.dylib */; };
 		DBAE3AE10F3211470037D817 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		DBAE3AE20F32114C0037D817 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -221,6 +223,10 @@
 		DB8EF8FC0F2BDF180062FC2C /* statistics.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = statistics.db; sourceTree = SOURCE_ROOT; };
 		DB8EF9570F2C28A10062FC2C /* Statistic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Statistic.h; sourceTree = "<group>"; };
 		DB8EF9580F2C28A10062FC2C /* Statistic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Statistic.m; sourceTree = "<group>"; };
+		DBA612CD0F3CEEC400EFFE51 /* base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = base64.h; sourceTree = "<group>"; };
+		DBA612CE0F3CEECC00EFFE51 /* base64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = base64.c; sourceTree = "<group>"; };
+		DBA612D00F3CEF5700EFFE51 /* Base64Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Category.h; sourceTree = "<group>"; };
+		DBA612D10F3CEF5700EFFE51 /* Base64Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Category.m; sourceTree = "<group>"; };
 		DBAE3C9C0F326F730037D817 /* TRVote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVote.h; sourceTree = "<group>"; };
 		DBAE3C9D0F326F730037D817 /* TRVote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVote.m; sourceTree = "<group>"; };
 		DBAE3CB50F3273C90037D817 /* TRVoteCastingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVoteCastingHelper.h; sourceTree = "<group>"; };
@@ -311,6 +317,7 @@
 		29B97314FDCFA39411CA2CEA /* Retorted */ = {
 			isa = PBXGroup;
 			children = (
+				DBA612EA0F3CF1E500EFFE51 /* Categories */,
 				DB261B150F0BDB0B004651BE /* Protocols */,
 				DB141F440EF4A18D00868FAB /* UnitTests */,
 				DB1126360EEEECEA00137EBC /* Application Support */,
@@ -371,17 +378,18 @@
 		DB1126320EEEEC8700137EBC /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				DBA612450F3CD49A00EFFE51 /* Voting */,
 				DBE95E080F38B15D00C8912F /* Tags */,
 				DBE95E070F38B14E00C8912F /* Retorts */,
 				DBE95E060F38B13000C8912F /* Settings  */,
 				DB6DCA400EF8B0D1008C1C62 /* TRViewHelper.h */,
 				DB6DCA410EF8B0D1008C1C62 /* TRViewHelper.m */,
+				DBA612CD0F3CEEC400EFFE51 /* base64.h */,
+				DBA612CE0F3CEECC00EFFE51 /* base64.c */,
 				DB6849C80EF0257B0094CC24 /* CGPointUtils.h */,
 				DB6849C70EF0257B0094CC24 /* CGPointUtils.c */,
 				DB1126580EEF047300137EBC /* FEUrlHelper.h */,
 				DB1126590EEF047300137EBC /* FEUrlHelper.m */,
-				DBAE3CB50F3273C90037D817 /* TRVoteCastingHelper.h */,
-				DBAE3CB60F3273C90037D817 /* TRVoteCastingHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -529,6 +537,24 @@
 				DB8EF9580F2C28A10062FC2C /* Statistic.m */,
 			);
 			name = "Performance Testing";
+			sourceTree = "<group>";
+		};
+		DBA612450F3CD49A00EFFE51 /* Voting */ = {
+			isa = PBXGroup;
+			children = (
+				DBAE3CB50F3273C90037D817 /* TRVoteCastingHelper.h */,
+				DBAE3CB60F3273C90037D817 /* TRVoteCastingHelper.m */,
+			);
+			name = Voting;
+			sourceTree = "<group>";
+		};
+		DBA612EA0F3CF1E500EFFE51 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				DBA612D00F3CEF5700EFFE51 /* Base64Category.h */,
+				DBA612D10F3CEF5700EFFE51 /* Base64Category.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		DBE95E060F38B13000C8912F /* Settings  */ = {
@@ -741,6 +767,8 @@
 				DBAE3CB70F3273C90037D817 /* TRVoteCastingHelper.m in Sources */,
 				DBE95D860F389F8800C8912F /* TRKeychainHelper.m in Sources */,
 				DBE95D890F389FC800C8912F /* TRSettingsFacade.m in Sources */,
+				DBA612CF0F3CEECC00EFFE51 /* base64.c in Sources */,
+				DBA612D20F3CEF5700EFFE51 /* Base64Category.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

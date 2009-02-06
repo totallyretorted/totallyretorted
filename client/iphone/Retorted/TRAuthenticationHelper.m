@@ -23,19 +23,20 @@
 
 - (BOOL)connectAsUser:(TRUser *)user {
 	BOOL success = NO;
+	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	FEUrlHelper *aHelper = [[FEUrlHelper alloc] init];
 	
-	
-	NSString *sUrl = [NSString stringWithFormat:@"%@/session/verify.xml", [user userCredentialsURLBase]];
-
+	NSString *sUrl = [NSString stringWithFormat:@"%@/session/verify.xml", appDelegate.baseURL];
 	JLog(@"Attempting to connect as %@ to url:%@", user, sUrl);
+	
 	NSURL *url = [[NSURL alloc] initWithString:sUrl];
-	//NSString *body = @"";
 	NSData *dataBody = [[NSData alloc] init];
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-	//NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
 	[request setHTTPMethod:@"POST"];
-	//[request setHTTPBody:[body dataUsingEncoding: NSUTF8StringEncoding]];
+	[request setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
+	[request addValue:[aHelper base64EncodedWithUserName:user.userName password:user.password] forHTTPHeaderField:@"Authorization"];
 	[request setHTTPBody:dataBody];
+	
 	
 	NSHTTPURLResponse* urlResponse = nil;  
 	NSError *error = [[NSError alloc] init];
@@ -46,15 +47,15 @@
 	NSString *result = [[NSString alloc] initWithData:responseData
 											 encoding:NSUTF8StringEncoding];
 	JLog(@"Response Code: %d", [urlResponse statusCode]);
-	if ([urlResponse statusCode] == 202 && error != nil) {
+	if ([urlResponse statusCode] == 202 && error == nil) {
 		success = YES;
 	}
 	
 	//update user object and add to app delegate for session.
 	[user userValidationStatus:success];
-	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
 	appDelegate.currentUser = user;
 	
+	[aHelper release];
 	[url release];
 	[request release];
 	[error release];
@@ -62,25 +63,6 @@
 	
 	return success;
 }
-
-////Return the appropriate url based on simulator vs device for a given user.
-//- (NSString *)URLForUser:(TRUser *)user {
-//	NSString *urlScheme = nil;
-//	NSString *urlHost = nil;
-//	NSDictionary *properties = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Properties" 
-//																										  ofType:@"plist"]]; 
-//	
-//#if TARGET_CPU_ARM
-//	urlScheme = [properties valueForKey:@"Retorted.Scheme"];
-//	urlHost = [properties valueForKey:@"Retorted.Host"];
-//#else
-//	urlScheme = [properties valueForKey:@"Simulator.Scheme"];
-//	urlHost = [properties valueForKey:@"Simulator.Host"];
-//#endif
-//	
-//	//EXAMPLE: http://shant.donabedian:durkadurka@totallyretorted.com/path/to/resource.xml
-//	return [NSString stringWithFormat:@"%@%@:%@@%@", urlScheme, user.userName, user.password, urlHost];
-//}
 
 - (void)dealloc {
 	[super dealloc];

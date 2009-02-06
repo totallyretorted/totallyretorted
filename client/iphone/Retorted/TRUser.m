@@ -40,22 +40,22 @@
 
 //constructs the base portion a the url necessary to post data or login.
 //EXAMPLE: http://shant.donabedian:durkadurka@totallyretorted.com/path/to/resource.xml
-- (NSString *)userCredentialsURLBase {
-	NSString *urlScheme = nil;
-	NSString *urlHost = nil;
-	NSDictionary *properties = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Properties" 
-																										  ofType:@"plist"]]; 
-	
-#if TARGET_CPU_ARM
-	urlScheme = [properties valueForKey:@"Retorted.Scheme"];
-	urlHost = [properties valueForKey:@"Retorted.Host"];
-#else
-	urlScheme = [properties valueForKey:@"Simulator.Scheme"];
-	urlHost = [properties valueForKey:@"Simulator.Host"];
-#endif
-	JLog(@"%@%@:%@@%@", urlScheme, self.userName, self.password, urlHost);
-	return [NSString stringWithFormat:@"%@%@:%@@%@", urlScheme, self.userName, self.password, urlHost];
-}
+//- (NSString *)userCredentialsURLBase {
+//	NSString *urlScheme = nil;
+//	NSString *urlHost = nil;
+//	NSDictionary *properties = [NSDictionary dictionaryWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"Properties" 
+//																										  ofType:@"plist"]]; 
+//	
+//#if TARGET_CPU_ARM
+//	urlScheme = [properties valueForKey:@"Retorted.Scheme"];
+//	urlHost = [properties valueForKey:@"Retorted.Host"];
+//#else
+//	urlScheme = [properties valueForKey:@"Simulator.Scheme"];
+//	urlHost = [properties valueForKey:@"Simulator.Host"];
+//#endif
+//	JLog(@"%@%@:%@@%@", urlScheme, self.userName, self.password, urlHost);
+//	return [NSString stringWithFormat:@"%@%@:%@@%@", urlScheme, self.userName, self.password, urlHost];
+//}
 
 - (void)dealloc {
 	self.userName = nil;

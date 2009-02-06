@@ -48,7 +48,6 @@ NSString * const FEDataFailedLoadingNotification = @"DWDataFailedLoading";
 		[request setHTTPBody:[httpBody dataUsingEncoding:NSUTF8StringEncoding]];
 	}
 	
-	//[request setHTTPBody:[[self xml] dataUsingEncoding:NSUTF8StringEncoding]];
 	
 	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 	JLog(@"Created connection...");
@@ -57,16 +56,18 @@ NSString * const FEDataFailedLoadingNotification = @"DWDataFailedLoading";
 	[url release];
 }
 
-/*
-Issue: NSURLRequest will not handle XML, so we will need to use NSXMLParser.  
- 
- 
- See the SeismicXML example for further details.
-*/
+
 - (void)loadURLFromString: (NSString *) sUrl {
 	[self loadURLFromString:sUrl withContentType:@"text/html" HTTPMethod:@"GET" body:nil];
 }
 
+- (NSString *)base64EncodedWithUserName:(NSString *)user password:(NSString *)pwd {
+	NSString *format = [NSString stringWithFormat:@"%@:%@", user, pwd];
+	return [NSString stringWithFormat:@"Basic %@",[format base64Encoding]];
+}
+
+#pragma mark -
+#pragma mark Async Connection delegate methods
 - (void)connectionDidFinishLoading: (NSURLConnection *)connection {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc postNotificationName:FEDataFinishedLoadingNotification object:self];
@@ -91,7 +92,7 @@ Issue: NSURLRequest will not handle XML, so we will need to use NSXMLParser.
 
 
 #pragma mark -
-#pragma mark Cassword Challenge  Delegate Methods
+#pragma mark Password Challenge  Delegate Methods
 
 
 - (void)connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)aChallenge {

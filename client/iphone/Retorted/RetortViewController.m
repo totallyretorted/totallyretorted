@@ -22,6 +22,7 @@
 #import "CGPointUtils.h"		//calculates distance between points for pinches
 #import "TRViewHelper.h"		//use to determine size of label
 #import "TRTagSliderHelper.h"	//use to create tag slider
+#import "TRVoteCastingHelper.h"	
 
 @implementation RetortViewController
 @synthesize retort, retortTitle;
@@ -187,12 +188,20 @@
 - (IBAction)ratingChanged:(id)sender {
 	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
 	NSInteger segment = segmentedControl.selectedSegmentIndex;
+	TRVoteCastingHelper *aHelper = [[TRVoteCastingHelper alloc] init];
+	aHelper.retortId = [self.retort.primaryId integerValue];
+
 	
 	if (segment == 0) {
+		[aHelper castVote:TRRetortVoteCastAsRocks];
 		JLog(@"Your vote is Awesome!");
 	} else {
+		[aHelper castVote:TRRetortVoteCastAsSucks];
 		JLog(@"Your vote is Sucks!");
 	}
+	
+	[aHelper release];
+	
 }
 
 - (IBAction)retortActionClick {

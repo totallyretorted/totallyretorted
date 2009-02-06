@@ -12,6 +12,7 @@
 #import "TRRetortXMLParser.h"
 #import "Statistic.h"			//performance testing
 #import "PerformanceStats.h"	//performance testing
+#import "RetortedAppDelegate.h"
 
 NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishedLoading";
 
@@ -63,25 +64,11 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 }
 
 - (void)loadRetortsWithRelativePath:(NSString *)relPath {
+	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
 	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	NSString *urlScheme = nil;
-	NSString *urlHost = nil;
 	NSString* retortsURL = nil;
 	
-#if TARGET_CPU_ARM
-	urlScheme = [properties valueForKey:@"Retorted.Scheme"];
-	urlHost = [properties valueForKey:@"Retorted.Host"];	
-#else
-	urlScheme = [properties valueForKey:@"Simulator.Scheme"];
-	urlHost = [properties valueForKey:@"Simulator.Host"];
-#endif
-//#if TARGET_CPU_ARM
-//	NSString* retortsURL = [NSString stringWithFormat:@"%@/%@", [properties valueForKey:@"Retorted.Host"], relPath];
-//#else
-//	NSString* retortsURL = [NSString stringWithFormat:@"%@/%@", [properties valueForKey:@"Simulator.Host"], relPath];
-//#endif 
-	
-	retortsURL = [NSString stringWithFormat:@"%@%@/%@", urlScheme, urlHost, relPath];
+	retortsURL = [NSString stringWithFormat:@"%@/%@", appDelegate.baseURL, relPath];
 	//NSString *buildSettingStr = [[NSString alloc] initWithString:@"%@",$(retortedSimulatorHost)];
 	
 	
