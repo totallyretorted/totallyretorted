@@ -18,7 +18,9 @@ class VotesController < ApplicationController
     @vote = @retort.votes.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html do
+        render :layout => false
+      end
       format.xml  { render :xml => @vote }
     end
   end
@@ -29,7 +31,9 @@ class VotesController < ApplicationController
     @vote = @retort.votes.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html {
+        render :layout => false
+      }
       format.xml  { render :xml => @vote }
     end
   end
@@ -37,6 +41,13 @@ class VotesController < ApplicationController
   # GET /votes/1/edit
   def edit
     @vote = @retort.votes.find(params[:id])
+    
+    respond_to do |format|
+      format.html {
+        render :layout => false
+        # render :action => 'new', :layout => false
+      }
+    end
   end
 
   # POST /votes
@@ -48,10 +59,11 @@ class VotesController < ApplicationController
     respond_to do |format|
       if @vote.save
         flash[:notice] = 'Vote was successfully created.'
-        format.html { redirect_to([@retort, @vote]) }
+        format.html { redirect_to(@retort) }
         format.xml  { render :xml => @vote, :status => :created, :location => [@retort, @vote] }
       else
-        format.html { render :action => "new" }
+        flash[:error] = 'Vote could not be created.'
+        format.html { redirect_to(@retort) }
         format.xml  { render :xml => @vote.errors, :status => :unprocessable_entity }
       end
     end
@@ -65,10 +77,11 @@ class VotesController < ApplicationController
     respond_to do |format|
       if @vote.update_attributes(params[:vote])
         flash[:notice] = 'Vote was successfully updated.'
-        format.html { redirect_to([@retort, @vote]) }
+        format.html { redirect_to(@retort) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        flash[:error] = 'Vote could not be updated.'
+        format.html { redirect_to(@retort) }
         format.xml  { render :xml => @vote.errors, :status => :unprocessable_entity }
       end
     end

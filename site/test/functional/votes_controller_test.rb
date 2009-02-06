@@ -17,7 +17,7 @@ class VotesControllerTest < ActionController::TestCase
       post :create, :vote => { }, :retort_id => retorts(:hippies)
     end
 
-    assert_redirected_to retort_vote_path(retorts(:hippies), assigns(:vote))
+    assert_redirected_to retort_path(retorts(:hippies))
   end
 
   test "should show vote" do
@@ -32,7 +32,7 @@ class VotesControllerTest < ActionController::TestCase
 
   test "should update vote" do
     put :update, :id => votes(:valid_hippies).id, :vote => { }, :retort_id => retorts(:hippies)
-    assert_redirected_to retort_vote_path(retorts(:hippies), assigns(:vote))
+    assert_redirected_to retort_path(retorts(:hippies))
   end
 
   test "should destroy vote" do

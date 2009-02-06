@@ -41,6 +41,7 @@ class RetortsController < ApplicationController
   def show
     @retort = Retort.find(params[:id])
     @tagcloud = Tag.create_tagcloud(@retort.tags).sort_by{rand}
+    @vote = Vote.find_by_retort_id_and_user_id(@retort, current_user)
 
     respond_to do |format|
       format.html

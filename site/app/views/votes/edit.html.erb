@@ -1,12 +1,3 @@
-<h1>Editing vote</h1>
-
-<% form_for([@retort, @vote]) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+<% remote_form_for [@retort, @vote], :method => :put, :failure => "Element.show('fubar');RedBox.close();", :complete => "Element.show('ok');RedBox.close();" do |f| %>
+	<%= render :partial => 'data_form', :locals => { :f => f } %>
 <% end %>
-
-<%= link_to 'Show', retort_vote_path(@retort, @vote) %> |
-<%= link_to 'Back', retort_votes_path(@retort) %>
