@@ -29,7 +29,7 @@
 
 /*.firefox .search_wrapper input.search_field{*/
 .search_wrapper input.search_field{
-	height: 18px;
+	height: 20px;
 	padding-bottom: 2px;
 	padding-top: 4px;
 }
@@ -48,7 +48,7 @@
 	outline-color: -moz-use-text-color;
 	outline-style: none;
 	outline-width: medium;
-	padding: 2px;
+	padding: 5px 2px 0;
 	position: absolute;
 	right: 20px;
 	text-shadow: 0 1px 1px #323232;
@@ -119,7 +119,7 @@
 #quick_search #close_search{
   position:relative;
   float:right;
-  top:-12px;
-  right:4px;
-  z-index:100;
+  top:-6px;
+  right:-9px;
+  z-index:9999;
 }
