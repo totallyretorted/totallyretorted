@@ -138,4 +138,23 @@ class TagTest < ActiveSupport::TestCase
   test "find tags in use" do
     assert_equal 3, Tag.find_tags_in_use.size
   end
+  
+  test "find bestest" do
+    num_tags = 5
+    retorts_per_tag = 10
+    num_tags.times do |i|
+      t = Tag.new(:value => "bestest_#{i}")
+      retorts_per_tag.times do |j|
+        t.retorts << Retort.new(:content => "bestest_#{i}_#{j}")
+      end
+      t.save!
+    end
+    worstest = Tag.new(:value => "not_bestest")
+    worstest.retorts << Retort.new(:content => "not bestest")
+    worstest.save!
+    
+    bestest = Tag.bestest
+    assert_equal num_tags, bestest.size
+    assert !bestest.include?(worstest)    
+  end
 end

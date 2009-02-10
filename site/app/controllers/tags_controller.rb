@@ -14,6 +14,16 @@ class TagsController < ApplicationController
     end
   end
 
+  def bestest
+    @tags = Tag.bestest
+    @alphabar = Tag.find_all_alphas
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @tags }
+    end
+  end
+
   # GET /tags/1
   # GET /tags/1.xml
   def show
