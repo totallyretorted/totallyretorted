@@ -21,25 +21,27 @@
 @synthesize window, tabBarController, currentUser, baseURL;
 
 - (void)authenticateUser {
+
+	//run on seperate thread, so create autorelease pool...
+	NSAutoreleasePool *autoreleasepool = [[NSAutoreleasePool alloc] init];
 	TRSettingsFacade *aFacade = [[TRSettingsFacade alloc] init];
-	TRUser *aUser = [aFacade getStoredUser];
-	[aFacade loginWithUser:aUser];
-	self.currentUser = aUser;
+	//TRUser *aUser = [aFacade getStoredUser];
+	self.currentUser = [aFacade getStoredUser];
+	[aFacade loginWithUser:self.currentUser];
+	//self.currentUser = aUser;
 	JLog(@"AppDelegate current user: %@", self.currentUser);
 	[aFacade release];
-//	JLog(@"I'm here!");
+	[autoreleasepool release];
+
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-    // Add the tab bar controller's current view as a subview of the window
+	[NSThread detachNewThreadSelector:@selector(authenticateUser) toTarget:self withObject:nil];
+	
+	// Add the tab bar controller's current view as a subview of the window
 	[application setStatusBarStyle:UIStatusBarStyleBlackOpaque]; 
-    [window addSubview:tabBarController.view];
-
-	self.baseURL = [self fetchBaseURL];
-	
-	
-	[self authenticateUser];
-	//[NSThread detachNewThreadSelector:@selector(authenticateUser) toTarget:self withObject:nil];
+    self.baseURL = [self fetchBaseURL];
+	[window addSubview:tabBarController.view];
 }
 
 - (NSString *)fetchBaseURL {

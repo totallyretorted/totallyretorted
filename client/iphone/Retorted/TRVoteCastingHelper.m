@@ -15,6 +15,7 @@
 
 - (NSString *)urlForVote;
 - (NSString *)votePayloadForVote:(TRRetortVoteCast)aVote;
+- (NSMutableURLRequest *)voteURLRequestFromURL:(NSURL*)url payload:(NSString *)aPayload;
 @end
 
 
@@ -31,8 +32,6 @@
 
 - (BOOL)castVote:(TRRetortVoteCast)voteCasted {
 	BOOL success = NO;
-	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-	FEUrlHelper *aHelper = [[FEUrlHelper alloc] init];
 	
 	//determine the url we are sending vote to...
 	NSString *sUrl = [self urlForVote];
@@ -42,12 +41,9 @@
 	
 	//prepare connection information...
 	NSURL *url = [[NSURL alloc] initWithString:sUrl];
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+
+	NSMutableURLRequest *request = [self voteURLRequestFromURL:url payload:payload];
 	
-	[request setHTTPMethod:@"POST"];
-	[request setHTTPBody:[payload dataUsingEncoding: NSUTF8StringEncoding]];
-	[request setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
-	[request addValue:[aHelper base64EncodedWithUserName: appDelegate.currentUser.userName password:appDelegate.currentUser.password] forHTTPHeaderField:@"Authorization"];
 	
 	NSHTTPURLResponse* urlResponse = nil;  
 	NSError *error = [[NSError alloc] init];
@@ -62,13 +58,26 @@
 		success = YES;
 	}
 	
-	[aHelper release];
 	[url release];
-	[request release];
 	[error release];
 	[result release];
 	
 	return success;
+}
+
+- (NSMutableURLRequest *)voteURLRequestFromURL:(NSURL*)url payload:(NSString *)aPayload {
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	FEUrlHelper *aHelper = [[FEUrlHelper alloc] init];
+	
+	[request setHTTPMethod:@"POST"];
+	[request setHTTPBody:[aPayload dataUsingEncoding: NSUTF8StringEncoding]];
+	[request setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
+	[request addValue:[aHelper base64EncodedWithUserName: appDelegate.currentUser.userName password:appDelegate.currentUser.password] forHTTPHeaderField:@"Authorization"];
+
+	[aHelper release];
+	[request autorelease];
+	return request;
 }
 
 - (NSString *)votePayloadForVote:(TRRetortVoteCast)aVote {

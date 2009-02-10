@@ -39,27 +39,20 @@
 	
 	
 	NSHTTPURLResponse* urlResponse = nil;  
-	NSError *error = [[NSError alloc] init];
+	NSError *error = nil;
+	[NSURLConnection sendSynchronousRequest:request 
+						  returningResponse:&urlResponse 
+									  error:&error]; 
 
-	NSData *responseData = [NSURLConnection sendSynchronousRequest:request
-												 returningResponse:&urlResponse 
-															 error:&error];  
-	NSString *result = [[NSString alloc] initWithData:responseData
-											 encoding:NSUTF8StringEncoding];
 	JLog(@"Response Code: %d", [urlResponse statusCode]);
 	if ([urlResponse statusCode] == 202 && error == nil) {
 		success = YES;
 	}
-	
-	//update user object and add to app delegate for session.
-	[user userValidationStatus:success];
-	appDelegate.currentUser = user;
-	
-	[aHelper release];
-	[url release];
+
 	[request release];
-	[error release];
-	[result release];
+	[dataBody release];
+	[url release];
+	[aHelper release];
 	
 	return success;
 }

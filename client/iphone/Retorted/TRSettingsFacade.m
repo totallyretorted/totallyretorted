@@ -39,22 +39,23 @@
 - (BOOL)saveAndLoginWithUserName:(NSString *)userName password:(NSString *)pwd {
 	BOOL success = NO;
 	BOOL saveUserSuccessful = NO;
-	TRUser *aUser = [[TRUser alloc] initWithUser:userName password:pwd];
+	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+	appDelegate.currentUser = [[TRUser alloc] initWithUser:userName password:pwd];
 	
 	//Attempt to save user settings.
 #if TARGET_IPHONE_SIMULATOR 
-	JLog(@"Saving user: %@ to disk", [aUser description]);
-	saveUserSuccessful = [self saveUserToNSUserDefault:aUser];
+	JLog(@"Saving user: %@ to disk", [appDelegate.currentUser description]);
+	saveUserSuccessful = [self saveUserToNSUserDefault:appDelegate.currentUser];
 #else
-	JLog(@"Saving user: %@ to keychain", [aUser description]);
-	saveUserSuccessful = [self saveUserToKeychain:aUser];
+	JLog(@"Saving user: %@ to keychain", [appDelegate.currentUser description]);
+	saveUserSuccessful = [self saveUserToKeychain:appDelegate.currentUser];
 #endif
 	
 	if (saveUserSuccessful) {
-		success = [self loginWithUser:aUser];
+		success = [self loginWithUser:appDelegate.currentUser];
 	}
 	
-	[aUser release];
+//	[aUser release];
 	return success;
 }
 

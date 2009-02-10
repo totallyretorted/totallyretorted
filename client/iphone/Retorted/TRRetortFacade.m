@@ -65,7 +65,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 
 - (void)loadRetortsWithRelativePath:(NSString *)relPath {
 	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	//NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
 	NSString* retortsURL = nil;
 	
 	retortsURL = [NSString stringWithFormat:@"%@/%@", appDelegate.baseURL, relPath];
@@ -85,7 +85,7 @@ NSString * const TRRetortDataFinishedLoadingNotification = @"TRRetortDataFinishe
 	[aHelper loadURLFromString:retortsURL withContentType:@"application/xml" HTTPMethod:@"GET" body:nil];
 	
 	[aHelper release];
-	[pool release];
+	//[pool release];
 }
 
 - (void)addToNotificationWithSelector:(SEL)selector notificationName:(NSString *)notificationName{
