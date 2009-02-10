@@ -27,7 +27,9 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.connect ':controller/page/:page', :action => 'paginate'
+  map.connect ':controller/page/:page.:format', :action => 'paginate'
   map.connect ':controller/alpha/:letter', :action => 'alpha'
+  map.connect ':controller/alpha/:letter.:format', :action => 'alpha'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
