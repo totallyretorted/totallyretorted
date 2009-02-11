@@ -13,7 +13,7 @@ class Attribution < ActiveRecord::Base
         nil
       when /(january|feburary|march|april|may|june|july|august|september|october|november|december)\s([0-9]{1,2},\s)?[0-9]{4}/i #long form: january 1, 2009
         nil
-      when /(ca\.|circa)\s[0-9]{4}/ #circa 2009
+      when /((ca\.|circa)\s)?[0-9]{4}/ #circa 2009
         nil
       else
         mdl.errors.add(attr, "Invalid date-like value")

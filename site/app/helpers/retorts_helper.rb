@@ -11,8 +11,8 @@ module RetortsHelper
     hp.search("//big/big/big/font").inner_html
   end
   
-  def self.get_lotsa_borat_quotes
-    hp = Hpricot(open("http://en.wikiquote.org/wiki/Borat"))
+  def self.get_lotsa_borat_quotes(uri="http://en.wikiquote.org/w/index.php?title=Borat:_Cultural_Learnings_of_America_for_Make_Benefit_Glorious_Nation_of_Kazakhstan&oldid=893794")
+    hp = Hpricot(open(uri))
     quotes = hp.search("//div[@id='bodyContent']/ul/li").collect{|el| el.inner_text}.reverse!.slice!(7..-1).reverse!
   end
 end

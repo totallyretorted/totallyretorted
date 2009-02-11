@@ -1,4 +1,4 @@
-class Tag < ActiveRecord::Base
+class Tag < ActiveRecord::Base  
   has_and_belongs_to_many :retorts
   attr_accessor :cloud_tier
   alias :tier :cloud_tier
@@ -61,8 +61,9 @@ class Tag < ActiveRecord::Base
     tags
   end
   
-  def self.find_by_alpha(letter='A')
-    Tag.find(:all, :conditions => ['value LIKE ?', "#{letter}%"], :order => 'value ASC')
+  def self.find_by_alpha(options={})
+    options[:alpha] ||= 'A'
+    Tag.find(:all, :conditions => ['value LIKE ?', "#{options[:alpha]}%"], :order => 'value ASC')
   end
     
   def self.find_all_alphas

@@ -6,7 +6,11 @@ class RetortsController < ApplicationController
   # GET /retorts
   # GET /retorts.xml
   def index
-    @retorts = Retort.find(:all)
+    # @retorts = Retort.find(:all)
+    params[:page] ||= 1
+    @retorts = Retort.paginate :page => params[:page]
+    # @paginate = true
+    @listing = @retorts
 
     respond_to do |format|
       format.html
@@ -15,16 +19,16 @@ class RetortsController < ApplicationController
     end
   end
   
-  def paginate
-    @retorts = Retort.paginate :page => params[:page]
-    @paginate = true
-    @listing = @retorts
-
-    respond_to do |format|
-      format.html { render :action => 'index'}
-      format.xml { render :xml => @retorts }
-    end
-  end
+  # def paginate
+  #   @retorts = Retort.paginate :page => params[:page]
+  #   @paginate = true
+  #   @listing = @retorts
+  # 
+  #   respond_to do |format|
+  #     format.html { render :action => 'index'}
+  #     format.xml { render :xml => @retorts }
+  #   end
+  # end
     
   
   def screenzero

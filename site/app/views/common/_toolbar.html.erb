@@ -11,15 +11,13 @@
 	<div id="alphabar" class="paging">
 		<% (["#"]+(65..90).collect{ |i| i.chr }).each do |ltr| %>
 			<% if @alphabar.include?(ltr) %>
-				<%=	link_to ltr, :action => 'alpha', :letter => ltr	%>
+				<%=	link_to ltr, :letter => ltr	%>
 			<% else %>
 				<span class="disabled"><%= ltr %></span>
 			<% end %>
 		<% end %>
 	</div>
 	<% end %>
-	<% if @paginate %>
 	<%= will_paginate @listing, :id => 'pagebar', :class => 'paging' %>
-	<% end %>
 	<%= render :partial => "common/search_control" %>
 </div>

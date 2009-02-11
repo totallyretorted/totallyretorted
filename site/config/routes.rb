@@ -20,16 +20,18 @@ ActionController::Routing::Routes.draw do |map|
   #map.tags_by_alpha 'tags/alpha/:letter', :controller => 'tags', :action => 'alpha'
   #map.tags_by_alpha_formatted 'tags/alpha/:letter.:format', :controller => 'tags', :action => 'alpha'
 
-  map.resources :retorts, :collection => { :screenzero => :get, :all => :get, :search => :get }, :member => { :new_remote => :get } do |retort|
-    retort.resources :attributions
+  map.resources :retorts, 
+      :collection => { :screenzero => :get, :all => :get, :search => :get, :paginate => :get }, 
+      :member => { :new_remote => :get } do |retort|
+    retort.resource :attributions
     retort.resources :votes
     # retort.resources :tags
   end
 
-  map.connect ':controller/page/:page', :action => 'paginate'
-  map.connect ':controller/page/:page.:format', :action => 'paginate'
-  map.connect ':controller/alpha/:letter', :action => 'alpha'
-  map.connect ':controller/alpha/:letter.:format', :action => 'alpha'
+  # map.connect ':controller/page/:page', :action => 'paginate'
+  #   map.connect ':controller/page/:page.:format', :action => 'paginate'
+  #   map.connect ':controller/alpha/:letter', :action => 'alpha'
+  #   map.connect ':controller/alpha/:letter.:format', :action => 'alpha'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

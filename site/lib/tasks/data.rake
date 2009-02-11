@@ -130,6 +130,41 @@ namespace :data do
     #   end
     #   puts "loading CSV #{file}"
   end
+  
+  task (:borat) do
+    require File.expand_path(File.dirname(__FILE__) + "/../../config/environment")
+    bq = RetortsHelper::get_lotsa_borat_quotes
+    bq.each do |q|
+      r = Retort.new(:content => q)
+      ['movie','funny','borat','nsfw'].each do |t|
+        r.tags << Tag.find_or_create_by_value(t)
+      end
+      r.attribution = Attribution.new
+      r.attribution.who = 'Sacha Baron Cohen, as Boris Sagdiyev'
+      r.attribution.what = 'Borat: Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan'
+      r.attribution.when = '2006'
+      r.votes << Vote.new(:user => User.find_by_login('adam.strickland'), :value => 1)
+      r.save!
+    end
+  end
+  
+  task (:urban_b_tags) do
+    require File.expand_path(File.dirname(__FILE__) + "/../../config/environment")
+    require 'open-uri'
+    blist = Hpricot(open('http://www.urbandictionary.com/popular.php?character=B'))
+    (blist/'table#columnist li a').each do |e|
+      worddef = Hpricot(open("http://www.urbandictionary.com#{e.attributes['href']}"))
+      (worddef/'div.definition').each do |e2|
+        r = Retort.new(:content => e2.inner_html.strip)
+        r.tags << Tag.find_or_create_by_value(e.inner_html)
+        r.tags << Tag.find_or_create_by_value('urban dictionary')
+        r.tags << Tag.find_or_create_by_value('definition')
+        r.attribution = Attribution.new(:what => 'Urban Dictionary')
+        r.votes << Vote.new(:user => User.find_by_login('adam.strickland'), :value => 1)
+        r.save!
+      end
+    end
+  end
 private
   def invoke(taskname)
     Rake::Task["data:#{taskname}"].invoke

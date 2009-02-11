@@ -16,6 +16,10 @@ class AttributionTest < ActiveSupport::TestCase
     # assert_equal true, Attribution.new(:when => 'Jan. 2008').valid?
   end
   
+  test "year string for when attrib is valid" do
+  assert_equal true, Attribution.new(:when => '2008').valid?
+  end
+  
   test "circa string for when attrib is valid" do
     assert_equal true, Attribution.new(:when => 'circa 2008').valid?
     assert_equal true, Attribution.new(:when => 'ca. 2008').valid?

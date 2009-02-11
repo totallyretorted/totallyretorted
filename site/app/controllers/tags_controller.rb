@@ -4,15 +4,42 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.xml
   def index
-    @tags = Tag.find(:all, :order => "value ASC" )
+    params[:letter] ||= 'A'
+    params[:page] ||= 1
+    # @tags = Tag.find_by_alpha :alpha => params[:letter]
+    # @tags = Tag.paginate :page => params[:page], :finder => 'find_by_alpha', :alpha => params[:letter]
+    @tags = Tag.paginate :page => params[:page], :conditions => ['value LIKE ?', "#{params[:letter]}%"], :order => 'value ASC'
     @alphabar = Tag.find_all_alphas
-    #@tags = Tag.paginate :all, :page => params[:page], :order => "value ASC"
-
+    @alphabar.delete(params[:letter])
+    # @paginate = true
+    @listing = @tags
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tags }
     end
   end
+  # def index
+  #   @tags = Tag.find(:all, :order => "value ASC" )
+  #   @alphabar = Tag.find_all_alphas
+  #   #@tags = Tag.paginate :all, :page => params[:page], :order => "value ASC"
+  # 
+  #   respond_to do |format|
+  #     format.html # index.html.erb
+  #     format.xml  { render :xml => @tags }
+  #   end
+  # end
+  # 
+  # def alpha
+  #   @letter = params[:letter]
+  #   @tags = Tag.find_by_alpha(@letter)
+  #   @alphabar = Tag.find_all_alphas
+  #   @alphabar.delete(@letter)
+  #   respond_to do |format|
+  #     format.html{ render :action => "index" }
+  #     format.xml { render :xml => @tags }
+  #   end
+  # end
 
   def bestest
     @tags = Tag.bestest
@@ -106,17 +133,6 @@ class TagsController < ApplicationController
       logger.info @results.size
     end
     render :partial => 'search', :layout => false
-  end
-  
-  def alpha
-    @letter = params[:letter]
-    @tags = Tag.find_by_alpha(@letter)
-    @alphabar = Tag.find_all_alphas
-    @alphabar.delete(@letter)
-    respond_to do |format|
-      format.html{ render :action => "index" }
-      format.xml { render :xml => @tags }
-    end
   end
 
   # def paginate

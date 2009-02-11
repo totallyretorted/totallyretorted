@@ -119,8 +119,8 @@ class TagTest < ActiveSupport::TestCase
   end
   
   test "find by alpha" do
-    assert_equal 2, Tag.find_by_alpha('C').size
-    assert_equal 2, Tag.find_by_alpha('c').size
+    assert_equal 2, Tag.find_by_alpha(:alpha => 'C').size
+    assert_equal 2, Tag.find_by_alpha(:alpha => 'c').size
     assert_equal 0, Tag.find_by_alpha.size
     t = Tag.new(:value => 'ALPHA')
     t.save!
@@ -140,8 +140,9 @@ class TagTest < ActiveSupport::TestCase
   end
   
   test "find bestest" do
+    base_count = Tag.count
     num_tags = 5
-    retorts_per_tag = 10
+    retorts_per_tag = 50
     num_tags.times do |i|
       t = Tag.new(:value => "bestest_#{i}")
       retorts_per_tag.times do |j|
@@ -154,7 +155,8 @@ class TagTest < ActiveSupport::TestCase
     worstest.save!
     
     bestest = Tag.bestest
-    assert_equal num_tags, bestest.size
-    assert !bestest.include?(worstest)    
+    assert_equal (num_tags + base_count), bestest.size, "found #{bestest.collect{|t|t.value}.join(',')}"
+    assert !bestest.include?(worstest)
+    #assert_equal num_tags, Tag.bestest :limit => num_tags  
   end
 end
