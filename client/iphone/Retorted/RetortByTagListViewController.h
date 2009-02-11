@@ -15,11 +15,14 @@
 	IBOutlet UITableView *retortsView;
 	IBOutlet UITextView *loadFailureMessage;
 	IBOutlet UIActivityIndicatorView *activityIndicator;
+	IBOutlet UIView *footerView;
 	
 	NSMutableArray *retorts;
 	TRRetortFacade *facade;
 	NSString *selectedTag;
 	NSNumber *tagId;
+	
+	NSInteger currentPage;
 	
 //	UIAccelerationValue accelX;
 //	UIAccelerationValue accelY;
@@ -28,10 +31,7 @@
 //	float biggestshake;
 //	float lastX, lastY;
 }
-
-- (void)loadURL;
-- (void)handleDataLoad:(NSNotification *)note;
-- (void)refreshData;
+- (IBAction)nextPage:(id)sender;
 
 @property (nonatomic, retain) TRRetortFacade *facade;
 @property (nonatomic, retain) NSMutableArray *retorts;
@@ -40,4 +40,6 @@
 
 @property (nonatomic, retain) UITableView *retortsView;
 @property (nonatomic, retain) UITextView *loadFailureMessage;
+@property (nonatomic, retain) UIView *footerView;
+@property NSInteger currentPage;
 @end

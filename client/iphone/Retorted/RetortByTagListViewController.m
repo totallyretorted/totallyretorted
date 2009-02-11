@@ -16,27 +16,31 @@
 #import "TRTag.h"
 #import "TRRating.h"
 
-// //Constant for maximum acceleration.
-//#define kMaxAcceleration 3.0
-// //Constant for the high-pass filter.
-//#define kFilteringFactor 0.1
+// The size of a full page of retorts
+#define kRetortPageSize 25
+
+@interface RetortByTagListViewController()
+- (void)loadURL;
+- (void)handleDataLoad:(NSNotification *)note;
+- (void)setFooterView;
+@end
 
 @implementation RetortByTagListViewController
 @synthesize retorts, facade, selectedTag, tagId;
-@synthesize retortsView;
-@synthesize loadFailureMessage;
+@synthesize retortsView, footerView;
+@synthesize loadFailureMessage, currentPage;
+
+- (void)awakeFromNib {
+	self.currentPage = 1;
+}
 
 - (void)viewDidLoad {
 	self.retortsView.hidden = YES;
 	self.loadFailureMessage.hidden = YES;
 	[activityIndicator startAnimating];
 	self.title = self.selectedTag;
-
-//	//set up accelerometer...
-//	UIAccelerometer *myAccel = [UIAccelerometer sharedAccelerometer];
-//	myAccel.updateInterval = .1;
-//	myAccel.delegate = self;
 	
+	self.retortsView.tableFooterView = self.footerView;
 	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
 	[self loadURL];
 
@@ -61,7 +65,12 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.retorts count];
+	NSUInteger rowCount = [self.retorts count];
+	if (rowCount == kRetortPageSize) {
+		// Add an extra row for the "Get More" button.
+		//rowCount =+ 1;
+	} 
+    return rowCount;
 }
 
 
@@ -70,7 +79,7 @@
     
 	static NSString *CellIdentifier = @"CustomTagCellIdentifier";
     //static NSString *CellIdentifier = @"Cell";
-    
+	
 	RetortCellView *cell = (RetortCellView *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -86,7 +95,7 @@
 		
     }
 	
-	//TODO: Why doesn't this debug section get called when compliling for debugging?
+
 #if DEBUG
 	if (cell == nil) {
 		UITableViewCell *badCell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
@@ -125,14 +134,34 @@
 	self.selectedTag = nil;
 	self.tagId = nil;
 	self.facade = nil;
+	self.footerView = nil;
     [super dealloc];
+}
+
+
+
+#pragma mark -
+#pragma mark User Events
+- (IBAction)nextPage:(id)sender {
+	//increment page number and reload list...
+	self.currentPage++;
+	JLog(@"More retorts button pressed");
 }
 
 #pragma mark -
 #pragma mark Custom Methods
+- (void)setFooterView {
+	if ([self.retorts count] >= kRetortPageSize) {
+		self.footerView.hidden = NO;
+//		self.retortsView.tableFooterView = self.footerView;
+	} else {
+		self.footerView.hidden = YES;
+	}
+}
+
 - (void)loadURL {
 	self.facade = [[TRRetortFacade alloc] init];
-	
+	//TODO: Add current page...
 	[self.facade loadRetortsWithRelativePath:[NSString stringWithFormat:@"tags/%d.xml", [self.tagId intValue]]];
 }
 
@@ -144,7 +173,13 @@
 	if ((aFacade.loadSuccessful) && ([aFacade.retorts count])) {
 		self.retortsView.hidden = NO;
 		self.loadFailureMessage.hidden = YES;
-		self.retorts = aFacade.retorts;
+		//TODO: Will likely need to optimize sense this will allow the array to continue to grow...
+		if ([self.retorts count] > 0) {
+			[self.retorts addObjectsFromArray:aFacade.retorts];
+		} else {
+			self.retorts = aFacade.retorts;
+		}
+		
 		[self.retortsView reloadData];
 	} else {
 		self.retortsView.hidden = YES;
@@ -152,12 +187,10 @@
 		self.loadFailureMessage.font = [UIFont systemFontOfSize:17.0];
 		self.loadFailureMessage.text = NSLocalizedString(@"Unable to acquire data at this time.  Please shake to try again.", @"Message on Retort By Tag list view to let the user know that data could not be received and they need to refresh.");
 	}
-		self.facade = nil;
-		[self removeFromAllNotifications];
-}
-
-- (void)refreshData {
 	
+	[self setFooterView];
+	self.facade = nil;
+	[self removeFromAllNotifications];
 }
 
 - (void)addToNotificationWithSelector:(SEL)selector notificationName:(NSString *)notificationName{

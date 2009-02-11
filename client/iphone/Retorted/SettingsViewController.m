@@ -52,9 +52,9 @@
 	[saveButton release];
 	
 	// set up the table's footer view based on our UIView 'myFooterView' outlet
-	CGRect newFrame = CGRectMake(0.0, 0.0, self.tableView.bounds.size.width-20.0, self.footerView.frame.size.height);
-	//self.footerView.backgroundColor = [UIColor clearColor];
-	self.footerView.frame = newFrame;
+//	CGRect newFrame = CGRectMake(0.0, 0.0, self.tableView.bounds.size.width-20.0, self.footerView.frame.size.height);
+//	//self.footerView.backgroundColor = [UIColor clearColor];
+//	self.footerView.frame = newFrame;
 	
 	self.tableView.tableFooterView = self.footerView;	// note this will override UITableView's 'sectionFooterHeight' property
 	

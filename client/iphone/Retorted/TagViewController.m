@@ -13,7 +13,7 @@
 #import "RetortByTagListViewController.h"
 
 @implementation TagViewController
-@synthesize tags, tagFacade, tagsView, loadFailurelbl, activityIndicator;
+@synthesize tags, tagFacade, tagsView, loadFailurelbl, activityIndicator, tagSearchBar;
 
 
 - (void)viewDidLoad {
@@ -21,6 +21,13 @@
 	self.loadFailurelbl.hidden = YES;
 	
 	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRTagDataDidFinishedNotification];
+
+	//set up the search bar...
+	self.tagsView.tableHeaderView = self.tagSearchBar;
+	self.tagSearchBar.barStyle = UIBarStyleBlackOpaque;
+	self.tagSearchBar.showsCancelButton = YES;
+	self.tagSearchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
+	self.tagsView.backgroundColor = [UIColor blackColor];
 	
 	self.title = NSLocalizedString(@"Tags", @"Title for the nav bar on the Tag list view screen");
 	[self loadURL];
@@ -112,6 +119,22 @@
 	[retortVC release];
 }
 
+#pragma mark -
+#pragma mark UISearchBarDelegate delegate methods
+
+// called when keyboard search button pressed
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+	JLog(@"Perfrom search.");
+	[self.tagSearchBar resignFirstResponder];
+}
+
+// called when cancel button pressed
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+	JLog(@"Search cancelled.");
+	[self.tagSearchBar resignFirstResponder];
+}
 
 #pragma mark -
 #pragma mark TRNotificationInterface
@@ -195,6 +218,7 @@
 	[nc removeObserver:self];
 	self.tags=nil;
 	self.tagFacade=nil;
+	self.tagSearchBar = nil;
     [super dealloc];
 }
 
