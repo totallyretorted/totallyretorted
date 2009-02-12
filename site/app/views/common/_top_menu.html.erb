@@ -1,5 +1,5 @@
 <div id="top_menu">
-	<% if logged_in? %>
+	<!-- <% if logged_in? %>
 		Whatchoo talkin' about, <%= current_user.login %>?
 	<% else %>
 		<%= link_to_remote_redbox "You talkin' to me?", :url => {:controller => 'sessions', :action => 'new'} %>
@@ -9,5 +9,18 @@
 	&nbsp;&middot;&nbsp;
 	<%= link_to "Knock yourself a pro slick", :controller => 'retorts' %>
 	&nbsp;&middot;&nbsp;
-	<%= link_to "Visit the Keymaster of Gozer", :controller => 'tags' %>
+	<%= link_to "Visit the Keymaster of Gozer", :controller => 'tags' %> -->
+	<span id="home-crumb"><%= link_to 'screen 0', root_url %></span>
+	&nbsp;&middot;&nbsp;
+	<span id="retort-crumb"><%= link_to 'browse retorts', retorts_url %></span>
+	&nbsp;&middot;&nbsp;
+	<span id="tag-crumb"><%= link_to 'browse tags', tags_url %></span>
+	&nbsp;&middot;&nbsp;
+	<span id="session-ctrl">
+	<% if logged_in? %>
+		<%= link_to_remote "sign out", :url => logout_url %>
+	<% else %>
+		<%= link_to_remote_redbox "sign in", :url => login_url %>
+	<% end %>
+	</span>
 </div>

@@ -143,25 +143,39 @@ namespace :data do
       r.attribution.who = 'Sacha Baron Cohen, as Boris Sagdiyev'
       r.attribution.what = 'Borat: Cultural Learnings of America for Make Benefit Glorious Nation of Kazakhstan'
       r.attribution.when = '2006'
-      r.votes << Vote.new(:user => User.find_by_login('adam.strickland'), :value => 1)
+      r.votes << Vote.new(:user => User.find_by_login('admin'), :value => 1)
       r.save!
     end
   end
   
-  task (:urban_b_tags) do
+  task (:urban_dictionary, :letters) do |task, args|
     require File.expand_path(File.dirname(__FILE__) + "/../../config/environment")
     require 'open-uri'
-    blist = Hpricot(open('http://www.urbandictionary.com/popular.php?character=B'))
-    (blist/'table#columnist li a').each do |e|
-      worddef = Hpricot(open("http://www.urbandictionary.com#{e.attributes['href']}"))
-      (worddef/'div.definition').each do |e2|
-        r = Retort.new(:content => e2.inner_html.strip)
-        r.tags << Tag.find_or_create_by_value(e.inner_html)
-        r.tags << Tag.find_or_create_by_value('urban dictionary')
-        r.tags << Tag.find_or_create_by_value('definition')
-        r.attribution = Attribution.new(:what => 'Urban Dictionary')
-        r.votes << Vote.new(:user => User.find_by_login('adam.strickland'), :value => 1)
-        r.save!
+    t = Rake::Task['data:urban_dictionary_letters']
+    t.set_arg_names([:letters])
+    t.invoke(args.letters || (65..90).collect{ |i| i.chr }.join('|'))
+  end
+  
+  task (:urban_dictionary_letters, :letters) do |task, args|
+    args.letters.split(/\|/).each do |ltr|
+      blist = Hpricot(open("http://www.urbandictionary.com/popular.php?character=#{ltr}"))
+      (blist/'table#columnist li a').each do |e|
+        myword = e.inner_html
+        worddef = Hpricot(open("http://www.urbandictionary.com#{e.attributes['href']}"))
+        (worddef/'div.definition').each do |e2|
+          mydef = e2.inner_html.strip
+          begin
+            r = Retort.new(:content => mydef)
+            r.tags << Tag.find_or_create_by_value(myword)
+            r.tags << Tag.find_or_create_by_value('urban dictionary')
+            r.tags << Tag.find_or_create_by_value('definition')
+            r.attribution = Attribution.new(:what => 'Urban Dictionary')
+            r.votes << Vote.new(:user => User.find_by_login('admin'), :value => 1)
+            r.save!
+          rescue
+            puts "Error:  #{$!} for word:'#{myword}', def:'#{mydef}'"
+          end
+        end
       end
     end
   end

@@ -8,7 +8,7 @@ class TagsController < ApplicationController
     params[:page] ||= 1
     # @tags = Tag.find_by_alpha :alpha => params[:letter]
     # @tags = Tag.paginate :page => params[:page], :finder => 'find_by_alpha', :alpha => params[:letter]
-    @tags = Tag.paginate :page => params[:page], :conditions => ['value LIKE ?', "#{params[:letter]}%"], :order => 'value ASC'
+    @tags = Tag.paginate :page => params[:page], :per_page => 25, :conditions => ['value LIKE ?', "#{params[:letter]}%"], :order => 'value ASC'
     @alphabar = Tag.find_all_alphas
     @alphabar.delete(params[:letter])
     # @paginate = true

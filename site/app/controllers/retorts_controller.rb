@@ -8,7 +8,7 @@ class RetortsController < ApplicationController
   def index
     # @retorts = Retort.find(:all)
     params[:page] ||= 1
-    @retorts = Retort.paginate :page => params[:page]
+    @retorts = Retort.paginate :page => params[:page], :per_page => 25
     # @paginate = true
     @listing = @retorts
 
