@@ -9,6 +9,8 @@ body {background:#000 url(/images/bg-black-grad.jpg) repeat-x;min-height:768px;f
 /* end { header } */
 /* start { body } */
 #bd {padding:2em 0 4em;color:#7f7772;}
+.l {float:left;}
+.r {float:right;}
 /* start { hollah (aka notification: ajax, no, ok, fubar, fyi) } */
 #hollah {color:#fff;font-size:200%;line-height:150%;padding-left:60px;margin:-2em 0 16px;}
 #hollah>div div.icon {width:48px;height:48px;float:left;margin-left:-60px;}
@@ -76,3 +78,16 @@ div.cloud .t4 {color:#ED1164;font-size:150%;}
 /* start { footer } */
 #ft {color:#666;text-align:center;}
 /* end { footer } */
+.content {padding:2em 3em;}
+.frm label {font-weight:700;}
+.frm input {margin-bottom:1em;}
+
+
+.login {width:300px;font-family:helvetica,arial;}
+.login table {margin-top:1em;}
+.login .login-btn {margin:10px 20px 0 0;}
+.login th, .login td {padding:0.25em;}
+.login th {font-weight:700;padding-right:1em;text-align:right;}
+.login .
+.login .button_to div {width:10em;margin-left:50px;}
+.login .button_to div input {margin-top:10px;position:relative;}

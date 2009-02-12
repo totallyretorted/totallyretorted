@@ -1,9 +1,18 @@
-<% curvy_corners "login", :css_class => ['compact', 'modal'] do %>
-	<% form_tag session_path do -%>
-		<%= label_tag 'login' %>: <%= text_field_tag 'login', @login %>
-		<%= label_tag 'password' %>: <%= password_field_tag 'password', nil %>
-		<!-- <%= label_tag 'remember_me', 'remember?' %> <%= check_box_tag 'remember_me', '1', @remember_me %> -->
-		<%= submit_tag 'Log in' %>
-	<% end %>
-	<%= button_to "Register", { :controller => 'users', :action => 'new' }, { :method => :get } %>
-<% end -%>
+<div class="corn dialog login">
+	<div class="corn-bd">
+		<% form_tag session_path do -%>
+			<table>
+				<tr><th><%= label_tag 'email' %></th><td><%= text_field_tag 'login', @login %></td></tr>
+				<tr><th><%= label_tag 'password' %></th><td><%= password_field_tag 'password', nil %></td></tr>
+			</table>
+			<!-- <%= label_tag 'remember_me', 'remember?' %> <%= check_box_tag 'remember_me', '1', @remember_me %> -->
+			<%= submit_tag 'Login', { :class => 'r login-btn' } %>
+		<% end %>
+		<%= button_to "Register", { :controller => 'users', :action => 'new' }, { :method => :get } %>
+	</div>
+	<div style="opacity: 1;" class="bgnd">
+	    <u class="w"></u><u class="e"></u>
+	    <i class="w"></i><i class="e"></i>
+	    <b class="w"></b><b class="e"></b>
+	</div>
+</div>

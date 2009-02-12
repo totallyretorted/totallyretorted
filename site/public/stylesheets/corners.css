@@ -9,6 +9,10 @@
 	background-image:url(/images/corners.png);
 	_background-image:url(/images/corners.gif);
 }
+.dialog .bgnd *{
+	background-image:url(/images/corners-dialog.png);
+	_background-image:url(/images/corners-dialog.gif);
+}
 /* end { corner-theme } */
 /* start { corner-chrome } */
 .corn{
