@@ -12,9 +12,16 @@
 #import "TagCellView.h"		//our custom cell view class
 #import "RetortByTagListViewController.h"
 
-@implementation TagViewController
-@synthesize tags, tagFacade, tagsView, loadFailurelbl, activityIndicator, tagSearchBar;
+@interface TagViewController()
+- (void) loadURL;
+- (void)loadURLWithSearch:(NSString *)searchText;
+- (void) handleDataLoad:(NSNotification *)note;
+//-(void) cleanTags: (NSMutableArray *)ts;
+@end
 
+
+@implementation TagViewController
+@synthesize tags, tagFacade, tagsView, loadFailurelbl, activityIndicator, tagSearchBar, footerView;
 
 - (void)viewDidLoad {
 	self.tagsView.hidden = YES;
@@ -125,8 +132,8 @@
 // called when keyboard search button pressed
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-	JLog(@"Perfrom search.");
 	[self.tagSearchBar resignFirstResponder];
+	[self loadURLWithSearch:self.tagSearchBar.text];
 }
 
 // called when cancel button pressed
@@ -157,29 +164,38 @@
 #pragma mark -
 #pragma mark Custom Methods
 // Initiates the process of fetching the tag data and populating the objects.
+
+
 -(void)loadURL{
 	self.tagFacade = [[TRTagFacade alloc] init];
 	[self.activityIndicator startAnimating];
 	[self.tagFacade loadTags];
 }
 
-
-//This method removes tags with weight 0 because there is no value to the user in clicking a tag with no associated retorts.
--(void)cleanTags: (NSMutableArray *)ts {
-	if (nil == ts)
-		return;
-	
-	//since we are removing items, iterate in reverse
-	for (NSInteger i=[ts count]-1; i>=0; i--) {
-		TRTag* tag = [ts objectAtIndex:i];
-		if (nil == tag) {
-			continue;			
-		}
-		if (0 == [tag weight]) {
-			[ts removeObjectAtIndex:i];
-		}
+- (void)loadURLWithSearch:(NSString *)searchText {
+	if (self.tagFacade == nil) {
+		self.tagFacade = [[TRTagFacade alloc] init];
 	}
+	[self.activityIndicator startAnimating];
+	[self.tagFacade loadTagsMatchingString:searchText];
 }
+
+////This method removes tags with weight 0 because there is no value to the user in clicking a tag with no associated retorts.
+//-(void)cleanTags: (NSMutableArray *)ts {
+//	if (nil == ts)
+//		return;
+//	
+//	//since we are removing items, iterate in reverse
+//	for (NSInteger i=[ts count]-1; i>=0; i--) {
+//		TRTag* tag = [ts objectAtIndex:i];
+//		if (nil == tag) {
+//			continue;			
+//		}
+//		if (0 == [tag weight]) {
+//			[ts removeObjectAtIndex:i];
+//		}
+//	}
+//}
 
 
 -(void)handleDataLoad: (NSNotification *)note{
@@ -193,7 +209,7 @@
 		self.loadFailurelbl.hidden=YES;
 		
 		NSMutableArray * t = tagF.tags;
-		[self cleanTags:t];		
+//		[self cleanTags:t];		
 		self.tags=t;
 		
 		[self.tagsView reloadData];
@@ -219,6 +235,7 @@
 	self.tags=nil;
 	self.tagFacade=nil;
 	self.tagSearchBar = nil;
+	self.footerView = nil;
     [super dealloc];
 }
 

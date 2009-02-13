@@ -15,6 +15,7 @@
 	IBOutlet UITableView *tagsView;							//the table view containing the list of tags
 	IBOutlet UIActivityIndicatorView *activityIndicator;	//indicator for arriving data
 	IBOutlet UISearchBar *tagSearchBar;
+	IBOutlet UIView *footerView;
 	
 	NSMutableArray *tags;			// an array of TRTag objects
 	TRTagFacade *tagFacade;			//Handles details on getting data from internet, parsing XML, and populating model objects.
@@ -26,9 +27,7 @@
 @property (nonatomic, retain) UILabel *loadFailurelbl;
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, retain) UISearchBar *tagSearchBar;
+@property (nonatomic, retain) UIView *footerView;
 
--(void) loadURL;
--(void) handleDataLoad:(NSNotification *)note;
--(void) cleanTags: (NSMutableArray *)ts;
 
 @end

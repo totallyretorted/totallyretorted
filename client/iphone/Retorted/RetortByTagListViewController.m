@@ -162,7 +162,7 @@
 - (void)loadURL {
 	self.facade = [[TRRetortFacade alloc] init];
 	//TODO: Add current page...
-	[self.facade loadRetortsWithRelativePath:[NSString stringWithFormat:@"tags/%d.xml", [self.tagId intValue]]];
+	[self.facade loadRetortsWithRelativePath:[NSString stringWithFormat:@"tags/%d/retorts.xml?page=%d", [self.tagId intValue], self.currentPage]];
 }
 
 - (void)handleDataLoad:(NSNotification *)note {

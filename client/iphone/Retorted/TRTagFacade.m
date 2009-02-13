@@ -16,6 +16,8 @@
 NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 
 @interface TRTagFacade()
+- (void)loadTagsWithUrl:(NSString *)sUrl;
+
 @property(nonatomic, retain) NSDictionary *properties;
 
 // ---- PERFORMANCE TESTING ----
@@ -60,16 +62,28 @@ NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 	tagUrl = [NSString stringWithFormat:@"%@/tags.xml", appDelegate.baseURL];
 	JLog(@"URL:%@ and performing a GET",tagUrl);
 	
+	[self loadTagsWithUrl:tagUrl];
+}
+
+- (void)loadTagsWithUrl:(NSString *)sUrl {
 	FEUrlHelper *urlHelp =[[FEUrlHelper alloc] init];
 	
 	// -----------------------------
 	// ---- PERFORMANCE TESTING ----
 	// -----------------------------
 	self.downloadStat.start = [NSDate timeIntervalSinceReferenceDate];
-	self.downloadStat.url = tagUrl;
+	self.downloadStat.url = sUrl;
 	
-	[urlHelp loadURLFromString:tagUrl withContentType:@"application/xml" HTTPMethod:@"GET" body:nil];
+	[urlHelp loadURLFromString:sUrl withContentType:@"application/xml" HTTPMethod:@"GET" body:nil];
 	[urlHelp release];
+}
+
+
+- (void)loadTagsMatchingString:(NSString *)searchText {
+	JLog(@"Performing tag search for %@", searchText);
+//	NSString *sUrl = [NSString stringWithFormat:@"%@", searchText],
+//	[self loadTagsWithUrl:sUrl];
+	
 }
 
 - (void)addToNotificationWithSelector:(SEL)selector notificationName:(NSString *)notificationName{

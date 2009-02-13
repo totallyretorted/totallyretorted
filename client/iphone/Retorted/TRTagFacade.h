@@ -35,8 +35,7 @@ extern NSString * const TRTagDataDidFinishedNotification;
 - (void)loadTags;
 - (void)handleDataLoadFailure: (NSNotification *)note;
 - (void)handleTagXMLLoad: (NSNotification *)note;
-//- (void)handleTagObjectsLoad: (NSNotification *)note;
-
+- (void)loadTagsMatchingString:(NSString *)searchText;
 
 @end
 

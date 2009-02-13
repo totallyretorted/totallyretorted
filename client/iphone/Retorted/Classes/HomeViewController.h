@@ -17,11 +17,15 @@
 	IBOutlet UITextView *loadFailureMessage;	//message if there is no data
 	IBOutlet UIScrollView *tagSlider;			//tag slider control
 	IBOutlet UIActivityIndicatorView *activityIndicator;
+	IBOutlet UIView *footerView;
 	
 	//Handles details on getting data from internet, parsing XML, and populating model objects.
 	TRRetortFacade *facade;
 
 	TRTagSliderHelper *slider;
+	
+	//Used with paging
+	NSInteger currentPage;
 	
 	// Array of TRRetort Objects...
 	NSMutableArray *retorts;
@@ -47,8 +51,9 @@
 	float lastX, lastY;
 	float shakecount;
 	float biggestshake;
-	
-	
+
+@private
+	NSIndexPath *startPoint;
 }
 
 // Handles the passoff to TRRetortFacade to begin data loading process.
@@ -77,17 +82,22 @@
 // Occurs when user clicks a specific Tag on the tag slider, if the tag slider is set in button mode (which it is by default).
 - (void)handleTagSliderButtonClick:(id)sender;
 
+// Occurs when the user clicks the "Get More Retorts" button.  This is caused when the list is filtered to a single tag and there are 25 items 
+- (IBAction)nextPage:(id)sender;
+
 @property (nonatomic, retain) TRRetortFacade *facade;
 @property (nonatomic, retain) TRTagSliderHelper *slider;
 @property (nonatomic, retain) NSMutableArray *retorts;
 @property BOOL isSingleTag;
 @property (nonatomic, retain) NSString *selectedTag;
 @property (nonatomic, retain) NSNumber *tagId;
+@property NSInteger currentPage;
 
 @property (nonatomic, retain) UITableView *retortsView;
 @property (nonatomic, retain) UITextView *loadFailureMessage;
 @property (nonatomic, retain) UIScrollView *tagSlider;
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain) UIView *footerView;
 
 
 @end

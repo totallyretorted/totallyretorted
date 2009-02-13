@@ -118,10 +118,10 @@
 							<int key="NSfFlags">16</int>
 						</object>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUIHighlightedTitle">Load More Retorts...</string>
-						<string key="IBUIDisabledTitle">Load More Retorts...</string>
-						<string key="IBUISelectedTitle">Load More Retorts...</string>
-						<string key="IBUINormalTitle">Load More Retorts...</string>
+						<string key="IBUIHighlightedTitle">Get More Retorts...</string>
+						<string key="IBUIDisabledTitle">Get More Retorts...</string>
+						<string key="IBUISelectedTitle">Get More Retorts...</string>
+						<string key="IBUINormalTitle">Get More Retorts...</string>
 						<reference key="IBUIHighlightedTitleColor" ref="165498751"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
@@ -260,6 +260,7 @@
 							<reference ref="693304765"/>
 						</object>
 						<reference key="parent" ref="360949347"/>
+						<string key="objectName">Footer</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">22</int>

@@ -17,18 +17,24 @@
 #import "TRRetort.h"
 #import "TRTag.h"
 
-
+	
+#define kRetortPageSize 25				// The size of a full page of retorts
 #define kFilteringFactor 0.1			// Constant for the high-pass filter.
 #define kRequiredMaxAcceleration 1.25	// Constant for minimum acceleration required to qualify.
 #define kRequiredShakeCount 3			// Constant for # of shakes required to qualify.
 
+@interface HomeViewController()
+- (void)setFooterView;
+@property(nonatomic, retain) NSIndexPath *startPoint;
+@end
+
+
 @implementation HomeViewController
 @synthesize retorts, facade, slider;
 @synthesize retortsView, activityIndicator;
-@synthesize loadFailureMessage, tagSlider;
-@synthesize isSingleTag, selectedTag, tagId;
-
-
+@synthesize loadFailureMessage, tagSlider, footerView;
+@synthesize isSingleTag, selectedTag, tagId, currentPage;
+@synthesize startPoint;
 
 - (id)initWithCoder:(NSCoder *)coder { 
 	JLog(@"Initializing");
@@ -36,6 +42,7 @@
 		self.isSingleTag = NO;
 		self.selectedTag = nil;
 		self.tagId = nil;
+		self.currentPage = 1;
 	}
 	return self;
 }
@@ -61,10 +68,7 @@
 																   target:self 
 																   action:@selector(homeButtonClicked)] autorelease];
 	
-//	UIBarButtonItem *homeButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks 
-//																				 target:self 
-//																				 action:@selector(homeButtonClicked)] autorelease];
-	
+
 	self.navigationItem.rightBarButtonItem = refreshButton;
 	self.navigationItem.leftBarButtonItem = homeButton;
 	
@@ -72,6 +76,9 @@
 	UIAccelerometer *myAccel = [UIAccelerometer sharedAccelerometer];
 	myAccel.updateInterval = .1;
 	myAccel.delegate = self;
+	
+	//set up footer...
+	self.retortsView.tableFooterView = self.footerView;
 
 	//set self to receive callback notification...
 	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
@@ -79,6 +86,7 @@
 	//begin data loading process...
 	[self loadDataWithUrl:@"retorts/screenzero.xml"];
 }
+
 
 
 
@@ -103,11 +111,28 @@
 	self.selectedTag = nil;
 	self.tagId = nil;
 	self.retorts = nil;
+	self.footerView = nil;
+	self.startPoint = nil;
     [super dealloc];
 }
 
 #pragma mark -
 #pragma mark Custom Methods
+- (void)setFooterView {
+	if (self.isSingleTag && [self.retorts count] == kRetortPageSize) {
+		self.footerView.hidden = NO;
+	} else {
+		self.footerView.hidden = YES;
+	}
+	
+//	if ([self.retorts count] >= kRetortPageSize) {
+//		self.footerView.hidden = NO;
+//		//		self.retortsView.tableFooterView = self.footerView;
+//	} else {
+//		self.footerView.hidden = YES;
+//	}
+}
+
 //starts process of fetching retort content using the TRRetortFacade helper class.
 - (void)loadDataWithUrl:(NSString *)relPath {
 	JLog(@"Create instance of TRRetortFacade");
@@ -138,6 +163,8 @@
 		self.loadFailureMessage.text = NSLocalizedString(@"Unable to acquire data at this time.  Please shake to try again.", @"Message on Home list view to let the user know that data could not be received and they need to refresh.");
 	}
 
+	[self setFooterView];
+	
 	//facade is no longer needed...
 	self.facade = nil;
 	
@@ -155,6 +182,10 @@
 		[self buildTagSliderView];
 		[self displayRetortsForScreenZero];
 	}
+	
+	[self.retortsView scrollToRowAtIndexPath:self.startPoint atScrollPosition:UITableViewScrollPositionTop animated:YES];
+	
+	//[self scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated
 }
 
 - (void)displayRetortsForSingleTag {
@@ -232,7 +263,7 @@
 	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
 	
 
-	[self loadDataWithUrl:[NSString stringWithFormat:@"tags/%d.xml", [self.tagId intValue]]];
+	[self loadDataWithUrl:[NSString stringWithFormat:@"tags/%d/retorts.xml?page=%d", [self.tagId intValue], currentPage]];
 }
 
 - (void)refreshData {
@@ -243,7 +274,7 @@
 	
 	
 	if (self.isSingleTag) {
-		[self loadDataWithUrl:[NSString stringWithFormat:@"tags/%d.xml", [self.tagId intValue]]];
+		[self loadDataWithUrl:[NSString stringWithFormat:@"tags/%d/retorts.xml?page=%d", [self.tagId intValue], currentPage]];
 	} else {
 		[self loadDataWithUrl:@"retorts/screenzero.xml"];
 	}
@@ -261,6 +292,13 @@
 		
 		[self loadDataWithUrl:@"retorts/screenzero.xml"];
 	}
+}
+
+- (IBAction)nextPage:(id)sender {
+	//increment page number and reload list...
+	self.currentPage++;
+	JLog(@"More retorts button pressed");
+	[self refreshData];
 }
 
 #pragma mark -
@@ -367,6 +405,9 @@
 	TRRetort *aRetort = [self.retorts objectAtIndex:indexPath.row];
 	cell.retortValue.text = aRetort.content;
 
+	if (indexPath.row == 0) {
+		self.startPoint = indexPath;
+	}
 	
     return cell;
 }
