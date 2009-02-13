@@ -1,0 +1,26 @@
+<div>
+	<% @records.each do |record| %>
+		<div id="taggroup">
+			<div class="heading"><%= record[:alpha] %></div>
+			<div style="width: 100%;" class="corn">
+				<div class="corn-bd">
+					<ul class="pop">
+						<% record[:tags].each do |tag| %>
+							<%= render :partial => 'li', :locals => {:t => tag} %>
+						<% end %>
+						<li>
+							<img src="/images/gt.png">
+							<%= link_to "All '#{record[:alpha]}' Tags", tags_url(:letter => record[:alpha]) %>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="spacer"><br/></div>
+		</div>
+	<% end %>
+	<div style="opacity: 1;" class="bgnd">
+	    <u class="w"></u><u class="e"></u>
+	    <i class="w"></i><i class="e"></i>
+	    <b class="w"></b><b class="e"></b>
+	</div>
+</div>

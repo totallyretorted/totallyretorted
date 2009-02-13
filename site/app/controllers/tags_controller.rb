@@ -145,4 +145,17 @@ class TagsController < ApplicationController
   #      format.xml { render :xml => @tags }
   #    end
   #  end
+  
+  def top_n_by_alpha
+    params[:n] ||= 5
+    @records = Tag.find_all_alphas.collect do |a|
+      { :alpha => a, :tags => Tag.find_by_alpha_by_weight(a, params) }
+    end
+    respond_to do |format|
+      format.html
+      format.xml do
+        render :xml => @records
+      end
+    end
+  end
 end

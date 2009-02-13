@@ -120,9 +120,11 @@ class TagTest < ActiveSupport::TestCase
   
   test "find by alpha" do
     assert_equal 2, Tag.find_by_alpha(:alpha => 'C').size
+    # assert_equal 0, Tag.find_by_alpha(:alpha => 'C', :case => true).size
     assert_equal 2, Tag.find_by_alpha(:alpha => 'c').size
     assert_equal 0, Tag.find_by_alpha.size
     t = Tag.new(:value => 'ALPHA')
+    t.retorts << Retort.new(:content => 'ALPHA TEST')
     t.save!
     assert_equal 1, Tag.find_by_alpha.size
   end
@@ -136,7 +138,8 @@ class TagTest < ActiveSupport::TestCase
   end
   
   test "find tags in use" do
-    assert_equal 3, Tag.find_tags_in_use.size
+    assert_equal 3, Tag.tags_in_use.size
+    # assert_equal 3, Tag.find_tags_in_use.size
   end
   
   test "find bestest" do
@@ -154,9 +157,13 @@ class TagTest < ActiveSupport::TestCase
     worstest.retorts << Retort.new(:content => "not bestest")
     worstest.save!
     
-    bestest = Tag.bestest
-    assert_equal (num_tags + base_count), bestest.size, "found #{bestest.collect{|t|t.value}.join(',')}"
-    assert !bestest.include?(worstest)
+    bestest = Tag.bestest :n => 5
+    assert_equal num_tags, bestest.size, bestest.collect{|t|t.value}.join(',')
+    assert !bestest.include?(worstest), bestest.collect{|t|t.value}.join(',')
     #assert_equal num_tags, Tag.bestest :limit => num_tags  
+  end
+  
+  test "find by alpha by weight" do
+    assert_equal 2, Tag.find_by_alpha_by_weight('C').size
   end
 end

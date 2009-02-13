@@ -52,19 +52,39 @@ class TagsControllerTest < ActionController::TestCase
     assert_equal 'cartman', results[0].value
   end
   
-  test "alpha" do
-    get :alpha, :letter => 's'
-    assert_response :success
-    results = assigns(:tags)
-    assert_not_nil results
-    assert_equal 1, results.size
-    assert_equal 'south_park', results[0].value
-    
-  end
+  # test "alpha" do
+  #     get :alpha, :letter => 's'
+  #     assert_response :success
+  #     results = assigns(:tags)
+  #     assert_not_nil results
+  #     assert_equal 1, results.size
+  #     assert_equal 'south_park', results[0].value
+  #     
+  #   end
   
   test "search tags" do
     get :search, :search => 'South'
     assert_response :success
     assert_equal 1, assigns(:results).size
+  end
+  
+  test "top 5 tags by alpha" do
+    get :top_n_by_alpha, :format => 'xml'
+    assert_response :success
+    results = assigns(:records)
+    assert_not_nil results
+    assert_equal 2, results.size
+    assert_equal 2, results[0][:tags].size
+    assert_equal 1, results[1][:tags].size
+  end
+  
+  test "top 1 tags by alpha" do
+    get :top_n_by_alpha, :format => 'xml', :n => 1
+    assert_response :success
+    results = assigns(:records)
+    assert_not_nil results
+    assert_equal 2, results.size
+    assert_equal 1, results[0][:tags].size
+    assert_equal 1, results[1][:tags].size
   end
 end

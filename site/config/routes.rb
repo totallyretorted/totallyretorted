@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session, :member => { :verify => :post }
 
-  map.resources :tags, :collection => { :search => :get } do |tag|
+  map.resources :tags, :collection => { :search => :get, :top_n_by_alpha => :get } do |tag|
     tag.resources :retorts
   end
   
