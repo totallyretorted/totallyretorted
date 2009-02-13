@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
-  before_filter :find_retort
+  before_filter :find_parent
+  before_filter :login_required, :only => [ :edit, :update, :create ]
   
   # GET /votes
   # GET /votes.xml
@@ -100,7 +101,7 @@ class VotesController < ApplicationController
   end
   
 private 
-  def find_retort 
+  def find_parent 
     @retort = Retort.find(params[:retort_id]) 
   end 
 end

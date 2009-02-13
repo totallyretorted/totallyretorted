@@ -6,26 +6,17 @@ ActionController::Routing::Routes.draw do |map|
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
   
   map.resources :users do |user|
-    # user.resources :votes
   end
 
   map.resource :session, :member => { :verify => :post }
 
   map.resources :tags, :collection => { :search => :get, :top_n_by_alpha => :get } do |tag|
-    tag.resources :retorts
+    tag.resources :retorts, :controller => 'tag_retorts', :name_prefix => "tag_", :except => [:edit, :update, :destroy, :new, :create, :show]
   end
-  
-  # map.resources :votes
-  
-  #map.tags_by_alpha 'tags/alpha/:letter', :controller => 'tags', :action => 'alpha'
-  #map.tags_by_alpha_formatted 'tags/alpha/:letter.:format', :controller => 'tags', :action => 'alpha'
 
-  map.resources :retorts, 
-      :collection => { :screenzero => :get, :all => :get, :search => :get, :paginate => :get }, 
-      :member => { :new_remote => :get } do |retort|
+  map.resources :retorts, :collection => { :screenzero => :get, :all => :get, :search => :get }, :member => { :new_remote => :get } do |retort|
     retort.resource :attributions
     retort.resources :votes
-    # retort.resources :tags
   end
 
   # map.connect ':controller/page/:page', :action => 'paginate'

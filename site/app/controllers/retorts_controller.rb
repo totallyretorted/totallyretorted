@@ -1,15 +1,15 @@
 require "rexml/document"
 
 class RetortsController < ApplicationController
+  before_filter :find_parent
   before_filter :login_required, :only => [ :edit, :update, :create ]
+
   
   # GET /retorts
   # GET /retorts.xml
   def index
-    # @retorts = Retort.find(:all)
     params[:page] ||= 1
     @retorts = Retort.paginate :page => params[:page], :per_page => 25
-    # @paginate = true
     @listing = @retorts
 
     respond_to do |format|
@@ -168,5 +168,11 @@ class RetortsController < ApplicationController
       logger.info @results.size
     end
     render :partial => 'search', :layout => false
-  end    
+  end
+private
+  def find_parent
+    if params[:tag_id]
+      @tag = Tag.find(params[:tag_id])
+    end
+  end
 end

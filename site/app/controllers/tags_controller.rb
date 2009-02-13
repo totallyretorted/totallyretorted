@@ -148,9 +148,9 @@ class TagsController < ApplicationController
   
   def top_n_by_alpha
     params[:n] ||= 5
-    @records = Tag.find_all_alphas.collect do |a|
-      { :alpha => a, :tags => Tag.find_by_alpha_by_weight(a, params) }
-    end
+    # @records = Tag.find_all_alphas.collect{ |a|{ :alpha => a.strip, :tags => Tag.find_by_alpha_by_weight(a.strip, params) } }.sort{ |l,r| l[:alpha] <=> r[:alpha]}
+    @records = Tag.find_all_alphas.collect{ |a|{ :alpha => a.strip, :tags => Tag.find_by_alpha_by_weight(a.strip, params) } }
+    
     respond_to do |format|
       format.html
       format.xml do

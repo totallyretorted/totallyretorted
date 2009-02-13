@@ -1,0 +1,16 @@
+<%= render_toolbar %>
+<div class="heading"><%= @tag.name %></div>
+<div style="width: 100%;" class="corn">
+	<div class="corn-bd">
+		<ul class="pop">
+			<% @retorts.each do |r| %>
+				<%= render :partial => "retorts/li", :locals => { :r => r }%>
+			<% end %>
+		</ul>
+	</div>
+	<div style="opacity: 1;" class="bgnd">
+	    <u class="w"></u><u class="e"></u>
+	    <i class="w"></i><i class="e"></i>
+	    <b class="w"></b><b class="e"></b>
+	</div>
+</div>
