@@ -6,7 +6,7 @@ class Tag < ActiveRecord::Base
   validates_presence_of :value
   validates_uniqueness_of :value
   
-  named_scope :weighted, :joins => ["INNER JOIN (SELECT tag_id, COUNT(retort_id) AS weight FROM retorts_tags GROUP BY tag_id) ON tag_id = id"], :conditions => ["weight > 0"]
+  named_scope :weighted, :joins => ["INNER JOIN (SELECT tag_id, COUNT(retort_id) AS weight FROM retorts_tags GROUP BY tag_id) RT ON RT.tag_id = id"], :conditions => ["weight > 0"]
   named_scope :sorted, :order => 'value ASC'
   named_scope :by_alpha, lambda{ |letter|
     { :conditions => ['value LIKE ?', "#{letter}%"], :order => 'value ASC'} 
