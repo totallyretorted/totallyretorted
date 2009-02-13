@@ -25,6 +25,7 @@
 
 @interface HomeViewController()
 - (void)setFooterView;
+- (NSString *)singleTagUrl;
 @property(nonatomic, retain) NSIndexPath *startPoint;
 @end
 
@@ -118,19 +119,13 @@
 
 #pragma mark -
 #pragma mark Custom Methods
+//deteremine whether or not to display the "get more retorts" button...
 - (void)setFooterView {
 	if (self.isSingleTag && [self.retorts count] == kRetortPageSize) {
 		self.footerView.hidden = NO;
 	} else {
 		self.footerView.hidden = YES;
 	}
-	
-//	if ([self.retorts count] >= kRetortPageSize) {
-//		self.footerView.hidden = NO;
-//		//		self.retortsView.tableFooterView = self.footerView;
-//	} else {
-//		self.footerView.hidden = YES;
-//	}
 }
 
 //starts process of fetching retort content using the TRRetortFacade helper class.
@@ -172,6 +167,7 @@
 	[self removeFromAllNotifications];
 }
 
+//determines the appropriate view to display
 - (void)displayRetortsView {
 	self.retortsView.hidden = NO;
 	self.loadFailureMessage.hidden = YES;
@@ -184,8 +180,6 @@
 	}
 	
 	[self.retortsView scrollToRowAtIndexPath:self.startPoint atScrollPosition:UITableViewScrollPositionTop animated:YES];
-	
-	//[self scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition:(UITableViewScrollPosition)scrollPosition animated:(BOOL)animated
 }
 
 - (void)displayRetortsForSingleTag {
@@ -208,12 +202,8 @@
 	
 	CGRect newFrame = self.retortsView.frame;
 	CGFloat sliderHeight = self.tagSlider.frame.size.height;
-	//CGFloat sliderY = self.tagSlider.frame.origin.y;
 	CGFloat superHeight = [self.retortsView superview].frame.size.height;
-	
-	//newFrame.origin.y = sliderY+sliderHeight;
 	newFrame.size.height = superHeight - sliderHeight;
-	//newFrame.size.height -= sliderHeight;
 	
 	self.retortsView.frame = newFrame;
 	
@@ -246,9 +236,12 @@
 		self.slider.tagArray = tags;
 	}
 	
-	
 	[tags release];
 	[self.slider buildTagScroller:self.tagSlider];
+}
+
+- (NSString *)singleTagUrl {
+	return [NSString stringWithFormat:@"tags/%d/retorts.xml?page=%d", [self.tagId intValue], currentPage];
 }
 
 #pragma mark -
@@ -263,7 +256,7 @@
 	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
 	
 
-	[self loadDataWithUrl:[NSString stringWithFormat:@"tags/%d/retorts.xml?page=%d", [self.tagId intValue], currentPage]];
+	[self loadDataWithUrl:[self singleTagUrl]];
 }
 
 - (void)refreshData {
@@ -274,7 +267,7 @@
 	
 	
 	if (self.isSingleTag) {
-		[self loadDataWithUrl:[NSString stringWithFormat:@"tags/%d/retorts.xml?page=%d", [self.tagId intValue], currentPage]];
+		[self loadDataWithUrl:[self singleTagUrl]];
 	} else {
 		[self loadDataWithUrl:@"retorts/screenzero.xml"];
 	}

@@ -23,6 +23,7 @@
 - (void)loadURL;
 - (void)handleDataLoad:(NSNotification *)note;
 - (void)setFooterView;
+- (void)refreshData;
 @end
 
 @implementation RetortByTagListViewController
@@ -30,9 +31,17 @@
 @synthesize retortsView, footerView;
 @synthesize loadFailureMessage, currentPage;
 
-- (void)awakeFromNib {
-	self.currentPage = 1;
-}
+
+
+
+// Override initWithNibName:bundle: to load the view using a nib file then perform additional customization that is not appropriate for viewDidLoad.
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+		self.currentPage = 1;
+	}
+	return self;
+ }
+ 
 
 - (void)viewDidLoad {
 	self.retortsView.hidden = YES;
@@ -41,8 +50,7 @@
 	self.title = self.selectedTag;
 	
 	self.retortsView.tableFooterView = self.footerView;
-	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
-	[self loadURL];
+	[self refreshData];
 
 }
 
@@ -146,22 +154,31 @@
 	//increment page number and reload list...
 	self.currentPage++;
 	JLog(@"More retorts button pressed");
+	[self refreshData];
 }
 
 #pragma mark -
 #pragma mark Custom Methods
+- (void)refreshData {
+	
+	//set self to receive callback notification...
+	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
+	[self loadURL];
+}
+
 - (void)setFooterView {
 	if ([self.retorts count] >= kRetortPageSize) {
 		self.footerView.hidden = NO;
-//		self.retortsView.tableFooterView = self.footerView;
 	} else {
 		self.footerView.hidden = YES;
 	}
 }
 
 - (void)loadURL {
-	self.facade = [[TRRetortFacade alloc] init];
-	//TODO: Add current page...
+	if (!self.facade) {
+		self.facade = [[TRRetortFacade alloc] init];
+	}
+	
 	[self.facade loadRetortsWithRelativePath:[NSString stringWithFormat:@"tags/%d/retorts.xml?page=%d", [self.tagId intValue], self.currentPage]];
 }
 
