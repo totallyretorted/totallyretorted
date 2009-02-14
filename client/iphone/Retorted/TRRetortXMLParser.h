@@ -18,9 +18,11 @@ extern NSString * const TRXMLRetortDataFinishedLoadingNotification;
 	NSMutableString *currentTextNode;
 	NSMutableArray *retorts;
 	NSMutableArray *tags;		//hold as independent array when only parsing tags, not retorts
+	NSMutableArray *alphaArray;	//holds a list of letters that have tags associated with them.
+	NSMutableArray *records;	//Used for top_n_by_alpha xml.  Holds groupings of Tag objects.
 
 	BOOL canAppend;
-	
+	BOOL isTagData;
 	TRRetort *currentRetort;
 	TRTag *currentTag;
 	TRAttribution *currentAttribution;
@@ -38,7 +40,9 @@ extern NSString * const TRXMLRetortDataFinishedLoadingNotification;
 @property (nonatomic, retain) TRRetort *currentRetort;
 @property (nonatomic, retain) TRTag *currentTag;
 @property (nonatomic, retain) TRAttribution *currentAttribution;
+@property (nonatomic, retain) NSMutableArray *alphaArray;
+@property (nonatomic, retain) NSMutableArray *records;
 
-
-@property (nonatomic, readwrite) BOOL canAppend;
+@property BOOL canAppend;
+@property BOOL isTagData;
 @end

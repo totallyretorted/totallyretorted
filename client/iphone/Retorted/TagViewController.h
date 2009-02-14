@@ -18,11 +18,15 @@
 	IBOutlet UIView *footerView;
 	IBOutlet UIImageView *hover;
 	
-	NSMutableArray *tags;			// an array of TRTag objects
+	UILabel *sectionLabel;			//label associated with each section.
+	
+	NSMutableArray *tags;			// an array of TRTag object arrays (a list of TRTag groups)
+	NSMutableArray *alphaArray;		// An array of unique starting letters of from the TRTag list.
 	TRTagFacade *tagFacade;			//Handles details on getting data from internet, parsing XML, and populating model objects.
 }
 
 @property (nonatomic, retain) NSMutableArray *tags;
+@property (nonatomic, retain) NSMutableArray *alphaArray;
 @property (nonatomic, retain) TRTagFacade *tagFacade;
 @property (nonatomic, retain) UITableView *tagsView;
 @property (nonatomic, retain) UILabel *loadFailurelbl;

@@ -27,7 +27,8 @@ int const INVALID_PK = 8;
 @synthesize currentTextNode;
 @synthesize currentRetort, currentTag, currentAttribution;
 @synthesize retorts, tags;
-@synthesize canAppend;
+@synthesize canAppend, isTagData;
+@synthesize alphaArray, records;
 
 
 - (id)init {
@@ -36,7 +37,7 @@ int const INVALID_PK = 8;
 	}
 	
 	self.retorts = [[NSMutableArray alloc] init];
-	
+	self.isTagData = NO;
 	
 	return self;
 }
@@ -86,6 +87,10 @@ int const INVALID_PK = 8;
 	}
 	self.currentTextNode = [[NSMutableString alloc] init];
 	
+	
+	//===========================
+	// RETORTS related elements
+	//===========================
 	if ([elementName isEqualToString:@"retorts"]) 
 	{
 		//create an array for retorts to be put into
@@ -105,7 +110,23 @@ int const INVALID_PK = 8;
 			self.currentRetort.primaryId = [NSNumber numberWithInt: INVALID_PK];
 		
 		return;
-		
+	}
+	
+	
+	//===========================
+	// TAG related elements
+	//===========================
+	if ([elementName isEqualToString:@"alpha"]) {
+		return;
+	}
+	
+	if ([elementName isEqualToString:@"records"]) {
+		isTagData = YES;
+		self.alphaArray = [[NSMutableArray alloc] init];
+		self.records = [[NSMutableArray alloc] init];
+	}
+	if ([elementName isEqualToString:@"record"]) {
+		return;
 	}
 	
 	if ([elementName isEqualToString:@"tags"]) 
@@ -114,9 +135,10 @@ int const INVALID_PK = 8;
 		NSMutableArray* ts = [[NSMutableArray alloc] init];
 		
 		if (self.currentRetort != nil) {
+			//parsing a Retorts URL -> add related tags to retort object (parent)
 			self.currentRetort.tags = ts;
 		} else {
-			//parsing tags url because there is no retort nodes
+			//parsing Tags url -> will be added related tags group to records array (container)
 			self.tags = ts;
 		}
 		
@@ -142,12 +164,6 @@ int const INVALID_PK = 8;
 		return;
 	}
 	
-//	
-//	if ([elementName isEqualToString:@"rating"]) {
-//		self.currentRating = [[TRRating alloc] init];
-//		return;
-//	}
-	
 
 	if ([elementName isEqualToString:@"attribution"]) 
 	{
@@ -163,15 +179,14 @@ int const INVALID_PK = 8;
 	
 	canAppend = NO;
 	
-	//primary objects...
-	
+	//===================
+	// RETORT nodes...
+	//===================
 	if ([elementName isEqualToString:@"retorts"]) 
 	{
 		return;
 	}
-	//===================
-	// RETORT node...
-	//===================
+	
 	if ([elementName isEqualToString:@"retort"]) 
 	{
 		JLog(@"Adding %@ to retorts array: ", [self.currentRetort description]);
@@ -193,22 +208,24 @@ int const INVALID_PK = 8;
 		self.currentRetort.negative = [self.currentTextNode intValue];
 		return;
 	}
-//	if ([elementName isEqualToString:@"rank"]) {
-//		self.currentRating.rank = [self.currentTextNode floatValue];
-//		return;
-//	}
-//	if ([elementName isEqualToString:@"rating"]) {
-//		self.currentRetort.rating = self.currentRating;
-//		self.currentRating = nil; //same as release - should be retained by currentRetort.
-//		JLog(@"Added rating");
-//		return;
-//	}
 	
 	
 	
 	//===================
-	// TAGS node...
+	// TAG nodes...
 	//===================
+	if ([elementName isEqualToString:@"records"]) {
+		return;
+	}
+	
+	if ([elementName isEqualToString:@"record"]) {
+		[self.records addObject:self.tags];
+	}
+	
+	if ([elementName isEqualToString:@"alpha"]) {
+		[self.alphaArray addObject:self.currentTextNode];
+	}
+	
 	if ([elementName isEqualToString:@"tag"]) {
 		JLog(@"Adding tag to currentRetort");
 		self.currentTag = nil; //same as release - should be retained by currentRetort tag array.
@@ -293,12 +310,12 @@ int const INVALID_PK = 8;
 - (void) dealloc {
 	self.currentTag = nil;
 	self.currentRetort = nil;
-	//self.currentRating = nil;
 	self.currentAttribution = nil;
 	self.retorts = nil;
 	//self.tags = nil;
 	self.currentTextNode = nil;
-	
+	self.alphaArray = nil;
+	self.records = nil;
 	[super dealloc];
 }
 

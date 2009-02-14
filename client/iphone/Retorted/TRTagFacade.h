@@ -16,7 +16,8 @@
 extern NSString * const TRTagDataDidFinishedNotification;
 
 @interface TRTagFacade : NSObject <TRNotificationInterface> {
-	NSMutableArray *tags;
+	NSMutableArray *tagGroups;
+	NSMutableArray *alphaArray;
 	BOOL loadSucessful;
 	NSDictionary *properties;
 	TRRetortXMLParser *xmlParser;
@@ -28,7 +29,8 @@ extern NSString * const TRTagDataDidFinishedNotification;
 	PerformanceStats *statHelper;
 }
 
-@property (nonatomic, retain) NSMutableArray *tags;
+@property (nonatomic, retain) NSMutableArray *tagGroups;
+@property (nonatomic, retain) NSMutableArray *alphaArray;
 @property (nonatomic, retain) TRRetortXMLParser *xmlParser;
 @property BOOL loadSucessful;
 

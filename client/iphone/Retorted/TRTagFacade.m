@@ -28,7 +28,7 @@ NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 
 @implementation TRTagFacade
 
-@synthesize tags, loadSucessful, properties, xmlParser;
+@synthesize tagGroups, loadSucessful, properties, xmlParser, alphaArray;
 
 // ---- PERFORMANCE TESTING ----
 @synthesize parseStat, downloadStat, statHelper;
@@ -134,7 +134,6 @@ NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 
 	JLog(@"Calling XML Parser.");
 	self.xmlParser = [[TRRetortXMLParser alloc] init];
-	//TRRetortXMLParser *xmlParsr = [[TRRetortXMLParser alloc] init];
 	[self.xmlParser parseRetortXML:helpr.xmlData parseError:&parseError];
 	
 	//TODO:  Handle parseError
@@ -142,8 +141,9 @@ NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 		self.loadSucessful = NO;
 	} else {
 		self.loadSucessful = YES;
-		self.tags = self.xmlParser.tags;
-		JLog(@"Received %d tags.  Sending TRXMLRetortDataFinishedLoadingNotification notification.", [self.tags count]);
+		self.tagGroups = self.xmlParser.records;
+		self.alphaArray = self.xmlParser.alphaArray;
+		JLog(@"Received %d tag groups.  Sending TRXMLRetortDataFinishedLoadingNotification notification.", [self.tagGroups count]);
 	}
 	
 	// -----------------------------
@@ -174,7 +174,8 @@ NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 	[nc removeObserver:self];
 	
 	self.xmlParser = nil;
-	self.tags=nil;
+	self.tagGroups = nil;
+	self.alphaArray = nil;
 	[super dealloc];
 }
 @end
