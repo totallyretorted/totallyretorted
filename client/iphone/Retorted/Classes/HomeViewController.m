@@ -12,11 +12,13 @@
 #import "TRTagSliderHelper.h"
 #import "RetortCellView.h"		//our custom cell view class
 #import "TRTagButton.h"
+#import "HoverView.h"
 
 // Model class inclusion
 #import "TRRetort.h"
 #import "TRTag.h"
 
+#import "RetortedAppDelegate.h"
 	
 #define kRetortPageSize 25				// The size of a full page of retorts
 #define kFilteringFactor 0.1			// Constant for the high-pass filter.
@@ -27,6 +29,8 @@
 - (void)setFooterView;
 - (NSString *)singleTagUrl;
 @property(nonatomic, retain) NSIndexPath *startPoint;
+
+- (void)showHoverView:(BOOL)show;
 @end
 
 
@@ -35,7 +39,7 @@
 @synthesize retortsView, activityIndicator;
 @synthesize loadFailureMessage, tagSlider, footerView;
 @synthesize isSingleTag, selectedTag, tagId, currentPage;
-@synthesize startPoint;
+@synthesize startPoint, hover;
 
 - (id)initWithCoder:(NSCoder *)coder { 
 	JLog(@"Initializing");
@@ -48,11 +52,7 @@
 	return self;
 }
 
-/*
-// Implement loadView to create a view hierarchy programmatically.
-- (void)loadView {
-}
-*/
+
 
 
 // Implement viewDidLoad to do additional setup after loading the view.
@@ -81,6 +81,7 @@
 	//set up footer...
 	self.retortsView.tableFooterView = self.footerView;
 
+	
 	//set self to receive callback notification...
 	[self addToNotificationWithSelector:@selector(handleDataLoad:) notificationName:TRRetortDataFinishedLoadingNotification];
 	
@@ -114,11 +115,30 @@
 	self.retorts = nil;
 	self.footerView = nil;
 	self.startPoint = nil;
+	self.hover = nil;
     [super dealloc];
 }
 
 #pragma mark -
 #pragma mark Custom Methods
+- (void)showHoverView:(BOOL)show
+{
+	// fade animate the view out of view by affecting its alpha
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.40];
+	
+	if (show)
+	{
+		self.hover.alpha = 1.0;
+	}
+	else
+	{
+		self.hover.alpha = 0.0;
+	}
+	
+	[UIView commitAnimations];
+}
+
 //deteremine whether or not to display the "get more retorts" button...
 - (void)setFooterView {
 	if (self.isSingleTag && [self.retorts count] == kRetortPageSize) {
@@ -133,10 +153,10 @@
 	JLog(@"Create instance of TRRetortFacade");
 	self.facade = [[TRRetortFacade alloc] init];
 	
+	[self showHoverView:YES];
 	[self.activityIndicator startAnimating];
 	[self.facade loadRetortsWithRelativePath:relPath];
-	//[facade release];
-	
+
 }
 
 //Called when all Retorts have been loaded.
@@ -144,6 +164,7 @@
 	JLog(@" handleDataLoad received.");
 	TRRetortFacade *aFacade = [note object];
 	[self.activityIndicator stopAnimating];
+	[self showHoverView:NO];
 	
 	if ((aFacade.loadSuccessful) && ([aFacade.retorts count] > 0)) {
 		self.retorts = aFacade.retorts;

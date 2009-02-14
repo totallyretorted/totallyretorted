@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="28"/>
+			<integer value="40"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -32,7 +32,7 @@
 				<string key="IBProxiedObjectIdentifier">IBFirstResponder</string>
 			</object>
 			<object class="IBUIView" id="5425450">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -94,6 +94,20 @@
 						<int key="IBUIIndicatorStyle">2</int>
 						<bool key="IBUIBouncesZoom">NO</bool>
 					</object>
+					<object class="IBUIImageView" id="780918719">
+						<reference key="NSNextResponder" ref="5425450"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrameSize">{320, 367}</string>
+						<reference key="NSSuperview" ref="5425450"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+						<int key="IBUIContentMode">4</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">Wait.png</string>
+						</object>
+					</object>
 					<object class="IBUIActivityIndicatorView" id="808563901">
 						<reference key="NSNextResponder" ref="5425450"/>
 						<int key="NSvFlags">-2147483356</int>
@@ -106,6 +120,7 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 367}</string>
+				<reference key="NSSuperview"/>
 				<reference key="IBUIBackgroundColor" ref="595652329"/>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
@@ -118,7 +133,7 @@
 				<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
 			</object>
 			<object class="IBUIView" id="230292362">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -149,7 +164,6 @@
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 77}</string>
-				<reference key="NSSuperview"/>
 				<reference key="IBUIBackgroundColor" ref="595652329"/>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 			</object>
@@ -207,14 +221,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">activityIndicator</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="808563901"/>
-					</object>
-					<int key="connectionID">27</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">footerView</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="230292362"/>
@@ -229,6 +235,22 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">31</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">activityIndicator</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="808563901"/>
+					</object>
+					<int key="connectionID">41</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">hover</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="780918719"/>
+					</object>
+					<int key="connectionID">43</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -259,9 +281,10 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="863764741"/>
-							<reference ref="808563901"/>
 							<reference ref="202827475"/>
 							<reference ref="519587234"/>
+							<reference ref="780918719"/>
+							<reference ref="808563901"/>
 						</object>
 						<reference key="parent" ref="360949347"/>
 					</object>
@@ -281,11 +304,6 @@
 						<reference key="parent" ref="5425450"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">26</int>
-						<reference key="object" ref="808563901"/>
-						<reference key="parent" ref="5425450"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">28</int>
 						<reference key="object" ref="230292362"/>
 						<object class="NSMutableArray" key="children">
@@ -300,6 +318,16 @@
 						<reference key="object" ref="289035917"/>
 						<reference key="parent" ref="230292362"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">40</int>
+						<reference key="object" ref="808563901"/>
+						<reference key="parent" ref="5425450"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">42</int>
+						<reference key="object" ref="780918719"/>
+						<reference key="parent" ref="5425450"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -312,10 +340,12 @@
 					<string>10.IBPluginDependency</string>
 					<string>22.IBPluginDependency</string>
 					<string>24.IBPluginDependency</string>
-					<string>26.IBPluginDependency</string>
 					<string>28.IBEditorWindowLastContentRect</string>
 					<string>28.IBPluginDependency</string>
 					<string>29.IBPluginDependency</string>
+					<string>40.IBPluginDependency</string>
+					<string>42.IBEditorWindowLastContentRect</string>
+					<string>42.IBPluginDependency</string>
 					<string>6.IBEditorWindowLastContentRect</string>
 					<string>6.IBPluginDependency</string>
 				</object>
@@ -323,13 +353,15 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>HomeViewController</string>
 					<string>UIResponder</string>
-					<string>{{40, 376}, {320, 480}}</string>
-					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>{{89, 57}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{362, 213}, {320, 77}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>{{418, 126}, {320, 360}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{0, 576}, {320, 247}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -355,7 +387,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">31</int>
+			<int key="maxID">43</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -382,6 +414,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>activityIndicator</string>
 							<string>footerView</string>
+							<string>hover</string>
 							<string>loadFailureMessage</string>
 							<string>retortsView</string>
 							<string>tagSlider</string>
@@ -390,6 +423,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIActivityIndicatorView</string>
 							<string>UIView</string>
+							<string>UIImageView</string>
 							<string>UITextView</string>
 							<string>UITableView</string>
 							<string>UIScrollView</string>

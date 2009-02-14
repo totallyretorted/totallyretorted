@@ -16,12 +16,13 @@
 - (void) loadURL;
 - (void)loadURLWithSearch:(NSString *)searchText;
 - (void) handleDataLoad:(NSNotification *)note;
+- (void) showHoverView:(BOOL)show;
 //-(void) cleanTags: (NSMutableArray *)ts;
 @end
 
 
 @implementation TagViewController
-@synthesize tags, tagFacade, tagsView, loadFailurelbl, activityIndicator, tagSearchBar, footerView;
+@synthesize tags, tagFacade, tagsView, loadFailurelbl, activityIndicator, tagSearchBar, footerView, hover;
 
 - (void)viewDidLoad {
 	self.tagsView.hidden = YES;
@@ -125,6 +126,10 @@
 	[self.navigationController pushViewController:retortVC animated:YES];
 	[retortVC release];
 }
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+	return [NSArray arrayWithObjects: @"A", @"B", @"C", @"D", @"E", @"F", @"G", @"H", @"I", @"J", @"K", @"L", @"M", 
+			@"N", @"O", @"P", @"Q", @"R", @"S", @"T", @"U", @"V", @"W", @"X", @"Y", @"Z", nil];
+}
 
 #pragma mark -
 #pragma mark UISearchBarDelegate delegate methods
@@ -163,11 +168,28 @@
 
 #pragma mark -
 #pragma mark Custom Methods
+- (void)showHoverView:(BOOL)show
+{
+	// fade animate the view out of view by affecting its alpha
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.40];
+	
+	if (show)
+	{
+		self.hover.alpha = 1.0;
+	}
+	else
+	{
+		self.hover.alpha = 0.0;
+	}
+	
+	[UIView commitAnimations];
+}
+
 // Initiates the process of fetching the tag data and populating the objects.
-
-
 -(void)loadURL{
 	self.tagFacade = [[TRTagFacade alloc] init];
+	[self showHoverView:YES];
 	[self.activityIndicator startAnimating];
 	[self.tagFacade loadTags];
 }
@@ -176,6 +198,7 @@
 	if (self.tagFacade == nil) {
 		self.tagFacade = [[TRTagFacade alloc] init];
 	}
+	[self showHoverView:YES];
 	[self.activityIndicator startAnimating];
 	[self.tagFacade loadTagsMatchingString:searchText];
 }
@@ -200,6 +223,7 @@
 
 -(void)handleDataLoad: (NSNotification *)note{
 	TRTagFacade *tagF=[note object];
+	[self showHoverView:NO];
 	[self.activityIndicator stopAnimating];
 	
 	if(tagF.loadSucessful && [tagF.tags count]>0)
@@ -236,6 +260,7 @@
 	self.tagFacade=nil;
 	self.tagSearchBar = nil;
 	self.footerView = nil;
+	self.hover = nil;
     [super dealloc];
 }
 

@@ -24,11 +24,12 @@
 - (void)handleDataLoad:(NSNotification *)note;
 - (void)setFooterView;
 - (void)refreshData;
+- (void) showHoverView:(BOOL)show;
 @end
 
 @implementation RetortByTagListViewController
 @synthesize retorts, facade, selectedTag, tagId;
-@synthesize retortsView, footerView;
+@synthesize retortsView, footerView, hover;
 @synthesize loadFailureMessage, currentPage;
 
 
@@ -46,6 +47,7 @@
 - (void)viewDidLoad {
 	self.retortsView.hidden = YES;
 	self.loadFailureMessage.hidden = YES;
+	[self showHoverView:YES];
 	[activityIndicator startAnimating];
 	self.title = self.selectedTag;
 	
@@ -143,6 +145,7 @@
 	self.tagId = nil;
 	self.facade = nil;
 	self.footerView = nil;
+	self.hover = nil;
     [super dealloc];
 }
 
@@ -159,6 +162,24 @@
 
 #pragma mark -
 #pragma mark Custom Methods
+- (void)showHoverView:(BOOL)show
+{
+	// fade animate the view out of view by affecting its alpha
+	[UIView beginAnimations:nil context:NULL];
+	[UIView setAnimationDuration:0.40];
+	
+	if (show)
+	{
+		self.hover.alpha = 1.0;
+	}
+	else
+	{
+		self.hover.alpha = 0.0;
+	}
+	
+	[UIView commitAnimations];
+}
+
 - (void)refreshData {
 	
 	//set self to receive callback notification...
@@ -185,6 +206,7 @@
 - (void)handleDataLoad:(NSNotification *)note {
 	JLog(@"HandleDataLoad called!");
 	TRRetortFacade *aFacade = [note object];
+	[self showHoverView:NO];
 	[activityIndicator stopAnimating];
 	
 	if ((aFacade.loadSuccessful) && ([aFacade.retorts count])) {

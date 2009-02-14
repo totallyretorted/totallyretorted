@@ -80,7 +80,10 @@
 		DBAE3AF20F3211730037D817 /* Statistic.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8EF9580F2C28A10062FC2C /* Statistic.m */; };
 		DBAE3C9E0F326F730037D817 /* TRVote.m in Sources */ = {isa = PBXBuildFile; fileRef = DBAE3C9D0F326F730037D817 /* TRVote.m */; };
 		DBAE3CB70F3273C90037D817 /* TRVoteCastingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DBAE3CB60F3273C90037D817 /* TRVoteCastingHelper.m */; };
+		DBC601040F4689610078D8EA /* Wait.png in Resources */ = {isa = PBXBuildFile; fileRef = DBC601030F4689610078D8EA /* Wait.png */; };
 		DBC6E4450F0322950041E319 /* TRTagFacade.m in Sources */ = {isa = PBXBuildFile; fileRef = 76EA75410F01666A00B1ED9C /* TRTagFacade.m */; };
+		DBC6FD890F46329F0078D8EA /* TRListHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = DBC6FD880F46329F0078D8EA /* TRListHelper.m */; };
+		DBC6FE090F46412F0078D8EA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBC6FE080F46412F0078D8EA /* QuartzCore.framework */; };
 		DBCD53100F2682BA00F4F7A5 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD530F0F2682BA00F4F7A5 /* HomeView.xib */; };
 		DBCD535A0F2687FD00F4F7A5 /* RetortView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD53590F2687FD00F4F7A5 /* RetortView.xib */; };
 		DBCD53600F268AB600F4F7A5 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBCD535F0F268AB600F4F7A5 /* SettingsView.xib */; };
@@ -235,8 +238,12 @@
 		DBAE3C9D0F326F730037D817 /* TRVote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVote.m; sourceTree = "<group>"; };
 		DBAE3CB50F3273C90037D817 /* TRVoteCastingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRVoteCastingHelper.h; sourceTree = "<group>"; };
 		DBAE3CB60F3273C90037D817 /* TRVoteCastingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRVoteCastingHelper.m; sourceTree = "<group>"; };
+		DBC601030F4689610078D8EA /* Wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wait.png; sourceTree = "<group>"; };
 		DBC6E44A0F05D7D70041E319 /* TagCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCellView.h; sourceTree = "<group>"; };
 		DBC6E44B0F05D7D70041E319 /* TagCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCellView.m; sourceTree = "<group>"; };
+		DBC6FD870F46329F0078D8EA /* TRListHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRListHelper.h; sourceTree = "<group>"; };
+		DBC6FD880F46329F0078D8EA /* TRListHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TRListHelper.m; sourceTree = "<group>"; };
+		DBC6FE080F46412F0078D8EA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
 		DBCD53140F26836000F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/HomeView.xib; sourceTree = "<group>"; };
 		DBCD532C0F26856C00F4F7A5 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/HomeView.xib; sourceTree = "<group>"; };
 		DBCD535B0F26880700F4F7A5 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/RetortView.xib; sourceTree = "<group>"; };
@@ -292,6 +299,7 @@
 				288765080DF74369002DB57D /* CoreGraphics.framework in Frameworks */,
 				DB8EF8EC0F2BD0390062FC2C /* libsqlite3.dylib in Frameworks */,
 				DBE95D220F379D4200C8912F /* Security.framework in Frameworks */,
+				DBC6FE090F46412F0078D8EA /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +378,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DBC6FE080F46412F0078D8EA /* QuartzCore.framework */,
 				DBE95D210F379D4200C8912F /* Security.framework */,
 				DB8EF8EB0F2BD0390062FC2C /* libsqlite3.dylib */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
@@ -394,6 +403,8 @@
 				DB6849C70EF0257B0094CC24 /* CGPointUtils.c */,
 				DB1126580EEF047300137EBC /* FEUrlHelper.h */,
 				DB1126590EEF047300137EBC /* FEUrlHelper.m */,
+				DBC6FD870F46329F0078D8EA /* TRListHelper.h */,
+				DBC6FD880F46329F0078D8EA /* TRListHelper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -448,6 +459,7 @@
 		DB1128830EEF73F200137EBC /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				DBC601030F4689610078D8EA /* Wait.png */,
 				DB02E2AE0F312043001A2131 /* slider-left.png */,
 				DB02E2AF0F312043001A2131 /* slider-right.png */,
 				DB02E1E40F310DA8001A2131 /* clearButton.gif */,
@@ -704,6 +716,7 @@
 				DB02E1E50F310DA8001A2131 /* clearButton.gif in Resources */,
 				DB02E2B00F312043001A2131 /* slider-left.png in Resources */,
 				DB02E2B10F312043001A2131 /* slider-right.png in Resources */,
+				DBC601040F4689610078D8EA /* Wait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,6 +788,7 @@
 				DBE95D890F389FC800C8912F /* TRSettingsFacade.m in Sources */,
 				DBA612CF0F3CEECC00EFFE51 /* base64.c in Sources */,
 				DBA612D20F3CEF5700EFFE51 /* Base64Category.m in Sources */,
+				DBC6FD890F46329F0078D8EA /* TRListHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

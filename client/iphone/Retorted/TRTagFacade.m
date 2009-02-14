@@ -58,8 +58,8 @@ NSString * const TRTagDataDidFinishedNotification = @"TRTagDataDidFinished";
 - (void)loadTags{
 	NSString *tagUrl = nil;
 	RetortedAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
-
-	tagUrl = [NSString stringWithFormat:@"%@/tags.xml", appDelegate.baseURL];
+//http://localhost:3000/tags/top_n_by_alpha.xml
+	tagUrl = [NSString stringWithFormat:@"%@/tags/top_n_by_alpha.xml", appDelegate.baseURL];
 	JLog(@"URL:%@ and performing a GET",tagUrl);
 	
 	[self loadTagsWithUrl:tagUrl];

@@ -16,6 +16,7 @@
 	IBOutlet UIActivityIndicatorView *activityIndicator;	//indicator for arriving data
 	IBOutlet UISearchBar *tagSearchBar;
 	IBOutlet UIView *footerView;
+	IBOutlet UIImageView *hover;
 	
 	NSMutableArray *tags;			// an array of TRTag objects
 	TRTagFacade *tagFacade;			//Handles details on getting data from internet, parsing XML, and populating model objects.
@@ -28,6 +29,7 @@
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, retain) UISearchBar *tagSearchBar;
 @property (nonatomic, retain) UIView *footerView;
+@property (nonatomic, retain) IBOutlet UIImageView *hover;
 
 
 @end

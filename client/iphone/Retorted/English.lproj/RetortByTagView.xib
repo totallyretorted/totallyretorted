@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="18"/>
 			<integer value="1"/>
+			<integer value="18"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -73,6 +73,20 @@
 						<object class="NSColor" key="IBUITextColor" id="165498751">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEAA</bytes>
+						</object>
+					</object>
+					<object class="IBUIImageView" id="981410124">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrameSize">{320, 367}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+						<int key="IBUIContentMode">4</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">Wait.png</string>
 						</object>
 					</object>
 					<object class="IBUIActivityIndicatorView" id="150156207">
@@ -203,6 +217,14 @@
 					</object>
 					<int key="connectionID">23</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">hover</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="981410124"/>
+					</object>
+					<int key="connectionID">25</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -222,6 +244,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="704345952"/>
 							<reference ref="241852866"/>
+							<reference ref="981410124"/>
 							<reference ref="150156207"/>
 						</object>
 						<reference key="parent" ref="360949347"/>
@@ -267,6 +290,11 @@
 						<reference key="object" ref="693304765"/>
 						<reference key="parent" ref="190878638"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">24</int>
+						<reference key="object" ref="981410124"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -281,6 +309,8 @@
 					<string>18.IBEditorWindowLastContentRect</string>
 					<string>18.IBPluginDependency</string>
 					<string>22.IBPluginDependency</string>
+					<string>24.IBEditorWindowLastContentRect</string>
+					<string>24.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
 				</object>
@@ -288,11 +318,13 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>RetortByTagListViewController</string>
 					<string>UIResponder</string>
-					<string>{{316, 359}, {320, 480}}</string>
+					<string>{{383, 81}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{362, 213}, {320, 77}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>{{418, 126}, {320, 360}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -318,7 +350,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">23</int>
+			<int key="maxID">25</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -343,6 +375,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>activityIndicator</string>
 							<string>footerView</string>
+							<string>hover</string>
 							<string>loadFailureMessage</string>
 							<string>retortsView</string>
 						</object>
@@ -350,6 +383,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIActivityIndicatorView</string>
 							<string>UIView</string>
+							<string>UIImageView</string>
 							<string>UITextView</string>
 							<string>UITableView</string>
 						</object>

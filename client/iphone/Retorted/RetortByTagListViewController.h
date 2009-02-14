@@ -16,6 +16,7 @@
 	IBOutlet UITextView *loadFailureMessage;
 	IBOutlet UIActivityIndicatorView *activityIndicator;
 	IBOutlet UIView *footerView;
+	IBOutlet UIImageView *hover;
 	
 	NSMutableArray *retorts;
 	TRRetortFacade *facade;
@@ -41,5 +42,6 @@
 @property (nonatomic, retain) UITableView *retortsView;
 @property (nonatomic, retain) UITextView *loadFailureMessage;
 @property (nonatomic, retain) UIView *footerView;
+@property (nonatomic, retain) UIImageView *hover;
 @property NSInteger currentPage;
 @end

@@ -70,6 +70,20 @@
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">1.000000e+01</float>
 					</object>
+					<object class="IBUIImageView" id="793967419">
+						<reference key="NSNextResponder" ref="1002835363"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrameSize">{320, 367}</string>
+						<reference key="NSSuperview" ref="1002835363"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+						<int key="IBUIContentMode">4</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">Wait.png</string>
+						</object>
+					</object>
 					<object class="IBUIActivityIndicatorView" id="845810127">
 						<reference key="NSNextResponder" ref="1002835363"/>
 						<int key="NSvFlags">-2147483356</int>
@@ -170,6 +184,14 @@
 					</object>
 					<int key="connectionID">23</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">hover</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="793967419"/>
+					</object>
+					<int key="connectionID">33</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -200,6 +222,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="156414415"/>
 							<reference ref="300711528"/>
+							<reference ref="793967419"/>
 							<reference ref="845810127"/>
 						</object>
 						<reference key="parent" ref="360949347"/>
@@ -224,6 +247,11 @@
 						<reference key="object" ref="91511669"/>
 						<reference key="parent" ref="360949347"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">32</int>
+						<reference key="object" ref="793967419"/>
+						<reference key="parent" ref="1002835363"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -237,6 +265,8 @@
 					<string>12.IBPluginDependency</string>
 					<string>16.IBPluginDependency</string>
 					<string>19.IBPluginDependency</string>
+					<string>32.IBEditorWindowLastContentRect</string>
+					<string>32.IBPluginDependency</string>
 					<string>7.IBEditorWindowLastContentRect</string>
 					<string>7.IBPluginDependency</string>
 				</object>
@@ -245,9 +275,11 @@
 					<string>TagViewController</string>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{381, 271}, {320, 480}}</string>
+					<string>{{410, 115}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>{{418, 126}, {320, 360}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{69, 472}, {320, 247}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -273,7 +305,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">23</int>
+			<int key="maxID">33</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -293,6 +325,8 @@
 						<object class="NSMutableArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>activityIndicator</string>
+							<string>footerView</string>
+							<string>hover</string>
 							<string>loadFailurelbl</string>
 							<string>tagSearchBar</string>
 							<string>tagsView</string>
@@ -300,6 +334,8 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIActivityIndicatorView</string>
+							<string>UIView</string>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>UISearchBar</string>
 							<string>UITableView</string>

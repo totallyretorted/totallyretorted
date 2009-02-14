@@ -11,6 +11,7 @@
 
 @class TRRetortFacade;
 @class TRTagSliderHelper;
+@class HoverView;
 
 @interface HomeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAccelerometerDelegate, TRNotificationInterface>  {
 	IBOutlet UITableView *retortsView;			//list of retorts
@@ -18,6 +19,7 @@
 	IBOutlet UIScrollView *tagSlider;			//tag slider control
 	IBOutlet UIActivityIndicatorView *activityIndicator;
 	IBOutlet UIView *footerView;
+	IBOutlet UIImageView *hover;
 	
 	//Handles details on getting data from internet, parsing XML, and populating model objects.
 	TRRetortFacade *facade;
@@ -53,6 +55,7 @@
 	float biggestshake;
 
 @private
+	//used to track the top of the table list so we can scroll back to it.
 	NSIndexPath *startPoint;
 }
 
@@ -98,6 +101,5 @@
 @property (nonatomic, retain) UIScrollView *tagSlider;
 @property (nonatomic, retain) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, retain) UIView *footerView;
-
-
+@property (nonatomic, retain) UIImageView *hover;
 @end
