@@ -5,23 +5,25 @@
 				:url => { :action => 'new_remote' },
 				:html => { :class => 'lightbox' }
 			-%>
-		<% end %>
+		<% end %>&nbsp;
 	</div>
+	<div class="paging">
 	<% if @alphabar %>
-	<div id="alphabar" class="paging">
-		<% (["#"]+(65..90).collect{ |i| i.chr }).each do |ltr| %>
-			<% if @alphabar.include?(ltr) %>
-				<%=	link_to ltr, :letter => ltr	%>
-			<% else %>
-				<% if ltr == params[:letter] #@letter %>
-					<span class="current"><%= ltr %></span>
+		<div id="alphabar">
+			<% (["#"]+(65..90).collect{ |i| i.chr }).each do |ltr| %>
+				<% if @alphabar.include?(ltr) %>
+					<%=	link_to ltr, :letter => ltr	%>
 				<% else %>
-					<span class="disabled"><%= ltr %></span>
+					<% if ltr == params[:letter] #@letter %>
+						<span class="current"><%= ltr %></span>
+					<% else %>
+						<span class="disabled"><%= ltr %></span>
+					<% end %>
 				<% end %>
 			<% end %>
+		</div>
 		<% end %>
+		<%= will_paginate @listing, :id => 'pagebar' %>
 	</div>
-	<% end %>
-	<%= will_paginate @listing, :id => 'pagebar', :class => 'paging' %>
 	<%= render :partial => "common/search_control" %>
 </div>

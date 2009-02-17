@@ -6,6 +6,7 @@
 				<tr><th><%= label_tag 'password' %></th><td><%= password_field_tag 'password', nil %></td></tr>
 			</table>
 			<!-- <%= label_tag 'remember_me', 'remember?' %> <%= check_box_tag 'remember_me', '1', @remember_me %> -->
+			<%= button_to_close_redbox 'Cancel' %>
 			<%= submit_tag 'Login', { :class => 'r login-btn' } %>
 		<% end %>
 		<%= button_to "Register", { :controller => 'users', :action => 'new' }, { :method => :get } %>
